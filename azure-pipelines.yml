@@ -1,0 +1,65 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+resources:
+  - repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '0fc9d425-c31d-4c2b-ae97-a6f1f4e1f173'
+  imageRepository: 'meetit-tutoring'
+  containerRegistry: 'meetitdockerregistru.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+stages:
+  - stage: Build
+    displayName: Build and push stage
+    jobs:
+      - job: Build
+        displayName: Build
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - task: DownloadSecureFile@1
+            name: token_json
+            displayName: 'Token_json'
+            inputs:
+              secureFile: 'token.json'
+          - task: DownloadSecureFile@1
+            name: client_secret_json
+            displayName: 'Client_secret_json'
+            inputs:
+              secureFile: 'client_secret.json'
+          - task: DownloadSecureFile@1
+            name: credentials_js
+            displayName: 'Credentials_js'
+            inputs:
+              secureFile: 'credentials.js'
+          - task: DownloadSecureFile@1
+            name: client_secret_js
+            displayName: 'Client_secret_js'
+            inputs:
+              secureFile: 'client_secret.js'
+          - task: DownloadSecureFile@1
+            name: tooken_js
+            displayName: 'Token_js'
+            inputs:
+              secureFile: 'Token.js'
+          - script: mkdir $(Build.SourcesDirectory)/secret
+            displayName: Add secret directory
+          - script: mv $(Agent.TempDirectory)/* $(Build.SourcesDirectory)/secret
+            displayName: Move keystore
+          - task: Docker@2
+            displayName: Build and push an image to container registry
+            inputs:
+              containerRegistry: 'Dockar registry connection'
+              repository: '$(imageRepository)'
+              command: 'buildAndPush'
+              Dockerfile: '**/Dockerfile'
+              buildContext: '$(Build.SourcesDirectory)'
+              tags: 'prod'

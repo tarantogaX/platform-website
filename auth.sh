@@ -1,0 +1,1 @@
+export GOOGLE_APPLICATION_CREDENTIALS="/home/piotr/Data/MeetIT/meetit-new-website/secret/Meet-IT-Tutoring-ea340c2c4aac.json"
