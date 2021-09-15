@@ -1,7 +1,6 @@
 import '../styles/globals.css';
 import React, {useEffect} from 'react';
 import {AppContext, AppProps} from 'next/app';
-import {Localized} from '../contexts/language-context/LanguageContext';
 import {createGlobalStyle, ThemeContext} from 'styled-components';
 import {DefaultTheme} from '../styles/theme';
 import MeetITHeader from '../components/header/MeetITHeader';
@@ -83,43 +82,24 @@ const MyApp = (appProps: AppProps<MyAppProps>) => {
     return (
         <ThemeContext.Provider value={DefaultTheme}>
             <GlobalStyle />
-            <Localized lang={'en'}>
-                <Head>
-                    <link rel="icon" href="/favicon.ico" />
-                    <meta
-                        name={'description'}
-                        content={'Articles on programming and algorithmics, which will help you prepare for Olympiad in Informatics'}
-                    />
-                    <meta
-                        name={'facebook-domain-verification'}
-                        content={'flbc2axqqo3g8xfzbyq6f7t9bowgp8'}
-                    />
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1"
-                    />
-                </Head>
-            </Localized>
-            <Localized lang={'pl'}>
-                <Head>
-                    <title>Meet IT Courses</title>
-                    <link rel="icon" href="/favicon.ico" />
-                    <meta
-                        name={'description'}
-                        content={
-                            'Artykuły z algorytmiki i programowania, które pomogą Ci przygotować się do Olimpiady Informatycznej'
-                        }
-                    />
-                    <meta
-                        name={'facebook-domain-verification'}
-                        content={'jo17m5pc48bx3261108tu2e4f7pnn0'}
-                    />
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1"
-                    />
-                </Head>
-            </Localized>
+            <Head>
+                <title>Meet IT Kompendium</title>
+                <link rel="icon" href="/favicon.ico" />
+                <meta
+                    name={'description'}
+                    content={
+                        'Artykuły z algorytmiki i programowania, które pomogą Ci przygotować się do Olimpiady Informatycznej'
+                    }
+                />
+                <meta
+                    name={'facebook-domain-verification'}
+                    content={'jo17m5pc48bx3261108tu2e4f7pnn0'}
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+            </Head>
             <>
                 <MeetITHeader />
                 <PageWrapper>

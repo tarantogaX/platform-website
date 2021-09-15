@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
 import React, {FunctionComponent} from 'react';
-import {Localized} from '../../contexts/language-context/LanguageContext';
 import Link from 'next/link';
 
 const Button = styled.button`
@@ -58,8 +57,7 @@ export const RegisterButton: FunctionComponent<{
                 onClick={() => {
                     onClick();
                 }}>
-                <Localized lang={'pl'}>Kompendium</Localized>
-                <Localized lang={'en'}>Course</Localized>
+                    Kompendium
             </Button>
         </Link>
     );
