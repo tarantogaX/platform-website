@@ -32,6 +32,8 @@ export function getArticlesData(id) {
   const fullPath = path.join(articlesDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
+  console.log(fullPath)
+
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents)
 

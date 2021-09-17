@@ -3,94 +3,100 @@
         {
             "title": "Podstawy programowania",
             "lessons": [
-                {
-                    "title": "Zliczanie kubełkowe",
-                    "id": "zliczanie_kubelkowe"
-                }
+                {"title": "Złożoność obliczeniowa", "id": "xddddd"},
+                {"title": "Sumy prefiksowe", "id": "pod_pre"},
+                {"title": "Zliczanie kubełkowe", "id": "pod_kub"},
+                {"title": "Wyszukiwanie binarne", "id": "pod_bin"},
+                {"title": "Skalowanie", "id": "pod_ska"},
+                {"title": "Metoda gąsienicy", "id": "pod_gas"},
+                {"title": "Arytmetyka modularna i szybkie potęgowanie", "id": "pod_mod"},
+                {"title": "Standard template library", "id": "pod_stl"}
             ]
         },
         {
-            "title": "Wstęp do grafów",
+            "title": "Projektowanie algorytmów",
             "lessons": [
-                {
-                    "title": "Drzewa",
-                    "id": "drzewa"
-                },
-                {
-                    "title": "Drzewa rozpinające",
-                    "id": "drzewa_rozpinajace"
-                },
-                {
-                    "title": "Dwóspójne",
-                    "id": "dwospojne"
-                },
-                {
-                    "title": "Centroid",
-                    "id": "centroid"
-                }
+                {"title": "Algorytmy zachłanne", "id": "zliczanie_kubelkowe"},
+                {"title": "Wstęp do programowania dynamicznego", "id": "zliczanie_kubelkowe"},
+                {"title": "Dziel i zwyciężaj", "id": "zliczanie_kubelkowe"}
             ]
         },
         {
-            "title": "Grafy",
+            "title": "Programowanie dynamiczne",
             "lessons": [
-                {
-                    "title": "Drzewa",
-                    "id": "drzewa"
-                },
-                {
-                    "title": "Drzewa rozpinające",
-                    "id": "drzewa_rozpinajace"
-                },
-                {
-                    "title": "Dwóspójne",
-                    "id": "dwospojne"
-                },
-                {
-                    "title": "Centroid",
-                    "id": "centroid"
-                }
+                {"title": "Problem plecakowy", "id": "zliczanie_kubelkowe"},
+                {"title": "Dynamiki kombinatoryczne", "id": "zliczanie_kubelkowe"},
+                {"title": "Dynamiki optymalizacyjne", "id": "zliczanie_kubelkowe"},
+                {"title": "Dynamiki wykładnicze", "id": "zliczanie_kubelkowe"},
+                {"title": "Potęgowanie dynamików", "id": "zliczanie_kubelkowe"}
             ]
         },
         {
-            "title": "Zaawansowane grafy",
+            "title": "Algorytmy tekstowe",
             "lessons": [
-                {
-                    "title": "Drzewa",
-                    "id": "drzewa"
-                },
-                {
-                    "title": "Drzewa rozpinające",
-                    "id": "drzewa_rozpinajace"
-                },
-                {
-                    "title": "Dwóspójne",
-                    "id": "dwospojne"
-                },
-                {
-                    "title": "Centroid",
-                    "id": "centroid"
-                }
+                {"title": "Wprowadzenie", "id": "zliczanie_kubelkowe"},
+                {"title": "Haszowanie", "id": "zliczanie_kubelkowe"},
+                {"title": "Liniowe algorytmy tekstowe", "id": "zliczanie_kubelkowe"},
+                {"title": "Drzewo trie", "id": "zliczanie_kubelkowe"},
+                {"title": "Porównywanie tekstów z aktualizacjami", "id": "zliczanie_kubelkowe"},
+                {"title": "Algorytm Karpa-Millera-Rozenberga", "id": "zliczanie_kubelkowe"},
+                {"title": "Tablica sufiksowa", "id": "zliczanie_kubelkowe"}
             ]
         },
         {
-            "title": "Kozackie grafy",
+            "title": "Struktury danych",
             "lessons": [
-                {
-                    "title": "Drzewa",
-                    "id": "drzewa"
-                },
-                {
-                    "title": "Drzewa rozpinające",
-                    "id": "drzewa_rozpinajace"
-                },
-                {
-                    "title": "Dwóspójne",
-                    "id": "dwospojne"
-                },
-                {
-                    "title": "Centroid",
-                    "id": "centroid"
-                }
+                {"title": "Kolejka monotoniczna", "id": "zliczanie_kubelkowe"},
+                {"title": "Find and union", "id": "zliczanie_kubelkowe"},
+                {"title": "Drzewo przedziałowe", "id": "zliczanie_kubelkowe"},
+                {"title": "Pierwiastki", "id": "zliczanie_kubelkowe"},
+                {"title": "Drzewo potęgowe", "id": "zliczanie_kubelkowe"}
+            ]
+        },
+        {
+            "title": "Algorytmy grafowe",
+            "lessons": [
+                {"title": "Co to jest graf?", "id": "zliczanie_kubelkowe"},
+                {"title": "Drzewa - podstawy", "id": "zliczanie_kubelkowe"},
+                {"title": "Najgłębszy wspólny przodek", "id": "zliczanie_kubelkowe"},
+                {"title": "Najkrótsze ścieżki", "id": "zliczanie_kubelkowe"},
+                {"title": "Aktualizacje na poddrzewach", "id": "zliczanie_kubelkowe"},
+                {"title": "Rozbicie przez centroid", "id": "zliczanie_kubelkowe"},
+                {"title": "Drzewa rozpinające", "id": "zliczanie_kubelkowe"},
+                {"title": "Grafy skierowane", "id": "zliczanie_kubelkowe"},
+                {"title": "Grafy dwudzielne", "id": "zliczanie_kubelkowe"},
+                {"title": "Meduzy", "id": "zliczanie_kubelkowe"},
+                {"title": "Dwuspójne składowe", "id": "zliczanie_kubelkowe"},
+                {"title": "Grafy planarne", "id": "zliczanie_kubelkowe"},
+                {"title": "Problemy NP-trudne", "id": "zliczanie_kubelkowe"},
+                {"title": "Przepływy", "id": "zliczanie_kubelkowe"},
+                {"title": "Max flow - min cut", "id": "zliczanie_kubelkowe"}
+            ]
+        },
+        {
+            "title": "Teoria liczb",
+            "lessons": [
+                {"title": "Wstęp do Teorii liczb", "id": "zliczanie_kubelkowe"},
+                {"title": "Arytmetyka modulo 1", "id": "zliczanie_kubelkowe"},
+                {"title": "Arytmetyka modulo 2", "id": "zliczanie_kubelkowe"},
+                {"title": "Bardzo duże liczby", "id": "zliczanie_kubelkowe"}
+            ]
+        },
+        {
+            "title": "Teoria gier",
+            "lessons": [
+                {"title": "Wstęp do Teorii gier", "id": "zliczanie_kubelkowe"},
+                {"title": "Twierdzenie Sprague-Grundy'ego", "id": "zliczanie_kubelkowe"}
+            ]
+        },
+        {
+            "title": "Geometria",
+            "lessons": [
+                {"title": "Podstawy geometrii", "id": "zliczanie_kubelkowe"},
+                {"title": "Wielokąty", "id": "zliczanie_kubelkowe"},
+                {"title": "Zamiatanie", "id": "zliczanie_kubelkowe"},
+                {"title": "Zamiastanie kątowe", "id": "zliczanie_kubelkowe"},
+                {"title": "Otoczka wypukła", "id": "zliczanie_kubelkowe"}
             ]
         }
     ]
