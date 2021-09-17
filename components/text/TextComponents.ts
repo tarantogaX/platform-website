@@ -157,6 +157,7 @@ export const P2 = styled(addProps<TextProps>()(styled.p``))`
 `;
 
 export const A = styled(addProps<TextProps>()(styled.a``))`
+    font-size: 18px;
     font-family: ${(p: TextProps) =>
         FontFromWeight(p.weight ?? FontWeight.Regular)};
     text-align: ${(p: TextProps) => p.align as string};

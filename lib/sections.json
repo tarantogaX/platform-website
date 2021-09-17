@@ -5,7 +5,28 @@
             "lessons": [
                 {
                     "title": "Zliczanie kubełkowe",
-                    "file": "zliczanie_kubelkowe"
+                    "id": "zliczanie_kubelkowe"
+                }
+            ]
+        },
+        {
+            "title": "Wstęp do grafów",
+            "lessons": [
+                {
+                    "title": "Drzewa",
+                    "id": "drzewa"
+                },
+                {
+                    "title": "Drzewa rozpinające",
+                    "id": "drzewa_rozpinajace"
+                },
+                {
+                    "title": "Dwóspójne",
+                    "id": "dwospojne"
+                },
+                {
+                    "title": "Centroid",
+                    "id": "centroid"
                 }
             ]
         },
@@ -14,19 +35,61 @@
             "lessons": [
                 {
                     "title": "Drzewa",
-                    "file": "drzewa"
+                    "id": "drzewa"
                 },
                 {
                     "title": "Drzewa rozpinające",
-                    "file": "drzewa_rozpinajace"
+                    "id": "drzewa_rozpinajace"
                 },
                 {
                     "title": "Dwóspójne",
-                    "file": "dwospojne"
+                    "id": "dwospojne"
                 },
                 {
                     "title": "Centroid",
-                    "file": "centroid"
+                    "id": "centroid"
+                }
+            ]
+        },
+        {
+            "title": "Zaawansowane grafy",
+            "lessons": [
+                {
+                    "title": "Drzewa",
+                    "id": "drzewa"
+                },
+                {
+                    "title": "Drzewa rozpinające",
+                    "id": "drzewa_rozpinajace"
+                },
+                {
+                    "title": "Dwóspójne",
+                    "id": "dwospojne"
+                },
+                {
+                    "title": "Centroid",
+                    "id": "centroid"
+                }
+            ]
+        },
+        {
+            "title": "Kozackie grafy",
+            "lessons": [
+                {
+                    "title": "Drzewa",
+                    "id": "drzewa"
+                },
+                {
+                    "title": "Drzewa rozpinające",
+                    "id": "drzewa_rozpinajace"
+                },
+                {
+                    "title": "Dwóspójne",
+                    "id": "dwospojne"
+                },
+                {
+                    "title": "Centroid",
+                    "id": "centroid"
                 }
             ]
         }

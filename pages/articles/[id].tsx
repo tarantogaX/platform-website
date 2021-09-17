@@ -7,33 +7,38 @@ import Section from '../../components/section/Section';
 import LessonContent from '../../page-fragments/lesson/LessonContent';
 import Navbar from '../../components/navbar/Navbar';
 import Center from '../../components/central/Center';
-import { getAllArticlesIds, getArticlesData } from '../../lib/articles'
+import { getAllArticlesIds, getArticlesData, getSectionWithLesson } from '../../lib/articles'
 
 export async function getStaticProps({ params }) {
-  const articleData = getArticlesData(params.id)
+  const articleData = getArticlesData(params.id);
+  const sectionData = getSectionWithLesson(params.id);
+  const articleIndex = sectionData.lessons.map(lesson => lesson.id).indexOf(params.id);
   return {
     props: {
-        articleData
+        articleData,
+        sectionData,
+        articleIndex
     }
-  }
+  };
 }
 
 export async function getStaticPaths() {
-  const paths = getAllArticlesIds()
+  const paths = getAllArticlesIds();
   return {
     paths,
     fallback: false
-  }
+  };
 }
 
-export default function Article ({ articleData }) {
+export default function Article ({ articleData, sectionData, articleIndex }) {
     return (
         <>
             <Head>
                 <title>Meet IT Lesson</title>
             </Head>
             <Center noLeftMargin maxWidth={1500}>
-                <Navbar sectionTitle="Algorytmy dynamiczne" lessonsList={["Dziel i zwyciężaj", "Zliczanie kubełkowe", "Gąsienica", "Sortowanie kątowe"]} selectedLesson={1} />
+                <Navbar
+                  sectionTitle={sectionData.title} lessonsList={sectionData.lessons} selectedLesson={articleIndex} />
                 <LessonContent title={articleData.title} content={articleData.content} />
             </Center>
         </>

@@ -1,5 +1,5 @@
 ---
-title: 'Zliczanie kubełkowe'
+title: 'Centroid'
 content: "
 W zadaniach natykamy się nieraz na problem zliczenia wystąpień pewnych elementów. Można w ten sposób np. sortować ciąg lub znaleźć jego dominantę. W tym artykule omówimy metodę zliczania kubełkowego. 
 

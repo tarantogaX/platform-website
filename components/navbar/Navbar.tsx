@@ -5,9 +5,15 @@ import ColumnLayoutElement from '../column-layout-element/ColumnLayoutElement';
 import {NavbarButton, NavbarButtonSelected, NavbarSectionTitle} from './NavbarButton';
 import {Colours} from "../primitives/Colours";
 
+type LessonProps = {
+    title: string;
+    id: number;
+    colour?: string;
+}
+
 type NavbarProps = {
     sectionTitle: string;
-    lessonsList: Array<string>;
+    lessonsList: Array<LessonProps>;
     selectedLesson: number;
 };
 
@@ -31,8 +37,8 @@ const Navbar: FunctionComponent<NavbarProps> = (props) => {
                 <NavbarSectionTitle text={props.sectionTitle} link={props.sectionTitle} />
                 {props.lessonsList.map((lesson, index) =>
                     (index != props.selectedLesson)
-                        ? <NavbarButton text={lesson} link={lesson} />
-                        : <NavbarButtonSelected text={lesson} link={lesson} />
+                        ? <NavbarButton text={lesson.title} link={lesson.id} />
+                        : <NavbarButtonSelected text={lesson.title} link={lesson.id} />
                 )}
         </NavbarWrapper>
     );

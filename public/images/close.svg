@@ -1,0 +1,21 @@
+<svg id="Group_5" data-name="Group 5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e26363;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <circle id="Ellipse_40" data-name="Ellipse 40" class="cls-1" cx="10" cy="10" r="10"/>
+  <g id="Group_63" data-name="Group 63" transform="translate(7.813 7.813)">
+    <line id="Line_42" data-name="Line 42" class="cls-2" x2="5.012" y2="5.012"/>
+    <line id="Line_43" data-name="Line 43" class="cls-2" x1="5.012" y2="5.012"/>
+  </g>
+</svg>
