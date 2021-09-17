@@ -2,7 +2,6 @@ import Head from 'next/head';
 import * as React from 'react';
 import {FunctionComponent} from 'react';
 import Center from '../components/central/Center';
-import LandingSection from '../page-fragments/home/LandingSection';
 
 
 const Home: FunctionComponent = () => {
@@ -11,7 +10,6 @@ const Home: FunctionComponent = () => {
             <Head>
                 <title>Meet IT Kompendium</title>
             </Head>
-            <LandingSection />
             <Center>
                 <img
                     style={{

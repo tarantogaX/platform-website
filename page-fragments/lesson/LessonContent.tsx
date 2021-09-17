@@ -28,7 +28,7 @@ const LessonWrapper = styled(ColumnLayoutElement)`
   width: 55%;
   margin-left: 10%;
   top: 0;
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 300px;
   margin-left: 500px;
 `;
