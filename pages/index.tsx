@@ -4,6 +4,7 @@ import {FunctionComponent} from 'react';
 import Center from '../components/central/Center';
 import LandingSection from '../page-fragments/home/LandingSection';
 
+
 const Home: FunctionComponent = () => {
     return (
         <>
