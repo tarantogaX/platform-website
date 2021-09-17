@@ -51,7 +51,7 @@ const LessonTitle = styled(P)`
 
 const Lesson: FunctionComponent<LessonProps> = (props) => {
     return (
-        <Link href={`/articles/${props.id}`}>
+        <Link href={props.title != "Złożoność obliczeniowa" ? `/articles/${props.id}` : props.id}>
             <LessonHeader colour={props.colour}>
                 <LessonTitle noMargin>{props.title}</LessonTitle>
             </LessonHeader>

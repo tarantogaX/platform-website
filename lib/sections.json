@@ -3,7 +3,7 @@
         {
             "title": "Podstawy programowania",
             "lessons": [
-                {"title": "Złożoność obliczeniowa", "id": "xddddd"},
+                {"title": "Złożoność obliczeniowa", "id": "http://www.deltami.edu.pl/temat/informatyka/algorytmy/2016/06/22/O_co_chodzi_w_zlozonosci_czasowej/"},
                 {"title": "Sumy prefiksowe", "id": "pod_pre"},
                 {"title": "Zliczanie kubełkowe", "id": "pod_kub"},
                 {"title": "Wyszukiwanie binarne", "id": "pod_bin"},
