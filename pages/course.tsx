@@ -6,7 +6,7 @@ import {IStyleArgument} from '../styles/theme';
 import LessonContent from '../page-fragments/lesson/LessonContent';
 import Navbar from '../components/navbar/Navbar';
 import Center from '../components/central/Center';
-import { H0, P, P2, A } from '../components/text/TextComponents';
+import { H0, P, P2, A, FontWeight } from '../components/text/TextComponents';
 import ColumnLayoutElement from '../components/column-layout-element/ColumnLayoutElement';
 import { Colours } from '../components/primitives/Colours';
 import { getSectionsList } from '../lib/articles';
@@ -35,7 +35,8 @@ type LessonHeaderProps = {
 const LessonHeader = styled(addProps<LessonHeaderProps>()(styled.div``))`
     display: block;
     height: 40px;
-    text-align: center;
+    text-align: left;
+    padding-left: 40px;
     :hover {
         cursor: pointer;
     }
@@ -74,6 +75,8 @@ const SectionHeader = styled.div`
     :hover {
         cursor: pointer;
     }
+    position: relative;
+    z-index: 2;
 `;
 
 const SectionTitle = styled(P)`
@@ -83,7 +86,7 @@ const SectionTitle = styled(P)`
 `;
 
 const SectionWrapper = styled.div`
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 5px rgba(100, 100, 100, 0.2);
     margin-bottom: 30px;
 `;
 
@@ -96,8 +99,8 @@ const Section: FunctionComponent<SectionProps> = (props) => {
     const [open, setOpen] = React.useState(false);
     return (
         <SectionWrapper style={{width: open ? '100%' : '800px'}}>
-            <SectionHeader onClick={() => {setOpen(!open)}}>
-                <SectionTitle noMargin>{props.title}</SectionTitle>
+            <SectionHeader onClick={() => {setOpen(!open)}} style={open ? {boxShadow: '0px 0px 5px 5px rgba(100, 100, 100, 0.2)'} : {}}>
+                <SectionTitle noMargin weight={open ? FontWeight.SemiBold : FontWeight.Regular}>{props.title}</SectionTitle>
                 <Close
                     src="/images/close.svg"
                     width="20px"
@@ -119,12 +122,21 @@ const CourseDescription = styled(ColumnLayoutElement)`
 
 const CourseImage = styled.img`
     width: 30%;
-    margin: 0;
+    margin-top: 30px;
 `;
 
 const AllSectionsWrapper = styled(Center)`
     display: block;
     margin-top: 100px;
+`;
+
+const CourseTitle = styled(H0)`
+    color: ${Colours.LightBlack};
+    font-size: 50px;
+`;
+
+const CourseText = styled(P)`
+    color: ${Colours.LightBlack};
 `;
 
 function Course ({allSectionsList}) {
@@ -133,14 +145,21 @@ function Course ({allSectionsList}) {
             <Head>
                 <title>Meet IT Kompendium</title>
             </Head>
-            <Center maxWidth={1500} style={{marginTop: '100px'}}>
+            <Center maxWidth={1500} style={{marginTop: '70px'}}>
                 <CourseDescription
                     normalColumns={1}
                     tabletColumns={1}
                     mobileColumns={1}
                     vertAlign={'top'}>
-                    <H0>Kompendium</H0>
-                    <P>Znajdziesz tu materiały, które (według nas) pokrywają całą tematykę, z jaką możesz się spotkać na Olimpiadzie Informatycznej. Każdy z działów zawiera kilka lekcji o zróżnicowanej trudności. Lekcje o wyższych numerach mogą, ale nie muszą, być trudniejsze niż te o niższych. W razie problemów zawsze możesz prosić swojego tutora Meet IT o pomoc. Gdybyś jakimś cudem trafił tutaj jako osoba nienależąca do projektu, koniecznie dowiedz się więcej – na naszej stronie lub Facebook'u. Zachęcamy do skorzystania ze wsparcia!</P>
+                    <CourseTitle weight={FontWeight.SemiBold}>Kompendium</CourseTitle>
+                    <CourseText>
+                        Znajdziesz tu materiały, które (według nas) pokrywają całą tematykę, z
+                        jaką możesz się spotkać na Olimpiadzie Informatycznej. Każdy z działów zawiera kilka 
+                        lekcji o zróżnicowanej trudności. Lekcje o wyższych numerach mogą, ale nie muszą, być 
+                        trudniejsze niż te o niższych. W razie problemów zawsze możesz prosić swojego tutora Meet IT o pomoc. 
+                        Gdybyś jakimś cudem trafił tutaj jako osoba nienależąca do projektu, koniecznie dowiedz się więcej – 
+                        na naszej stronie lub Facebook'u. Zachęcamy do skorzystania ze wsparcia!
+                    </CourseText>
                 </CourseDescription>
                 <CourseImage src={"/images/whiteboard.jpg"}/>
             </Center>

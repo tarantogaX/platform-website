@@ -5,6 +5,7 @@ import {IStyleArgument} from '../../styles/theme';
 export enum FontWeight {
     Regular,
     Bold,
+    SemiBold,
     Thin,
 }
 
@@ -32,6 +33,8 @@ const FontFromWeight = (weight: FontWeight) => {
             return "'MontserratRegular', sans-serif";
         case FontWeight.Bold:
             return "'MontserratBold', sans-serif";
+        case FontWeight.SemiBold:
+            return "'MontserratSemiBold', sans-serif";
         case FontWeight.Thin:
             return "'MontserratThin', sans-serif";
     }
