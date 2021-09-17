@@ -5,25 +5,7 @@ import MathJax from "react-mathjax";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import RemarkMathPlugin from "remark-math";
 import styled from "styled-components";
-
-enum Colour {
-  MeetITdarkGrey = "#3a3e3a",
-  MeetITwhite = "white",
-  MeetITlightGreen = "#5cff5c",
-  MeetITgreen = "#42eb53",
-  MeetITgreen_main = "#0fb020",
-  MeetITgreen_hover = "#0fd620",
-  MeetITblack = "black",
-  MeetITgrey = "#888888",
-  MeetITlightGrey = "#CCCCCC",
-  MeetITsuperLightGrey = "#F7F7F7",
-  MeetITsuperLightGreyHover = "#F0F0F0",
-  MeetITdarkWhite = "#F7F7F7",
-}
-
-enum Font {
-  MeetITsans = "Source Sans Pro, sans-serif",
-}
+import {Colours} from "../primitives/Colours";
 
 interface FormulaProps {
   content: string;
@@ -40,8 +22,7 @@ const StyledDiv = styled.div`
         font-weight: bold;
         line-height: 100%;
         display: block;
-        color: ${Colour.MeetITblack};
-        font-family: ${Font.MeetITsans};
+        color: ${Colours.Black};
     }
     code{
         color: inherit;

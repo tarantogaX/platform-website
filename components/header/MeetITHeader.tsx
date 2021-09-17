@@ -7,6 +7,8 @@ import {addProps} from '../../utils/ComponentUtils';
 import {RegisterButton} from '../button/Button';
 import 'react-languages-select/css/react-languages-select.css';
 import {useRouter} from 'next/router';
+import { A } from '../text/TextComponents';
+import {Colours} from "../primitives/Colours";
 
 const HeaderWrapper = styled.header`
     position: fixed;
@@ -15,7 +17,7 @@ const HeaderWrapper = styled.header`
     right: 0;
     height: 54px;
     padding: 7px;
-    background-color: #fff;
+    background-color: white;
     z-index: 100;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
     width: 100vw;
@@ -63,7 +65,7 @@ const LinksWrapper = styled(addProps<{open: boolean}>()(styled.div``))`
     }
 `;
 
-const HeaderLink = styled.a`
+const HeaderLink = styled(A)`
     display: inline-block;
     line-height: 20px;
     margin-right: 80px;
@@ -105,12 +107,12 @@ const MeetITHeader: FunctionComponent = () => {
                     <HeaderLink
                         onClick={() => setOpen(false)}
                         href={'http://meetit.eu/'}>
-                        Foundation
+                        Meet IT
                     </HeaderLink>
                     <HeaderLink
                         onClick={() => setOpen(false)}
                         href={'https://camps.meetit.eu/'}>
-                        Camp
+                        Obóz
                     </HeaderLink>
                     <HeaderLink
                         onClick={() => setOpen(false)}
@@ -120,7 +122,7 @@ const MeetITHeader: FunctionComponent = () => {
                     <HeaderLink
                         onClick={() => setOpen(false)}
                         href={'https://forms.gle/s5Y88r5qu8Q8mk327'}>
-                        Become a tutor
+                        Zostań tutorem
                     </HeaderLink>
                     <RegisterButton onClick={() => setOpen(false)} />
                 </LinksWrapper>

@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
 import React, {FunctionComponent} from 'react';
 import Link from 'next/link';
+import { BUTTON } from '../text/TextComponents';
 
-const Button = styled.button`
+const Button = styled(BUTTON)`
     font-weight: bold;
     border: 0;
     border-radius: 10px;

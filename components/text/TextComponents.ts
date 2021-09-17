@@ -5,7 +5,7 @@ import {IStyleArgument} from '../../styles/theme';
 export enum FontWeight {
     Regular,
     Bold,
-    Heavy,
+    Thin,
 }
 
 export enum TextAlign {
@@ -29,13 +29,18 @@ const FontFromWeight = (weight: FontWeight) => {
     weight = weight ?? FontWeight.Regular;
     switch (weight) {
         case FontWeight.Regular:
-            return "'SFProDisplayRegular', sans-serif";
+            return "'MontserratRegular', sans-serif";
         case FontWeight.Bold:
-            return "'SFProDisplayBold', sans-serif";
-        case FontWeight.Heavy:
-            return "'SFProDisplayHeavy', sans-serif";
+            return "'MontserratBold', sans-serif";
+        case FontWeight.Thin:
+            return "'MontserratThin', sans-serif";
     }
 };
+
+export const BUTTON = styled(addProps<TextProps>()(styled.button``))`
+    font-family: ${(p: TextProps) =>
+        FontFromWeight(p.weight ?? FontWeight.Bold)};
+`;
 
 export const H0 = styled(addProps<TextProps>()(styled.h1``))`
     font-size: 36px;
@@ -134,6 +139,24 @@ export const P = styled(addProps<TextProps>()(styled.p``))`
 
 export const P2 = styled(addProps<TextProps>()(styled.p``))`
     font-size: 16px;
+    font-family: ${(p: TextProps) =>
+        FontFromWeight(p.weight ?? FontWeight.Regular)};
+    text-align: ${(p: TextProps) => p.align as string};
+    color: ${(p: IStyleArgument & TextProps) =>
+        p.color
+            ? p.color
+            : p.primary
+            ? p.theme.colors.primaryStrong
+            : p.secondary
+            ? p.theme.colors.secondary
+            : p.theme.colors.black};
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        ${(p) => (p.mobileDownscale ?? true ? 'font-size: 12px;' : '')}
+    }
+    ${(p) => (p.noMargin ? 'margin: 0' : '')}
+`;
+
+export const A = styled(addProps<TextProps>()(styled.a``))`
     font-family: ${(p: TextProps) =>
         FontFromWeight(p.weight ?? FontWeight.Regular)};
     text-align: ${(p: TextProps) => p.align as string};

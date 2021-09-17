@@ -11,21 +11,26 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
-      font-family: 'SFProDisplayHeavy';
+      font-family: 'MontserratBold';
       font-display: swap;
-      src: url('/fonts/SFProDisplayHeavy.ttf')  format('truetype');
+      src: url('/fonts/MontserratBold.ttf')  format('truetype');
+    }
+    @font-face {
+      font-family: 'MontserratSemiBold';
+      font-display: swap;
+      src: url('/fonts/MontserratSemiBold.ttf')  format('truetype');
     }
     
     @font-face {
-      font-family: 'SFProDisplayBold';
+      font-family: 'MontserratRegular';
       font-display: swap;
-      src: url('/fonts/SFProDisplayHeavy.ttf')  format('truetype');
+      src: url('/fonts/MontserratRegular.ttf')  format('truetype');
     }
-    
+
     @font-face {
-      font-family: 'SFProDisplayRegular';
+      font-family: 'MontserratHeavy';
       font-display: swap;
-      src: url('/fonts/SFProDisplayRegular.ttf')  format('truetype');
+      src: url('/fonts/MontserratThin.ttf')  format('truetype');
     }
     
     html {
