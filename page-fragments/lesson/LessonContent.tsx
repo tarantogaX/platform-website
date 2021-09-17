@@ -30,6 +30,7 @@ const LessonWrapper = styled(ColumnLayoutElement)`
   top: 0;
   padding-top: 30px;
   padding-bottom: 300px;
+  margin-left: 500px;
 `;
 
 const LessonText = styled(MainText)`

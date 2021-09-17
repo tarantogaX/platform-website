@@ -6,6 +6,8 @@ const Footer = styled.footer`
     height: 30px;
     line-height: 30px;
     background-color: black;
+    position: relative;
+    z-index: 6;
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
 `;
 

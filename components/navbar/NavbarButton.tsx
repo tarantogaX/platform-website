@@ -11,15 +11,15 @@ type LessonButtonProps = {
 };
 
 const Button = styled(P)`
-    text-align: right;
+    text-align: left;
     margin: 0;
-    padding-right: 40px;
+    padding-left: 50px;
     padding-top: 20px;
     padding-bottom: 20px;
 `;
 
 const ButtonSelected = styled(Button)`
-    background-color: white;
+    background-color: ${Colours.White};
 `;
 
 const ButtonSectionTitle = styled(Button)`

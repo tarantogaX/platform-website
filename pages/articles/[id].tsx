@@ -3,7 +3,6 @@ import * as React from 'react';
 import {FunctionComponent} from 'react';
 import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
-import Section from '../../components/section/Section';
 import LessonContent from '../../page-fragments/lesson/LessonContent';
 import Navbar from '../../components/navbar/Navbar';
 import Center from '../../components/central/Center';

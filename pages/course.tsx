@@ -24,7 +24,7 @@ export async function getStaticProps() {
 
 type LessonProps = {
     title: string;
-    id: number;
+    id: string;
     colour?: string;
 }
 

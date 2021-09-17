@@ -52,7 +52,7 @@ export const RegisterButton: FunctionComponent<{
     //     };
     // });
     return (
-        <Link href={'/sample-lesson'}>
+        <Link href={'/course'}>
             <Button
                 {...props}
                 onClick={() => {

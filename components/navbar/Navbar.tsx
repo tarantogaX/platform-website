@@ -7,7 +7,7 @@ import {Colours} from "../primitives/Colours";
 
 type LessonProps = {
     title: string;
-    id: number;
+    id: string;
     colour?: string;
 }
 
@@ -22,9 +22,19 @@ const NavbarWrapper = styled(ColumnLayoutElement)`
     background-color: ${Colours.LightGray};
     /* width: 30%;
     height: 100px; */
-    width: 25%;
-    padding-top: 55px;
-    padding-bottom: 80%;
+    position: fixed;
+    top: 54px;
+    width: 250px;
+`;
+
+const ShadowWrapper = styled.div`
+    z-index: 5;
+    position:relative;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+`;
+
+const ShadowWrapperLast = styled(ShadowWrapper)`
+    height: 800px;
 `;
 
 
@@ -34,12 +44,26 @@ const Navbar: FunctionComponent<NavbarProps> = (props) => {
             normalColumns={2}
             tabletColumns={2}
             mobileColumns={1}>
-                <NavbarSectionTitle text={props.sectionTitle} link={props.sectionTitle} />
-                {props.lessonsList.map((lesson, index) =>
-                    (index != props.selectedLesson)
-                        ? <NavbarButton text={lesson.title} link={lesson.id} />
-                        : <NavbarButtonSelected text={lesson.title} link={lesson.id} />
-                )}
+                <ShadowWrapper>
+                    <NavbarSectionTitle text={props.sectionTitle} link={props.sectionTitle} />
+                    {props.lessonsList.map((lesson, index) =>
+                        (index < props.selectedLesson)
+                            ? <NavbarButton text={lesson.title} link={lesson.id} />
+                            : <></>
+                    )}
+                </ShadowWrapper>
+                    {props.lessonsList.map((lesson, index) =>
+                        (index == props.selectedLesson)
+                            ? <NavbarButtonSelected text={lesson.title} link={lesson.id}/>
+                            : <></>
+                    )}
+                <ShadowWrapperLast>
+                    {props.lessonsList.map((lesson, index) =>
+                        (index > props.selectedLesson)
+                            ? <NavbarButton text={lesson.title} link={lesson.id} />
+                            : <></>
+                    )}
+                </ShadowWrapperLast>
         </NavbarWrapper>
     );
 };
