@@ -1,0 +1,34 @@
+{
+    "sections": [
+        {
+            "title": "Podstawy programowania",
+            "lessons": [
+                {
+                    "title": "Zliczanie kubełkowe",
+                    "file": "zliczanie_kubelkowe"
+                }
+            ]
+        },
+        {
+            "title": "Grafy",
+            "lessons": [
+                {
+                    "title": "Drzewa",
+                    "file": "drzewa"
+                },
+                {
+                    "title": "Drzewa rozpinające",
+                    "file": "drzewa_rozpinajace"
+                },
+                {
+                    "title": "Dwóspójne",
+                    "file": "dwospojne"
+                },
+                {
+                    "title": "Centroid",
+                    "file": "centroid"
+                }
+            ]
+        }
+    ]
+}
