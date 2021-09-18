@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
 import React, {FunctionComponent} from 'react';
 import Link from 'next/link';
-import { BUTTON } from '../text/TextComponents';
+import { A, BUTTON } from '../text/TextComponents';
 
 const Button = styled(BUTTON)`
     font-weight: bold;
@@ -41,7 +41,7 @@ export const RegisterButton: FunctionComponent<{
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     let onClick = () => {};
     return (
-        <Link href={props.link}>
+        <A href={props.link}>
             <Button
                 {...props}
                 onClick={() => {
@@ -49,7 +49,7 @@ export const RegisterButton: FunctionComponent<{
                 }}>
                     {props.text}
             </Button>
-        </Link>
+        </A>
     );
 };
 
