@@ -56,7 +56,10 @@ Po skończonej liczbie wywołań takiego algorytmu $p = k,$ ponieważ z każdym 
 
 ### Binsearch - złożoność czasowa
 
-Warto zastanowić się, jaka dokładnie jest ta 'skończona liczba wywołań'. Za każdym razem zmniejszamy długość naszego przedziału dwukrotnie. Oznacza to, że po pierwszym wykonaniu algorytmu nasz przedział będzie dwa razy krótszy, po drugim: cztery, po trzecim: osiem, a po $i$-tym: $2^i.$ Długość przedziału wyniesie $1$ po $k$ krokach dla takiego $k,$ że $2^k \\approx n.$ Takie $k$ nazywamy logarytmem dwójkowym i w informatyce oznaczamy jako $log~n.$ Złożoność czasowa odpowiedzi na jedno zapytanie wynosi $O(log~n).$ Ze względu na to, że potęgi dwójki bardzo szybko rosną, logarytm rośnie powoli. Zauważmy, że dla $n = 10^6$ zachodzi $log~n \\approx 20.$ Dla komputera jest to tyle, co nic. Mając dane $t$ zapytań, koszt czasowy całego programu można oszacować jako $O(n~log~n + t~log~n),$ gdyż sortowanie ciągu kosztuje $O(n~log~n).$ Opisaną wyżej technikę nazywamy wyszukiwaniem binarnym.
+Warto zastanowić się, jaka dokładnie jest ta 'skończona liczba wywołań'. Za każdym razem zmniejszamy długość naszego przedziału dwukrotnie. Oznacza to, że po pierwszym wykonaniu algorytmu nasz przedział będzie dwa razy krótszy, po drugim: cztery, po trzecim: osiem, a po $i$-tym: $2^i.$ Długość przedziału wyniesie $1$ po $k$ krokach dla takiego $k,$ że $2^k \\approx n.$
+
+
+Takie $k$ nazywamy logarytmem dwójkowym i w informatyce oznaczamy jako $log~n.$ Złożoność czasowa odpowiedzi na jedno zapytanie wynosi $O(log~n).$ Ze względu na to, że potęgi dwójki bardzo szybko rosną, logarytm rośnie powoli. Zauważmy, że dla $n = 10^6$ zachodzi $log~n \\approx 20.$ Dla komputera jest to tyle, co nic. Mając dane $t$ zapytań, koszt czasowy całego programu można oszacować jako $O(n~log~n + t~log~n),$ gdyż sortowanie ciągu kosztuje $O(n~log~n).$ Opisaną wyżej technikę nazywamy wyszukiwaniem binarnym.
 
 ### Zastosowanie wyszukiwania binarnego - obliczanie pierwiastka
 
@@ -64,13 +67,23 @@ Znajdź najmniejszą liczbę całkowitą większą lub równą pierwiastkowi $n$
 
 #### Rozwiązanie
 
-Podobnie jak w powyższym problemie, będziemy zmniejszać przedział możliwości. Na początku znajdźmy górne i dolne ograniczenia. Wiemy, że pierwiastek jest na pewno dodatni: możemy przyjąć $p = 1.$ Tak samo żadna liczba całkowita nie ma pierwiastka większego od samej siebie: ustawmy $k = n.$ „Strzelamy” w środek przedziału – $sr$ i sprawdzać, relację $sr^2$ z $n.$ Jeżeli $sr^2 < n,$ to $sr < \\sqrt{n}$ – szukana wartość będzie większa niż $sr.$ To znaczy, że będzie znajdować się na przedziale $[sr + 1, k].$ W przeciwnym wypadku pozostaje do rozważenia przedział $[p, sr].$ Tak samo jak ostatnio po $O(log~n)$ ruchach $p = k$ oraz jest to rozwiązanie naszego pierwiatka. W przypadkach takich, jak to zadanie, gdy wyszukujemy wartość, będącą rozwiązaniem danego problemu, mówimy o „wyszukiwaniu binarnym po wyniku”.
+Podobnie jak w powyższym problemie, będziemy zmniejszać przedział możliwości. Na początku znajdźmy górne i dolne ograniczenia. Wiemy, że pierwiastek jest na pewno dodatni: możemy przyjąć $p = 1.$ Tak samo żadna liczba całkowita nie ma pierwiastka większego od samej siebie: ustawmy $k = n.$
+
+
+„Strzelamy” w środek przedziału – $sr$ i sprawdzać, relację $sr^2$ z $n.$ Jeżeli $sr^2 < n,$ to $sr < \\sqrt{n}$ – szukana wartość będzie większa niż $sr.$ To znaczy, że będzie znajdować się na przedziale $[sr + 1, k].$ W przeciwnym wypadku pozostaje do rozważenia przedział $[p, sr].$
+
+
+Tak samo jak ostatnio po $O(log~n)$ ruchach $p = k$ oraz jest to rozwiązanie naszego pierwiatka. W przypadkach takich, jak to zadanie, gdy wyszukujemy wartość, będącą rozwiązaniem danego problemu, mówimy o „wyszukiwaniu binarnym po wyniku”.
 
 ### Zadania
 
 - [Kalendarze (III OIJ, II etap)](https://szkopul.edu.pl/problemset/problem/LWpMcXylQBa6wHzcJ6U7axzK/site/?key=statement)
+
 - [Computer Game (Codeforces, Div. 3 C)](https://codeforces.com/contest/1183/problem/C)
+
 - [Energy Exchange (Codeforces, Beta Round B)](https://codeforces.com/contest/68/problem/B)
+
 - [Three Base Stations (Codefroces, Beta Round C)](https://codeforces.com/contest/51/problem/C)
+
 "
 ---

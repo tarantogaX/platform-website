@@ -15,18 +15,27 @@ Niech $t$ będzie tablicą. Dla każdego $i$ zwiększymy wartość $t[x_i]$ o je
 ![zliczanie kubełkowe - przykład](https://codimd.s3.shivering-isles.com/demo/uploads/upload_ff2aa8bfd0d40494abd41d7a843bec98.png)
 
 
-'''cpp=
-int dominanta(int n, int x[]) {
-    int t[1000010];
-    for (int i = 1; i <= n; i ++)
-        t[i] = 0;
+```cpp=
 
-    for (int i = 1; i <= n; i ++)
-        t[x[i]] ++;
+int dominanta(int n, int x[]) {
+
+\ \ \ \ int t[1000010];
+
+\ \ \ \ for (int i = 1; i <= n; i ++)
+
+\ \ \ \ \ \ \ \ t[i] = 0;
+
+
+\ \ \ \ for (int i = 1; i <= n; i ++)
+
+\ \ \ \ \ \ \ \ t[x[i]] ++;
     
-    //iterujemy się przez t[], żeby znaleźć dominantę
+
+\ \ \ \ // iterujemy się przez t[], żeby znaleźć dominantę
+
 }
-'''
+
+```
 
 
 Dominantą ciągu będzie to $x,$ którego $t[x]$ jest największe. Wystarczy więc przejrzeć wszystkie komórki tablicy $t$ i znaleźć maksymalną wartość.
@@ -43,29 +52,47 @@ Zauważmy, że jeśli będziemy „wyciągać” elementy z kubełków – komó
 ![sortowanie kubełkowe](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e07d7a0a05592d3199b0ce3328540823.png)
 
 
-'''cpp=
+```cpp=
+
 void sortowanie_kubelkowe(int n, int x[]) {
-    int t[1000010];
-    int z = 0;
-    for (int i = 1; i <= n; i ++)
-        t[i] = 0;
 
-    for (int i = 1; i <= n; i ++) {
-        t[x[i]] ++;
-        z = max(z, x[i]);
-    }
+\ \ \ \ int t[1000010];
 
-    for (int i = 0; i < z+1; i ++)
-        while (t[i] > 0) {
-            printf(\"%d \",i);
-            t[i]--;
-        }
+\ \ \ \ int z = 0;
+
+\ \ \ \ for (int i = 1; i <= n; i ++)
+
+\ \ \ \ \ \ \ \ t[i] = 0;
+
+
+
+\ \ \ \ for (int i = 1; i <= n; i ++) {
+
+\ \ \ \ \ \ \ \ t[x[i]] ++;
+
+\ \ \ \ \ \ \ \ z = max(z, x[i]);
+
+\ \ \ \ }
+
+
+\ \ \ \ for (int i = 0; i < z+1; i ++)
+
+\ \ \ \ \ \ \ \ while (t[i] > 0) {
+
+\ \ \ \ \ \ \ \ printf(\"%d \",i);
+
+\ \ \ \ \ \ \ \ t[i]--;
+
+\ \ \ \ }
+
 }
-'''
+
+```
 
 ### Zadania
 
 - [Łańcuch kolorowy (XX OI, III etap)](https://szkopul.edu.pl/problemset/problem/MAWN1VdLdXO29VvrVYuYxQyw/site/?key=statement)
+
 - [Calendar (Codeforces, Beta Round Div. 2 D)](https://codeforces.com/contest/58/problem/D)
 "
 ---

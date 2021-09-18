@@ -16,7 +16,11 @@ Pierwsze rozwiązanie, na jakie możemy wpaść to przejrzenie wszystkich elemen
 #### Sumy prefiksowe
 
 Niech $pref[i]$ oznacza sumę na prefiksie o długości $i$ (inaczej $i$-tym prefiksie). Chcemy obliczyć $pref[i]$ dla każdego naturalnego $i \\leq n.$ Pomogą nam w tym dwa spostrzeżenia:
+
+
 $1)$ $pref[1]$ = $S_1$
+
+
 $2)$ Dla $i > 1$ zachodzi: $pref[i] = pref[i – 1] + S_i$
 
 
@@ -44,7 +48,11 @@ Dany mamy prostokąt podzielony na komórki, w każdej znajduje się liczba. Chc
 
 
 Do rozwiązania tego problemu możemy policzyć coś bardzo podobnego do standardowych sum prefiksowych. Jako $A[i][j]$ oznaczmy sumę w prostokącie, którego lewy górny róg ma współrzędne $[1,1],$ a prawy dolny $[i,j].$ Tak samo, jak ostatnio, skorzystamy z tych samych dwóch spostrzeżeń:
+
+
 1. $A[1][1] = S_{(1,1)}$
+
+
 2. $A[i][j] = S_{(i,j)} + A[i – 1][j] + A[i][j – 1] – A[i – 1][j – 1]$
 
 
@@ -70,8 +78,11 @@ Z pewnych względów elementy naszej tablicy numerowaliśmy od jedynki zamiast o
 ### Zadania
 
 - [Halloween (VI OIJ, zawody drużynowe)](https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/problemset/problem/dpUrcEC9SeZC4bUHhqj0lU4d/site/?key=statement)
+
 - [Porządek (VII OIJ, II etap)](https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/problemset/problem/r2sI-xPUxHi_4OnW7gBWKq6Q/site/?key=statement)
+
 - [Karen and Coffee (Codeforces, Div. 2 B)](https://codeforces.com/contest/816/problem/B)
+
 - [Greg and Array (Codeforces, Div. 2 C)](https://codeforces.com/contest/296/problem/C)
 "
 ---

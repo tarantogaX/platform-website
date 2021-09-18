@@ -78,25 +78,42 @@ Więcej o kolejce możesz przeczytać w jej [dokumentacji](http://www.cplusplus.
 A oto przykład programu, który \"symuluje\" kolejkę przed kasą. Gdy wczytuje on liczbę większą niż $0,$ dodaję ją na koniec kolejki, a gdy wczytuje $0,$ wypisuje pierwszą liczbę w kolejce i usuwa ją:
 
 
-'''clike=
+```clike=
+
 #include <bits/stdc++.h>
+
 using namespace std;
 
+
 int n, a;
+
 queue<int> kolejka;
+
 int main() {
-    cin >> n;
-    for (int i = 1; i <= n; i ++) {
-        cin >> a;
-        if (a > 0)
-            kolejka.push(a);
-        else if (!kolejka.empty()) {
-            cout << kolejka.top() << \"\\n\";
-            kolejka.pop();
-        }
-    }
+
+\ \ \ \ cin >> n;
+
+\ \ \ \ for (int i = 1; i <= n; i ++) {
+
+\ \ \ \ \ \ \ \ cin >> a;
+
+\ \ \ \ \ \ \ \ if (a > 0)
+
+\ \ \ \ \ \ \ \ \ \ \ \ kolejka.push(a);
+
+\ \ \ \ \ \ \ \ else if (!kolejka.empty()) {
+
+\ \ \ \ \ \ \ \ \ \ \ \ cout << kolejka.top() << \"\\n\";
+
+\ \ \ \ \ \ \ \ kolejka.pop();
+
+\ \ \ \ \ \ \ \ }
+
+\ \ \ \ }
+
 }
-'''
+
+```
 
 ### Stack - stos
 
@@ -240,25 +257,42 @@ Sety to bardzo potężne narzędzia. Więcej o nich przeczytasz [tutaj](http://w
 A oto przykład prostego programu z zastosowaniem seta, który wczytuje $n$ słów i dla każdego z nich mówi, czy takie słowo już się wcześniej pojawiło na wejściu:
 
 
-'''clike=
+```clike=
+
 #include<bits/stdc++.h>
+
 using namespace std;
 
+
 int n;
+
 string slowo;
+
 int main() {
-    cin >> n;
-    set<string> wszystkie_slowa;
-    for (int i = 1; i <= n; i ++) {
-        cin >> slowo;
-        if (wszystkie_slowa.find(slowo) != wszystkie_slowa.end())
-            cout << \"TAK\\n\";
-        else
-            cout << \"NIE\\n\";
-        wszystkie_slowa.insert(slowo);
-    }
+
+\ \ \ \ cin >> n;
+
+\ \ \ \ set<string> wszystkie_slowa;
+
+\ \ \ \ for (int i = 1; i <= n; i ++) {
+
+\ \ \ \ \ \ \ \ cin >> slowo;
+
+\ \ \ \ \ \ \ \ if (wszystkie_slowa.find(slowo) != wszystkie_slowa.end())
+
+\ \ \ \ \ \ \ \ \ \ \ \ cout << \"TAK\\n\";
+
+\ \ \ \ \ \ \ \ else
+
+\ \ \ \ \ \ \ \ \ \ \ \ cout << \"NIE\\n\";
+
+\ \ \ \ \ \ \ \ wszystkie_slowa.insert(slowo);
+
+\ \ \ \ }
+
 }
-'''
+
+```
 
 ### Map - mapa
 
@@ -304,28 +338,47 @@ Podczas projektowania algorytmów z użyciem Standard Template Library musisz pa
 Oto przykładowy program, służący do wypisania wszystkich permutacji podanych liczb, od najmniejszej (tzn. mającej jak najmniejsze liczby po lewej) do największej, w pełni wykorzystujący dobrodziejstwa STLa.
 
 
-'''clike=
+```
+cpp=
+
 #include<bits/stdc++.h>
+
 using namespace std;
     
+    
 int n, a;
+
 int main() {
-    cin >> n;
-    vector<int> v = {};
-    for (int i = 1; i <= n; i ++) {
-        cin >> a;
-        v.push_back(a);
-    }
-    sort(v.begin(), v.end());
-    do {
-        for(auto x: v) {
-            cout<<x<<' ';
-        }
-        cout<<'\\n';
-    }
-    while(next_permutation(v.begin(), v.end()));
+
+\ \ \ \ cin >> n;
+
+\ \ \ \ vector<int> v = {};
+
+\ \ \ \ for (int i = 1; i <= n; i ++) {
+
+\ \ \ \ \ \ \ \ cin >> a;
+
+\ \ \ \ \ \ \ \ v.push_back(a);
+
+\ \ \ \ }
+
+\ \ \ \ sort(v.begin(), v.end());
+
+\ \ \ \ do {
+
+\ \ \ \ \ \ \ \ for(auto x: v)
+
+\ \ \ \ \ \ \ \ \ \ \ \ cout<<x<<' ';
+
+\ \ \ \ \ \ \ \ cout<<'\\n';
+
+\ \ \ \ }
+
+\ \ \ \ while(next_permutation(v.begin(), v.end()));
+
 }
-'''
+
+```
 
 
 Zastanów się, dlaczego najpierw posortowaliśmy ciąg i dlaczego użyliśmy do...while zamiast while. Jak myślisz, co robi tutaj funkcja ```next_permutation(v.begin(), v.end())```? Jeśli nie jesteś pewien, poszukaj o tym w dokumnetacji!
