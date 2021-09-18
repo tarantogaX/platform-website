@@ -3,15 +3,12 @@ import * as React from 'react';
 import {FunctionComponent} from 'react';
 import styled from 'styled-components';
 import {IStyleArgument} from '../styles/theme';
-import LessonContent from '../page-fragments/lesson/LessonContent';
-import Navbar from '../components/navbar/Navbar';
 import Center from '../components/central/Center';
 import { H0, H1, P, P2, A, FontWeight } from '../components/text/TextComponents';
 import ColumnLayoutElement from '../components/column-layout-element/ColumnLayoutElement';
 import { Colours } from '../components/primitives/Colours';
 import { getSectionsList } from '../lib/articles';
 import {addProps} from '../utils/ComponentUtils';
-import Link from 'next/link';
 import { RegisterButton } from '../components/button/Button';
 
 /*
