@@ -45,7 +45,7 @@ const Navbar: FunctionComponent<NavbarProps> = (props) => {
             tabletColumns={2}
             mobileColumns={1}>
                 <ShadowWrapper>
-                    <NavbarSectionTitle text={props.sectionTitle} link={props.sectionTitle} />
+                    <NavbarSectionTitle text={props.sectionTitle} link={"/"} />
                     {props.lessonsList.map((lesson, index) =>
                         (index < props.selectedLesson)
                             ? <NavbarButton text={lesson.title} link={lesson.id} />

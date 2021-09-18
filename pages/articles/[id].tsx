@@ -33,7 +33,7 @@ export default function Article ({ articleData, sectionData, articleIndex }) {
     return (
         <>
             <Head>
-                <title>Meet IT Lesson</title>
+                <title>{articleData.title}</title>
             </Head>
             <Center noLeftMargin maxWidth={1500}>
                 <Navbar
