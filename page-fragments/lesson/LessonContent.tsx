@@ -37,6 +37,7 @@ const LessonText = styled(MainText)`
   margin-bottom: 0.5rem;
   margin-top: 0;
   font-size: 18px;
+  text-align: justify;
 `;
 
 

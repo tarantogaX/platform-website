@@ -6,12 +6,13 @@ import {IStyleArgument} from '../styles/theme';
 import LessonContent from '../page-fragments/lesson/LessonContent';
 import Navbar from '../components/navbar/Navbar';
 import Center from '../components/central/Center';
-import { H0, P, P2, A, FontWeight } from '../components/text/TextComponents';
+import { H0, H1, P, P2, A, FontWeight } from '../components/text/TextComponents';
 import ColumnLayoutElement from '../components/column-layout-element/ColumnLayoutElement';
 import { Colours } from '../components/primitives/Colours';
 import { getSectionsList } from '../lib/articles';
 import {addProps} from '../utils/ComponentUtils';
 import Link from 'next/link';
+import { RegisterButton } from '../components/button/Button';
 
 export async function getStaticProps() {
   const allSectionsList = getSectionsList()
@@ -139,6 +140,60 @@ const CourseTitle = styled(H0)`
 
 const CourseText = styled(P)`
     color: ${Colours.LightBlack};
+    text-align: justify;
+`;
+
+const MaterialWrapper = styled(CourseDescription)`
+    width: 45%;
+`;
+
+const MaterialTitleOI = styled(H1)`
+    color: ${Colours.LightBlack};
+    font-size: 40px;
+    text-align: left;
+    margin-bottom: 20px;
+`;
+
+const MaterialTitleOM = styled(H1)`
+    color: ${Colours.LightBlack};
+    font-size: 40px;
+    text-align: right;
+`;
+
+const OIArticleImage = styled.img`
+    width: 80%;
+    margin-top: 20px;
+`;
+
+const IframeWrapper = styled.div`
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    text-align: center;
+    justify-content: center;
+`;
+
+const IframeResponsive = styled.iframe`
+    position: absolute;
+    top: 0;
+    left: 20%;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 80%;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
+        left: 10%;
+        width: 80%;
+        height: 80%;
+    }
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        left: 5%;
+        width: 90%;
+        height: 90%;
+    }
 `;
 
 function Home ({allSectionsList}) {
@@ -168,6 +223,37 @@ function Home ({allSectionsList}) {
             <AllSectionsWrapper maxWidth={1500} style={{marginBottom: '200px'}}>
                 {allSectionsList.map(section => <Section title={section.title} lessons={section.lessons}/>)}
             </AllSectionsWrapper>
+            <Center maxWidth={1700} style={{marginTop: '70px'}}>
+                <MaterialWrapper
+                    normalColumns={1}
+                    tabletColumns={1}
+                    mobileColumns={1}
+                    vertAlign={'top'}>
+                    <MaterialTitleOI weight={FontWeight.SemiBold}>Top 10 rzeczy na II etap OI</MaterialTitleOI>
+                    <RegisterButton text="Artykuł" link="/oi-top10"/>
+                    <a href="/oi-top10">
+                        <OIArticleImage src={"/images/oitop10.jpg"}/>
+                    </a>
+                </MaterialWrapper>
+                <MaterialWrapper
+                    normalColumns={1}
+                    tabletColumns={1}
+                    mobileColumns={1}
+                    vertAlign={'top'}>
+                    <MaterialTitleOM weight={FontWeight.SemiBold}>
+                        Olimpiada Matematyczna – Zwycięzcy radzą, czego się uczyć
+                    </MaterialTitleOM>
+                    <IframeWrapper>
+                        <IframeResponsive width="960px" height="541px" src="https://www.youtube.com/embed/3AscLWtSz7Y"
+                            title="YouTube video player" frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            className="responsive-iframe"
+                            allowFullScreen style={{
+                                //width: '1000px'
+                            }}/>
+                    </IframeWrapper>
+                </MaterialWrapper>
+            </Center>
             <Center>
                 <img
                     style={{
@@ -180,5 +266,7 @@ function Home ({allSectionsList}) {
         </>
     );
 };
+
+{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/3AscLWtSz7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
 
 export default Home;
