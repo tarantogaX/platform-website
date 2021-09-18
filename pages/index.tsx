@@ -14,6 +14,18 @@ import {addProps} from '../utils/ComponentUtils';
 import Link from 'next/link';
 import { RegisterButton } from '../components/button/Button';
 
+/*
+articles:
+treść z hedge doca
+tytuł
+\ -> \\
+" -> \" (z wyjątkiem pierwszego i ostatniego)
+entery po ##
+podwójne entery
+```cpp=```
+sections.json
+*/
+
 export async function getStaticProps() {
   const allSectionsList = getSectionsList()
   return {
