@@ -91,7 +91,7 @@ const MeetITHeader: FunctionComponent = () => {
 
     return (
         <HeaderWrapper>
-            <Center>
+            <Center noLeftMargin noRightMargin style={{marginLeft: '45px', marginRight: '50px'}} maxWidth={'100%'}>
                 <Burger
                     onClick={() => setOpen(!open)}
                     aria-label={'Open menu'}
@@ -107,7 +107,12 @@ const MeetITHeader: FunctionComponent = () => {
                     <HeaderLink
                         onClick={() => setOpen(false)}
                         href={'http://meetit.eu/'}>
-                        Meet IT
+                        O nas
+                    </HeaderLink>
+                    <HeaderLink
+                        onClick={() => setOpen(false)}
+                        href={'/'}>
+                        Kompendium
                     </HeaderLink>
                     <HeaderLink
                         onClick={() => setOpen(false)}
@@ -116,15 +121,10 @@ const MeetITHeader: FunctionComponent = () => {
                     </HeaderLink>
                     <HeaderLink
                         onClick={() => setOpen(false)}
-                        href={'https://tutoring.meetit.eu/'}>
-                        Tutoring
-                    </HeaderLink>
-                    <HeaderLink
-                        onClick={() => setOpen(false)}
                         href={'https://forms.gle/s5Y88r5qu8Q8mk327'}>
                         Zostań tutorem
                     </HeaderLink>
-                    <RegisterButton onClick={() => setOpen(false)} />
+                    <RegisterButton onClick={() => setOpen(false)} text={"Tutoring"} link={"https://tutoring.meetit.eu/"} />
                 </LinksWrapper>
             </Center>
         </HeaderWrapper>

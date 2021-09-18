@@ -35,30 +35,19 @@ const Button = styled(BUTTON)`
 export const RegisterButton: FunctionComponent<{
     className?: string;
     onClick?: () => void;
+    text: string;
+    link: string;
 }> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     let onClick = () => {};
-
-    // React.useEffect(() => {
-    //     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    //     const ReactPixel = require('react-facebook-pixel');
-    //     ReactPixel.default.init('220345079654886', advancedMatching, options);
-    //     ReactPixel.default.pageView(); // For tracking page view
-
-    //     onClick = () => {
-    //         ReactPixel.default.track('InitiateCheckout', {
-    //             content_name: 'tutoring',
-    //         });
-    //     };
-    // });
     return (
-        <Link href={'/'}>
+        <Link href={props.link}>
             <Button
                 {...props}
                 onClick={() => {
                     onClick();
                 }}>
-                    Kompendium
+                    {props.text}
             </Button>
         </Link>
     );
