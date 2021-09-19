@@ -16,10 +16,14 @@ const HeaderWrapper = styled.header`
     right: 0;
     height: 54px;
     padding: 7px;
-    background-color: white;
+    background-color: ${(p: IStyleArgument) => p.theme.colors.headerBackground};
     z-index: 100;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
     width: 100vw;
+    box-shadow: ${
+        (p: IStyleArgument) =>
+            p.theme.name == 'light'
+                ? '0px 0px 5px 5px rgba(0, 0, 0, 0.2)'
+                : '0px 0px 5px 2px rgba(255, 255, 255, 0.2)'};
 `;
 
 const Burger = styled.button`
@@ -31,7 +35,7 @@ const Burger = styled.button`
         margin-right: 20px;
     }
     background: url('/images/burger.svg') no-repeat center;
-    background-color: white;
+    background-color: ${(p: IStyleArgument) => p.theme.colors.headerBackground};
     border: 0;
     cursor: pointer;
     :hover {
@@ -59,7 +63,7 @@ const LinksWrapper = styled(addProps<{open: boolean}>()(styled.div``))`
         bottom: 0;
         padding: 20px;
         transform: translateX(${(p) => (p.open ? '0' : '100%')});
-        background-color: white;
+        background-color: ${(p: IStyleArgument) => p.theme.colors.headerBackground};
         text-align: center;
     }
 `;

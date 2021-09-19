@@ -26,7 +26,11 @@ const NavbarWrapper = styled(ColumnLayoutElement)`
 const ShadowWrapper = styled.div`
     z-index: 5;
     position:relative;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: ${
+        (p: IStyleArgument) =>
+            p.theme.name == 'light'
+                ? '0px 0px 5px 5px rgba(0, 0, 0, 0.2)'
+                : '0px 0px 5px 2px rgba(255, 255, 255, 0.2)'};
 `;
 
 const ShadowWrapperLast = styled(ShadowWrapper)`

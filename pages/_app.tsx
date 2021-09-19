@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import React, {useEffect} from 'react';
 import {AppContext, AppProps} from 'next/app';
 import {createGlobalStyle, ThemeContext} from 'styled-components';
-import {DefaultTheme} from '../styles/theme';
+import {DefaultTheme, DarkTheme} from '../styles/theme';
 import MeetITHeader from '../components/header/MeetITHeader';
 import PageWrapper from '../components/page-wrapper/PageWrapper';
 import Head from 'next/head';

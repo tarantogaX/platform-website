@@ -1,6 +1,8 @@
 type Color = string;
+type ThemeType = 'dark' | 'light';
 
 export interface ITheme {
+    name: ThemeType;
     colors: {
         primary: Color;     //Green
         primaryLight: Color;    //Light green
@@ -9,6 +11,8 @@ export interface ITheme {
         background: Color;      //White
         backgroundLight: Color;        //DarkWhite
         backgroundStrong: Color;        //LightGray
+        headerBackground: Color;    //White
+        footerBackground: Color;        //100% Black
 
         textMain: Color;        //Black
         textStrong: Color;       //LightBlack
@@ -27,6 +31,7 @@ export interface IStyleArgument {
 }
 
 export const DefaultTheme: ITheme = {
+    name: 'light',
     breakpoint: {
         mobile: '576px',
         tablet: '1200px',
@@ -38,8 +43,44 @@ export const DefaultTheme: ITheme = {
         background: "#FFFFFF",
         backgroundLight: "#F7F7F7",
         backgroundStrong: "#EFEFEF",
+        headerBackground: "#FFFFFF",
+        footerBackground: "#000000",
         textMain: "#1D1E20",
         textStrong: "#494949",
+    },
+    up: (breakpoint, vertical = false) =>
+        `@media (min-${
+            vertical ? 'height' : 'width'
+        }: calc(${breakpoint} + 0.02px))`,
+    down: (breakpoint, vertical = false) =>
+        `@media (max-${vertical ? 'height' : 'width'}: ${breakpoint})`,
+    between: (breakpointMin, breakpointMax, vertical = false) =>
+        `@media (max-${
+            vertical ? 'height' : 'width'
+        }: ${breakpointMax}) and (min-${
+            vertical ? 'height' : 'width'
+        }: calc(${breakpointMin} + 0.02px))`,
+};
+
+export const DarkTheme: ITheme = {
+    name: 'dark',
+    breakpoint: {
+        mobile: '576px',
+        tablet: '1200px',
+    },
+    colors: {
+        primary: "#1BBC07",     //ok
+        primaryLight: "#0e7801",     //ok
+        secondary: "#2c67ab",
+
+        background: "#000000",  //ok
+        backgroundLight: "#1c1c1c",     //ok
+        backgroundStrong: "#343336",     //ok
+        headerBackground: "#1c1c1c",
+        footerBackground: "#FFFFFF",     //ok
+
+        textMain: "#F7F7F7",     //ok
+        textStrong: "#e0e0e0",     //ok
     },
     up: (breakpoint, vertical = false) =>
         `@media (min-${

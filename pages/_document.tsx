@@ -37,6 +37,9 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html>
+                {/* <Head>
+                    <script src="/styles/themeSetting.ts"></script>
+                </Head> */}
                 <Head />
                 <body>
                     <Main />
