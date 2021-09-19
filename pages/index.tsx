@@ -49,16 +49,19 @@ const CourseDescription = styled(ColumnLayoutElement)`
 const CourseImage = styled.img`
     width: 45%;
     vertical-align: middle;
-    /* margin-top: 20%;
-    margin-bottom: 20%; */
     margin-top: 60px;
     ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
         margin-top: 30px;
     }
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         display: block;
-        width: 100%;
-        margin-top: 10px;
+        width: 60%;
+        text-align: center;
+        justify-content: center;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 1px;
+        margin-bottom: 1px;
     }
 `;
 
@@ -68,7 +71,7 @@ const AllSectionsWrapper = styled(Center)`
     margin-bottom: 100px;
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
-        margin-top: 50px;
+        margin-top: 30px;
         margin-bottom: 30px;
     }
 `;
@@ -81,6 +84,7 @@ const CourseTitle = styled(H0)`
         font-size: 35px;
         margin-top: 10px;
         margin-bottom: 10px;
+        font-size: 25px;
     }
 `;
 
