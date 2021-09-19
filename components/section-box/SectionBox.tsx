@@ -68,12 +68,13 @@ const SectionHeader = styled.div`
     }
     position: relative;
     z-index: 2;
+    padding-top: 10px;
 `;
 
 const SectionTitle = styled(P)`
     display: inline;
     vertical-align: middle;
-    padding-top: 15px;
+    /* padding-top: 15px; */
 `;
 
 const SectionWrapper = styled.div`

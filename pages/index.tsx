@@ -62,8 +62,14 @@ const CourseText = styled(P)`
     text-align: justify;
 `;
 
-const MaterialWrapper = styled(CourseDescription)`
+const MaterialWrapperOI = styled(ColumnLayoutElement)`
     width: 45%;
+    margin-left: 5%;
+`;
+
+const MaterialWrapperOM = styled(ColumnLayoutElement)`
+    width: 45%;
+    margin-right: 5%;
 `;
 
 const MaterialTitle = styled(H1)`
@@ -150,7 +156,7 @@ function Home ({allSectionsList}) {
                 {allSectionsList.map(section => <SectionBox title={section.title} lessons={section.lessons}/>)}
             </AllSectionsWrapper>
             <Center maxWidth={1700} style={{marginTop: '70px'}}>
-                <MaterialWrapper
+                <MaterialWrapperOI
                     normalColumns={1}
                     tabletColumns={1}
                     mobileColumns={1}
@@ -159,8 +165,8 @@ function Home ({allSectionsList}) {
                     <a href="/oi-top10">
                         <OIArticleImage src={"/images/oitop10.jpg"}/>
                     </a>
-                </MaterialWrapper>
-                <MaterialWrapper
+                </MaterialWrapperOI>
+                <MaterialWrapperOM
                     normalColumns={1}
                     tabletColumns={1}
                     mobileColumns={1}
@@ -177,7 +183,7 @@ function Home ({allSectionsList}) {
                                 //width: '1000px'
                             }}/>
                     </IframeWrapper>
-                </MaterialWrapper>
+                </MaterialWrapperOM>
             </Center>
             <Center>
                 <img
