@@ -8,6 +8,10 @@ import {IStyleArgument} from '../../styles/theme';
 const Title = styled.h1`
   color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
   text-align: center;
+
+  ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    font-size: 30px;
+  }
 `;
 
 const MainText = styled(P)`
@@ -28,11 +32,20 @@ const LessonWrapper = styled(ColumnLayoutElement)`
   padding: 0;
   padding-top: 50px;
   padding-bottom: 300px;
+
+  ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    width: 90%;
+  }
 `;
 
 const LessonWrapperNoNavbar = styled(LessonWrapper)`
   margin-left: 23%;
   margin-right: 22%;
+
+  ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 `;
 
 const LessonWrapperWithNavbar = styled(LessonWrapper)`
@@ -41,6 +54,11 @@ const LessonWrapperWithNavbar = styled(LessonWrapper)`
 
   ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
     margin-left: 40%;
+    margin-right: 5%;
+  }
+
+  ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    margin-left: 5%;
     margin-right: 5%;
   }
 `;

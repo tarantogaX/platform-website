@@ -21,6 +21,10 @@ const NavbarWrapper = styled(ColumnLayoutElement)`
     position: fixed;
     top: 54px;
     width: 250px;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: none;
+    }
 `;
 
 const ShadowWrapper = styled.div`

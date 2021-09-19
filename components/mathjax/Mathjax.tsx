@@ -18,8 +18,12 @@ const StyledDiv = styled.div`
     h2, p {
         color: ${(p: IStyleArgument) => p.theme.colors.textMain};
     }
+    h2 {
+        text-align: left;
+    }
     h1, h3 {
         color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
+        text-align: left;
     }
     a {
         color: ${(p: IStyleArgument) => p.theme.colors.primary};
