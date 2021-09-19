@@ -30,10 +30,20 @@ export async function getStaticProps() {
   }
 }
 
+const KompendiumWrapper = styled(Center)`
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: block;
+    }
+`;
 
 const CourseDescription = styled(ColumnLayoutElement)`
     width: 50%;
     margin-right: 5%;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        width: 100%;
+        margin: 0;
+    }
 `;
 
 const CourseImage = styled.img`
@@ -45,16 +55,33 @@ const CourseImage = styled.img`
     ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
         margin-top: 30px;
     }
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
 `;
 
 const AllSectionsWrapper = styled(Center)`
     display: block;
     margin-top: 100px;
+    margin-bottom: 100px;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
 `;
 
 const CourseTitle = styled(H0)`
     color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 50px;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        font-size: 35px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 `;
 
 const CourseText = styled(P)`
@@ -62,32 +89,81 @@ const CourseText = styled(P)`
     text-align: justify;
 `;
 
-const MaterialWrapperOI = styled(ColumnLayoutElement)`
-    width: 45%;
-    margin-left: 5%;
+
+const MaterialsCenter = styled(Center)`
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: block;
+    }
 `;
 
-const MaterialWrapperOM = styled(ColumnLayoutElement)`
+const MaterialWrapper = styled(ColumnLayoutElement)`
     width: 45%;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: block;
+        width: 100%;
+    }
+`;
+
+const ImageWrapper = styled.div`
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+`;
+
+const MaterialWrapperOI = styled(MaterialWrapper)`
+    margin-left: 5%;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        margin: auto;
+        justify-content: center;
+    }
+`;
+
+const MaterialWrapperOM = styled(MaterialWrapper)`
     margin-right: 5%;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        margin: auto;
+    }
 `;
 
 const MaterialTitle = styled(H1)`
     height: 125px;
     color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 40px;
+
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
         font-size: 30px;
         height: 90px;
+    }
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        font-size: 25px;
+        margin-top: 60px;
+        margin-bottom: 30px;
+        height: auto;
     }
 `;
 
 const MaterialTitleOI = styled(MaterialTitle)`
     text-align: left;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        text-align: center;
+    }
 `;
 
 const MaterialTitleOM = styled(MaterialTitle)`
     text-align: right;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        text-align: center;
+    }
 `;
 
 const OIArticleImage = styled.img`
@@ -96,6 +172,12 @@ const OIArticleImage = styled.img`
     transition: transform .2s;
     :hover {
         transform: scale(1.1);
+    }
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        width: 90%;
+        height: 90%;
+        left: 5%;
     }
 `;
 
@@ -125,6 +207,7 @@ const IframeResponsive = styled.iframe`
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         width: 90%;
         height: 90%;
+        left: 5%;
     }
 `;
 
@@ -134,7 +217,7 @@ function Home ({allSectionsList}) {
             <Head>
                 <title>Meet IT Kompendium</title>
             </Head>
-            <Center maxWidth={1500} style={{marginTop: '70px'}}>
+            <KompendiumWrapper maxWidth={1500} style={{marginTop: '70px'}}>
                 <CourseDescription
                     normalColumns={1}
                     tabletColumns={1}
@@ -151,20 +234,22 @@ function Home ({allSectionsList}) {
                     </CourseText>
                 </CourseDescription>
                 <CourseImage src={"/images/whiteboard.jpg"}/>
-            </Center>
-            <AllSectionsWrapper maxWidth={1500} style={{marginBottom: '100px'}}>
+            </KompendiumWrapper>
+            <AllSectionsWrapper maxWidth={1500}>
                 {allSectionsList.map(section => <SectionBox title={section.title} lessons={section.lessons}/>)}
             </AllSectionsWrapper>
-            <Center maxWidth={1700} style={{marginTop: '70px'}}>
+            <MaterialsCenter maxWidth={1700} style={{marginTop: '70px'}}>
                 <MaterialWrapperOI
                     normalColumns={1}
                     tabletColumns={1}
                     mobileColumns={1}
                     vertAlign={'top'}>
-                    <MaterialTitleOI weight={FontWeight.SemiBold}>Top 10 rzeczy na II etap OI</MaterialTitleOI>
-                    <a href="/oi-top10">
-                        <OIArticleImage src={"/images/oitop10.jpg"}/>
-                    </a>
+                    <ImageWrapper>
+                        <MaterialTitleOI weight={FontWeight.SemiBold}>Top 10 rzeczy na II etap OI</MaterialTitleOI>
+                        <a href="/oi-top10">
+                            <OIArticleImage src={"/images/oitop10.jpg"}/>
+                        </a>
+                    </ImageWrapper>
                 </MaterialWrapperOI>
                 <MaterialWrapperOM
                     normalColumns={1}
@@ -184,7 +269,7 @@ function Home ({allSectionsList}) {
                             }}/>
                     </IframeWrapper>
                 </MaterialWrapperOM>
-            </Center>
+            </MaterialsCenter>
             <Center>
                 <img
                     style={{
@@ -197,7 +282,5 @@ function Home ({allSectionsList}) {
         </>
     );
 };
-
-{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/3AscLWtSz7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
 
 export default Home;

@@ -57,6 +57,9 @@ const Close = styled.img`
     margin-right: 10px;
     vertical-align: middle;
     padding-top: 10px;
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        padding-top: 0px;
+    }
 `;
 
 const SectionHeader = styled.div`
@@ -74,14 +77,21 @@ const SectionHeader = styled.div`
 const SectionTitle = styled(P)`
     display: inline;
     vertical-align: middle;
-    /* padding-top: 15px; */
 `;
 
-const SectionWrapper = styled.div`
+type SectionWrapperProps = {
+    open: boolean;
+}
+
+const SectionWrapper = styled(addProps<SectionWrapperProps>()(styled.div``))`
     box-shadow: 0px 0px 5px 5px rgba(100, 100, 100, 0.2);
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
+    width: ${(p: SectionWrapperProps) => p.open ? '100%' : '800px'};
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
+        width: 100%;
+    }
 `;
 
 type SectionProps = {
@@ -92,7 +102,7 @@ type SectionProps = {
 export const SectionBox: FunctionComponent<SectionProps> = (props) => {
     const [open, setOpen] = React.useState(false);
     return (
-        <SectionWrapper style={{width: open ? '100%' : '800px'}}>
+        <SectionWrapper open={open}>
             <SectionHeader onClick={() => {setOpen(!open)}} style={open ? {boxShadow: '0px 0px 5px 5px rgba(100, 100, 100, 0.2)'} : {}}>
                 <SectionTitle noMargin weight={open ? FontWeight.SemiBold : FontWeight.Regular}>{props.title}</SectionTitle>
                 <Close
