@@ -7,8 +7,7 @@ import Center from '../components/central/Center';
 import { H0, H1, P, P2, A, FontWeight } from '../components/text/TextComponents';
 import ColumnLayoutElement from '../components/column-layout-element/ColumnLayoutElement';
 import { getSectionsList } from '../lib/articles';
-import {addProps} from '../utils/ComponentUtils';
-import { RegisterButton } from '../components/button/Button';
+import {SectionBox} from "../components/section-box/SectionBox";
 
 /*
 articles:
@@ -31,120 +30,21 @@ export async function getStaticProps() {
   }
 }
 
-type LessonProps = {
-    title: string;
-    id: string;
-    colour?: LessonHeaderBackground;
-}
-
-type ColourProps = {
-    colour: LessonHeaderBackground;
-}
-
-type LessonHeaderBackground = "Background" | "BackgroundLight";
-
-const LessonHeader = styled(addProps<ColourProps>()(styled.div``))`
-    display: block;
-    height: 40px;
-    text-align: left;
-    padding-left: 40px;
-    :hover {
-        cursor: pointer;
-    }
-    background-color: ${
-        (p: ColourProps & IStyleArgument) =>
-            p.colour == "BackgroundLight"
-                ? p.theme.colors.background
-                : p.theme.colors.backgroundLight
-    };
-`;
-
-const LessonTitle = styled(P)`
-    vertical-align: middle;
-    padding: 10px;
-    margin-right: 30px;
-    color: ${(q: IStyleArgument) => q.theme.colors.textMain};
-`;
-
-const Lesson: FunctionComponent<LessonProps> = (props) => {
-    return (
-        <A href={props.title != "Złożoność obliczeniowa" ? `/articles/${props.id}` : props.id}>
-            <LessonHeader colour={props.colour}>
-                <LessonTitle>{props.title}</LessonTitle>
-            </LessonHeader>
-        </A>
-    );
-}
-
-const Close = styled.img`
-    display: inline;
-    cursor: pointer;
-    float: right;
-    margin-right: 10px;
-    vertical-align: middle;
-    padding-top: 10px;
-`;
-
-const SectionHeader = styled.div`
-    background-color: ${(p: IStyleArgument) => p.theme.colors.backgroundStrong};
-    height: 40px;
-    text-align: center;
-    :hover {
-        cursor: pointer;
-    }
-    position: relative;
-    z-index: 2;
-`;
-
-const SectionTitle = styled(P)`
-    display: inline;
-    vertical-align: middle;
-    padding-top: 15px;
-`;
-
-const SectionWrapper = styled.div`
-    box-shadow: 0px 0px 5px 5px rgba(100, 100, 100, 0.2);
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-`;
-
-type SectionProps = {
-    title: string;
-    lessons: Array<LessonProps>;
-}
-
-const Section: FunctionComponent<SectionProps> = (props) => {
-    const [open, setOpen] = React.useState(false);
-    return (
-        <SectionWrapper style={{width: open ? '100%' : '800px'}}>
-            <SectionHeader onClick={() => {setOpen(!open)}} style={open ? {boxShadow: '0px 0px 5px 5px rgba(100, 100, 100, 0.2)'} : {}}>
-                <SectionTitle noMargin weight={open ? FontWeight.SemiBold : FontWeight.Regular}>{props.title}</SectionTitle>
-                <Close
-                    src="/images/close.svg"
-                    width="20px"
-                    style={{display: open ? "block" : "none"}}
-                />
-            </SectionHeader>
-            {open ? props.lessons.map((lesson, index) => 
-                <Lesson
-                    title={lesson.title} id={lesson.id}
-                    colour={(index % 2 == 0) ? "BackgroundLight" : "Background"}
-                />
-            ) : <></>}
-        </SectionWrapper>
-    );
-};
-
 
 const CourseDescription = styled(ColumnLayoutElement)`
-    width: 60%;
-    margin-right: 30px;
+    width: 50%;
+    margin-right: 5%;
 `;
 
 const CourseImage = styled.img`
-    width: 30%;
-    margin-top: 30px;
+    width: 45%;
+    vertical-align: middle;
+    /* margin-top: 20%;
+    margin-bottom: 20%; */
+    margin-top: 60px;
+    ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
+        margin-top: 30px;
+    }
 `;
 
 const AllSectionsWrapper = styled(Center)`
@@ -166,22 +66,27 @@ const MaterialWrapper = styled(CourseDescription)`
     width: 45%;
 `;
 
-const MaterialTitleOI = styled(H1)`
+const MaterialTitle = styled(H1)`
+    height: 125px;
     color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 40px;
-    text-align: left;
-    margin-bottom: 20px;
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
+        font-size: 30px;
+        height: 90px;
+    }
 `;
 
-const MaterialTitleOM = styled(H1)`
-    color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
-    font-size: 40px;
+const MaterialTitleOI = styled(MaterialTitle)`
+    text-align: left;
+`;
+
+const MaterialTitleOM = styled(MaterialTitle)`
     text-align: right;
 `;
 
 const OIArticleImage = styled.img`
     width: 80%;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     transition: transform .2s;
     :hover {
         transform: scale(1.1);
@@ -207,13 +112,11 @@ const IframeResponsive = styled.iframe`
     height: 80%;
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
-        left: 10%;
         width: 80%;
         height: 80%;
     }
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
-        left: 5%;
         width: 90%;
         height: 90%;
     }
@@ -243,8 +146,8 @@ function Home ({allSectionsList}) {
                 </CourseDescription>
                 <CourseImage src={"/images/whiteboard.jpg"}/>
             </Center>
-            <AllSectionsWrapper maxWidth={1500} style={{marginBottom: '200px'}}>
-                {allSectionsList.map(section => <Section title={section.title} lessons={section.lessons}/>)}
+            <AllSectionsWrapper maxWidth={1500} style={{marginBottom: '100px'}}>
+                {allSectionsList.map(section => <SectionBox title={section.title} lessons={section.lessons}/>)}
             </AllSectionsWrapper>
             <Center maxWidth={1700} style={{marginTop: '70px'}}>
                 <MaterialWrapper
