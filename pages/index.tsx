@@ -72,7 +72,7 @@ const AllSectionsWrapper = styled(Center)`
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         margin-top: 30px;
-        margin-bottom: 30px;
+        margin-bottom: 0;
     }
 `;
 
@@ -148,7 +148,6 @@ const MaterialTitle = styled(H1)`
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         font-size: 25px;
-        margin-top: 60px;
         margin-bottom: 30px;
         height: auto;
     }
@@ -158,6 +157,7 @@ const MaterialTitleOI = styled(MaterialTitle)`
     text-align: left;
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        margin-top: 0;
         text-align: center;
     }
 `;
@@ -166,6 +166,7 @@ const MaterialTitleOM = styled(MaterialTitle)`
     text-align: right;
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        margin-top: 60px;
         text-align: center;
     }
 `;
