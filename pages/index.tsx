@@ -171,7 +171,11 @@ const MaterialTitleOM = styled(H1)`
 
 const OIArticleImage = styled.img`
     width: 80%;
-    margin-top: 20px;
+    margin-top: 60px;
+    transition: transform .2s;
+    :hover {
+        transform: scale(1.1);
+    }
 `;
 
 const IframeWrapper = styled.div`
@@ -239,7 +243,6 @@ function Home ({allSectionsList}) {
                     mobileColumns={1}
                     vertAlign={'top'}>
                     <MaterialTitleOI weight={FontWeight.SemiBold}>Top 10 rzeczy na II etap OI</MaterialTitleOI>
-                    <RegisterButton text="Artykuł" link="/oi-top10"/>
                     <a href="/oi-top10">
                         <OIArticleImage src={"/images/oitop10.jpg"}/>
                     </a>
