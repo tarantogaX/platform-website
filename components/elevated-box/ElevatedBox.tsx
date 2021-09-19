@@ -15,7 +15,7 @@ const ElevatedBox = styled(addProps<ElevatedBoxProps>()(styled.div``))`
     background-color: ${(p: ElevatedBoxProps & IStyleArgument) =>
         p.backgroundColor == undefined
             ? p.useGrayBackground ?? true
-                ? p.theme.colors.gray
+                ? p.theme.colors.backgroundStrong
                 : 'rgba(255,255,255,0.5)'
             : p.backgroundColor};
     box-shadow: ${(p: ElevatedBoxProps & IStyleArgument) =>

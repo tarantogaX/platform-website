@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
 import React, {FunctionComponent} from 'react';
-import Link from 'next/link';
 import { A, BUTTON } from '../text/TextComponents';
 
 const Button = styled(BUTTON)`
@@ -14,7 +13,7 @@ const Button = styled(BUTTON)`
     padding-left: 50px;
     padding-right: 50px;
     background-color: ${(p: IStyleArgument) => p.theme.colors.secondary};
-    color: ${(p: IStyleArgument) => p.theme.colors.white};
+    color: ${(p: IStyleArgument) => p.theme.colors.background};
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
     opacity: ${(p) => (p.disabled ? '0.7' : '1')};
 

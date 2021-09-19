@@ -2,12 +2,16 @@ type Color = string;
 
 export interface ITheme {
     colors: {
-        primary: Color;
-        primaryStrong: Color;
-        secondary: Color;
-        white: Color;
-        gray: Color;
-        black: Color;
+        primary: Color;     //Green
+        primaryLight: Color;    //Light green
+        secondary: Color;      //Blue
+
+        background: Color;      //White
+        backgroundLight: Color;        //DarkWhite
+        backgroundStrong: Color;        //LightGray
+
+        textMain: Color;        //Black
+        textStrong: Color;       //LightBlack
     };
     breakpoint: {
         mobile: string;
@@ -28,12 +32,14 @@ export const DefaultTheme: ITheme = {
         tablet: '1200px',
     },
     colors: {
-        primary: '#72d360',
-        primaryStrong: '#1BBC07',
-        secondary: '#508ED6',
-        white: '#fff',
-        black: '#313131',
-        gray: 'rgba(217, 217, 217, 0.3)',
+        primary: "#1BBC07",
+        primaryLight: "#D6F5D9",
+        secondary: "#508ED6",
+        background: "#FFFFFF",
+        backgroundLight: "#F7F7F7",
+        backgroundStrong: "#EFEFEF",
+        textMain: "#1D1E20",
+        textStrong: "#494949",
     },
     up: (breakpoint, vertical = false) =>
         `@media (min-${

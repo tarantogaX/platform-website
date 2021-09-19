@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
 import ColumnLayoutElement from '../column-layout-element/ColumnLayoutElement';
 import {NavbarButton, NavbarButtonSelected, NavbarSectionTitle} from './NavbarButton';
-import {Colours} from "../primitives/Colours";
 
 type LessonProps = {
     title: string;
@@ -18,10 +17,7 @@ type NavbarProps = {
 };
 
 const NavbarWrapper = styled(ColumnLayoutElement)`
-    /* margin-top: 300px; */
-    background-color: ${Colours.LightGray};
-    /* width: 30%;
-    height: 100px; */
+    background-color: ${(p: IStyleArgument) => p.theme.colors.backgroundStrong};
     position: fixed;
     top: 54px;
     width: 250px;

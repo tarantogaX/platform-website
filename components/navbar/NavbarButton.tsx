@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {IStyleArgument} from '../../styles/theme';
 import ColumnLayoutElement from '../column-layout-element/ColumnLayoutElement';
 import { P, FontWeight } from '../text/TextComponents';
-import {Colours} from "../primitives/Colours";
 
 type LessonButtonProps = {
     text: string;
@@ -19,12 +18,12 @@ const Button = styled(P)`
 `;
 
 const ButtonSelected = styled(Button)`
-    background-color: ${Colours.White};
+    background-color: ${(p: IStyleArgument) => p.theme.colors.background};
 `;
 
 const ButtonSectionTitle = styled(Button)`
-    background-color: ${Colours.LightGreen};
-    color: ${Colours.LightBlack};
+    background-color: ${(p: IStyleArgument) => p.theme.colors.primaryLight};
+    color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
 `;
 
 

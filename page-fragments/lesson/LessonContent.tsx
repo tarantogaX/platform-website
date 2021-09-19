@@ -2,12 +2,11 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 import ColumnLayoutElement from '../../components/column-layout-element/ColumnLayoutElement';
 import { Mathjax } from '../../components/mathjax/Mathjax';
-import { Colours } from '../../components/primitives/Colours';
 import { H3, P } from '../../components/text/TextComponents';
 import {IStyleArgument} from '../../styles/theme';
 
 const Title = styled.h1`
-  color: ${Colours.LightBlack};
+  color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
   text-align: center;
 `;
 

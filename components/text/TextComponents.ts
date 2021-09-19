@@ -53,11 +53,7 @@ export const H0 = styled(addProps<TextProps>()(styled.h1``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textStrong};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 20px;' : '')}
     }
@@ -72,11 +68,7 @@ export const H1 = styled(addProps<TextProps>()(styled.h1``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textStrong};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 17px;' : '')}
     }
@@ -91,11 +83,7 @@ export const H2 = styled(addProps<TextProps>()(styled.h2``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textMain};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 14px;' : '')}
     }
@@ -110,11 +98,7 @@ export const H3 = styled(addProps<TextProps>()(styled.h3``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textStrong};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 12px;' : '')}
     }
@@ -129,11 +113,7 @@ export const P = styled(addProps<TextProps>()(styled.p``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textMain};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 12px;' : '')}
     }
@@ -148,11 +128,7 @@ export const P2 = styled(addProps<TextProps>()(styled.p``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textMain};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 12px;' : '')}
     }
@@ -167,11 +143,7 @@ export const A = styled(addProps<TextProps>()(styled.a``))`
     color: ${(p: IStyleArgument & TextProps) =>
         p.color
             ? p.color
-            : p.primary
-            ? p.theme.colors.primaryStrong
-            : p.secondary
-            ? p.theme.colors.secondary
-            : p.theme.colors.black};
+            : p.theme.colors.textMain};
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         ${(p) => (p.mobileDownscale ?? true ? 'font-size: 12px;' : '')}
     }

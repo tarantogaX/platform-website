@@ -8,7 +8,6 @@ import {RegisterButton} from '../button/Button';
 import 'react-languages-select/css/react-languages-select.css';
 import {useRouter} from 'next/router';
 import { A } from '../text/TextComponents';
-import {Colours} from "../primitives/Colours";
 
 const HeaderWrapper = styled.header`
     position: fixed;

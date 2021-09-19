@@ -6,7 +6,6 @@ import {IStyleArgument} from '../styles/theme';
 import Center from '../components/central/Center';
 import { H0, H1, P, P2, A, FontWeight } from '../components/text/TextComponents';
 import ColumnLayoutElement from '../components/column-layout-element/ColumnLayoutElement';
-import { Colours } from '../components/primitives/Colours';
 import { getSectionsList } from '../lib/articles';
 import {addProps} from '../utils/ComponentUtils';
 import { RegisterButton } from '../components/button/Button';
@@ -35,14 +34,16 @@ export async function getStaticProps() {
 type LessonProps = {
     title: string;
     id: string;
-    colour?: string;
+    colour?: LessonHeaderBackground;
 }
 
-type LessonHeaderProps = {
-    colour?: string;
+type ColourProps = {
+    colour: LessonHeaderBackground;
 }
 
-const LessonHeader = styled(addProps<LessonHeaderProps>()(styled.div``))`
+type LessonHeaderBackground = "Background" | "BackgroundLight";
+
+const LessonHeader = styled(addProps<ColourProps>()(styled.div``))`
     display: block;
     height: 40px;
     text-align: left;
@@ -50,20 +51,26 @@ const LessonHeader = styled(addProps<LessonHeaderProps>()(styled.div``))`
     :hover {
         cursor: pointer;
     }
-    background-color: ${(p: LessonHeaderProps) => p.colour ? p.colour : Colours.LightGray};
+    background-color: ${
+        (p: ColourProps & IStyleArgument) =>
+            p.colour == "BackgroundLight"
+                ? p.theme.colors.background
+                : p.theme.colors.backgroundLight
+    };
 `;
 
 const LessonTitle = styled(P)`
     vertical-align: middle;
     padding: 10px;
     margin-right: 30px;
+    color: ${(q: IStyleArgument) => q.theme.colors.textMain};
 `;
 
 const Lesson: FunctionComponent<LessonProps> = (props) => {
     return (
         <A href={props.title != "Złożoność obliczeniowa" ? `/articles/${props.id}` : props.id}>
             <LessonHeader colour={props.colour}>
-                <LessonTitle noMargin>{props.title}</LessonTitle>
+                <LessonTitle>{props.title}</LessonTitle>
             </LessonHeader>
         </A>
     );
@@ -79,7 +86,7 @@ const Close = styled.img`
 `;
 
 const SectionHeader = styled.div`
-    background-color: ${Colours.LightGray};
+    background-color: ${(p: IStyleArgument) => p.theme.colors.backgroundStrong};
     height: 40px;
     text-align: center;
     :hover {
@@ -120,7 +127,10 @@ const Section: FunctionComponent<SectionProps> = (props) => {
                 />
             </SectionHeader>
             {open ? props.lessons.map((lesson, index) => 
-                <Lesson title={lesson.title} id={lesson.id} colour={(index % 2 == 0) ? Colours.White : Colours.DarkWhite} />
+                <Lesson
+                    title={lesson.title} id={lesson.id}
+                    colour={(index % 2 == 0) ? "BackgroundLight" : "Background"}
+                />
             ) : <></>}
         </SectionWrapper>
     );
@@ -143,12 +153,12 @@ const AllSectionsWrapper = styled(Center)`
 `;
 
 const CourseTitle = styled(H0)`
-    color: ${Colours.LightBlack};
+    color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 50px;
 `;
 
 const CourseText = styled(P)`
-    color: ${Colours.LightBlack};
+    color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     text-align: justify;
 `;
 
@@ -157,14 +167,14 @@ const MaterialWrapper = styled(CourseDescription)`
 `;
 
 const MaterialTitleOI = styled(H1)`
-    color: ${Colours.LightBlack};
+    color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 40px;
     text-align: left;
     margin-bottom: 20px;
 `;
 
 const MaterialTitleOM = styled(H1)`
-    color: ${Colours.LightBlack};
+    color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 40px;
     text-align: right;
 `;

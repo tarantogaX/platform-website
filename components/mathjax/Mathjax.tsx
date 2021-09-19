@@ -5,7 +5,7 @@ import MathJax from "react-mathjax";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import RemarkMathPlugin from "remark-math";
 import styled from "styled-components";
-import {Colours} from "../primitives/Colours";
+import {IStyleArgument} from '../../styles/theme';
 
 interface FormulaProps {
   content: string;
@@ -14,19 +14,15 @@ interface FormulaProps {
 type Math = { value: string };
 type Code = {language: string, value: string};
 
-//only colours
 const StyledDiv = styled.div`
-    h2 {
-        color: ${Colours.Black}
+    h2, p {
+        color: ${(p: IStyleArgument) => p.theme.colors.textMain};
     }
-    h3 {
-        color: ${Colours.LightBlack}
-    }
-    p {
-        color: ${Colours.Black}
+    h1, h3 {
+        color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     }
     a {
-        color: ${Colours.Green}
+        color: ${(p: IStyleArgument) => p.theme.colors.primary};
     }
 `;
 
