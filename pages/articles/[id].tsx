@@ -38,7 +38,7 @@ export default function Article ({ articleData, sectionData, articleIndex }) {
             <Center noLeftMargin maxWidth={1500}>
                 <Navbar
                   sectionTitle={sectionData.title} lessonsList={sectionData.lessons} selectedLesson={articleIndex} />
-                <LessonContent title={articleData.title} content={articleData.content} />
+                <LessonContent title={articleData.title} content={articleData.content} withNavbar={true} />
             </Center>
         </>
     );

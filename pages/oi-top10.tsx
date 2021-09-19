@@ -21,8 +21,8 @@ export default function Article ({ articleData }) {
             <Head>
                 <title>Top 10 rzeczy na II etap OI</title>
             </Head>
-            <Center noLeftMargin maxWidth={1700}>
-                <LessonContent title={articleData.title} content={articleData.content} />
+            <Center noLeftMargin noRightMargin maxWidth={1700}>
+                <LessonContent title={articleData.title} content={articleData.content} withNavbar={false} />
             </Center>
         </>
     );

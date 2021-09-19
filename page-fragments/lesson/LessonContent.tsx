@@ -19,15 +19,30 @@ const MainText = styled(P)`
 type LessonContentProps = {
     title: string;
     content: string;
+    withNavbar: boolean;
 };
 
 const LessonWrapper = styled(ColumnLayoutElement)`
   width: 55%;
-  margin-left: 10%;
   top: 0;
+  padding: 0;
   padding-top: 50px;
   padding-bottom: 300px;
-  margin-left: 500px;
+`;
+
+const LessonWrapperNoNavbar = styled(LessonWrapper)`
+  margin-left: 23%;
+  margin-right: 22%;
+`;
+
+const LessonWrapperWithNavbar = styled(LessonWrapper)`
+  margin-left: 35%;
+  margin-right: 10%;
+
+  ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
+    margin-left: 40%;
+    margin-right: 5%;
+  }
 `;
 
 const LessonText = styled(MainText)`
@@ -46,19 +61,21 @@ text: p, a
 */
 
 const LessonContent: FunctionComponent<LessonContentProps> = (props) => {
-    return (
-        <LessonWrapper
-          normalColumns={2}
-          tabletColumns={2}
-          mobileColumns={1}>
-            <Title>
-                {props.title}
-            </Title>
-            <LessonText>
-                <Mathjax content={props.content} />
-            </LessonText>
-        </LessonWrapper>
-    );
+  const XD = props.withNavbar ? LessonWrapperWithNavbar : LessonWrapperNoNavbar;
+
+  return (
+      <XD
+        normalColumns={1}
+        tabletColumns={1}
+        mobileColumns={1}>
+          <Title>
+              {props.title}
+          </Title>
+          <LessonText>
+              <Mathjax content={props.content} />
+          </LessonText>
+      </XD>
+  );
 };
 
 export default LessonContent;
