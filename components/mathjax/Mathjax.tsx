@@ -14,33 +14,19 @@ interface FormulaProps {
 type Math = { value: string };
 type Code = {language: string, value: string};
 
+//only colours
 const StyledDiv = styled.div`
-    h1, h2, h3{
-        margin-left: 4rem;
-        margin-bottom: 18px;
-        margin-top: 30px;
-        font-weight: bold;
-        line-height: 100%;
-        display: block;
-        color: ${Colours.Black};
+    h2 {
+        color: ${Colours.Black}
     }
-    code{
-        color: inherit;
+    h3 {
+        color: ${Colours.LightBlack}
     }
-    p, pre, code{
-        margin-bottom: 18px;
-    };
-    h1{
-       font-size: 80px;
-       margin-bottom: 36px;
-    };
-    h2{
-       font-size: 70px;
-       margin-top: 130px;
-       margin-bottom: 36px;
+    p {
+        color: ${Colours.Black}
     }
-    h3{
-       font-size: 35px;
+    a {
+        color: ${Colours.Green}
     }
 `;
 

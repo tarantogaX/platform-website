@@ -39,7 +39,7 @@ export const NavbarButton: FunctionComponent<LessonButtonProps> = (props) => {
 export const NavbarButtonSelected: FunctionComponent<LessonButtonProps> = (props) => {
     return (
         <a href={props.link}>
-            <ButtonSelected>{props.text}</ButtonSelected>
+            <ButtonSelected weight={FontWeight.Bold}>{props.text}</ButtonSelected>
         </a>
     );
 }

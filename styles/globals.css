@@ -2,13 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: #1BBC07;
-  text-decoration: none;
+  font-family: 'MontserratRegular', sans-serif;
 }
 
 * {
@@ -28,3 +22,42 @@ div {
   -ms-overflow-style: none;
 }
 
+
+
+
+h1 {
+  font-size: 38px;
+  font-family: 'MontserratSemiBold', sans-serif;
+  margin-top: 39px;
+  margin-bottom: 35px;
+}
+
+h2 {
+  font-size: 26px;
+  font-family: 'MontserratBold', sans-serif;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+h3 {
+  font-size: 19px;
+  font-family: 'MontserratBold', sans-serif;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+a, p {
+  font-size: 17px;
+  font-family: 'MontserratRegular', sans-serif;
+  text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+img {
+  margin: 0;
+}
+
+code {
+  margin-bottom: 25px;
+}

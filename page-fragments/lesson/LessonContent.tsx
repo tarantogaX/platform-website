@@ -2,14 +2,12 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 import ColumnLayoutElement from '../../components/column-layout-element/ColumnLayoutElement';
 import { Mathjax } from '../../components/mathjax/Mathjax';
+import { Colours } from '../../components/primitives/Colours';
 import { H3, P } from '../../components/text/TextComponents';
 import {IStyleArgument} from '../../styles/theme';
 
-const Title = styled(H3)`
-  display: block;
-  font-weight: bold;
-  font-size: 3rem;
-  margin-bottom: 20px;
+const Title = styled.h1`
+  color: ${Colours.LightBlack};
   text-align: center;
 `;
 
@@ -40,6 +38,13 @@ const LessonText = styled(MainText)`
   text-align: justify;
 `;
 
+/*
+Lessons format:
+title - h1
+subtitles - h2
+subsubtitles - h3
+text: p, a
+*/
 
 const LessonContent: FunctionComponent<LessonContentProps> = (props) => {
     return (
