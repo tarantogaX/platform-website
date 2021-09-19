@@ -8,6 +8,13 @@ import {RegisterButton} from '../button/Button';
 import 'react-languages-select/css/react-languages-select.css';
 import {useRouter} from 'next/router';
 import { A } from '../text/TextComponents';
+import { sections, SectionProps } from "../../lib/sections";
+  
+function getSectionWithLesson(id: string): SectionProps {
+    const thisSection = sections.find(section => section.lessons.map(lesson => lesson.id).indexOf(id) > -1);
+    return thisSection;
+}
+
 
 const HeaderWrapper = styled.header`
     position: fixed;
@@ -61,7 +68,9 @@ const LinksWrapper = styled(addProps<{open: boolean}>()(styled.div``))`
         right: 0;
         left: 90px;
         bottom: 0;
-        padding: 20px;
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
         transform: translateX(${(p) => (p.open ? '0' : '100%')});
         background-color: ${(p: IStyleArgument) => p.theme.colors.headerBackground};
         text-align: center;
@@ -88,9 +97,74 @@ const HeaderLink = styled(A)`
     text-align: center;
 `;
 
+
+const InnerLinksWrapper = styled(addProps<{show: boolean}>()(styled.div``))`
+    display: none;
+    ${(p: {show: boolean} & IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: ${(q: {show: boolean} & IStyleArgument) => q.show ? 'block' : 'none'};
+        background-color: ${(q: {show: boolean} & IStyleArgument) => q.theme.colors.backgroundStrong};
+        box-shadow: 5px 0px 5px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 2;
+    }
+`;
+
+const HeaderInnerLink = styled(A)`
+    display: none;
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        min-width: unset;
+        line-height: 40px;
+        margin: 0;
+        padding: 0;
+    }
+`;
+
+const HeaderSection = styled(HeaderInnerLink)`
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        background-color: ${(p: IStyleArgument) => p.theme.colors.primaryLight};
+        color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
+        font-weight: bold;
+        line-height: 45px;
+    }
+`;
+
+const HeaderLesson = styled(HeaderInnerLink)`
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        background-color: ${(p: IStyleArgument) => p.theme.colors.backgroundStrong};
+        color: ${(p: IStyleArgument) => p.theme.colors.textMain};
+    }
+`;
+
+const HeaderLessonSelected = styled(HeaderInnerLink)`
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+        background-color: ${(p: IStyleArgument) => p.theme.colors.background};
+        color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
+        font-weight: bold;
+        line-height: 45px;
+        position: relative;
+        z-index: 0;
+    }
+`;
+
 const MeetITHeader: FunctionComponent = () => {
     const [open, setOpen] = useState(false);
     const router = useRouter();
+
+    const url = router.asPath;
+    const urlList = url.split("/");
+    const lessonId = urlList[urlList.length - 1];
+
+    let lessonIndex = -1;
+    let lessonsList = [];
+
+    if (urlList.length > 2) {
+        const sectionData = getSectionWithLesson(lessonId);
+        lessonsList = sectionData.lessons;
+        lessonIndex = sectionData.lessons.map(lesson => lesson.id).indexOf(lessonId);
+    }
 
     return (
         <HeaderWrapper>
@@ -128,6 +202,34 @@ const MeetITHeader: FunctionComponent = () => {
                         Zostań tutorem
                     </HeaderLink>
                     <RegisterButton onClick={() => setOpen(false)} text={"Tutoring"} link={"https://tutoring.meetit.eu/"} />
+                    <div style={{height: '20px'}} />
+                    {urlList.length > 2
+                        ? <>
+                            <InnerLinksWrapper show={true}>
+                                <HeaderSection
+                                    onClick={() => setOpen(false)}
+                                    href={"/"}>
+                                    {getSectionWithLesson(lessonId).title}
+                                </HeaderSection>
+                                {lessonsList.filter((lesson, index) => (index < lessonIndex)).map((lesson, index) =>
+                                    <HeaderLesson onClick={() => setOpen(false)} href={(lesson.id.length < 10 ? "/articles/" : "") + lesson.id}>
+                                        {lesson.title}
+                                    </HeaderLesson>
+                                )}
+                            </InnerLinksWrapper>
+                                <HeaderLessonSelected onClick={() => setOpen(false)} href={"/articles/" + lessonsList[lessonIndex].id}>
+                                    {lessonsList[lessonIndex].title}
+                                </HeaderLessonSelected>
+                            <InnerLinksWrapper show={lessonIndex < lessonsList.length - 1}>
+                                {lessonsList.filter((lesson, index) => (index > lessonIndex)).map((lesson, index) =>
+                                    <HeaderLesson onClick={() => setOpen(false)} href={(lesson.id.length < 10 ? "/articles/" : "") + lesson.id}>
+                                        {lesson.title}
+                                    </HeaderLesson>
+                                )}
+                            </InnerLinksWrapper>
+                        </>
+                        : <></>
+                    }
                 </LinksWrapper>
             </Center>
         </HeaderWrapper>

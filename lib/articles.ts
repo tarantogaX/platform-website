@@ -1,19 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { sections } from "./sections";
 
-const articlesDirectory = path.join(process.cwd(), 'articles')
-const sectionsFile = path.join(process.cwd(), 'lib', 'sections.json')
+const articlesDirectory = path.join(process.cwd(), 'articles');
 
 export function getSectionsList() {
-  const sectionsListString = fs.readFileSync(sectionsFile, 'utf8')
-  let sectionsList = JSON.parse(sectionsListString);
-  return sectionsList.sections;
+  return sections;
 }
 
 export function getSectionWithLesson(id: string) {
-  const allSections = getSectionsList();
-  const thisSection = allSections.find(section => section.lessons.map(lesson => lesson.id).indexOf(id) > -1);
+  const thisSection = sections.find(section => section.lessons.map(lesson => lesson.id).indexOf(id) > -1);
   return thisSection;
 }
 
