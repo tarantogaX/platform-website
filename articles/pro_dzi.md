@@ -5,14 +5,14 @@ content: "
 Dziel i zwyciężaj to kolejna z metod projektowania algorytmów, które poznasz. Jest znacznie rzadziej spotykana niż algorytmy zachłanne, ale również przydatna. Pomysł jest w miarę prosty: aby rozwiązać cały problem, podzielimy go na mniejsze problemy <b>(dziel),</b> a następnie złączymy otrzymane rezultaty <b>(zwyciężaj).</b> Zapoznamy się teraz z najpopularniejszym algorytmem dziel i zwyciężaj:
 
 ## Sortowanie metodą dziel i zwyciężaj - mergesort
-Mamy dany ciąg, a naszym zadaniem jest go posortować. Załóżmy, że interesuje nas sortowanie nierosnące czyli takie, w którym dla każdych $i,j$ jeśli $i\leqslant j,$ to $a_i\leqslant a_j.$
+Mamy dany ciąg, a naszym zadaniem jest go posortować. Załóżmy, że interesuje nas sortowanie nierosnące czyli takie, w którym dla każdych $i,j$ jeśli $i\\leqslant j,$ to $a_i\\leqslant a_j.$
 
-<b>Faza dzielenia:</b> jeśli ciąg składa się z jednego elementu to nie dzieje się nic ciekawego -- jest już posortowany. W przeciwnym razie podzielimy go "na pół" na dwa ciągi, a następnie posortujemy każdy z nich tym samym algorytmem mergesort, rekurencyjnie.
+<b>Faza dzielenia:</b> jeśli ciąg składa się z jednego elementu to nie dzieje się nic ciekawego -- jest już posortowany. W przeciwnym razie podzielimy go \"na pół\" na dwa ciągi, a następnie posortujemy każdy z nich tym samym algorytmem mergesort, rekurencyjnie.
 <b>Faza zwyciężania:</b> załóżmy, że obydwa nasze krótsze ciągi są już posortowane. Jedyne, co nam pozostało to złączenie obydwu wyników tak, aby rozważany przez nas ciąg także był posortowany. Tutaj pomoże nam podejście zachłanne. Zastanówmy się, jak wybrać pierwszy element do nowego ciągu. Z pewnością musi to być jeden z pierwszych elementów w dwóch rozważanych ciągach. Powtarzając tę procedurę uzyskamy prosty algorytm scalania dwóch posortowanych ciągów w jeden.
 
 ![Merge sort krok po kroku](https://codimd.s3.shivering-isles.com/demo/uploads/upload_38c25f160301706844ae0b824a822d2a.png)
   
-Jak szybko działa taki algorytm? Procedura <b>merge</b> łączenia dwóch posortowanych ciągów działa w $O(n),$ gdzie $n$ to suma długości posortowanych ciągów. Musimy jednak pamiętać, że wywołujemy nasz algorytm rekurencyjnie. Niech $T(n)$ będzie czasem działania naszego algorytmu dla ciągu długości $n.$ Zachodzi wówczas: $T(n) = 2\cdot T(\frac{n}{2}) + O(n).$ Jest to przykład prostego równania rekurencyjnego. Jego rozwiązaniem jest $T(n) = O(n \cdot log \ n).$ Możesz przekonać się o tym zauważając, że żaden element nie zostanie rozpatrzony więcej niż $O(log \ n)$ razy. Oto pseudokod, implementujący algorytm sortowania tablicy metodą dziel i zwyciężaj:
+Jak szybko działa taki algorytm? Procedura <b>merge</b> łączenia dwóch posortowanych ciągów działa w $O(n),$ gdzie $n$ to suma długości posortowanych ciągów. Musimy jednak pamiętać, że wywołujemy nasz algorytm rekurencyjnie. Niech $T(n)$ będzie czasem działania naszego algorytmu dla ciągu długości $n.$ Zachodzi wówczas: $T(n) = 2\\cdot T(\\frac{n}{2}) + O(n).$ Jest to przykład prostego równania rekurencyjnego. Jego rozwiązaniem jest $T(n) = O(n \\cdot log \\ n).$ Możesz przekonać się o tym zauważając, że żaden element nie zostanie rozpatrzony więcej niż $O(log \\ n)$ razy. Oto pseudokod, implementujący algorytm sortowania tablicy metodą dziel i zwyciężaj:
 
 ```cpp=
 const int MAX_N = 1000003;
@@ -63,7 +63,7 @@ void mergesort (int poczatek, int koniec){
 ```
 
 ## Zliczanie inwersji przy użyciu dziel i zwyciężaj
-Inwersją w ciągu $a$ nazywamy parę takich elementów $a_i, \ a_j,$ że $i < j$ oraz $a_i > a_j.$ Chcemy poznać liczbę inwersji w ciągu $a.$ Niestety, inwersji może być nawet $O(n^2),$ więc brutalne sprawdzenie wszystkich par może okazać się zbyt wolne. Jednym z szybkich algorytmów zliczenia liczby inwersji jest ten oparty na metodzie dziel i zwyciężaj. Okazuje się, że możemy nieznacznie ulepszyć sortowanie przez scalanie, aby przy okazji otrzymać liczbę inwersji. Na warsztat weźmiemy funkcję <b>merge</b>. Jeśli w pewnym kroku element z ciągu drugiego wskoczy przed elementy z ciągu pierwszego to wszystkie pozostałe elementy z ciągu pierwszego stanowią z nim inwersję. 
+Inwersją w ciągu $a$ nazywamy parę takich elementów $a_i, \\ a_j,$ że $i < j$ oraz $a_i > a_j.$ Chcemy poznać liczbę inwersji w ciągu $a.$ Niestety, inwersji może być nawet $O(n^2),$ więc brutalne sprawdzenie wszystkich par może okazać się zbyt wolne. Jednym z szybkich algorytmów zliczenia liczby inwersji jest ten oparty na metodzie dziel i zwyciężaj. Okazuje się, że możemy nieznacznie ulepszyć sortowanie przez scalanie, aby przy okazji otrzymać liczbę inwersji. Na warsztat weźmiemy funkcję <b>merge</b>. Jeśli w pewnym kroku element z ciągu drugiego wskoczy przed elementy z ciągu pierwszego to wszystkie pozostałe elementy z ciągu pierwszego stanowią z nim inwersję. 
 
 ![Zliczanie inwersji podczas scalania dwóch ciągów](https://codimd.s3.shivering-isles.com/demo/uploads/upload_c1f017a5b401fa4ef2145bd76ed61a7d.png)
   

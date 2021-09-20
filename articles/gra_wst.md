@@ -8,7 +8,7 @@ Graf jest strukturą, na którą składają się dwa typy elementów: wierzchoł
 
 Wierzchołki numerujemy w celu ich rozróżnienia. Na rysunkach są przedstawiane jako kółka, a krawędzie jako kreski między nimi. Wyróżniamy kilka podstawowych typów grafów:
 
-- <b>Graf nieskierowany</b> - krawędzie są "symetryczne":
+- <b>Graf nieskierowany</b> - krawędzie są \"symetryczne\":
 
 ![Graf nieskierowany](https://codimd.s3.shivering-isles.com/demo/uploads/upload_2fe00b9092d5f8c9d8502d714c7153c2.png)
 

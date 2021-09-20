@@ -83,14 +83,14 @@ Weźmy dowolny wierzchołek $X.$ Niech $Y$ będzie wierzchołkiem najbardziej od
 
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_d636cca8520429b893ad72402b317af1.png)
 
-Na czerwono zaznaczona jest średnica, na zielono: ścieżka między $X$ a $Y$ , na niebiesko: ścieżka między $X$ a najbliższym wierzchołkiem średnicy. Wiemy, że $k$ jest maksymalne $-k \geq a + b.$ Oznacza to, że ścieżka pomiędzy $Y$ a $Z$ jest niekrótsza niż średnica – również jest średnicą. Otrzymujemy sprzeczność.
+Na czerwono zaznaczona jest średnica, na zielono: ścieżka między $X$ a $Y$ , na niebiesko: ścieżka między $X$ a najbliższym wierzchołkiem średnicy. Wiemy, że $k$ jest maksymalne $-k \\geq a + b.$ Oznacza to, że ścieżka pomiędzy $Y$ a $Z$ jest niekrótsza niż średnica – również jest średnicą. Otrzymujemy sprzeczność.
 
 - Ścieżka między $X$ a $Y$ ma część wspólną ze średnicą.
 
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_fb311c522536fb2f90f602ea8c9c0cfd.png)
 
 
-Wówczas $g \geq p,$ ponieważ w przeciwnym wypadku $Y$ nie byłby wierzchołkiem najbardziej oddalonym od $X.$ Oznacza to, że ścieżka pomiędzy $Y$ a $Z$ jest niekrótsza niż średnica – również jest średnicą. Otrzymujemy sprzeczność.
+Wówczas $g \\geq p,$ ponieważ w przeciwnym wypadku $Y$ nie byłby wierzchołkiem najbardziej oddalonym od $X.$ Oznacza to, że ścieżka pomiędzy $Y$ a $Z$ jest niekrótsza niż średnica – również jest średnicą. Otrzymujemy sprzeczność.
 
 Znajdźmy drugi koniec średnicy – wierzchołek najbardziej oddalony od $Y.$ Nazwijmy go $W.$ $Y$ i $W$ jednoznacznie wyznaczają średnicę, ponieważ między każdą parą wierzchołków w drzewie istnieje dokładnie jedna ścieżka.
 

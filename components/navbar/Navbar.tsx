@@ -19,12 +19,18 @@ type NavbarProps = {
 const NavbarWrapper = styled(ColumnLayoutElement)`
     background-color: ${(p: IStyleArgument) => p.theme.colors.backgroundStrong};
     position: fixed;
-    top: 54px;
+    padding-top: 54px;
+    top: 0;
+    bottom: 0;
     width: 250px;
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         display: none;
     }
+`;
+
+const NavbarWrapperScroll = styled(NavbarWrapper)`
+    overflow-y: scroll;
 `;
 
 const ShadowWrapper = styled.div`
@@ -43,8 +49,10 @@ const ShadowWrapperLast = styled(ShadowWrapper)`
 
 
 const Navbar: FunctionComponent<NavbarProps> = (props) => {
+    const StyledNavbarWithOverflow = (props.sectionTitle == "Algorytmy grafowe") ? NavbarWrapperScroll : NavbarWrapper;
+
     return (
-        <NavbarWrapper
+        <StyledNavbarWithOverflow
             normalColumns={2}
             tabletColumns={2}
             mobileColumns={1}>
@@ -61,14 +69,15 @@ const Navbar: FunctionComponent<NavbarProps> = (props) => {
                             ? <NavbarButtonSelected text={lesson.title} link={lesson.id}/>
                             : <></>
                     )}
-                <ShadowWrapperLast>
-                    {props.lessonsList.map((lesson, index) =>
-                        (index > props.selectedLesson)
-                            ? <NavbarButton text={lesson.title} link={lesson.id} />
-                            : <></>
-                    )}
-                </ShadowWrapperLast>
-        </NavbarWrapper>
+                    <ShadowWrapperLast>
+                        {props.lessonsList.map((lesson, index) =>
+                            (index > props.selectedLesson)
+                                ? <NavbarButton text={lesson.title} link={lesson.id} />
+                                : <></>
+                        )}
+                    </ShadowWrapperLast>
+                }
+        </StyledNavbarWithOverflow>
     );
 };
 

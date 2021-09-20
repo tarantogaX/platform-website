@@ -8,17 +8,17 @@ W tym artykule opowiemy o tym, co możemy zrobić, gdy chcemy liczyć minimum i 
 ## Działanie kolejki monotonicznej
 Zanim przejdziemy do opisu samej struktury, zastanówmy się najpierw, jak ma ona działać. Na początku zastanówmy się, czy są pewne pozycje, z których liczby na pewno nie mogą być maksimum na pełznącym przedziale.
 
-Obserwacja: Jeśli nasz przedział obejmuje w pewnym momencie kilka liczb: $a_k, \ a_{k+1}, \ ... \ a_{l}$ oraz znajdują się w nim takie dwie liczby $a_{n}, \ a_{m},$ że $a_n < a_m$ oraz $n < m,$ to wartość liczba z pozycji $n$ (czyli $a_n$) nie może być nigdy później maksymalną liczbą z naszego przedziału. Taką sytuację ilustruje poniższy rysunek: liczba z pozycji $4,$ czyli $1$ nie może stać się maksimum pełznącego przedziału, ponieważ znajduje się w nim także większa od niej liczba z pozycji $6,$ tj. $4.$
+Obserwacja: Jeśli nasz przedział obejmuje w pewnym momencie kilka liczb: $a_k, \\ a_{k+1}, \\ ... \\ a_{l}$ oraz znajdują się w nim takie dwie liczby $a_{n}, \\ a_{m},$ że $a_n < a_m$ oraz $n < m,$ to wartość liczba z pozycji $n$ (czyli $a_n$) nie może być nigdy później maksymalną liczbą z naszego przedziału. Taką sytuację ilustruje poniższy rysunek: liczba z pozycji $4,$ czyli $1$ nie może stać się maksimum pełznącego przedziału, ponieważ znajduje się w nim także większa od niej liczba z pozycji $6,$ tj. $4.$
 
 ![Obserwacja - przykład](https://codimd.s3.shivering-isles.com/demo/uploads/upload_4f9412b67b283b8b4e4f4499f08a62a7.png)
 
 Jak udowodnić tę obserwację? Zauważmy, że aby liczba z pozycji $a_n$ mogła być największą liczbą z naszego przedziału, $a_m$ musi z niego wypaść. Aby to się stało, tył naszej kolejki musi się przesunąć na pozycję wyższą, niż $m.$ Wtedy jednak $a_m$ również wypadnie z przedziału i oczywiście nie będzie mogło być jego największą liczbą.
 
-Zbudujmy teraz naszą strukturę. Będziemy w niej trzymać po kolei tylko te liczby, które mają szansę stać się kiedyś największą liczbą z naszego przedziału. Każdą z nich będziemy trzymać w parze wraz z jej pozycją. Dla przykładu z rysunku w naszej strukturze będą więc pary: $(7, \ 5), \ (4, \ 6), \ (2, \ 7).$
+Zbudujmy teraz naszą strukturę. Będziemy w niej trzymać po kolei tylko te liczby, które mają szansę stać się kiedyś największą liczbą z naszego przedziału. Każdą z nich będziemy trzymać w parze wraz z jej pozycją. Dla przykładu z rysunku w naszej strukturze będą więc pary: $(7, \\ 5), \\ (4, \\ 6), \\ (2, \\ 7).$
 
 Zauważmy, że dla poprawnego i szybkiego działania nasza kolejka powinna mieć kilka własności:
 
-- powinny w niej znajdować się tylko te liczby, które "mają szansę" być maksimum na przedziale
+- powinny w niej znajdować się tylko te liczby, które \"mają szansę\" być maksimum na przedziale
 - liczby w niej powinny znajdować się w kolejności występowania w ciągu, aby w razie przesuwania końców gąsienicy łatwo można było usunąć lub dodać do niej nowe elementy, nie szukając ich po całej strukturze
 - jej elementy powinny być uszeregowane nierosnąco, aby łatwo można było znaleźć największy element - czyli po prostu pierwszą liczbę z kolejki
 
@@ -28,7 +28,7 @@ Dzięki wcześniejszej obserwacji spełnienie tych wszystkich warunków jednocze
 Do zaimplementowania naszej struktury użyjemy deque - czyli kolejki dwustronnej, umożliwiającej dodawanie i usuwanie elementów zarówno z przodu, jak i tyłu. Oraz struktury pair z STLa, umożliwiającej wygodne trzymanie pary liczb.
 
 ### Przesuwanie lewego końca gąsienicy
-Przesuwanie lewego końca gąsienicy do przodu jest bardzo proste: gdy lewy koniec naszej gąsienicy przesunie się do przodu, czyli wyrzucimy z niej pewną liczbę, musimy wyrzucić ją również z kolejki, o ile się tam znajduje. Ponieważ liczby w kolejce są uszeregowane w kolejności występowania w naszym ciągu, sprowadzi się to jedynie do wyrzucenia pierwszego elementu kolejki (o ile jest on równy wyrzucanemu elementowi gąsienicy) i zmiany maksimum przedziału na następnego "kandydata" z kolejki, czyli na element, który znajdzie się teraz na jej przodzie.
+Przesuwanie lewego końca gąsienicy do przodu jest bardzo proste: gdy lewy koniec naszej gąsienicy przesunie się do przodu, czyli wyrzucimy z niej pewną liczbę, musimy wyrzucić ją również z kolejki, o ile się tam znajduje. Ponieważ liczby w kolejce są uszeregowane w kolejności występowania w naszym ciągu, sprowadzi się to jedynie do wyrzucenia pierwszego elementu kolejki (o ile jest on równy wyrzucanemu elementowi gąsienicy) i zmiany maksimum przedziału na następnego \"kandydata\" z kolejki, czyli na element, który znajdzie się teraz na jej przodzie.
 
 ### Przesuwanie prawego końca gąsienicy
 Gdy natomiast przesuwamy do przodu prawy koniec gąsienicy, dodając do niej nowy element, zabiera on szansę wszystkim mniejszym od siebie liczbom z kolejki na zostanie maksimum przedziału - musimy je więc wyrzucić. Tak więc dopóki wartość liczby z tyłu kolejki jest mniejsza, niż elementu, który właśnie dodajemy do gąsienicy, wyrzucamy go z naszej kolejki monotonicznej (zauważmy, że może się zdarzyć, że wyczyścimy w ten sposób całą kolejkę - to jednak nic nie szkodzi). Gdy już skończymy to robić, na przód kolejki wrzucamy nowododany element gąsienicy.

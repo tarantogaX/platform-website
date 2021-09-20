@@ -35,7 +35,7 @@ Swobodne poruszanie się po drzewie w celu np. wypisania wszystkich słów umoż
 
 ### Alternatywna Implementacja
 
-Powyższa implementacja w większości przypadków jest wystarczająca, ale zajmuje $O(V \cdot A)$ pamięci, dlatego może się nie sprawdzić kiedy rozmiar alfabetu jest duży albo ograniczenia pamięciowe małe. Możemy to rozwiązać np. zmieniając tablicę $T[V][A]$ na dostępną w STLu mapę: ```map <int, char> T[n];```. Złożoność dodawania słów i $DFS$’a będzie gorsza o $O(log \ A),$ gdyż tyle będzie nas kosztować wyciąganie informacji o krawędziach. W zamian za to wykorzystamy jedynie $O(V)$ pamięci.
+Powyższa implementacja w większości przypadków jest wystarczająca, ale zajmuje $O(V \\cdot A)$ pamięci, dlatego może się nie sprawdzić kiedy rozmiar alfabetu jest duży albo ograniczenia pamięciowe małe. Możemy to rozwiązać np. zmieniając tablicę $T[V][A]$ na dostępną w STLu mapę: ```map <int, char> T[n];```. Złożoność dodawania słów i $DFS$’a będzie gorsza o $O(log \\ A),$ gdyż tyle będzie nas kosztować wyciąganie informacji o krawędziach. W zamian za to wykorzystamy jedynie $O(V)$ pamięci.
 
 Drugi sposób to użycie vectora: ```vector <int> T[n];```. Wszystkie operacje będą się odbywać analogicznie jak w wersji tablicowej, ale zamiast odwoływać się bezpośrednio do krawędzi o znaku $c$ będziemy musieli przejrzeć cały vector, a gdy taka krawędź nie istnieje dodać ją na koniec vectora. W tym wypadku złożoność pamięciowa wyniesie $O(V),$ a operacje dodawania słów i przeszukiwania drzewa będą wolniejsze o $O(A).$
 
@@ -60,7 +60,7 @@ Kiedy wejdziemy do wierzchołka, w którym mamy zaznaczony koniec jakiegoś sło
 Niech $s$ będzie wierzchołkiem odpowiadającym $S.$ Rozwiązanie zadania to po prostu $ile[s].$
 
 ### Jak mówić o trie?
-Istnieją dwa (oba poprawne) sposoby wymawiania "trie": jedno brzmi dokładnie tak, jak angielskie słowo "tree" (i środkowa sylaba wyrazu "retrieval"), natomiast drugie brzmi tak, jak słowo "try" i pomaga rozróżnić, czy mówimy o drzewie trie czy też o zwykłym drzewie.
+Istnieją dwa (oba poprawne) sposoby wymawiania \"trie\": jedno brzmi dokładnie tak, jak angielskie słowo \"tree\" (i środkowa sylaba wyrazu \"retrieval\"), natomiast drugie brzmi tak, jak słowo \"try\" i pomaga rozróżnić, czy mówimy o drzewie trie czy też o zwykłym drzewie.
 
 ## Zadania
 - [Najlżejszy język (V OI, III etap)](https://szkopul.edu.pl/problemset/problem/9-tYuiHpeLAJBtw2vDdNgWbh/site/?key=statement)

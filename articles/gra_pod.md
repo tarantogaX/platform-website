@@ -1,7 +1,7 @@
 ---
 title: 'Aktualizacje na poddrzewach'
 content: "
-W rozwiązaniach niektórych problemów pojawia się potrzeba wykonywania operacji takich jak dodawanie, odejmowanie, xorowanie wartości zapisanych w wierzchołkach należących do danego poddrzewa. Okazuje się, że jeśli w sprytny sposób zbudujemy drzewo przedziałowe, będziemy mogli poradzić sobie z tym problemem w czasie $O(log\ n).$
+W rozwiązaniach niektórych problemów pojawia się potrzeba wykonywania operacji takich jak dodawanie, odejmowanie, xorowanie wartości zapisanych w wierzchołkach należących do danego poddrzewa. Okazuje się, że jeśli w sprytny sposób zbudujemy drzewo przedziałowe, będziemy mogli poradzić sobie z tym problemem w czasie $O(log\\ n).$
 
 ## Porządki preorder i postorder
 Wierzchołkom drzewa można nadać numery w takiej kolejności, w jakiej wchodzimy do nich podczas przechodzenia grafu algorytmem DFS.

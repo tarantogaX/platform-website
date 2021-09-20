@@ -20,7 +20,7 @@ Zdecydowanie ciekawszym problemem jest wyznaczanie minimalnego drzewa rozpinają
 ## Algorytm Prima
 Algorytm Prima jest jedną z metod znajdowania minimalnego drzewa rozpinającego. Opiera się na podobnych założeniach, co algorytm Dijkstry. Załóżmy, że mamy już część naszego drzewa rozpinającego, której wierzchołki tworzą zbiór $S.$ W celu powiększenia $S$ musimy wziąć krawędź wychodzącą z $S.$ Będziemy brali zachłannie taką, która biegnie do wierzchołka spoza $S$ i ma minimalną wagę. Ten wierzchołek dodamy do naszego zbioru. W żadnym kroku nie stracimy możliwości zrobienia lepszego ruchu niż te, które wykonaliśmy.
 
-Do zaimplementowania algorytmu Prima użyjemy kolejki priorytetowej, na którą będziemy wrzucać kolejne krawędzie wraz z wierzchołkami, do których biegną. Jego złożoność obliczeniowa wynosi $O((n + m) \ log (n +  m)).$
+Do zaimplementowania algorytmu Prima użyjemy kolejki priorytetowej, na którą będziemy wrzucać kolejne krawędzie wraz z wierzchołkami, do których biegną. Jego złożoność obliczeniowa wynosi $O((n + m) \\ log (n +  m)).$
 
 ```cpp=
 void Prim() {
@@ -57,7 +57,7 @@ void Prim() {
 ![Algorytm Prima - krok 3](https://codimd.s3.shivering-isles.com/demo/uploads/upload_76df0eb4119dacfd5a03776e8fb7854a.png)
 
 ## Algorytm Kruskala
-Algorytm Kruskala również znajduje minimalne drzewo rozpinające. Rozpatruje wszystkie krawędzie należące do naszego grafu w kolejności rosnących wag. Na początku każdy wierzchołek jest osobną spójną. Jeżeli dana krawędź łączy dwa wierzchołki nie należące do tej samej spójnej, to jest ona krawędzią o minimalnej wadze, którą da się połączyć te spójne. Dodajemy ją do naszego drzewa rozpinającego i łączymy je używając struktury Find and Union. Po zakończeniu algorytmu otrzymamy jedną spójną połączoną $(n-1)$ krawędziami – drzewo rozpinające. Złożoność czasowa wynosi $O(\alpha(n) \cdot n + m \cdot log \ m),$ gdzie $\alpha$ to bardzo wolno rosnąca funkcja ("prawie" stała), która bierze się z użycia struktury Find and Union.
+Algorytm Kruskala również znajduje minimalne drzewo rozpinające. Rozpatruje wszystkie krawędzie należące do naszego grafu w kolejności rosnących wag. Na początku każdy wierzchołek jest osobną spójną. Jeżeli dana krawędź łączy dwa wierzchołki nie należące do tej samej spójnej, to jest ona krawędzią o minimalnej wadze, którą da się połączyć te spójne. Dodajemy ją do naszego drzewa rozpinającego i łączymy je używając struktury Find and Union. Po zakończeniu algorytmu otrzymamy jedną spójną połączoną $(n-1)$ krawędziami – drzewo rozpinające. Złożoność czasowa wynosi $O(\\alpha(n) \\cdot n + m \\cdot log \\ m),$ gdzie $\\alpha$ to bardzo wolno rosnąca funkcja (\"prawie\" stała), która bierze się z użycia struktury Find and Union.
 
 ![Algorytm Kruskala - krok 1](https://codimd.s3.shivering-isles.com/demo/uploads/upload_60cdead21fff6c4b8451f6c7e2b0428c.png)
 
@@ -66,7 +66,7 @@ Algorytm Kruskala również znajduje minimalne drzewo rozpinające. Rozpatruje w
 ![Algorytm Kruskala - krok 3](https://codimd.s3.shivering-isles.com/demo/uploads/upload_984e76ee2f5ca65caabc1af52bf43cca.png)
 
 ## Algorytm Borůvki
-Algorytm Borůvki jest już trzecią metodą na uzyskanie drzewa rozpinającego przy użyciu tych samych faktów. Na początku każdy wierzchołek jest osobną spójną. Dla każdej z nich weźmiemy najlżejszą krawędź, która z niej wychodzi, dodamy ją do drzewa rozpinającego i połączymy ją ze spójną, do której prowadzi. W ten sposób po n krokach liczba spójnych zmniejszy się dwukrotnie. Po $O(n\ log\ n)$ krokach uzyskamy drzewo rozpinające.
+Algorytm Borůvki jest już trzecią metodą na uzyskanie drzewa rozpinającego przy użyciu tych samych faktów. Na początku każdy wierzchołek jest osobną spójną. Dla każdej z nich weźmiemy najlżejszą krawędź, która z niej wychodzi, dodamy ją do drzewa rozpinającego i połączymy ją ze spójną, do której prowadzi. W ten sposób po n krokach liczba spójnych zmniejszy się dwukrotnie. Po $O(n\\ log\\ n)$ krokach uzyskamy drzewo rozpinające.
 
 ![Algorytm Boruvki krok po kroku](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a2c40b3742e27b6a73a57aeb987e3abb.png)
 

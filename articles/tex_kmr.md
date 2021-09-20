@@ -4,11 +4,11 @@ content: "
 Na ostatniej lekcji nauczyłeś się porównywać słowa za pomocą haszowania. Dzisiaj dowiesz się jak to robić innym sposobem. Mimo, że jest zarówno trudniejszy w implementacji jak i lekko wolniejszy, to warty uwagi. Istnieje wiele zadań, w których zastosowanie go jest prostsze. Dodatkowo, w odróżnieniu od haszowania, zawsze działa. Przydaje się także w konstrukcji Tablicy Sufiksowej, o której będzie następna lekcja.
 
 ## Algorytm Karpa-Millera-Rosenberga
-Algorytm Karpa-Millera-Rosenberga (w skrócie KMR), zwany również Słownikiem Podsłów Bazowych, umożliwia porównywanie podsłów słowa $S$ w złożoności czasowej i pamięciowej $O(n \cdot log \ n).$
+Algorytm Karpa-Millera-Rosenberga (w skrócie KMR), zwany również Słownikiem Podsłów Bazowych, umożliwia porównywanie podsłów słowa $S$ w złożoności czasowej i pamięciowej $O(n \\cdot log \\ n).$
 
 Zupełnie jak w haszowaniu będziemy chcieli przyporządkować tekstom liczby. Takie same podsłowa powinny mieć przyporządkowaną tę samą liczbę. Każde podsłowo powinno mieć przyporządkowaną mniejszą liczbę od późniejszych leksykograficznie i większą od wcześniejszych. KMR zachowuje te relacje między podsłowami o równych długościach, co umożliwia ich porównywanie. Zauważmy, że słowa o różnych długościach nigdy nie są takie same, więc ten przypadek można sprawdzić osobno.
 
-Jako, że wszystkich podsłów jest rzędu $O(n^2),$ nie możemy sobie pozwolić na przetworzenie wszystkich. Z tego powodu, na początku, zajmiemy się tylko tymi, których długość jest potęgą dwójki. Na każdej z n pozycji S może znajdować się jedno podsłowo długości $2^k$ $(k \leq logn).$ Oznacza to, że tych podsłów jest $O(nlogn).$
+Jako, że wszystkich podsłów jest rzędu $O(n^2),$ nie możemy sobie pozwolić na przetworzenie wszystkich. Z tego powodu, na początku, zajmiemy się tylko tymi, których długość jest potęgą dwójki. Na każdej z n pozycji S może znajdować się jedno podsłowo długości $2^k$ $(k \\leq logn).$ Oznacza to, że tych podsłów jest $O(nlogn).$
 
 Niech $KMR[x][k]$ oznacza wartość przyporządkowaną podsłowu mającemu długość $2^k$ i znajdującemu się na $x$-tej pozycji $S.$ Algorytm zaczynamy od podsłów długości $2^0 = 1,$ czyli od pojedynczych liter. Każdemu znakowi ’a’ przyporządkujemy 1, ’b’ - 2, ’c’ - 3, aż do ’z’, któremu przypiszemy 26.
 
@@ -31,7 +31,7 @@ Posortujmy wszystkie pary. Podsłowom odpowiadającym najmniejszej przyporządku
 
 ![Posortowane pary](https://codimd.s3.shivering-isles.com/demo/uploads/upload_fdc957a3a473968981bfb156af5cedda.png)
 
-Tak oto mamy przyporządkowane liczby do podsłów o długości $2$ - obliczyliśmy wartości $KMR[x][1]$ dla każdego $x \leq n.$ Poziom $2$ możemy uzupełnić analogicznie. Dla podsłowa znajdującego się na pozycji $x$ utworzymy parę (KMR[x][1], KMR[x + 2][1])$.
+Tak oto mamy przyporządkowane liczby do podsłów o długości $2$ - obliczyliśmy wartości $KMR[x][1]$ dla każdego $x \\leq n.$ Poziom $2$ możemy uzupełnić analogicznie. Dla podsłowa znajdującego się na pozycji $x$ utworzymy parę (KMR[x][1], KMR[x + 2][1])$.
 
 ![Parowanie par](https://codimd.s3.shivering-isles.com/demo/uploads/upload_91f627f96c168615ae2315fa13b79587.png)
 
@@ -39,7 +39,7 @@ Zauważmy, że możemy teraz przyporządkować podsłowom długości $4$ liczby 
 
 ![Numerowanie par](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a97ab32c1dbe7ab6b0bccaf7faefec13.png)
 
-Co więcej, ta metoda działa dla dowolnego $2^k!$ W celu przyporządkowania liczb podsłowom na poziomie $k$-tym możemy dla każdego $x \leq n$ utworzyć parę $(KMR[x][k-1], KMR[x+2^k-1][k-1])$ i użyć wcześniej opisanej metody.
+Co więcej, ta metoda działa dla dowolnego $2^k!$ W celu przyporządkowania liczb podsłowom na poziomie $k$-tym możemy dla każdego $x \\leq n$ utworzyć parę $(KMR[x][k-1], KMR[x+2^k-1][k-1])$ i użyć wcześniej opisanej metody.
 
 Oto uzupełniona tablica KMR dla słowa <b>abcdfabcdef</b>:
 
@@ -86,7 +86,7 @@ W celu porównania dwóch podsłów o długości $2^k$ znajdujących się kolejn
 
 ![Dwa podsłowa](https://codimd.s3.shivering-isles.com/demo/uploads/upload_ac7d62f870953e4109b74dccadb2d6ab.png)
 
-Niech $a$ będzie długością podsłowa, $x$ pozycją jego początku w $S$ i $y$ pozycją jego końca. Weźmy maksymalne takie $q,$ że $2^q \leq a.$ Zauważmy, że:  $2^q + 2^q = 2^q+1 > a$ oraz $2^q > \frac{a}{2}.$
+Niech $a$ będzie długością podsłowa, $x$ pozycją jego początku w $S$ i $y$ pozycją jego końca. Weźmy maksymalne takie $q,$ że $2^q \\leq a.$ Zauważmy, że:  $2^q + 2^q = 2^q+1 > a$ oraz $2^q > \\frac{a}{2}.$
 
 Oznacza to, że gdy weźmiemy podsłowa o długości $2^q$ zaczynające się na pozycji $x$ oraz $y - 2^q + 1,$ to całkowicie pokryją interesujące nas podsłowo i nie wyjdą poza jego ramy. Oznacza to, że dla dwóch podsłów możemy utworzyć pary postaci $(KMR[x][q],KMR[y-2^q+1][q])$ i porównywać je ze sobą.
 
@@ -95,7 +95,7 @@ Oznacza to, że gdy weźmiemy podsłowa o długości $2^q$ zaczynające się na 
 Zauważmy, że oprócz sprawdzania czy podsłowa są równe KMR umożliwia sprawdzenie, które z nich jest wcześniejsze leksykograficznie. Jest to bardzo mocna zaleta i możliwość, której nie daje haszowanie.
 
 ## Porównywanie podsłów dwóch różnych słów za pomocą KMR
-Algorytm KMR umożliwia nam porównywanie podsłów jednego słowa. A co gdybyśmy chcieli porównywać między sobą podsłowa dwóch różnych słów $S$ i $W$? Okazuje się, że to nie jest żaden problem. Możemy połączyć $S$ i $W$ w jedno słowo. Chcielibyśmy jednak uniknąć powstania nowych podsłów, które tak naprawdę nie istnieją. W tym celu utworzymy słowo $X$ postaci: $S+\#+W,$ gdzie $\#$ to znak spoza alfabetu.
+Algorytm KMR umożliwia nam porównywanie podsłów jednego słowa. A co gdybyśmy chcieli porównywać między sobą podsłowa dwóch różnych słów $S$ i $W$? Okazuje się, że to nie jest żaden problem. Możemy połączyć $S$ i $W$ w jedno słowo. Chcielibyśmy jednak uniknąć powstania nowych podsłów, które tak naprawdę nie istnieją. W tym celu utworzymy słowo $X$ postaci: $S+\\#+W,$ gdzie $\\#$ to znak spoza alfabetu.
 
 ![Łączenie słów haszem](https://codimd.s3.shivering-isles.com/demo/uploads/upload_53f97a9db9e1cf97ebfd50c1edd975d7.png)
 

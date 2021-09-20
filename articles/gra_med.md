@@ -20,10 +20,10 @@ Rozwiązywanie problemów dotyczących meduz może być bardzo przyjemnym zajęc
 
 ![Ławica](https://codimd.s3.shivering-isles.com/demo/uploads/upload_53bafd7eac53dff17cf3199c511e0379.png)
 
-W wektorze $Cykl[i]$ będziemy trzymali listę wierzchołków znajdujących się na cyklu $i$-tej meduzy. Bitset lub tablica bool'i $na\_cyklu[x]$ określi, czy $x$ znajduje się na którymś z nich.
+W wektorze $Cykl[i]$ będziemy trzymali listę wierzchołków znajdujących się na cyklu $i$-tej meduzy. Bitset lub tablica bool'i $na\\_cyklu[x]$ określi, czy $x$ znajduje się na którymś z nich.
 
 ### Las meduzy
-Drzewa ukorzenimy w wierzchołach znajdujących się na cyklu. Zauważmy, że tylko korzenie graniczą z wierzchołkami znajdującymi się poza drzewem -- tymi, których wartość $na\_cyklu[]$ jest jedynką logiczną. Pozostałe wierzchołki drzewa są połączone tylko między sobą. Pozwala nam to przetwarzać je nie przejmując się tym, że należą do meduzy jeśli tylko "wyifujemy" nie wchodzenie do wierzchołków znajdujących się na cyklu.
+Drzewa ukorzenimy w wierzchołach znajdujących się na cyklu. Zauważmy, że tylko korzenie graniczą z wierzchołkami znajdującymi się poza drzewem -- tymi, których wartość $na\\_cyklu[]$ jest jedynką logiczną. Pozostałe wierzchołki drzewa są połączone tylko między sobą. Pozwala nam to przetwarzać je nie przejmując się tym, że należą do meduzy jeśli tylko \"wyifujemy\" nie wchodzenie do wierzchołków znajdujących się na cyklu.
 
 Przykładowa implementacja $DFS'a$:
 
@@ -43,7 +43,7 @@ Cykl można znaleźć na wiele sposobów. Jest to prosty, jednakże bardzo heuro
 
 ![Meduzy z krawędziami wielokrotnymi lub pętalmi](https://codimd.s3.shivering-isles.com/demo/uploads/upload_7622ceb5d623edded821dd3ea5b3d180.png)
 
-Napiszemy $DFS'a.$ Podczas przechodzenia z wierzchołka $x$ do jego syna w $wychodzaca[x]$ zapiszemy numer krawędzi, którą przechodzimy. Kiedy w pewnym momencie z $b$ będzie wychodzić krawędź do $a$ o numerze innym niż $wychodzaca[a],$\\ ciąg $a,$ $wychodzaca[a],$ $wychodzaca[wychodzaca[a]],$ ... , $b$ będzie tworzyć cykl.
+Napiszemy $DFS'a.$ Podczas przechodzenia z wierzchołka $x$ do jego syna w $wychodzaca[x]$ zapiszemy numer krawędzi, którą przechodzimy. Kiedy w pewnym momencie z $b$ będzie wychodzić krawędź do $a$ o numerze innym niż $wychodzaca[a],$\\\\ ciąg $a,$ $wychodzaca[a],$ $wychodzaca[wychodzaca[a]],$ ... , $b$ będzie tworzyć cykl.
 
 Zauważmy, że taka implementacja radzi sobie z krawędziami wielokrotnymi, jednakże przypadek z pętlą należy rozpatrzeć osobno. Nie powinno to jednak stanowić żadnego problemu -- wystarczy sprawdzić, czy istnieje krawedź z $x$ do $x.$
 

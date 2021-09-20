@@ -42,7 +42,7 @@ Niech ```depth[x]``` oznacza głębokość $x.$ Ponieważ odległość między $
 
 ![Ścieżki od LCA do dwóch wierzchołków](https://codimd.s3.shivering-isles.com/demo/uploads/upload_ea543d6d73431efa4c3050c64dd986be.png)
 
-Załóżmy, że ```depth[B] >= depth[A]```. Na początku znajdujemy przodka $B,$ którego głebokość jest równa $depth[A].$ Oznaczmy go przez $B'.$ Użyjemy do tego tablicy ancestor. „Skaczemy” do wierzchołka oddalonego od $B$ o największe takie $2^k,$ że ```depth[ancestor[B][k]] >= depth[A]```. Z niego możemy wykonać następny skok do wierzchołka, z którego wykonamy kolejny skok\dots Każdy kolejny będzie coraz krótszy. Gdyby dwa skoki miały taką samą długość, można byłoby zrobić jeden, dwa razy dłuższy - założenie nie byłoby spełnione. W ten sposób po $O(log \ n)$ skokach znajdziemy się w $B'.$ Jeśli $B' = A,$ znaleźliśmy $LCA(A, B).$
+Załóżmy, że ```depth[B] >= depth[A]```. Na początku znajdujemy przodka $B,$ którego głebokość jest równa $depth[A].$ Oznaczmy go przez $B'.$ Użyjemy do tego tablicy ancestor. „Skaczemy” do wierzchołka oddalonego od $B$ o największe takie $2^k,$ że ```depth[ancestor[B][k]] >= depth[A]```. Z niego możemy wykonać następny skok do wierzchołka, z którego wykonamy kolejny skok\\dots Każdy kolejny będzie coraz krótszy. Gdyby dwa skoki miały taką samą długość, można byłoby zrobić jeden, dwa razy dłuższy - założenie nie byłoby spełnione. W ten sposób po $O(log \\ n)$ skokach znajdziemy się w $B'.$ Jeśli $B' = A,$ znaleźliśmy $LCA(A, B).$
 
 ```cpp=
 if (depth[B] < depth[A])
@@ -56,7 +56,7 @@ if(A == B)
 
 ![LCA oraz skoki - pośredni przodkowie](https://codimd.s3.shivering-isles.com/demo/uploads/upload_0af5fd9de8c63af01a55946395457460.png)
 
-W przeciwnym wypadku możemy wykonywać analogiczne „skoki” o największe takie $2^k,$ że ```ancestor[A][k] != ancestor[B'][k]```. Po $O(log \ n)$ ruchach wierzchołki, do których doskoczymy będą synami $LCA(A,B).$
+W przeciwnym wypadku możemy wykonywać analogiczne „skoki” o największe takie $2^k,$ że ```ancestor[A][k] != ancestor[B'][k]```. Po $O(log \\ n)$ ruchach wierzchołki, do których doskoczymy będą synami $LCA(A,B).$
 
 ```cpp=
 for (int k = 20; k >= 0; k --) {
@@ -68,7 +68,7 @@ for (int k = 20; k >= 0; k --) {
 return ojciec[A];
 ```
 
-W ten sposób znaleźliśmy $LCA(A,B)$ kosztem czasowym i pamięciowym $O(n \cdot log \ n).$
+W ten sposób znaleźliśmy $LCA(A,B)$ kosztem czasowym i pamięciowym $O(n \\cdot log \\ n).$
 
 ## Zadania
 - [Komiwojażer Bajtazar (IX OI, I etap)](https://szkopul.edu.pl/problemset/problem/-fb7NxSJGXxkJ2Om5FvXzbil/site/?key=statement)

@@ -17,9 +17,6 @@ Max flow - min cut
 */
 
 /*
-\ -> \\
-" -> \" (z wyjątkiem pierwszego i ostatniego)
-
 entery po ##
 podwójne entery
 

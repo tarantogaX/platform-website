@@ -56,11 +56,11 @@ void calculate_low (int x) {
 ```
 
 ## Znajdowanie mostów i punktów artykulacji
-Zauważmy, że krawędź wsteczna nigdy nie będzie mostem, ponieważ po jej usunięciu drzewo rozpinające pozostanie niewzruszone. Rozspójni je tylko usunięcie krawędzi, nad którą nie przechodzi żadna krawędź wsteczna. Most będzie "stał" między $x$ a jego ojcem wtedy i tylko wtedy, gdy $low[x] = depth[x].$
+Zauważmy, że krawędź wsteczna nigdy nie będzie mostem, ponieważ po jej usunięciu drzewo rozpinające pozostanie niewzruszone. Rozspójni je tylko usunięcie krawędzi, nad którą nie przechodzi żadna krawędź wsteczna. Most będzie \"stał\" między $x$ a jego ojcem wtedy i tylko wtedy, gdy $low[x] = depth[x].$
 
 ![Mosty a wartości low i depth](https://codimd.s3.shivering-isles.com/demo/uploads/upload_8c09af0c95d9dc18437feacf8cbde904.png)
 
-Wierzchołek, nie będący korzeniem, jest punktem artykulacji wtedy i tylko wtedy, gdy posiada syna $u$ takiego, że nie istnieje krawędź zwrotna wychodząca z poddrzewa $u$ i mająca koniec nad $x.$ Innymi słowy istnieje syn $u$ taki, że $low[u] \geqslant depth[x].$
+Wierzchołek, nie będący korzeniem, jest punktem artykulacji wtedy i tylko wtedy, gdy posiada syna $u$ takiego, że nie istnieje krawędź zwrotna wychodząca z poddrzewa $u$ i mająca koniec nad $x.$ Innymi słowy istnieje syn $u$ taki, że $low[u] \\geqslant depth[x].$
 
 Punktem artykulacji jest również korzeń wtedy i tylko wtedy gdy ma więcej niż jednego syna.
 
@@ -78,7 +78,7 @@ Taki wierzchołek musi być punktem artykulacji.
 
 ![Wspólny wierzchołek dwóch dwuspójnych jako punkt artykulacji](https://codimd.s3.shivering-isles.com/demo/uploads/upload_4903a3ed6a9e1065c7c4863b2b04e8a7.png)
 
-Powyższe fakty wystarczą nam do zaprojektowania algorytmu rozbijającego graf na dwuspójne. Pomoże nam w tym lekko przerobiona struktura $Find\  \& \ Union.$ Po pierwsze, jak jej polska nazwa wskazuje, działa ona tylko dla rozłączych zbiorów. Przyjmijmy zatem, że punkty artykulacji należące do kilku dwuspójnych, należą tylko do tej położonej najwyżej w drzewie. Podczas rozwiązywania różnych problemów będziemy musieli o tym pamiętać i rozważać ten przypadek osobno.
+Powyższe fakty wystarczą nam do zaprojektowania algorytmu rozbijającego graf na dwuspójne. Pomoże nam w tym lekko przerobiona struktura $Find\\  \\& \\ Union.$ Po pierwsze, jak jej polska nazwa wskazuje, działa ona tylko dla rozłączych zbiorów. Przyjmijmy zatem, że punkty artykulacji należące do kilku dwuspójnych, należą tylko do tej położonej najwyżej w drzewie. Podczas rozwiązywania różnych problemów będziemy musieli o tym pamiętać i rozważać ten przypadek osobno.
 
 Po drugie, niech reprezentantem danego zbioru będzie zawsze wierzchołek, który leży najpłycej. W tym celu podczas operacji $Union$ nie będziemy łączyć mniejszego zbioru do większego, tylko podłącząć głębszego reprezentanta do płytszego. Teoretycznie złożonosć powinna się znacznie pogorszyć, jednak w praktyce czas działania struktury nie zmieni się. Kompresja ścieżek jest <b>mocarna</b>.
 
@@ -115,7 +115,7 @@ void dfs_dwuspojne (int x) {
 }
 ```
 
-Zastanówmy się teraz, w jaki sposób sprawdzać, czy dwa wierzchołki należą do jednej dwuspójnej. Oczywiście $a$ i $b$ należą do jednej dwuspójnej jeśli $Find(a) = Find(b).$ Pozostaje jedynie rozważyć przypadek wierzchołka, który należy do kilku dwuspójnych. Załóżmy, że $depth[a] \geqslant depth[b].$  Dzięki temu, że $Find(a)$ jest najpłytszym wierzchołkiem przypisanym do dwuspójnej $a$ wiemy, że $b$ należy do tej samej dwuspójnej jeśli $b = ojciec[Find(a)]$ oraz zachodzi warunek trzeci, czyli $low[Find(a)] = depth[b].$
+Zastanówmy się teraz, w jaki sposób sprawdzać, czy dwa wierzchołki należą do jednej dwuspójnej. Oczywiście $a$ i $b$ należą do jednej dwuspójnej jeśli $Find(a) = Find(b).$ Pozostaje jedynie rozważyć przypadek wierzchołka, który należy do kilku dwuspójnych. Załóżmy, że $depth[a] \\geqslant depth[b].$  Dzięki temu, że $Find(a)$ jest najpłytszym wierzchołkiem przypisanym do dwuspójnej $a$ wiemy, że $b$ należy do tej samej dwuspójnej jeśli $b = ojciec[Find(a)]$ oraz zachodzi warunek trzeci, czyli $low[Find(a)] = depth[b].$
 
 ```cpp=
 bool czy_w_jednej(int a, int b) {

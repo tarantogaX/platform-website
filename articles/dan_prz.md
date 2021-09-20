@@ -10,7 +10,7 @@ Omawianą strukturą jest drzewo przedziałowe. Zacznijmy od omówienia jego og�
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_f158595da63b8719f1b3e54aa2dbb1ac.png)
 2) Wierzchołki odpowiadają przedziałom, które reprezentują. Zwróć uwagę, że wszystkie przedziały na danej głębokości drzewa mają tę samą długość.
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_50ca423090f1ce7ec9d8fdb3e712860f.png)
-3) Lewy syn wierzchołka $x$ ma numer $2\cdot x,$ a prawy $2\cdot x + 1.$ Jeżeli $x$ odpowiada przedziałowi od $a$ do $b,$ to jego lewy syn odpowiada przedziałowi od $a$ do $(a + b)/2,$ a prawy - od $(a + b)/2 + 1$ do $b.$
+3) Lewy syn wierzchołka $x$ ma numer $2\\cdot x,$ a prawy $2\\cdot x + 1.$ Jeżeli $x$ odpowiada przedziałowi od $a$ do $b,$ to jego lewy syn odpowiada przedziałowi od $a$ do $(a + b)/2,$ a prawy - od $(a + b)/2 + 1$ do $b.$
 
 Rozróżniamy trzy podstawowe rodzaje drzewa przedziałowego: punkt – przedział, przedział – punkt i przedział – przedział. Pierwsze dwa różnią się nieznacznie, zaś ostatnie często uchodzi za trudniejsze. 
 
@@ -21,7 +21,7 @@ W drzewie punkt – przedział aktualizujemy informację w jednym wierzchołku i
 
 Zbudujmy drzewo przedziałowe na przykładowym ciągu:
 $n = 8$ - długość ciągu
-$ciag[n] = \{1\ 5\ 2\ 3\ 1\ 7\ 8\ 3\}$ - kolejne elementy ciągu
+$ciag[n] = \\{1\\ 5\\ 2\\ 3\\ 1\\ 7\\ 8\\ 3\\}$ - kolejne elementy ciągu
 
 Niech $r$ to będzie najmniejsza potęga dwójki niemniejsza od $n.$ Zauważmy, że nasze drzewo przedziałowe zawsze będzie miało podstawę będącą potęgą dwójki, a oczywiste jest, że $n$ nie zawsze takie będzie. Wtedy gdy $r$ okaże się większe od $n,$ nadmiarowe elementy wystarczy ustawić na taką wartość, która nie będzie miała wpływu na rozwiązanie. 
 
@@ -113,7 +113,7 @@ Ten rodzaj drzewa przedziałowego od poprzedniego różni się nieznacznie – t
 
 Dla ułatwienia zostaniemy przy ciągu z poprzedniej części artykułu, a nasze operacje będą wyglądać następująco:
 
-$insert(a, b, c)$ – liczby z przedziału $<a;\ b>$ zmieniamy na $c$
+$insert(a, b, c)$ – liczby z przedziału $<a;\\ b>$ zmieniamy na $c$
 
 $query(a)$ – podajemy wartość ciągu na pozycji $a$-tej.
 
@@ -146,7 +146,7 @@ Nasze drzewo, po początkowych operacjach wstawiania elementów, wygląda nastę
 
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_47be6791daca1da9364ca57de097a0f9.png)
 
-Teraz musimy podać, jaka wartość znajduje się na pozycji czwartej. Wiemy, że będzie to najpóźniejsza z informacji $(3, 0),\ (5, 2),\ (3, 1)$ i $(0, 0),$ ponieważ tylko na ścieżce z $4$-tego elementu do korzenia znajdują się informacje, które go dotyczą. Łatwo zauważamy, że najpóźniejszą z nich jest ustawienie piątki w momencie $2$ – taka jest więc aktualna wartość.
+Teraz musimy podać, jaka wartość znajduje się na pozycji czwartej. Wiemy, że będzie to najpóźniejsza z informacji $(3, 0),\\ (5, 2),\\ (3, 1)$ i $(0, 0),$ ponieważ tylko na ścieżce z $4$-tego elementu do korzenia znajdują się informacje, które go dotyczą. Łatwo zauważamy, że najpóźniejszą z nich jest ustawienie piątki w momencie $2$ – taka jest więc aktualna wartość.
 
 Aby przejrzeć wszystkich przodków danego wierzchołka wystarczy dzielić jego numer przez $2$ dopóki nie jest on równy $1.$ Czyli dokładnie tak, jak robiliśmy to w drzewie punkt – przedział, aby zmienić wartość elementu.
 
@@ -164,8 +164,8 @@ Drzewo przedziałowe przedział – przedział często uchodzi za trudniejsze ni
 
 W tym rodzaju drzewa przedziałowego w obu operacjach insert i query będziemy działać na przedziałach.
 
-- $I(a, b, c)$ – do każdego elementu ciagu z przedzialu $<a;\ b>$ dodaj $c$
-- $Q(a, b)$ – podaj sumę elementów na przedziale $<a;\ b>$ 
+- $I(a, b, c)$ – do każdego elementu ciagu z przedzialu $<a;\\ b>$ dodaj $c$
+- $Q(a, b)$ – podaj sumę elementów na przedziale $<a;\\ b>$ 
 
 W zasadzie moglibyśmy rozwiązać zadanie w podobny sposób, jak w przypadku wcześniejszych drzew. Dla każdego z wierzchołków w drzewie będziemy trzymać dwie wartości – sumę na przedziale, który reprezentuje dany wierzchołek oraz sumę aktualizacji, jakie wykonaliśmy na jego przedziale. Jeśli przez $y$ oznaczmy liczbę wierzchołków należących do początkowego ciągu, które reprezentuje wierzchołek $x,$ to będziemy chcieli, aby zawsze zachodziło:
 
@@ -182,7 +182,7 @@ $Q(1, 1)$
 
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_4d502e124e4f5fb0733658058533e3ba.png)
 
-Zauważmy, że operacja $Insert(1, 2, 1)$ zostanie rozważona tylko w korzeniu $(1),$ a dla query odpowiemy w wierzchołku numer $2,$ ponieważ tylko on zawiera się w przedziale $<1,\ 1>.$ W wierzchołku numer $2$ suma dodawań jest $0.$ Coś tu nie gra.
+Zauważmy, że operacja $Insert(1, 2, 1)$ zostanie rozważona tylko w korzeniu $(1),$ a dla query odpowiemy w wierzchołku numer $2,$ ponieważ tylko on zawiera się w przedziale $<1,\\ 1>.$ W wierzchołku numer $2$ suma dodawań jest $0.$ Coś tu nie gra.
 
 <b>Analiza problemu</b>: Co się stało? Nasze drzewo przestało być aktualne. Dokładniej, kiedy dodaliśmy aktualizację w pewnym wierzchołku, to wszystkie informacje w jego poddrzewie przestały być aktualne. Niestety, przy dodawaniu nie możemy schodzić niżej, ponieważ otrzymalibyśmy złożoność rozwiązania brutalnego, co nas wcale nie urządza.
 
@@ -248,7 +248,7 @@ long long query(int gdzie, int pocz, int kon, int x, int y)
 }
 ```
 
-Technika ta, nazywana $\textit{lazy propagation}$ jest najczęściej stosowana właśnie w drzewach przedział – przedział.
+Technika ta, nazywana $\\textit{lazy propagation}$ jest najczęściej stosowana właśnie w drzewach przedział – przedział.
 
 ## Zadania
 - [Kinoman (XXII OI, I etap)](https://szkopul.edu.pl/problemset/problem/k-RYEjhwNTo_XdaCidXQUGMU/site/?key=statement)
