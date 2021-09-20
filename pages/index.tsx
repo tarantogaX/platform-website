@@ -10,18 +10,16 @@ import { getSectionsList } from '../lib/articles';
 import {SectionBox} from "../components/section-box/SectionBox";
 
 /*
-pierwiastki
-liniowe algorytmy tekstowe
+Pierwiastki
+Liniowe algorytmy tekstowe
 Wielokąty
 Max flow - min cut
+Grafy skierowane (rysunki np.)
+Grafy planarne
+Przepływy
 */
 
 /*
-entery po ##
-podwójne entery
-
-hasze
-
 ```cpp=```
 */
 

@@ -76,7 +76,6 @@ const Navbar: FunctionComponent<NavbarProps> = (props) => {
                                 : <></>
                         )}
                     </ShadowWrapperLast>
-                }
         </StyledNavbarWithOverflow>
     );
 };

@@ -62,7 +62,6 @@ A $K(5)$ wygląda tak:
 \\end{center}
 
 To pozwala nam w dość skomplikowany sposób stwierdzić czy graf jest planarny w nietrywialnej złożoności czasowej $O(n^6).$ Istnieje algorytm, który rozstrzyga ten problem liniowo. Jak już się pewnie domyślasz, jest dość trudny, więc go tutaj nie przedstawimy.
-{\\color{green}link umarł}
 
 ### Ścieżki w grafach planarnych
 
@@ -100,18 +99,26 @@ Jeśli mamy dany graf planarny okraszony pozycjami wierzchołków, to być może
 {\\color{green}To trzeba skreślić.}
 \\text{Ten algorytm jest trudny, a implementowanie go to niestety nic przyjemnego.} Nieprawda! Zawsze tak myślałem, ale mnie oświecono i teraz już wiem, że to nie boli. W każdym razie, przejdźmy do algorytmu.
 
+
 Wspominaliśmy już, że każda krawędź należy do co najwyżej dwóch regionów (ścian). Dla każdej krawędzi stworzymy dwa pomocniczne wierzchołki – odpowiedzialny za jej lewą stronę i za jej prawą stronę.
 
+
 Krawędzie wychodzące z wierzchołków grafu posortujemy kątowo. Można zauważyć, że każde dwie sąsiednie krawędzie wyznaczają nam pewien fragment jednej spójnej. Wobec tego, możemy po pro- stu przejrzeć te krawędzie i złączyć przy pomocy struktury <b>Find \\& Union</b> wierzchołki pomocniczne, które im odpowiadają. W ten sposób każda spójna będzie oznaczała jeden region. Zauważmy, że niektóre wierzchołki pomocnicze nie zostaną połączone z niczym – to te, które odpowiadają za płaszczyznę nieskończoną.
+
 
 \\begin{center}
 \\includegraphics[width=0.4\\textwidth]{image-9.jpg}
 \\end{center}
 
+
 Dlaczego <b>Find \\& Union</b>? Ponieważ jest tylko nieznacznie gorsze teoretycznie niż liniowy <b>DFS</b>, a w praktyce jest znacznie znacznie szybsze (i prostsze do napisania). Prędzej przekroczymy limit pamięci pchając krawędzie na wektory, niż osiągniemy jakikolwiek zysk z liniowego podejścia.
 
+
 ## Zadania
+
 - [Narciarze (VII OI, I etap)](https://szkopul.edu.pl/problemset/problem/Yb04CMWb5dkJbro4Hhmexx_E/site/?key=statement)
+
 - [Narciarze (IX OI, III etap)](https://szkopul.edu.pl/problemset/problem/PUVCH73E4h3hU8UPiJqvvLmQ/site/?key=statement)
+
 "
 ---

@@ -254,10 +254,12 @@ Rozważmy teraz przekrój taki, że zbiór $S$ składa się z warstw $L_0, L_1, 
 ### Algorytm Hopcrofta-Karpa
 Dlaczego sieci jednostkowe są takie ważne? Jeden powód to możliwość sprowadzenia problemu maksymalnego skojarzenia w grafie dwudzielnym do problemu maksymalnego przepływu w sieci jednoskowej. Dokładne sformułowanie problemu i jeden z algorytmów znajdziesz w artykule \"Grafy dwudzielne\". Powiedzmy, że dany graf dwudzielny ma krawędzie tylko między zbiorami $A$ i $B.$ Wszystkie krawędzie sieci którą tworzymy na podstawie grafu mają przepustowość 1. Tworzymy superźródło $s$ z którego prowdzimy krawędzie do każdego z wierzchołków w $A,$ krawędzie między $A$ i $B$ skierowujemy od $A$ do $B$ oraz z każdego wierzchołka z $B$ prowadzimy krawędź do superujścia $t.$ Wystarczy teraz użyć algorytmu Dinitza. Dlaczego to jest poprawne? Wszystkie ścieżki z $s$ do $t$ przechodzą kolejno przez $s,$ wierzchołek z $A,$ wierzchołek z $B,$ $t$ oraz dwie różne mają i różny wierzchołek z $A$ i różny wierzchołek z $B.$ Oznacza to, że problem przepływowy można interpretować jako szukanie maksymalnej liczby rozłącznych ścieżek od $s$ do $t$ , czyli inaczej maksymalne skojarzenie $A$ i $B.$ \\\\
 Algorytm ten nazywa się algorytmem Hopcrofta-Karpa. Mogoby się wydawać, że to tyle o skojarzeniach, a złożoność wynosi $O(m \\cdot min(n^{\\frac{2}{3}},\\sqrt{m})).$ Nic bardziej mylnego. Tym razem algorytm Dinitza szuka przepływu blokującego $O(\\sqrt{n})$ razy, czyli ostatecznie złożoność to $O(\\sqrt{n} \\cdot m).$\\\\
-<b>Dowód</b>\\\\
+<b>Dowód</b>
 Czym takim wyróżnia się ten graf? Otóż każdy wierzchołek nie licząc $s$ i $t$ ma jedną krawędź wchodzącą lub jedną wychodzącą. To oznacza, że przez każdy wierzchołek może przechodzić maksymalnie jedna ścieżka. Przez to sumatyczna długość ścieżek nie przekracza $O(n).$ Teraz postępując analogicznie do pudpunktu 1. w dowodzie złożoności dla sieci jednostkowych otrzymujemy, że ilość kroków to $O(\\sqrt{n}).$ Wystarczy, że zamienimy tam wszędzie $m$ na $n$ oraz $\\sqrt{m}$ na $\\sqrt{n}.$ $\\blacksquare$
 
+
 ### Algorytm Dinitza ze skalowaniem
+
 Można dosyć łatwo ulepszyć algorytm Dinitza do złożoności $O(nm\\log{z}),$ gdzie $z$ to maksymalna przepustowość. Pokażemy sposób, aby przepływ blokujący szukać w czasie $O(m \\log{z})$ zamiast $O(nm).$ Niech $2^p$ to nawiększy bit wszystkich przepustowości. Wtedy $p=O(\\log{z}).$ Będziemy $p$ razy wykonywać algorytm na sieci jednostkowej. Bardzo istotny jest fakt, że w podsieci w której szukamy przepływu blokującego przepływ na krawędziach może tylko rosnąć. Najpierw wykonujemy algorytm używając tylko ścieżek, którymi
 może przepłynąć $\\geq 2^p.$ Widzimy, że wtedy dwie takie ścieżki nie mogą się pokrywać krawędziowo, czyli działa to tak samo jak na sieci jednostkowej. Z tego powodu ta część algorytmu działa w czasie $O(m).$ A co zrobiliśmy? Pozbyliśmy się wszystkich ścieżek, którymi mogło popłynąć $\\geq 2^p$ oraz zaktualizowaliśmy odpowiednio wynik. Teraz robimy tak dla $2^{p-1}, 2^{p-2}, \\dots , 2^0$ i otrzymujemy przepływ blokujący w czasie $O(mp)=O(m \\log{z}).$ Okazuje się, że w implementacji ta poprawka zajmuje mało kodu.\\\\
 <b>Implementacja</b>\\\\
@@ -346,13 +348,19 @@ może przepłynąć $\\geq 2^p.$ Widzimy, że wtedy dwie takie ścieżki nie mog
 \\B \\}
 }}}}
 
+
 ### Rzeczywista szybkość
+
 Złożoności $O(n^2m)$ nie wyglądają na szybkie, ale w praktyce wszystie powyższe algorytmy działają <b>znacznie szybciej</b> niż mogłoby się to wydawć. Przawdziwy czas działania to $O(szybko),$ a nawet algorytm Endomondsa-Karpa działa, gdy $n=10^5, m=10^5.$ Dlatego przeważnie gdy coś można zrobić przepływem to czasowo zadzaiała taki program na 100. Należy jednak mieć na uwadze, że lepiej kodzić porządnie i używać szybszych algorytmów. Ma to duże znaczenie, szególnie gdy chcemy coś przepchnąć.
 
 
 ## Zadania
+
 - [Kości (XII OI, II etap)](https://szkopul.edu.pl/problemset/problem/8OrJo8TOlY9pynt7Tr9jMzzW/site/?key=statement)
+
 - [Szkoły (XIII OI, II etap)](https://szkopul.edu.pl/problemset/problem/yBeLudj_9WZ06ZvEQOL7cgoi/site/?key=statement)
+
 - [Łyżwy (XVI OI, II etap)](https://szkopul.edu.pl/problemset/problem/kadKFW3YScAMW8o20u0BctQh/site/?key=statement)
+
 "
 ---

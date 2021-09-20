@@ -86,8 +86,8 @@ export const sections: Array<SectionProps> = [
         title: "Teoria liczb",
         lessons: [
             {title: "Wstęp do Teorii liczb", id: "num_wst"},
-            {title: "Arytmetyka modulo 1", id: "num_mo1"},
-            {title: "Arytmetyka modulo 2", id: "num_mo2"},
+            {title: "Arytmetyka modulo", id: "num_mo1"},
+            {title: "Arytmetyka modulo: generatory", id: "num_mo2"},
             {title: "Bardzo duże liczby", id: "num_big"}
         ]
     },
