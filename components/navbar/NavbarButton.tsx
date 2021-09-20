@@ -15,6 +15,7 @@ const Button = styled(P)`
     padding-left: 50px;
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-right: 10px;
 `;
 
 const ButtonSelected = styled(Button)`

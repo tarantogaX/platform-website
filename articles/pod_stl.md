@@ -1,13 +1,12 @@
 ---
 title: 'Standard template library'
 content: "
-### Standard template library
-
 Czym właściwie jest STL? Gdybyśmy dokładnie przetłumaczyli dosłownie ten skrót na polski, otrzymalibyśmy: <b>Standardowa Biblioteka Szablonów.</b> Jest to nic innego jak zbiór gotowych struktur, algorytmów i innych narzędzi, które mogą nam się przydać. Większość z nich potrafimy bez trudu zaimplementować samemu, ale dla uproszczenia pracy często z nich korzystamy.
 
 
 Cała [dokumentacja standardowej biblioteki](https://en.cppreference.com/w/cpp/container) jest dostępna w internecie w języku angielskim (w języku polskim też można co nieco znaleźć, ale to nie musi być najlepszy pomysł...). Zawiera mnóstwo informacji, które dla osoby niewprawionej mogą okazać się dosyć nieprzystępne. W tym artykule znajdziesz opis najbardziej przydatnych rzeczy, które możesz w znaleźć STL-u.
 
+## Najbardziej przydatne struktury
 
 Wszystkie opisane poniżej funkcje znajdziesz w bibliotece <b>bits/stdc++.h,</b> którą wystarczy dołączyć na początku programu pisząc: ```#include<bits/stdc++.h>```. Ponadto, przyda się jeszcze linijka ```using namespace std;```, aby nie musieć za każdym razem pisać <b>std::</b> przed nazwą każdej struktury. 
 
@@ -311,16 +310,16 @@ Istnieje także nieuporządkowana odmiana seta i mapy -- unordered_set i unorder
 
 W zasadzie nic więcej nie potrzebujemy wiedzieć o mapie. Jeśli jednak czujesz niedosyt zajrzyj [tutaj](http://www.cplusplus.com/reference/map/map/).
   
-### Typ auto
+## Typ auto
 
 Słowo kluczowe ```auto``` oznacza zastępczy typ zmiennej, który zostanie wydedukowany na podstawie wartości za pomocą której zmienna zostanie zainicjalizowana. Zmienna, której nadano zastępczy typ auto musi zostać zainicjalizowana w chwili jej tworzenia. W przeciwnym wypadku zostanie zwrócony błąd kompilacji. Typ ten jest szczególnie przydatny przy iteracji po kontenerach. Przykładowo zastosowanie znajduje się na końcu tego artykułu. Niezalecane jest nadużywanie auto.
  
 
-### Przeładowywanie - jak zmienić działanie kontenera?
+## Przeładowywanie - jak zmienić działanie kontenera?
 
 Jak pewnie zauważyłeś, opisane struktury mają ograniczoną funkcjonalność. Przykładowo, domyślne porównywanie par porównuje najpierw ich pierwsze liczby, a następnie (jeśli są równe), drugie. Co gdybyśmy chcieli zrobić coś innego, np. porównywać pary w ten sposób, żeby mniejsza para to była ta o mniejszej sumie swoich liczb? Programiści STL zdawali sobie sprawę z tego problemu, dlatego stworzyli przeładowywanie. Polega ono na zastąpieniu domyślnej wersji czegoś swoją własną interpretacją. Niestety, niektóre z podanych struktur przeładowuje się inaczej niż inne, dlatego, w przypadku konieczności przeładowania działania jakiegoś kontenera, będziesz musiał wyszukać, jak się to robi w tej konkretnej sytuacji.
 
-### Złożoności czasowe kontenerów
+## Złożoności czasowe kontenerów
 
 Aby artykuł był kompletny, musimy jeszcze wspomnieć o złożonościach czasowych, w jakich działają wszystkie oferowane funkcje:
 
@@ -333,7 +332,7 @@ Aby artykuł był kompletny, musimy jeszcze wspomnieć o złożonościach czasow
 
 Podczas projektowania algorytmów z użyciem Standard Template Library musisz pamiętać, że większość struktur oferuje znacznie więcej niż jest Ci potrzebne, dlatego napisane własnoręcznie i posiadające tylko potrzebne fukncje mogą okazać się znacznie szybsze.
 
-### Zastosowanie
+## Zastosowanie
 
 Oto przykładowy program, służący do wypisania wszystkich permutacji podanych liczb, od najmniejszej (tzn. mającej jak najmniejsze liczby po lewej) do największej, w pełni wykorzystujący dobrodziejstwa STLa.
 
@@ -383,7 +382,7 @@ int main() {
 
 Zastanów się, dlaczego najpierw posortowaliśmy ciąg i dlaczego użyliśmy do...while zamiast while. Jak myślisz, co robi tutaj funkcja ```next_permutation(v.begin(), v.end())```? Jeśli nie jesteś pewien, poszukaj o tym w dokumnetacji!
  
-### Zadania
+## Zadania
 
 - [Sortowanie biżuterii (I OIJ, I etap)](https://szkopul.edu.pl/problemset/problem/ERz8Uez5UFnNbPH2Jn965eZ3/site/?key=statement)
 

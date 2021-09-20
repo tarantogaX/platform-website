@@ -6,14 +6,14 @@ Zapewne każdy wie, jak wygląda gąsienica. Jest to typ larwy u motyli i błon�
 
 Co ma gąsienica do rozwiązywania problemów informatycznych? Otóż posiada mocarną umiejętność – <b>pełzanie.</b>
 
-### Kiedy stosować metodę gąsienicy? Intersujące przedziały
+## Kiedy stosować metodę gąsienicy? Intersujące przedziały
 
 W bardzo wielu zadaniach napotykamy się na potrzebę przetwarzania informacji dla przedziałów, które spełniają dany warunek. Nazwijmy je <b>interesującymi.</b> W tym artykule będą nas obchodzić problemy, w których <b>jeżeli warunek zachodzi dla fragmentu $[a, b + 1]$ lub $[a - 1, b],$ to zachodzi również dla $[a,b]$</b>
 
 
 Oznacza to, że dla każdego początku $a$ albo żaden fragment nie jest interesujący, albo istnieje taki koniec $b,$ że wszystkie interesujące przedziały zawierają się w przedziale $[a, b].$
 	
-### Pełzanie
+## Pełzanie
 
 W celu rozwiązywania tego typu problemów możemy dla $i$ „pełzać” po kolejnych $j$ dopóki fragment $[i, j + 1]$ spełnia dany warunek. Wówczas przetwarzamy informacje dla znalezionych przedziałów i \"skracamy się\", po czym kontynuujemy poszukiwania dla $i + 1.$ Zauważmy, że skoro $[i + 1, j]$ jest interesujące, to możemy wznowić „pełzanie” dalszym końcem od $j$ zamiast od $i + 1.$ Ta optymalizacja zmniejsza koszt czasowy przeglądnięcia wszystkich interecujących przedziałów z $O(n ^ 2)$ do $O(n).$ 
 
@@ -31,11 +31,11 @@ Gdybyśmy chcieli sprawdzać oddzielnie każdy przedział, w sumie musielibyśmy
 ![gąsienica, pełznąca po przedziałach](https://codimd.s3.shivering-isles.com/demo/uploads/upload_d449c5a8e7ba6b3889e11f6280c2f24f.png)
 
 
-### Zadanie - szukanie najdłuższego ciągu o niedużej sumie
+## Zadanie - szukanie najdłuższego ciągu o niedużej sumie
 
 Mając dane $K$ i ciąg $n$ liczb naturalnych $a_i$ podaj długość najdłuższego przedziału $[p, k]$ takiego, że $a_p + a_{p+1} + a_{p+2} + \\dots + a_{k-1} + a_k < K.$
 
-#### Rozwiązanie metodą gąsienicy
+### Rozwiązanie metodą gąsienicy
 
 Niech $S(a,b)$ będzie równe sumie liczb na przedziale $[a,b].$ Dla każdej pozycji $i$ szukamy najdłuższego fragmentu  zaczynającego się na $i,$ spełniającego podaną nierówność. Będziemy iterować się po kolejnych $j$ tak długo, aż $S(i, j + 1) < K.$
 
@@ -82,7 +82,7 @@ int najdluzszy_przedzial(int k, int a[]) {
 
 ```
 
-### Zadania
+## Zadania
 
 - [Pocztówka (III OIJ, II etap)](https://szkopul.edu.pl/problemset/problem/o7GQu46vul51CKrIKIKHS1_i/site/?key=statement)
 

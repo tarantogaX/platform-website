@@ -1,7 +1,7 @@
 ---
 title: 'Sumy prefiksowe'
 content: "
-### Zadanie - szukanie sum na przedziałach
+## Zadanie - szukanie sum na przedziałach
 
 Podaj sumę na przedziale $[a,b]$ ciągu $S$ o długości $n$ $(n \\leq 10^6).$
 
@@ -9,11 +9,11 @@ Podaj sumę na przedziale $[a,b]$ ciągu $S$ o długości $n$ $(n \\leq 10^6).$
 ![przykład](https://codimd.s3.shivering-isles.com/demo/uploads/upload_3ad8040f07cf46f57ebe76fea99e2fff.png)
 
 
-#### Wolne rozwiązanie
+### Wolne rozwiązanie
 
 Pierwsze rozwiązanie, na jakie możemy wpaść to przejrzenie wszystkich elementów od $a$-tego do $b$-tego i zsumowanie ich. Tak po prostu. Bez haczyków. Zastanówmy się, jaką to ma złożoność obliczeniową. Wykonamy $b – a$ operacji. W najgorszym wypadku, kiedy $a = 1$ i $b = n,$ wyniesie ona $O(n).$ Co gdybyśmy chcieli zapytać się o sumę na przedziale $m$ $(m \\leqslant 10^6)$ razy? Uzyskalibyśmy wtedy złożoność $O(nm),$ co zdecydowanie nie brzmi satysfakcjonująco.
 
-#### Sumy prefiksowe
+### Sumy prefiksowe
 
 Niech $pref[i]$ oznacza sumę na prefiksie o długości $i$ (inaczej $i$-tym prefiksie). Chcemy obliczyć $pref[i]$ dla każdego naturalnego $i \\leq n.$ Pomogą nam w tym dwa spostrzeżenia:
 
@@ -29,7 +29,7 @@ $2)$ Dla $i > 1$ zachodzi: $pref[i] = pref[i – 1] + S_i$
 
 Pozwala nam to policzyć wszystkie sumy prefiksowe w $O(n).$
 
-#### Suma na przedziale
+### Suma na przedziale
 
 Zauważmy, że suma na przedziale $[a,b]$ to nic innego jak $pref[b] – pref[a – 1]$ (przy czym zakładamy, że $pref[0]=0$).
 
@@ -39,7 +39,7 @@ Zauważmy, że suma na przedziale $[a,b]$ to nic innego jak $pref[b] – pref[a 
 
 Oznacza to, że jeśli obliczymy wcześniej sumy prefiksowe w $O(n)$ to będziemy mogli pytać się o sumy na przedziale w $O(1).$ Nasz problem będziemy mogli rozwiązać w $O(n + m)$ zamiast $O(nm).$ Jest to bardzo satysfakcjonujące rozwiązanie.
 
-### Dwuwymiarowe sumy prefiksowe
+## Dwuwymiarowe sumy prefiksowe
 
 Dany mamy prostokąt podzielony na komórki, w każdej znajduje się liczba. Chcemy podać sumę liczb w podprostokątach.
 
@@ -67,15 +67,15 @@ Zauważmy, że suma w prostokącie, którego lewy górny róg ma współrzędne 
 
 Metodę sum prefiksowych możemy rozszerzyć na większą liczbę wymiarów, obliczając odpowiednie wzory podobnie do tych pokazanych powyżej. Jednak już dla $n \\geq 4$ jest to dosyć trudne, przez co raczej rzadko widywane.
  
-### Iloczyny i xory prefiksowe - uogólnienie
+## Iloczyny i xory prefiksowe - uogólnienie
 
 Funkcja sumy nie jest jedyną funkcją, którą możemy liczyć na prefiksach. Możemy liczyć też chociażby funkcje $min,$ $max$ czy $xor.$ Jednak by móc w ten sposób obliczać ich wartość dla dowolnych przedziałów, używana funkcja musi mieć zdefiniowaną odwrotność (np. odejmowanie dla dodawania, dzielenie dla mnożenia czy $xor$ dla $xor$-a). Dlatego mając tablicę $xor$-ów prefiksowych $XOR[i]$ możemy obliczyć $xor$ na dowolnym przedziale $[i,j]:$ będzie on równy $XOR[j] \\ xor \\ XOR[i-1],$ ponieważ funkcją odwrotną dla $xor$-a jest właśnie $xor.$ Nie możemy natomiast obliczyć $min$ na przedziale mając tylko wartości dla prefiksów, ponieważ funkcja $min$ nie ma swojej odwrotności.
 
-### Szczegół implementacyjny - indeksowanie
+## Szczegół implementacyjny - indeksowanie
 
 Z pewnych względów elementy naszej tablicy numerowaliśmy od jedynki zamiast od zera. Ten trick implementacyjny warto stosować w swoich programach. Pomyślmy, co stanie się, gdy ktoś zapyta nas o prefiks $[1,i].$ Gdybyśmy indeksowali elementy od zera odpowiedź na nie byłaby równa $pref[i-1] – pref[-1],$ co spowoduje odwołanie się do elementu będącego poza tablicą. Problem nie będzie występować w przypadku numerowania ciągu od jedynki. W $pref[0]$ należy zapisać tzw. element neutralny wykonywanego działania (np. 0 dla dodawania, 1 dla mnożenia). Problemy wielowymiarowe są analogiczne.
 
-### Zadania
+## Zadania
 
 - [Halloween (VI OIJ, zawody drużynowe)](https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/problemset/problem/dpUrcEC9SeZC4bUHhqj0lU4d/site/?key=statement)
 

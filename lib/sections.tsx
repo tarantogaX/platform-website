@@ -25,87 +25,87 @@ export const sections: Array<SectionProps> = [
     {
         title: "Projektowanie algorytmów",
         lessons: [
-            {title: "Algorytmy zachłanne", id: "yyyyy"},
-            {title: "Wstęp do programowania dynamicznego", id: "yyyyy"},
-            {title: "Dziel i zwyciężaj", id: "yyyyy"}
+            {title: "Algorytmy zachłanne", id: "pro_zac"},
+            {title: "Wstęp do programowania dynamicznego", id: "pro_dyn"},
+            {title: "Dziel i zwyciężaj", id: "pro_dzi"}
         ]
     },
     {
         title: "Programowanie dynamiczne",
         lessons: [
             {title: "Problem plecakowy", id: "dyn_ple"},
-            {title: "Dynamiki kombinatoryczne", id: "yyyyy"},
-            {title: "Dynamiki optymalizacyjne", id: "yyyyy"},
-            {title: "Dynamiki wykładnicze", id: "yyyyy"},
-            {title: "Potęgowanie dynamików", id: "yyyyy"}
+            {title: "Dynamiki kombinatoryczne", id: "dyn_kom"},
+            {title: "Dynamiki optymalizacyjne", id: "dyn_opt"},
+            {title: "Dynamiki wykładnicze", id: "dyn_wyk"},
+            {title: "Potęgowanie dynamików", id: "dyn_pot"}
         ]
     },
     {
         title: "Algorytmy tekstowe",
         lessons: [
-            {title: "Wprowadzenie", id: "yyyyy"},
-            {title: "Haszowanie", id: "yyyyy"},
-            {title: "Liniowe algorytmy tekstowe", id: "yyyyy"},
-            {title: "Drzewo trie", id: "yyyyy"},
-            {title: "Porównywanie tekstów z aktualizacjami", id: "yyyyy"},
-            {title: "Algorytm Karpa-Millera-Rozenberga", id: "yyyyy"},
-            {title: "Tablica sufiksowa", id: "yyyyy"}
+            {title: "Wprowadzenie", id: "tex_wpr"},
+            {title: "Haszowanie", id: "tex_has"},
+            {title: "Liniowe algorytmy tekstowe", id: "tex_lin"},
+            {title: "Drzewo trie", id: "tex_tri"},
+            {title: "Porównywanie tekstów z aktualizacjami", id: "tex_akt"},
+            {title: "Algorytm Karpa-Millera-Rozenberga", id: "tex_kmr"},
+            {title: "Tablica sufiksowa", id: "tex_suf"}
         ]
     },
     {
         title: "Struktury danych",
         lessons: [
-            {title: "Kolejka monotoniczna", id: "yyyyy"},
-            {title: "Find and union", id: "yyyyy"},
-            {title: "Drzewo przedziałowe", id: "yyyyy"},
-            {title: "Pierwiastki", id: "yyyyy"},
-            {title: "Drzewo potęgowe", id: "yyyyy"}
+            {title: "Kolejka monotoniczna", id: "dan_kol"},
+            {title: "Find and union", id: "dan_fau"},
+            {title: "Drzewo przedziałowe", id: "dan_prz"},
+            {title: "Pierwiastki", id: "dan_sqr"},
+            {title: "Drzewo potęgowe", id: "dan_pot"}
         ]
     },
     {
         title: "Algorytmy grafowe",
         lessons: [
-            {title: "Co to jest graf?", id: "yyyyy"},
-            {title: "Drzewa - podstawy", id: "yyyyy"},
-            {title: "Najgłębszy wspólny przodek", id: "yyyyy"},
-            {title: "Najkrótsze ścieżki", id: "yyyyy"},
-            {title: "Aktualizacje na poddrzewach", id: "yyyyy"},
-            {title: "Rozbicie przez centroid", id: "yyyyy"},
-            {title: "Drzewa rozpinające", id: "yyyyy"},
-            {title: "Grafy skierowane", id: "yyyyy"},
-            {title: "Grafy dwudzielne", id: "yyyyy"},
-            {title: "Meduzy", id: "yyyyy"},
-            {title: "Dwuspójne składowe", id: "yyyyy"},
-            {title: "Grafy planarne", id: "yyyyy"},
-            {title: "Problemy NP-trudne", id: "yyyyy"},
-            {title: "Przepływy", id: "yyyyy"},
-            {title: "Max flow - min cut", id: "yyyyy"}
+            {title: "Co to jest graf?", id: "gra_wst"},
+            {title: "Drzewa", id: "gra_drz"},
+            {title: "Najgłębszy wspólny przodek", id: "gra_lca"},
+            {title: "Najkrótsze ścieżki", id: "gra_dij"},
+            {title: "Aktualizacje na poddrzewach", id: "gra_pod"},
+            {title: "Rozbicie przez centroid", id: "gra_cen"},
+            {title: "Drzewa rozpinające", id: "gra_roz"},
+            {title: "Grafy skierowane", id: "gra_ski"},
+            {title: "Grafy dwudzielne", id: "gra_dwu"},
+            {title: "Meduzy", id: "gra_med"},
+            {title: "Dwuspójne składowe", id: "gra_spo"},
+            {title: "Grafy planarne", id: "gra_pla"},
+            {title: "Problemy NP-trudne", id: "gra_npt"},
+            {title: "Przepływy", id: "gra_prz"},
+            {title: "Max flow - min cut", id: "gra_flo"}
         ]
     },
     {
         title: "Teoria liczb",
         lessons: [
-            {title: "Wstęp do Teorii liczb", id: "yyyyy"},
-            {title: "Arytmetyka modulo 1", id: "yyyyy"},
-            {title: "Arytmetyka modulo 2", id: "yyyyy"},
-            {title: "Bardzo duże liczby", id: "yyyyy"}
+            {title: "Wstęp do Teorii liczb", id: "num_wst"},
+            {title: "Arytmetyka modulo 1", id: "num_mo1"},
+            {title: "Arytmetyka modulo 2", id: "num_mo2"},
+            {title: "Bardzo duże liczby", id: "num_big"}
         ]
     },
     {
         title: "Teoria gier",
         lessons: [
-            {title: "Wstęp do Teorii gier", id: "yyyyy"},
-            {title: "Twierdzenie Sprague-Grundy'ego", id: "yyyyy"}
+            {title: "Wstęp do Teorii gier", id: "gry_wst"},
+            {title: "Twierdzenie Sprague-Grundy'ego", id: "gry_spr"}
         ]
     },
     {
         title: "Geometria",
         lessons: [
-            {title: "Podstawy geometrii", id: "yyyyy"},
-            {title: "Wielokąty", id: "yyyyy"},
-            {title: "Zamiatanie", id: "yyyyy"},
-            {title: "Sortowanie kątowe", id: "yyyyy"},
-            {title: "Otoczka wypukła", id: "yyyyy"}
+            {title: "Podstawy geometrii", id: "geo_pod"},
+            {title: "Wielokąty", id: "geo_wie"},
+            {title: "Zamiatanie", id: "geo_zam"},
+            {title: "Sortowanie kątowe", id: "geo_sor"},
+            {title: "Otoczka wypukła", id: "geo_oto"}
         ]
     }
 ]

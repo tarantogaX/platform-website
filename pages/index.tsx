@@ -10,15 +10,22 @@ import { getSectionsList } from '../lib/articles';
 import {SectionBox} from "../components/section-box/SectionBox";
 
 /*
-articles:
-treść z hedge doca
-tytuł
+pierwiastki
+liniowe algorytmy tekstowe
+Wielokąty
+Max flow - min cut
+*/
+
+/*
 \ -> \\
 " -> \" (z wyjątkiem pierwszego i ostatniego)
+
 entery po ##
 podwójne entery
+
+hasze
+
 ```cpp=```
-sections.json
 */
 
 export async function getStaticProps() {
@@ -31,8 +38,10 @@ export async function getStaticProps() {
 }
 
 const KompendiumWrapper = styled(Center)`
+    margin-top: 90px;
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         display: block;
+        margin-top: 70px;
     }
 `;
 
@@ -222,7 +231,7 @@ function Home ({allSectionsList}) {
             <Head>
                 <title>Meet IT Kompendium</title>
             </Head>
-            <KompendiumWrapper maxWidth={1500} style={{marginTop: '70px'}}>
+            <KompendiumWrapper maxWidth={1500}>
                 <CourseDescription
                     normalColumns={1}
                     tabletColumns={1}

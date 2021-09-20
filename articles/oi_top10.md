@@ -3,7 +3,10 @@ title: 'TOP 10 – co trzeba znać na II etap XXVIII Olimpiady Informatycznej?'
 content: "
 ## Wstęp
 
-Zgodnie z ogłoszeniem organizatorów II etap olimpiady odbędzie się w tym roku 16-18 lutego. Zawody odbędą się zdalnie, a do finałowego etapu zakwalifikuje się około 1 na 3~5 uczestników. Zauważyliśmy, że na przestrzeni poprzednich edycji olimpiady pewne tematy i “triki” powtarzają się o wiele częściej niż inne. Warto je znać i zagwarantować sobie wstęp na wymarzoną uczelnię, a może nawet wyjazd na międzynarodówkę. Poniżej przedstawiamy te rzeczy i co trzeba o nich wiedzieć. Zachęcamy, żeby nauczyć się/powtórzyć poniższe tematy przed II etapem Olimpiady. Jeżeli nie masz dużo czasu, nie musisz zaimplementować wszystkich zadań, ale gorąco zachęcamy, żeby co najmniej spróbować wymyślić rozwiązania.
+Zgodnie z ogłoszeniem organizatorów II etap olimpiady odbędzie się w tym roku 16-18 lutego. Zawody odbędą się zdalnie, a do finałowego etapu zakwalifikuje się około 1 na 3~5 uczestników. Zauważyliśmy, że na przestrzeni poprzednich edycji olimpiady pewne tematy i “triki” powtarzają się o wiele częściej niż inne. Warto je znać i zagwarantować sobie wstęp na wymarzoną uczelnię, a może nawet wyjazd na międzynarodówkę.
+
+
+Poniżej przedstawiamy te rzeczy i co trzeba o nich wiedzieć. Zachęcamy, żeby nauczyć się/powtórzyć poniższe tematy przed II etapem Olimpiady. Jeżeli nie masz dużo czasu, nie musisz zaimplementować wszystkich zadań, ale gorąco zachęcamy, żeby co najmniej spróbować wymyślić rozwiązania.
 
 
 
@@ -35,7 +38,10 @@ Drzewa przedziałowe to struktura danych, umożliwiająca wykonywanie operacji i
 
 ## 2 Gąsienica i Gąsienica ze Stosem (kolejka monotoniczna)
 
-Metodę gąsienicy należy stosować na jednowymiarowej tablicy, w której poszukujemy najdłuższego spójnego przedziału o pewnej własności lub rozważamy wszystkie przedziały o zadanej długości. Jeżeli umiemy sprowadzić oryginalny problem do “Znajdź najdłuższy spójny przedział, dla którego wartość pewnej nie malejącej funkcji nie przekracza zadanej stałej” należy spróbować rozwiązać je gąsienicą. Przykładem takiego zadania jest “Znajdź najdłuższy spójny przedział, dla którego suma wszystkich elementów jest mniejsza od zadanej stałej C”. Zwróć uwagę, że metoda gąsienicy nie zadziała, jeżeli liczby w ciągu mogą być ujemne. (wtedy funkcja sumy może maleć). W takim wypadku można zastosować metodę gąsienicy aby obliczyć wartość funkcji dla wszystkich przedziałach o zadanej długości. W przypadku sumy zadanie to można wykonać prościej za pomocą sum prefiksowych. Natomiast 
+Metodę gąsienicy należy stosować na jednowymiarowej tablicy, w której poszukujemy najdłuższego spójnego przedziału o pewnej własności lub rozważamy wszystkie przedziały o zadanej długości. Jeżeli umiemy sprowadzić oryginalny problem do “Znajdź najdłuższy spójny przedział, dla którego wartość pewnej nie malejącej funkcji nie przekracza zadanej stałej” należy spróbować rozwiązać je gąsienicą. Przykładem takiego zadania jest “Znajdź najdłuższy spójny przedział, dla którego suma wszystkich elementów jest mniejsza od zadanej stałej C”.
+
+
+Zwróć uwagę, że metoda gąsienicy nie zadziała, jeżeli liczby w ciągu mogą być ujemne. (wtedy funkcja sumy może maleć). W takim wypadku można zastosować metodę gąsienicy aby obliczyć wartość funkcji dla wszystkich przedziałach o zadanej długości. W przypadku sumy zadanie to można wykonać prościej za pomocą sum prefiksowych. Natomiast 
 jeżeli funkcją jest na przykład mediana zbioru liczb, problem staje się trudniejszy i można go rozwiązać za pomocą gąsienicy wspomaganej strukturą set z C++ (Jak?). Jeżeli nasze zadanie dodatkowo wymaga szybkiego znajdowania minimów lub maksimów na rozważanym przedziale należy dodatkowo użyć posortowanego stosu.
 
 ### Co trzeba wiedzieć?
@@ -108,7 +114,10 @@ Ukorzenione drzewa to struktura danych bardzo “przyjazna” dla rekurencji. Cz
 
 ## 5 Spostrzeżenie Zachłanne lub Leniwe
 
-Często zadania wymagają od nas znalezienia najtańszego, najmniejszego, najszybszego rozwiązania. Jeżeli mamy takie zadanie warto zastanowić się czy taka optymalna strategia lub optymalny ciąg ma jakąś specjalną własność, lub da się ją zrealizować w prosty sposób. Często będziemy w stanie powiedzieć zdanie, które zaczyna się od “zawsze opłaca się nam / możemy ...”, “nigdy nie opłaca nam się/nie musimy ...”. Jeżeli szukamy podciągów lub ciągów, czasem też warto spojrzeć, kiedy taki optymalny ciąg można przedłużyć lub skrócić. Tego typu spostrzeżenia można często zrealizować drzewem przedziałowym lub trzeba je wspomóc wyszukiwaniem binarnym. Jako że w tym przypadku trudno jest nauczyć się teorii, proponujemy skupić się na ćwiczeniu zadań.
+Często zadania wymagają od nas znalezienia najtańszego, najmniejszego, najszybszego rozwiązania. Jeżeli mamy takie zadanie warto zastanowić się czy taka optymalna strategia lub optymalny ciąg ma jakąś specjalną własność, lub da się ją zrealizować w prosty sposób. Często będziemy w stanie powiedzieć zdanie, które zaczyna się od “zawsze opłaca się nam / możemy ...”, “nigdy nie opłaca nam się/nie musimy ...”. Jeżeli szukamy podciągów lub ciągów, czasem też warto spojrzeć, kiedy taki optymalny ciąg można przedłużyć lub skrócić.
+
+
+Tego typu spostrzeżenia można często zrealizować drzewem przedziałowym lub trzeba je wspomóc wyszukiwaniem binarnym. Jako że w tym przypadku trudno jest nauczyć się teorii, proponujemy skupić się na ćwiczeniu zadań.
 
 ### Zadanka
 

@@ -12,6 +12,7 @@ export async function getStaticProps({ params }) {
   const articleData = getArticlesData(params.id);
   const sectionData = getSectionWithLesson(params.id);
   const articleIndex = sectionData.lessons.map(lesson => lesson.id).indexOf(params.id);
+
   return {
     props: {
         articleData,

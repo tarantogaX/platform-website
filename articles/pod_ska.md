@@ -3,7 +3,7 @@ title: 'Skalowanie'
 content: "
 Nieraz rozwiązywać będziemy zadania, w których musimy zapisywać informacje dla elementów pewnego ciągu $a_i.$ Najwygodniej byłoby je stablicować w podobny sposób, co przy zliczaniu kubełkowym. Problem pojawia się w momencie, gdy $a_i$ mogą być duże. Bardzo często zdarza się jednak, że nie obchodzą nas wartości $a_i,$ tylko relacje (mniejszości, większości i równości) zachodzące między nimi. W takich wypadkach możemy wykorzystać technikę skalowania.
 
-### Skalowanie
+## Jak działa skalowanie?
 
 Będziemy chcieli zamienić elementy ciągu $a$ na możliwie małe wartości tak, by zachować relacje między nimi. Przetworzymy $a_i$ w kolejności rosnącej. W tym celu posortujemy pary $(a_i, i)$ po pierwszym elemencie. 
 
@@ -60,7 +60,7 @@ void skaluj(int n, int a[]) {
 
 Wykorzystaliśmy tutaj strukturę ```pair``` ze standardowej biblioteki C++, o której możesz przeczytać więcej w lekcji Standard Template Library.
 
-### Zadania
+## Zadania
 
 - [Pillars (Codeforces, Div. 2 E)](https://codeforces.com/contest/474/problem/E)
 

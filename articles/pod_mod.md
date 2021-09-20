@@ -1,14 +1,14 @@
 ---
 title: 'Arytmetyka modularna i szybkie potęgowanie'
 content: "
-### Co to jest modulo
+## Co to jest modulo
 
 Czasem zdarza się, że niektóre wartości w naszym programie (np. wynik) są bardzo duże i nie mieszczą się w zakresach zmiennych udostępnianych przez języki programowania. Często jako wynik programu wystarczy wtedy podać jedynie jego resztę z dzielenia przez z góry określoną liczbę $M.$ Zazwyczaj w celu ułatwienia obliczeń wybiera się $M$ będące liczbą pierwszą. Dzisiaj dowiesz się, jak wykonywać podstawowe operacje w arytmetyce modularnej oraz szybko potęgować liczby.
 
 
 Poprzez zapis: $a \\equiv b (mod \\ M)$ (czytaj: $a$ przystaje do $b$ modulo $M$) rozumiemy, że liczby $a$ i $b$ mają tą samą resztę z dzielenia przez $M,$ czyli że $a-b$ jest podzielne przez $M.$ Na przykład: $2\\equiv 8 \\ (mod \\ 6),$ $17 \\equiv 187 \\ (mod \\ 10).$ Takie \"równanie\" nazywamy kongruencją.
 
-### Dodawanie, odejmowanie i mnożenie modulo
+## Dodawanie, odejmowanie i mnożenie modulo
 
 Trzy wyżej wymienione operacje wykonujemy dokładnie tak samo, jak w przypadku zwykłej arytmetyki na liczbach:
 
@@ -33,7 +33,7 @@ W przypadku odejmowania istnieje niebezpieczeństwo, że wynik będzie ujemny. C
 
 W przypadku mnożenia istnieje natomiast niebezpieczeństwo, że jeśli liczba $M$ jest duża (np. $M=10^9+7$) to mnożąc ze sobą dwie reszty, wykroczymy poza zakres intów. Aby uniknąć tego problemu, musimy po prostu pamiętać o zastosowaniu long longów.
 
-### Szybkie potęgowanie modulo
+## Szybkie potęgowanie modulo
 
 Zauważmy, że:
 
@@ -73,7 +73,7 @@ long long pow(long long base, long long power) {
 
 Ile razy wykona się ta funkcja? Wykładnik $b$ nie będzie nieparzysty więcej razy niż parzysty. Oznacza to, że w przynajmniej połowie przypadków zmniejsza się on dwukrotnie – liczba wywołań funkcji będzie rzędu $O(log(b)).$ Jest to istotna różnica w porównaniu do wykonywania $b$ mnożeń „na pałę forem”.
 
-### Dzielenie modulo - odwrotność potęgowania
+## Dzielenie modulo - odwrotność potęgowania
 
 Niestety, dzielenia modulo nie możemy wykonywać tak \"niefrasobliwie\", jak reszty operacji, ponieważ bardzo często $a \\div b$ daje inną resztę z dzielenia przez $M,$ niż $a \\pmod{M} \\div b \\pmod{M}$
 
@@ -117,7 +117,7 @@ $b ^ {M – 2}$ umiemy policzyć w $O(log \\ M),$ używając szybkiego potęgowa
 
 Przypomnijmy na koniec, że aby zastosować Małe Twierdzenie Fermata, $M$ musi być liczbą pierwszą. Jak radzić sobie z dzieleniem, gdy jest ono złożone dowiesz się w artykule Teoria liczb I.
 
-### Zadania
+## Zadania
 
 - [Tiles (Codeforces, Global Round C)](https://codeforces.com/contest/1178/problem/C)
 

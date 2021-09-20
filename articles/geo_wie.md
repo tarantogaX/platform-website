@@ -1,0 +1,6 @@
+---
+title: 'Wielokąty'
+content: "
+xd
+"
+---
