@@ -49,10 +49,10 @@ const LessonWrapperNoNavbar = styled(LessonWrapper)`
 `;
 
 const LessonWrapperWithNavbar = styled(LessonWrapper)`
-  margin-left: 25%;
-  margin-right: 20%;
+  margin-left: 40%;
+  margin-right: 5%;
 
-  ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
+  ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
     margin-left: 40%;
     margin-right: 5%;
   }
