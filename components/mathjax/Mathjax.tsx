@@ -28,6 +28,9 @@ const StyledDiv = styled.div`
     a {
         color: ${(p: IStyleArgument) => p.theme.colors.primary};
     }
+    p {
+        overflow-x: scroll;
+    }
 `;
 
 const mapProps = (props: ReactMarkdown.ReactMarkdownProps) => ({

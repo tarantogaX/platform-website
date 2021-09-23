@@ -239,14 +239,16 @@ function Home ({allSectionsList}) {
                         lekcji o zróżnicowanej trudności. Lekcje o wyższych numerach mogą, ale nie muszą, być 
                         trudniejsze niż te o niższych. W razie problemów zawsze możesz prosić swojego tutora Meet IT o pomoc. 
                         Gdybyś jakimś cudem trafił tutaj jako osoba nienależąca do projektu, koniecznie dowiedz się więcej – 
-                        na <a style={{color: "#1BBC07"}} href="https://tutoring.meetit.eu/pl">naszej stronie</a> lub <a style={{color: "#1BBC07"}} href="https://www.facebook.com/groups/2926584350712322">Facebook'u.</a> Zachęcamy do skorzystania ze wsparcia!
+                        na <a style={{color: "#1BBC07", fontSize: "inherit"}} href="https://tutoring.meetit.eu/pl">naszej stronie </a> 
+                        lub <a style={{color: "#1BBC07", fontSize: "inherit"}} href="https://www.facebook.com/groups/2926584350712322">
+                        Facebook'u.</a> Zachęcamy do skorzystania ze wsparcia!
                         <br/> <br/>
                         Linki do zadań kierują do znanych systemów, na których można 
                         automatycznie przetestować swoje rozwiązanie: 
                         szkopuł, codeforces, main. Aby możliwe było wysłanie naszych prywatnych zadań, 
                         stworzyliśmy Archiwum K0mpend1X na szkopule. 
                         Żeby móc je zobaczyć niezbędna jest bezpłatna rejestracja, której 
-                        dokonuje się klikając na <a style={{color: "#1BBC07"}} href="https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/account/login/?next=/c/archiwum-zadan-k0mpend1x/join/Xgq2PqDc_ulJUpZ8EY7jAbUQ/">ten link.</a> 
+                        dokonuje się klikając na <a style={{color: "#1BBC07", fontSize: "inherit"}} href="https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/account/login/?next=/c/archiwum-zadan-k0mpend1x/join/Xgq2PqDc_ulJUpZ8EY7jAbUQ/">ten link.</a> 
                     </CourseText>
                 </CourseDescription>
                 <CourseImage src={"/images/whiteboard.jpg"}/>
