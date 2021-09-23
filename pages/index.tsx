@@ -141,7 +141,6 @@ const MaterialWrapperOM = styled(MaterialWrapper)`
 `;
 
 const MaterialTitle = styled(H1)`
-    height: 125px;
     color: ${(p: IStyleArgument) => p.theme.colors.textStrong};
     font-size: 40px;
 
@@ -266,7 +265,7 @@ function Home ({allSectionsList}) {
                     mobileColumns={1}
                     vertAlign={'top'}>
                     <MaterialTitleOM weight={FontWeight.SemiBold}>
-                        Olimpiada Matematyczna – Zwycięzcy radzą, czego się uczyć
+                        Zwycięzcy radzą, czego się uczyć
                     </MaterialTitleOM>
                     <IframeWrapper>
                         <IframeResponsive width="960px" height="541px" src="https://www.youtube.com/embed/3AscLWtSz7Y"
