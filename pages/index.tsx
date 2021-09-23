@@ -265,7 +265,7 @@ function Home ({allSectionsList}) {
                     mobileColumns={1}
                     vertAlign={'top'}>
                     <MaterialTitleOM weight={FontWeight.SemiBold}>
-                        Zwycięzcy radzą, czego się uczyć
+                        Zwycięzcy radzą czego się uczyć
                     </MaterialTitleOM>
                     <IframeWrapper>
                         <IframeResponsive width="960px" height="541px" src="https://www.youtube.com/embed/3AscLWtSz7Y"

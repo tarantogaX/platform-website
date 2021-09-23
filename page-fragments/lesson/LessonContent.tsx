@@ -39,8 +39,8 @@ const LessonWrapper = styled(ColumnLayoutElement)`
 `;
 
 const LessonWrapperNoNavbar = styled(LessonWrapper)`
-  margin-left: 23%;
   margin-right: 22%;
+  margin-left: 23%;
 
   ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
     margin-left: 5%;
@@ -49,8 +49,8 @@ const LessonWrapperNoNavbar = styled(LessonWrapper)`
 `;
 
 const LessonWrapperWithNavbar = styled(LessonWrapper)`
-  margin-left: 35%;
-  margin-right: 10%;
+  margin-left: 25%;
+  margin-right: 20%;
 
   ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
     margin-left: 40%;
