@@ -253,7 +253,7 @@ function Home ({allSectionsList}) {
                     mobileColumns={1}
                     vertAlign={'top'}>
                     <ImageWrapper>
-                        <MaterialTitleOI weight={FontWeight.SemiBold}>Top 10 rzeczy na II etap OI</MaterialTitleOI>
+                        <MaterialTitleOI weight={FontWeight.SemiBold}>Top 10 rzeczy na II etap</MaterialTitleOI>
                         <a href="/oi-top10">
                             <OIArticleImage src={"/images/oitop10.jpg"}/>
                         </a>
