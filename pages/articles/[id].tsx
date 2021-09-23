@@ -36,7 +36,7 @@ export default function Article ({ articleData, sectionData, articleIndex }) {
             <Head>
                 <title>{articleData.title}</title>
             </Head>
-            <Center noLeftMargin maxWidth={1500} style={{paddingRight: '60px'}}>
+            <Center noLeftMargin maxWidth={1500}>
                 <Navbar
                   sectionTitle={sectionData.title} lessonsList={sectionData.lessons} selectedLesson={articleIndex} />
                 <LessonContent title={articleData.title} content={articleData.content} withNavbar={true} />
