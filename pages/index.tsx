@@ -52,11 +52,12 @@ const CourseDescription = styled(ColumnLayoutElement)`
 
 const CourseImage = styled.img`
     width: 45%;
-    vertical-align: middle;
-    margin-top: 60px;
-    ${(p: IStyleArgument) => p.theme.up(p.theme.breakpoint.tablet)} {
-        margin-top: 30px;
+    margin-top: 35px;
+
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
+        margin-top: 35px;
     }
+
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
         display: block;
         width: 60%;
