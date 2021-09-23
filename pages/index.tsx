@@ -34,7 +34,7 @@ export async function getStaticProps() {
 
 const KompendiumWrapper = styled(Center)`
     margin-top: 90px;
-    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.header)} {
         display: block;
         margin-top: 70px;
     }
@@ -44,9 +44,10 @@ const CourseDescription = styled(ColumnLayoutElement)`
     width: 50%;
     margin-right: 5%;
 
-    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.header)} {
         width: 100%;
         margin: 0;
+        margin-bottom: 25px;
     }
 `;
 
@@ -58,13 +59,13 @@ const CourseImage = styled.img`
         margin-top: 35px;
     }
 
-    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.header)} {
         display: block;
-        width: 60%;
+        width: 80%;
         text-align: center;
         justify-content: center;
-        margin-left: 20%;
-        margin-right: 20%;
+        margin-left: 10%;
+        margin-right: 10%;
         margin-top: 1px;
         margin-bottom: 1px;
     }
@@ -147,7 +148,6 @@ const MaterialTitle = styled(H1)`
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.tablet)} {
         font-size: 30px;
-        height: 90px;
     }
 
     ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {

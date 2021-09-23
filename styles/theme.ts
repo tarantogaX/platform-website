@@ -18,12 +18,14 @@ export interface ITheme {
         textStrong: Color;       //LightBlack
     };
     breakpoint: {
+        header: string;
         mobile: string;
         tablet: string;
     };
     up: (bp: string, vert?: boolean) => string;
     down: (bp: string, vert?: boolean) => string;
     between: (low: string, high: string, vert?: boolean) => string;
+    header: (bp: string) => string;
 }
 
 export interface IStyleArgument {
@@ -33,6 +35,7 @@ export interface IStyleArgument {
 export const DefaultTheme: ITheme = {
     name: 'light',
     breakpoint: {
+        header: '1000px',
         mobile: '576px',
         tablet: '1200px',
     },
@@ -60,11 +63,13 @@ export const DefaultTheme: ITheme = {
         }: ${breakpointMax}) and (min-${
             vertical ? 'height' : 'width'
         }: calc(${breakpointMin} + 0.02px))`,
+    header: (breakpoint) => `@media (max-${breakpoint})`,
 };
 
 export const DarkTheme: ITheme = {
     name: 'dark',
     breakpoint: {
+        header: '500px',
         mobile: '576px',
         tablet: '1200px',
     },
@@ -94,4 +99,5 @@ export const DarkTheme: ITheme = {
         }: ${breakpointMax}) and (min-${
             vertical ? 'height' : 'width'
         }: calc(${breakpointMin} + 0.02px))`,
+    header: (breakpoint) => `@media (max-${breakpoint})`,
 };

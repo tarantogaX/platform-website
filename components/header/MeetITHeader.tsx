@@ -35,7 +35,7 @@ const HeaderWrapper = styled.header`
 
 const Burger = styled.button`
     display: none;
-    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.header)} {
         display: inline-block;
         width: 40px;
         height: 40px;
@@ -61,7 +61,7 @@ const Logo = styled.img`
 const LinksWrapper = styled(addProps<{open: boolean}>()(styled.div``))`
     float: right;
     transition: transform 1s;
-    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.header)} {
         display: block;
         position: fixed;
         top: 0;
@@ -87,7 +87,7 @@ const HeaderLink = styled(A)`
         margin-left: 0;
         margin-right: 20px;
     }
-    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.mobile)} {
+    ${(p: IStyleArgument) => p.theme.down(p.theme.breakpoint.header)} {
         width: 100%;
         min-width: unset;
         margin-left: 0;
