@@ -29,86 +29,86 @@ int pomoc[MAX_N], tab[MAX_N];
 
 void merge(int poczatek, int srodek, int koniec) {
 
-    int dl = koniec - poczatek + 1;
+\ \ \ \ int dl = koniec - poczatek + 1;
 
-    /*musimy przepisać tablicę do pomocniczej,
+\ \ \ \ //musimy przepisać tablicę do pomocniczej,
 
-    żeby nie nadpisać elementów nowymi wartościami*/
+\ \ \ \ //żeby nie nadpisać elementów nowymi wartościami
 
-    for (int i = poczatek; i <= koniec; i ++)
+\ \ \ \ for (int i = poczatek; i <= koniec; i ++)
 
-        pomoc[i] = tab[i];
+\ \ \ \ \ \ \ \ pomoc[i] = tab[i];
 
-    int a = poczatek;
+\ \ \ \ int a = poczatek;
 
-    int b = srodek + 1;
+\ \ \ \ int b = srodek + 1;
 
-    int i = poczatek;
+\ \ \ \ int i = poczatek;
 
-    while (a <= srodek && b <= koniec){
+\ \ \ \ while (a <= srodek && b <= koniec){
 
-        i ++;
+\ \ \ \ \ \ \ \ i ++;
 
-        if (pomoc[a] <= pomoc[b]) {
+\ \ \ \ \ \ \ \ if (pomoc[a] <= pomoc[b]) {
 
-            tab[i] = pomoc[a];
+\ \ \ \ \ \ \ \ \ \ \ \ tab[i] = pomoc[a];
 
-            a ++;
+\ \ \ \ \ \ \ \ \ \ \ \ a ++;
 
-        }
+\ \ \ \ \ \ \ \ }
 
-        else {
+\ \ \ \ \ \ \ \ else {
 
-            tab[i] = pomoc[b];
+\ \ \ \ \ \ \ \ \ \ \ \ tab[i] = pomoc[b];
 
-            b ++;
+\ \ \ \ \ \ \ \ \ \ \ \ b ++;
 
-        }
+\ \ \ \ \ \ \ \ }
 
-    }
+\ \ \ \ }
 
-    /*może się okazać, że zostały jeszcze elementy
+\ \ \ \ //może się okazać, że zostały jeszcze elementy
 
-    z lewej lub prawej części - musimy to naprawić*/
+\ \ \ \ //z lewej lub prawej części - musimy to naprawić
 
-    while (a <= srodek) {
+\ \ \ \ while (a <= srodek) {
 
-        i ++;
+\ \ \ \ \ \ \ \ i ++;
 
-        tab[i] = pomoc[a];
+\ \ \ \ \ \ \ \ tab[i] = pomoc[a];
 
-        a ++;
+\ \ \ \ \ \ \ \ a ++;
 
-    }
+\ \ \ \ }
 
-    while (b <= koniec) {
+\ \ \ \ while (b <= koniec) {
 
-        i ++;
+\ \ \ \ \ \ \ \ i ++;
 
-        tab[i] = pomoc[b];
+\ \ \ \ \ \ \ \ tab[i] = pomoc[b];
 
-        b ++;
+\ \ \ \ \ \ \ \ b ++;
 
-    }
+\ \ \ \ }
 
 }
 
 
 void mergesort (int poczatek, int koniec){
 
-    if (poczatek == koniec)
+\ \ \ \ if (poczatek == koniec)
 
-        return;
+\ \ \ \ \ \ \ \ return;
 
-    int srodek = (poczatek + koniec) / 2;
+\ \ \ \ int srodek = (poczatek + koniec) / 2;
 
-    mergesort(poczatek, srodek);
+\ \ \ \ mergesort(poczatek, srodek);
 
-    mergesort(srodek + 1, koniec);
+\ \ \ \ mergesort(srodek + 1, koniec);
 
-    //w tym momencie obydwa rozważane fragmenty tablicy są już posortowane
+\ \ \ \ //w tym momencie obydwa rozważane fragmenty tablicy są już posortowane
 
-    merge(poczatek, srodek, koniec);
+\ \ \ \ merge(poczatek, srodek, koniec);
 
 }
 

@@ -32,24 +32,24 @@ Moglibyśmy zmniejszyć złożoność pamięciową do $O(1),$ pamiętając tylko
 
 int fib(int n) {
 
-	int DP[n + 1];
+\ \ \ \ int DP[n + 1];
 
-	DP[0] = DP[1] = 1;
+\ \ \ \ DP[0] = DP[1] = 1;
 
-	for (int i = 2; i <= n; i ++) {
+\ \ \ \ for (int i = 2; i <= n; i ++) {
 
-		DP[i] = DP[i-1] + DP[i-2];
+\ \ \ \ \ \ \ \ DP[i] = DP[i-1] + DP[i-2];
 
-	}
+\ \ \ \ }
 
-	return DP[n];
+\ \ \ \ return DP[n];
 
 }
 
 ```
 
 
-Uruchamiając ten kod zorientujemy się, że w tablicy $DP[]$ bardzo szybko znajdą się duże liczby. Nic w tym dziwnego -- dla większości problemów ze zliczaniem wyniki rosną naprawdę szybko, np. wykładniczo. Z tego powodu zwykle jesteśmy proszeni o podanie reszty z dzielenia przez jakąś rozsądną liczbę, na przykład $10^9+7.$ Operacje modulo nie powinny być dla Ciebie nowością. Gdyby jednak tak było, koniecznie zajrzyj do lekcji o nich w sekcji Podstawy.
+Uruchamiając ten kod zorientujemy się, że w tablicy $DP[]$ bardzo szybko znajdą się duże liczby. Nic w tym dziwnego - dla większości problemów ze zliczaniem wyniki rosną naprawdę szybko, np. wykładniczo. Z tego powodu zwykle jesteśmy proszeni o podanie reszty z dzielenia przez jakąś rozsądną liczbę, na przykład $10^9+7.$ Operacje modulo nie powinny być dla Ciebie nowością. Gdyby jednak tak było, koniecznie zajrzyj do lekcji o nich w sekcji Podstawy.
 
 
 ## Nieco trudniejsze zadanie - rozmienianie kwoty
@@ -73,25 +73,25 @@ Zostają nam monety $k, k^2, ...$ - wszystkie podzielne przez $k.$ Widzimy, że 
 
 int monety (int n, int k) {
 
-	if (k <= 1)
+\ \ \ \ if (k <= 1)
 
-		return 1;
+\ \ \ \ \ \ \ \ return 1;
 
-	DP[0] = DP[1] = 1;
+\ \ \ \ DP[0] = DP[1] = 1;
 
-	for (int i = 2; i <= n; i ++) {
+\ \ \ \ for (int i = 2; i <= n; i ++) {
 
-		if (i % k != 0)
+\ \ \ \ \ \ \ \ if (i % k != 0)
 
-			DP[i] = DP[i-1];
+\ \ \ \ \ \ \ \ \ \ \ \ DP[i] = DP[i-1];
 
-		else
+\ \ \ \ \ \ \ \ else
 
-			DP[i] = DP[i-1] + DP[i/k];
+\ \ \ \ \ \ \ \ \ \ \ \ DP[i] = DP[i-1] + DP[i/k];
 
-	}
+\ \ \ \ }
 
-	return DP[n];
+\ \ \ \ return DP[n];
 
 }
 
@@ -103,19 +103,19 @@ Więcej o zliczaniu rekurencyjnym możesz przeczytać [tutaj.](http://www-users.
 
 ## Wypisywanie k-tej liczby o jakiejś własności
 
-Tym razem zliczanie użyjemy zliczania jako pomocniczego narzędzia. Pozwolę sobie na użycie bardzo prostego przykładu: chcemy wypisać $k$-tą liczbę podzielną przez $3,$ gdzie $k\\leqslant 10^{18}.$ Wiem, że możemy wypisać $3\\cdot k$ -- chcę tylko pokazać ogólne podejście :) 
+Tym razem zliczanie użyjemy zliczania jako pomocniczego narzędzia. Pozwolę sobie na użycie bardzo prostego przykładu: chcemy wypisać $k$-tą liczbę podzielną przez $3,$ gdzie $k\\leqslant 10^{18}.$ Wiem, że możemy wypisać $3\\cdot k$ - chcę tylko pokazać ogólne podejście :) 
 
 
-Rozwiązanie do tego typu zadania podzielimy na dwie fazy. W pierwszej policzymy sobie tablicę pomocniczą, która pomoże nam później wypisać tę liczbę znak po znaku. Uwaga na zera wiodące! (Zero wiodące to zero na początku liczby -- przykładowo: liczba $010$ powinna być zapisana jako $10$).
+Rozwiązanie do tego typu zadania podzielimy na dwie fazy. W pierwszej policzymy sobie tablicę pomocniczą, która pomoże nam później wypisać tę liczbę znak po znaku. Uwaga na zera wiodące! (Zero wiodące to zero na początku liczby - przykładowo: liczba $010$ powinna być zapisana jako $10$).
 
 
-Przypomnijmy cechę podzielności przez $3$: <i>Liczba jest podzielna przez $3,$ jeśli suma jej cyfr dzieli się przez $3.$</i>. Będziemy chcieli nauczyć się liczyć, ile jest liczb długości nie większej niż $n,$ które mają resztę $k$ z dzielenia przez $3.$ Oczywiście, $k \\in {0, 1, 2}.$ Oznaczmy to jako $DP[n][k].$
+Przypomnijmy cechę podzielności przez $3$: <i>Liczba jest podzielna przez $3,$ jeśli suma jej cyfr dzieli się przez $3.$</i> Będziemy chcieli nauczyć się liczyć, ile jest liczb długości nie większej niż $n,$ które mają resztę $k$ z dzielenia przez $3.$ Oczywiście, $k \\in {0, 1, 2}.$ Oznaczmy to jako $DP[n][k].$
 
 
 Aby poruszyć się dalej musimy wiedzieć, jakiej długości liczby nas interesują. Oszacujemy sobie, że nigdy nie będą miały więcej niż $20$ cyfr.
 
 
-Wypadałoby policzyć tablicę $DP.$ Nie musimy się tutaj specjalnie starać -- $n\\leqslant 20,$ a $k\\leqslant 2.$ Dla liczb jednocyfrowych radzimy sobie łatwo -- dla każdej cyfry $c$: $DP[1][c\\%3]++.$
+Wypadałoby policzyć tablicę $DP.$ Nie musimy się tutaj specjalnie starać - $n\\leqslant 20,$ a $k\\leqslant 2.$ Dla liczb jednocyfrowych radzimy sobie łatwo - dla każdej cyfry $c$: $DP[1][c\\%3]++.$
 
 
 Rozważmy dłuższe liczby. Każda taka liczba ma pierwszą cyfrę. Możemy rozważyć każdą opcję, a następnie użyć wcześniej policzonych informacji do obliczenia $DP[n][k],$ ponieważ wiemy jaką resztę musi mieć pozostała część liczby.
@@ -125,11 +125,11 @@ Rozważmy dłuższe liczby. Każda taka liczba ma pierwszą cyfrę. Możemy rozw
 
 int ustal(int x) {
 
-	//upraszcza kod - zwraca reszte z dzielenia przez 3
+\ \ \ \ //upraszcza kod - zwraca reszte z dzielenia przez 3
 
-	x += 33333333; //nie chcemy modulowac liczb ujemnych
+\ \ \ \ x += 33333333; //nie chcemy modulowac liczb ujemnych
 
-	return x % 3;
+\ \ \ \ return x % 3;
 
 }
 
@@ -138,23 +138,23 @@ DP[0][0] = 1;
 
 for (int i = 0; i <= 9; i ++)
 
-	DP[1][i % 3] ++;
+\ \ \ \ DP[1][i % 3] ++;
 
 for (int i = 2; i <= MAX_N; i ++)
 
-	for (int j = 0; j < 3; j ++)
+\ \ \ \ for (int j = 0; j < 3; j ++)
 
-		for (int pierwsza = 0; pierwsza < 10; pierwsza ++)
+\ \ \ \ \ \ \ \ for (int pierwsza = 0; pierwsza < 10; pierwsza ++)
 
-			DP[i][j] += DP[i-1][ustal(j - pierwsza)];
+\ \ \ \ \ \ \ \ \ \ \ \ DP[i][j] += DP[i-1][ustal(j - pierwsza)];
 
 ```
 
 
-Ten kod nie jest w stu procentach poprawny -- co może pójść nie tak wyjaśnimy po omówieniu drugiej fazy.
+Ten kod nie jest w stu procentach poprawny - co może pójść nie tak wyjaśnimy po omówieniu drugiej fazy.
 
 
-Mając już narzędzie, możemy przystąpić do konstrukcji wyniku. Ustalmy, że nasza liczba może mieć zera wiodące i ma dokładnie $20$ cyfr -- usunięcie zer w wyniku to malutki szczegół. Będziemy poruszać się tzw. schodzeniem. Założymy, że na pierwszym miejscu stoi cyfra $c$ i spojrzymy, na ile sposobów możemy dokończyć liczbę tak, aby dzieliła się przez $3.$ Jeśli zakończeń jest przynajmniej $k,$ to z pewnością cyfra $c$ musi stać na pierwszym miejscu, ponieważ każda liczba z cyfrą $c$ na początku jest mniejsza niż liczba z cyfrą $c+1$ na początku. Z drugiej strony, kiedy liczba sposobów na dokończenie jest mniejsza niż $k$ to wiemy, że $c$ stać na początku nie może -- więc musimy szukać dalej. Pamiętajmy o odjęciu od $k$ wszystkich tych możliwości. Dla przykładu: jeśli szukamy siódmej liczby podzielnej przez $3,$ to wiemy, że na pierwszym miejscu nie może stać $0,$ gdyż liczby z zerem na początku: $03,$ $06,$ $09$ są tylko trzy. To jednak nie znaczy, że mamy pominąć - więc odejmujemy $3$ od $k$ i szukamy dalej.
+Mając już narzędzie, możemy przystąpić do konstrukcji wyniku. Ustalmy, że nasza liczba może mieć zera wiodące i ma dokładnie $20$ cyfr - usunięcie zer w wyniku to malutki szczegół. Będziemy poruszać się tzw. schodzeniem. Założymy, że na pierwszym miejscu stoi cyfra $c$ i spojrzymy, na ile sposobów możemy dokończyć liczbę tak, aby dzieliła się przez $3.$ Jeśli zakończeń jest przynajmniej $k,$ to z pewnością cyfra $c$ musi stać na pierwszym miejscu, ponieważ każda liczba z cyfrą $c$ na początku jest mniejsza niż liczba z cyfrą $c+1$ na początku. Z drugiej strony, kiedy liczba sposobów na dokończenie jest mniejsza niż $k$ to wiemy, że $c$ stać na początku nie może - więc musimy szukać dalej. Pamiętajmy o odjęciu od $k$ wszystkich tych możliwości. Dla przykładu: jeśli szukamy siódmej liczby podzielnej przez $3,$ to wiemy, że na pierwszym miejscu nie może stać $0,$ gdyż liczby z zerem na początku: $03,$ $06,$ $09$ są tylko trzy. To jednak nie znaczy, że mamy pominąć - więc odejmujemy $3$ od $k$ i szukamy dalej.
 
 
 ```cpp=
@@ -163,25 +163,25 @@ vector <int> wynik;
 
 int reszta = 0;
 
-for (int i = MAX_N; i > 0; i --) {
+for (int i = MAX_N; i > 0; i -) {
 
-	for (int c = 0; c < 10; c ++) {
+\ \ \ \ for (int c = 0; c < 10; c ++) {
 
-		long long dokoncz = DP[i - 1][ustal(3 - reszta - c)];
+\ \ \ \ \ \ \ \ long long dokoncz = DP[i - 1][ustal(3 - reszta - c)];
 
-		if (dokoncz >= k) {
+\ \ \ \ \ \ \ \ if (dokoncz >= k) {
 
-			wynik.push_back(c);
+\ \ \ \ \ \ \ \ \ \ \ \ wynik.push_back(c);
 
-			reszta += c;
+\ \ \ \ \ \ \ \ \ \ \ \ reszta += c;
 
-			break;
+\ \ \ \ \ \ \ \ \ \ \ \ break;
 
-		}
+\ \ \ \ \ \ \ \ }
 
-		else k -= dokoncz;
+\ \ \ \ \ \ \ \ else k -= dokoncz;
 
-	}
+\ \ \ \ }
 
 }
 
@@ -189,11 +189,11 @@ int pocz = 0;
 
 while (wynik[pocz] == 0)
 
-	pocz ++;
+\ \ \ \ pocz ++;
 
 for (int i = pocz; i < wynik.size(); i ++)
 
-	cout << wynik[i];
+\ \ \ \ cout << wynik[i];
 
 ```
 
@@ -201,12 +201,12 @@ for (int i = pocz; i < wynik.size(); i ++)
 Kod powyższy będzie wypisywać poprawnie odpowiedź dla liczby $k-1.$ Dlaczego tak? Dla uproszczenia implementacji założyliśmy, że $0$ również jest liczbą podzielną przez $3$ o długości $1.$ To poniekąd prawda, chociaż nas interesowały liczby dodatnie. Nic nie stoi nam na przeszkodzie, by na początku dodać $1$ do $k.$
 
 
-Błąd, o którym wspominałem wcześniej, jest nieco inny. Z wcześniejszych fragmentów artykułu możemy się dowiedzieć, że liczby w takich tablicach lubią szybko rosnąć. Tak jest i tym razem. Standardowe typy liczb całkowitych mogą nie pomieścić liczb, które nas interesują. Zauważmy jednak, że przy schodzeniu jeśli mamy bardzo dużą liczbę, to nie jest dla nas istotne jak bardzo dużą -- chcemy tylko wiedzieć, że większą niż aktualne $k.$ Wobec tego możemy zawsze ograniczać: $DP[i][j] = min(DP[i][j], MAXK + 1).$ Z kolei maksymalne $k$ było do $10^{18}$ -- więc i $DP[i][j]$ nie będzie znacznie większe.
+Błąd, o którym wspominałem wcześniej, jest nieco inny. Z wcześniejszych fragmentów artykułu możemy się dowiedzieć, że liczby w takich tablicach lubią szybko rosnąć. Tak jest i tym razem. Standardowe typy liczb całkowitych mogą nie pomieścić liczb, które nas interesują. Zauważmy jednak, że przy schodzeniu jeśli mamy bardzo dużą liczbę, to nie jest dla nas istotne jak bardzo dużą - chcemy tylko wiedzieć, że większą niż aktualne $k.$ Wobec tego możemy zawsze ograniczać: $DP[i][j] = min(DP[i][j], MAXK + 1).$ Z kolei maksymalne $k$ było do $10^{18}$ - więc i $DP[i][j]$ nie będzie znacznie większe.
 
 
 ## Dynamiki kombinatoryczne na przedziałach
 
-Czasem jesteśmy proszeni o to, aby podać $k$-tą liczbę o Jakiejś Własności nie mniejszą niż $a.$ Jak sobie wówczas poradzić? Za pomocą sumy prefiksowej! Będziemy potrzebowali funkcji, która policzy nam liczbę liczb o Jakiejś Własności nie większych niż $n.$ To robimy dokładnie tak samo jak poprzednio -- tylko musimy uważać, żeby liczby faktycznie były nie większe niż $n.$
+Czasem jesteśmy proszeni o to, aby podać $k$-tą liczbę o Jakiejś Własności nie mniejszą niż $a.$ Jak sobie wówczas poradzić? Za pomocą sumy prefiksowej! Będziemy potrzebowali funkcji, która policzy nam liczbę liczb o Jakiejś Własności nie większych niż $n.$ To robimy dokładnie tak samo jak poprzednio - tylko musimy uważać, żeby liczby faktycznie były nie większe niż $n.$
 
 
 Powiedzmy, że w pdziedziale $[1, a-1]$ jest $p$ liczb o Danej Własności. Teraz nasze zadanie sprowadza się już po prostu do znalezienia $(k+p)$-tej liczby o Tej Własności.

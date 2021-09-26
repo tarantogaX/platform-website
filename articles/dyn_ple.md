@@ -9,7 +9,7 @@ Podczas wykładu o algorytmach zachłannych postawiliśmy taki problem:
 Mamy $n$ przedmiotów. Każdy ma swoją masę $m_i$ i wartość $w_i.$ Dysponujemy plecakiem, który jest w stanie pomieścić przedmioty o sumarycznej masie nie większej niż $M,$ ponieważ w przeciwnym wypadku rozerwie się. Chcemy zapakować do plecaka przedmioty o jak największej sumarycznej wartości.
 
 
-Wówczas okazało się, że nie umiemy go rozwiązać metodami zachłannymi. Wracamy do niego, aby się z nim rozprawić -- tym razem używając programowania dynamicznego.
+Wówczas okazało się, że nie umiemy go rozwiązać metodami zachłannymi. Wracamy do niego, aby się z nim rozprawić - tym razem używając programowania dynamicznego.
 
 
 ## Coś prostszego - problem sumy
@@ -20,7 +20,7 @@ Dana jest liczba naturalna $w$ i $n$ liczb naturalnych $a_1,$ $a_2,$ ..., $a_n.$
 ### Rozwiązanie zachłanne
 
 
-Zachłanne podejścia nie działają, ale umiemy już myśleć dynamicznie -- spróbujmy więc rozwiązać ten problem w ten sposób.
+Zachłanne podejścia nie działają, ale umiemy już myśleć dynamicznie - spróbujmy więc rozwiązać ten problem w ten sposób.
 Niech $DP[]$ będzie tablicą, w której przechowujemy wyniki. $DP[i]=0,$ jeśli liczby $i$ nie da się utworzyć, a w przeciwnym przypadku $DP[i]=1.$
 
 
@@ -80,7 +80,7 @@ Otrzymaliśmy (prawie) działające rozwiązanie w złożoności czasowej $O(nw)
 Czytając ten artykuł powinieneś już znać pojęcie bitseta z artykułu o STLu. Użyjemy go, aby nieco poprawić nasz algorytm. Ponieważ tablica $DP$ składa się z zer i jedynek, możemy użyć bitseta, aby ją pamiętać. To już daje nam złożoność pamięciową o $32$ razy mniejszej stałej, niż gdybyśmy trzymali $DP$ jako tablicę intów. Możemy rownież poprawić złożoność czasową, uważnie analizując działanie naszego algorytmu.
 
 
-Co dzieje się, gdy dokładamy jedną liczbę $k$? Każda jedynka z tablicy $DP$ przelatuje o $k$ miejsc w prawo, jeśli tam jeszcze nie było jedynki. Możemy zapisać tę operację jako złożenie dwóch operacji bitowych -- najpierw przesuwamy bitowo o $k$ tablicę $DP,$ a potem używamy funkcji $OR,$ aby zanotować, że jeśli była jedynka w miejscu $i$ wcześniej lub znajduje się teraz to chcemy tę jedynkę zostawić. Teraz złażoność naszego programu to nadal $O(nw),$ ale działa on $32$ razy szybciej!
+Co dzieje się, gdy dokładamy jedną liczbę $k$? Każda jedynka z tablicy $DP$ przelatuje o $k$ miejsc w prawo, jeśli tam jeszcze nie było jedynki. Możemy zapisać tę operację jako złożenie dwóch operacji bitowych - najpierw przesuwamy bitowo o $k$ tablicę $DP,$ a potem używamy funkcji $OR,$ aby zanotować, że jeśli była jedynka w miejscu $i$ wcześniej lub znajduje się teraz to chcemy tę jedynkę zostawić. Teraz złażoność naszego programu to nadal $O(nw),$ ale działa on $32$ razy szybciej!
 
 
 ```cpp=
@@ -116,7 +116,7 @@ bool sumaBitset(a[], int n, int w) {
 
 ## Dyskretny problem plecakowy - rozwiązanie dynamiczne
 
-To już chyba nasze trzecie podejście do tego problemu. Czas go wreszcie rozwiązać. Przejdziemy przez dokładnie ten sam proces, w jaki myśleliśmy poprzednio. Intuicyjne wydaje się, że dla każdego $i$ będziemy chcieli stablicować największą możliwą wartość elementów wybranych do plecaka pod warunkiem, że zużyliśmy $i$ miejsca w plecaku. Oznaczymy to przez $DP[i]$ -- to nasz stan.
+To już chyba nasze trzecie podejście do tego problemu. Czas go wreszcie rozwiązać. Przejdziemy przez dokładnie ten sam proces, w jaki myśleliśmy poprzednio. Intuicyjne wydaje się, że dla każdego $i$ będziemy chcieli stablicować największą możliwą wartość elementów wybranych do plecaka pod warunkiem, że zużyliśmy $i$ miejsca w plecaku. Oznaczymy to przez $DP[i]$ - to nasz stan.
 
 
 Czego jeszcze potrzebujemy? Stanów bazowych. Na początku nie mamy żadnych elementów, czyli w tablicy $DP$ są same zera.
@@ -125,7 +125,7 @@ Czego jeszcze potrzebujemy? Stanów bazowych. Na początku nie mamy żadnych ele
 Teraz kolej na przejścia. Zrobimy dokładnie to samo, co poprzednio. Powiedzmy, że rozpatrujemy $j$-ty przedmiot o masie $m_j$ i wartości $w_j.$ Dla każdej poprzedniej możliwości możemy teraz dodać ten element. Zapiszmy więc: $DP[i + m_j] = max(DP[i + m_j], DP[i] + w_j).$
 
 
-Nie potrzebujemy już nic więcej, aby napisać algorytm. Jest on w pewnym sensie podobny do poprzednich kodów -- schemat taki sam, tylko wzory nieco inne.
+Nie potrzebujemy już nic więcej, aby napisać algorytm. Jest on w pewnym sensie podobny do poprzednich kodów - schemat taki sam, tylko wzory nieco inne.
 
 
 ```cpp=
@@ -158,12 +158,12 @@ int problemPlecakowy(m[], w[], n) {
 
 ```
 
-Otrzymaliśmy algorytm działający w złożoności $O(n\\cdot W).$ Umiejętność napisania poprawnego dynamika jest bardzo cenna. Nie wszystkie podejścia da się bowiem łatwo zoptymalizować -- czasem trzeba rozważyć to, które ma większe możliwości. A czasem obydwa, łącząc je. Dobrze zobrazuje to poniższy przykład.
+Otrzymaliśmy algorytm działający w złożoności $O(n\\cdot W).$ Umiejętność napisania poprawnego dynamika jest bardzo cenna. Nie wszystkie podejścia da się bowiem łatwo zoptymalizować - czasem trzeba rozważyć to, które ma większe możliwości. A czasem obydwa, łącząc je. Dobrze zobrazuje to poniższy przykład.
 
 
 ## Sumy pierwiastkowe
 
-Istnieje jeszcze jedna przydatna optymalizacja do <b>problemu sumy,</b> którą warto znać. Załóżmy, że wszystkie liczby z ciągu $a$ sumują się do pewnej liczby $s.$ Okazuje się, że umiemy wówczas zaproponować algorytm działający w złożoności czasowej $O(s\\sqrt s),$ łącząc dwa powyżej omówione rozwiązania. Zauważmy, istnieje maksymalnie $O(\\sqrt s)$ różnych elementów, ponieważ suma wszystkich elementów wynosi $s,$ a najmniejsza możliwa suma $k$ różnych elementów to $1+2+3+...+k=\frac{k(k+1)}{2}.$
+Istnieje jeszcze jedna przydatna optymalizacja do <b>problemu sumy,</b> którą warto znać. Załóżmy, że wszystkie liczby z ciągu $a$ sumują się do pewnej liczby $s.$ Okazuje się, że umiemy wówczas zaproponować algorytm działający w złożoności czasowej $O(s\\sqrt s),$ łącząc dwa powyżej omówione rozwiązania. Zauważmy, istnieje maksymalnie $O(\\sqrt s)$ różnych elementów, ponieważ suma wszystkich elementów wynosi $s,$ a najmniejsza możliwa suma $k$ różnych elementów to $1+2+3+...+k=k(k+1) / 2.$
 
 
 Nic nie stoi na przeszkodzie, aby <b>wszystkie takie same elementy rozważyć jednocześnie.</b> Zajmie to nam nie więcej niż $O(\\sqrt s \\cdot t),$ gdzie $t$ to czas rozważenia jednego typu elementów. Spróbujmy to zrobić. Zliczmy w pomocniczej tablicy $ILE[]$ ile razy występuje każdy z elementów. Niech liczba $m$ występuje $w$ razy. $C[i]$ będzie mówiło nam, ile minimalnie elementów typu $m$ potrzebujemy, aby dało się przedstawić $i$ jako sumę pewnych elementów ze zbioru.
@@ -172,7 +172,7 @@ Nic nie stoi na przeszkodzie, aby <b>wszystkie takie same elementy rozważyć je
 Na początku wszystkie $C[i]$ przyjmują wartość $\\infty,$ z wyjątkiem tych $i,$ dla których $DP[i]$ wynosiło już wcześniej $1.$ Logiczne, prawda?
 
 
-Potrzebujemy jeszcze przejść. Te będą z kolei bardzo podobne do tych, które powinieneś otrzymać rozwiązując zadanie z poprzedniego akapitu. $C[i+m] = min(C[i+m], C[i]+1).$ Ten wzór nie jest trudny -- mamy do wyboru zostawić poprzednią opcję lub wziąć o jeden więcej element typu $m.$ To co? Czas na rozwiązanie.
+Potrzebujemy jeszcze przejść. Te będą z kolei bardzo podobne do tych, które powinieneś otrzymać rozwiązując zadanie z poprzedniego akapitu. $C[i+m] = min(C[i+m], C[i]+1).$ Ten wzór nie jest trudny - mamy do wyboru zostawić poprzednią opcję lub wziąć o jeden więcej element typu $m.$ To co? Czas na rozwiązanie.
 
 
 ```cpp=

@@ -8,7 +8,7 @@ Programowanie dynamiczne to kolejna z metod projektowania algorytmów, które po
 
 Chcemy wiedzieć, na ile sposobów możemy przedstawić liczbę $n$ jako sumę dodatnich liczb całkowitych, nie większych niż $k$ (ich kolejność ma znaczenie).
 Np., dla $n=4$ oraz $k=3$ liczbę $n$ możemy przedstawić na $7$ sposobów:
-$1+1+1+1=1+1+2=1+2+1=2+1+1=2+2=1+3=3+1$
+$1$ $+$ $1$ $+$ $1$ $+$ $1$ $=$ $1+1+2$ $=$ $1+2+1$ $=$ $2+1+1$ $=$ $2+2$ $=$ $1+3$ $=$ $3+1$
 
 
 ### Wolne rozwiązanie rekurencyjne
@@ -20,31 +20,31 @@ Zastanówmy się nad jakimkolwiek podejściem do \"przystawki\". Niech $W_n$ bę
 
 int podzialy_liczby(int n){
 
-    //Liczby 0 nie możemy zapisać jako sumy dodatnich liczb całkowitych
+\ \ \ \ //Liczby 0 nie możemy zapisać jako sumy dodatnich liczb całkowitych
 
-    if (n <= 0)
+\ \ \ \ if (n <= 0)
 
-        return 0; /*To bardzo wazne!
+\ \ \ \ \ \ \ \ return 0; //To bardzo wazne!
 
-        Bez tego warunku funkcja dzialalaby w nieskonczonosc!*/
+\ \ \ \ \ \ \ \ //Bez tego warunku funkcja dzialalaby w nieskonczonosc!
 
-    //1 możemy zapisać na tylko jeden sposób: 1=1
+\ \ \ \ //1 możemy zapisać na tylko jeden sposób: 1=1
 
-    if (n == 1)
+\ \ \ \ if (n == 1)
 
-        return 1;
+\ \ \ \ \ \ \ \ return 1;
 
-    int wynik = 0;
+\ \ \ \ int wynik = 0;
 
-    /*Wybieramy pierwszą liczbę, a następnie sprawdzamy,
+\ \ \ \ //Wybieramy pierwszą liczbę, a następnie sprawdzamy,
 
-    ile pozostało nam mozliwości:*/
+\ \ \ \ //ile pozostało nam mozliwości:
 
-    for (int i = 1; i <= k; i ++)
+\ \ \ \ for (int i = 1; i <= k; i ++)
 
-        wynik += podzialy_liczby(n-i);
+\ \ \ \ \ \ \ \ wynik += podzialy_liczby(n-i);
 
-    return wynik;
+\ \ \ \ return wynik;
 
 }
 
@@ -65,27 +65,27 @@ int wyliczone[MAX_N];
 
 int podzialy_liczby_dp(int n){
 
-    if (n <= 0)
+\ \ \ \ if (n <= 0)
 
-        return 0;
+\ \ \ \ \ \ \ \ return 0;
 
-    if (n == 1)
+\ \ \ \ if (n == 1)
 
-        return 1;
+\ \ \ \ \ \ \ \ return 1;
 
-    if (wyliczone[n])
+\ \ \ \ if (wyliczone[n])
 
-        return wyliczone[n];
+\ \ \ \ \ \ \ \ return wyliczone[n];
 
-    int wynik = 0;
+\ \ \ \ int wynik = 0;
 
-    for (int i = 1; i <= k; i ++)
+\ \ \ \ for (int i = 1; i <= k; i ++)
 
-        wynik += podzialy_liczby_dp(n-i);
+\ \ \ \ \ \ \ \ wynik += podzialy_liczby_dp(n-i);
 
-    wyliczone[n] = wynik;
+\ \ \ \ wyliczone[n] = wynik;
 
-    return wynik;
+\ \ \ \ return wynik;
 
 }
 
@@ -107,21 +107,21 @@ const int MAX_N = 1000003;
 
 int podzialy_liczby_dp2(int n, int k) {
 
-    int W[n+2];
+\ \ \ \ int W[n+2];
 
-    W[0] = 1;
+\ \ \ \ W[0] = 1;
 
-    for (int i = 1; i <= n; i ++) {
+\ \ \ \ for (int i = 1; i <= n; i ++) {
 
-        W[i] = 0;
+\ \ \ \ \ \ \ \ W[i] = 0;
 
-        for (int j = 1; j <= k && j <= i; j ++)
+\ \ \ \ \ \ \ \ for (int j = 1; j <= k && j <= i; j ++)
 
-            W[i] += W[i - j];
+\ \ \ \ \ \ \ \ \ \ \ \ W[i] += W[i - j];
 
-    }
+\ \ \ \ }
 
-    return W[n];
+\ \ \ \ return W[n];
 
 }
 
@@ -141,21 +141,21 @@ int wyliczone[MAX_N], pref[MAX_N];
 
 int podzialy_liczby_opt(int n) {
 
-    wyliczone[1] = 1;
+\ \ \ \ wyliczone[1] = 1;
 
-    pref[1] = 1;
+\ \ \ \ pref[1] = 1;
 
-    for (int i = 2; i <= n; i ++) {
+\ \ \ \ for (int i = 2; i <= n; i ++) {
 
-        wyliczone[i] = pref[i-1];
+\ \ \ \ \ \ \ \ wyliczone[i] = pref[i-1];
 
-        if (i-k-1 >= 0)
+\ \ \ \ \ \ \ \ if (i-k-1 >= 0)
 
-            wyliczone[i] -= pref[i-k-1];
+\ \ \ \ \ \ \ \ \ \ \ \ wyliczone[i] -= pref[i-k-1];
 
-        pref[i] = pref[i-1] + wyliczone[i];
+\ \ \ \ \ \ \ \ pref[i] = pref[i-1] + wyliczone[i];
 
-    }
+\ \ \ \ }
 
 }
 
@@ -196,27 +196,27 @@ Mówi się, że w programowaniu dynamicznym gdy mamy poprawnie ustalony stan to 
 
 int lcs(string s1, string s2) {
 
-    for (int i = 0; i <= s1.length(); i ++)
+\ \ \ \ for (int i = 0; i <= s1.length(); i ++)
 
-        for (int j = 0; j <= s2.length(); j ++) {
+\ \ \ \ \ \ \ \ for (int j = 0; j <= s2.length(); j ++) {
 
-            if (i == 0 || j == 0)
+\ \ \ \ \ \ \ \ \ \ \ \ if (i == 0 || j == 0)
 
-                dp[i][j] = 0;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dp[i][j] = 0;
 
-            else {
+\ \ \ \ \ \ \ \ \ \ \ \ else {
 
-                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
 
-                if (s1[i-1] == s2[j-1])
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if (s1[i-1] == s2[j-1])
 
-                    dp[i][j] = max(dp[i][j], dp[i-1][j-1] + 1);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dp[i][j] = max(dp[i][j], dp[i-1][j-1] + 1);
 
-            }
+\ \ \ \ \ \ \ \ \ \ \ \ }
 
-        }
+\ \ \ \ \ \ \ \ }
 
-    return dp[s1.length()][s2.length()];
+\ \ \ \ return dp[s1.length()][s2.length()];
 
 }
 

@@ -29,7 +29,16 @@ const StyledDiv = styled.div`
         color: ${(p: IStyleArgument) => p.theme.colors.primary};
     }
     p {
-        overflow-x: scroll;
+        overflow-x: auto;
+        overflow-y: visible;
+        height: fit-content;
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    li {
+        font-size: 16px;
+        line-height: 30px;
     }
 `;
 

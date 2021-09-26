@@ -19,25 +19,25 @@ Spróbujmy  rozwiązać  problem  jakkolwiek.  Niech $DP [i]$ będzie  długośc
 
 int lis(int[] a, int n) {
 
-	int result = 0;
+\ \ \ \ int result = 0;
 
-	for (int i = 1; i <= n; i ++) {
+\ \ \ \ for (int i = 1; i <= n; i ++) {
 
-		int best = 0;
+\ \ \ \ \ \ \ \ int best = 0;
 
-		for (int j = 1; j < i; j ++)
+\ \ \ \ \ \ \ \ for (int j = 1; j < i; j ++)
 
-			if (a[j] < a[i])
+\ \ \ \ \ \ \ \ \ \ \ \ if (a[j] < a[i])
 
-				best = max(best, DP[j]);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ best = max(best, DP[j]);
 
-		DP[i] = best + 1;
+\ \ \ \ \ \ \ \ DP[i] = best + 1;
 
-		result = max(result, DP[i]);
+\ \ \ \ \ \ \ \ result = max(result, DP[i]);
 
-	}
+\ \ \ \ }
 
-	return result;
+\ \ \ \ return result;
 
 }
 
@@ -59,23 +59,23 @@ Możemy zastosować więc jakąś strukturę danych do znajdywania maksimum na p
 
 int lis_opt(int[] a, int n) {
 
-	int result = 0;
+\ \ \ \ int result = 0;
 
-	PowerTree powerTree = new PowerTree();
+\ \ \ \ PowerTree powerTree = new PowerTree();
 
-	for (int i = 1; i <= n; i ++) {
+\ \ \ \ for (int i = 1; i <= n; i ++) {
 
-		int best = powerTree.getMinOnPrefix(a[i] - 1);
+\ \ \ \ \ \ \ \ int best = powerTree.getMinOnPrefix(a[i] - 1);
 
-		DP[i] = best + 1;
+\ \ \ \ \ \ \ \ DP[i] = best + 1;
 
-		result = max(result, DP[i]);
+\ \ \ \ \ \ \ \ result = max(result, DP[i]);
 
-		powerTree.insertToTree(a[i], DP[i]);
+\ \ \ \ \ \ \ \ powerTree.insertToTree(a[i], DP[i]);
 
-	}
+\ \ \ \ }
 
-	return result;
+\ \ \ \ return result;
 
 }
 
@@ -98,7 +98,7 @@ Pomińmy  bajkę  o  kosmitach  i  przejdźmy  od  razu  do  formalnej  treści 
 
 ### Obserwacja i skalowanie
 
-Zacznijmy od prostej obserwacji. Opłaca nam się rysować niebieskie odcinki tylko w takich $x,$ że istnieje czerwony odcinek, który kończy się w $x.$ Dlaczego? Rozważmy rozwiązanie ’optymalne’, w którym tak nie jest. Wówczas możemy każdy z pionowych odcinków dosunąć w prawo do pierwszego miejsca, w którym kończy się jakiś przedział, i uzyskamy rozwiązanie o tym samym koszcie, spełniające nasz warunek.
+Zacznijmy od prostej obserwacji. Opłaca nam się rysować niebieskie odcinki tylko w takich $x,$ że istnieje czerwony odcinek, który kończy się w $x.$ Dlaczego? Rozważmy rozwiązanie \"optymalne\", w którym tak nie jest. Wówczas możemy każdy z pionowych odcinków dosunąć w prawo do pierwszego miejsca, w którym kończy się jakiś przedział, i uzyskamy rozwiązanie o tym samym koszcie, spełniające nasz warunek.
 
 
 Ten  sam  argument  tyczy  się  lewych  końców.  Możemy  więc  przeskalować (skrócić) nasze  przedziały tak, żeby sąsiednie początki i końce kolejnych przedziałów były odległe o co najwyżej $1,$  zachowując  zależności. Dzięki  temu  otrzymamy  problem  równoważny,  w  którym  zachodzi  zawsze $1 \\leq a_i \\leq b_i \\leq 600.$ W tym momencie możemy przejść do opisu dynamika przedziałowego.
@@ -130,80 +130,80 @@ int grab(intA[], int B[], int Y[], int n, int x, int y)
 
 {
 
-	// Szuka najwyzszego przedzialu, ktory
+\ \ \ \ // Szuka najwyzszego przedzialu, ktory
 
-	// znajduje sie caly w przedziale [x, y]
+\ \ \ \ // znajduje sie caly w przedziale [x, y]
 
-	int res = 0;
+\ \ \ \ int res = 0;
 
-	for (int i = 1; i <= n; i ++)
+\ \ \ \ for (int i = 1; i <= n; i ++)
 
-		if (x <= A[i] && B[i] <= y && Y[res] < Y[i])
+\ \ \ \ \ \ \ \ if (x <= A[i] && B[i] <= y && Y[res] < Y[i])
 
-	res = i;
+\ \ \ \ res = i;
 
-	return res;
+\ \ \ \ return res;
 
 }
 
 
 int getDP(int a, int b) {
 
-	// Pomaga nie odwolywac sie do glupich rzeczy
+\ \ \ \ // Pomaga nie odwolywac sie do glupich rzeczy
 
-	if (a <= b)
+\ \ \ \ if (a <= b)
 
-		return DP[a][b];
+\ \ \ \ \ \ \ \ return DP[a][b];
 
-	return 0;
+\ \ \ \ return 0;
 
 }
 
 
 int outer_space_invaders(int A[], int B[], int Y[], int n) {
 
-	// Najpierw skalujemy przedziały - 
+\ \ \ \ // Najpierw skalujemy przedziały - 
 
-	// powiedzmy, że początek pierwszego jest na pozycji 1,
+\ \ \ \ // powiedzmy, że początek pierwszego jest na pozycji 1,
 
-	// a koniec ostatniego na pozycji d
-	
+\ \ \ \ // a koniec ostatniego na pozycji d
+\ \ \ \ 
 
-	for (int len = 1; len <= d; len ++) {
+\ \ \ \ for (int len = 1; len <= d; len ++) {
 
-		for (int i = 1; i + len - 1 <= d; i ++) {
+\ \ \ \ \ \ \ \ for (int i = 1; i + len - 1 <= d; i ++) {
 
-			int j = i + len - 1;
+\ \ \ \ \ \ \ \ \ \ \ \ int j = i + len - 1;
 
-			int best = grab(i, j);
+\ \ \ \ \ \ \ \ \ \ \ \ int best = grab(i, j);
 
-			if (best == 0)
+\ \ \ \ \ \ \ \ \ \ \ \ if (best == 0)
 
-				DP[i][j] = 0;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DP[i][j] = 0;
 
-			else {
+\ \ \ \ \ \ \ \ \ \ \ \ else {
 
-				DP[i][j] = inf;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DP[i][j] = inf;
 
-				for (int m = A[best]; m <= B[best]; m ++) {
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for (int m = A[best]; m <= B[best]; m ++) {
 
-					int tmp = getDP(i, m - 1);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int tmp = getDP(i, m - 1);
 
-					tmp += getDP(m + 1, j);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp += getDP(m + 1, j);
 
-					tmp += Y[best];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp += Y[best];
 
-					DP[i][j] = min(DP[i][j], tmp);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DP[i][j] = min(DP[i][j], tmp);
 
-				}
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 
-			}
+\ \ \ \ \ \ \ \ \ \ \ \ }
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	}
+\ \ \ \ }
 
-	return DP[1][DL];
+\ \ \ \ return DP[1][DL];
 
 }
 
@@ -244,18 +244,18 @@ ll pref[maxn], tab[maxn], czas;
 
 inline ll getSum(int a, int b) {
 
-	return pref[b] - pref[a-1];
+\ \ \ \ return pref[b] - pref[a-1];
 
 }
 
 
 inline PLL koszt(int skad, int dokad, ll pocz) {
 
-	ll koniec = max((ll)pocz + czas, tab[dokad]);
+\ \ \ \ ll koniec = max((ll)pocz + czas, tab[dokad]);
 
-	ll ret = koniec * (ll)(dokad - skad + 1) - getSum(skad, dokad);
+\ \ \ \ ll ret = koniec * (ll)(dokad - skad + 1) - getSum(skad, dokad);
 
-	return mp(ret, koniec);
+\ \ \ \ return mp(ret, koniec);
 
 }
 
@@ -264,80 +264,80 @@ vector <PLL> pom;
 
 inline void repairDP(int i) {
 
-	pom.clear();
+\ \ \ \ pom.clear();
 
-	FOR (kt, 0, (int)dp[i].size()-1)
+\ \ \ \ FOR (kt, 0, (int)dp[i].size()-1)
 
-		pom.pb(mp(dp[i][kt], opt[i][kt]));
+\ \ \ \ \ \ \ \ pom.pb(mp(dp[i][kt], opt[i][kt]));
 
-	sort(pom.begin(), pom.end());
+\ \ \ \ sort(pom.begin(), pom.end());
 
-	dp[i].clear(); opt[i].clear();
+\ \ \ \ dp[i].clear(); opt[i].clear();
 
-	dp[i].pb(pom[0].e1); opt[i].pb(pom[0].e2);
+\ \ \ \ dp[i].pb(pom[0].e1); opt[i].pb(pom[0].e2);
 
-	FOR (kt, 1, (int)pom.size()-1) {
+\ \ \ \ FOR (kt, 1, (int)pom.size()-1) {
 
-		if (opt[i].back() > pom[kt].e2) {
+\ \ \ \ \ \ \ \ if (opt[i].back() > pom[kt].e2) {
 
-			opt[i].pb(pom[kt].e2);
+\ \ \ \ \ \ \ \ \ \ \ \ opt[i].pb(pom[kt].e2);
 
-			dp[i].pb(pom[kt].e1);
+\ \ \ \ \ \ \ \ \ \ \ \ dp[i].pb(pom[kt].e1);
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	}
+\ \ \ \ }
 
 }
 
 
 int main() {
 
-	opt[0].pb(0);
+\ \ \ \ opt[0].pb(0);
 
-	dp[0].pb(0);
+\ \ \ \ dp[0].pb(0);
 
-	ios_base::sync_with_stdio(0);
+\ \ \ \ ios_base::sync_with_stdio(0);
 
-	cin >> n >> poj >> czas;
+\ \ \ \ cin >> n >> poj >> czas;
 
-	FOR (i, 1, n)
+\ \ \ \ FOR (i, 1, n)
 
-		cin >> tab[i];
+\ \ \ \ \ \ \ \ cin >> tab[i];
 
-	pref[0] = 0;
+\ \ \ \ pref[0] = 0;
 
-	FOR (i, 1, n)
+\ \ \ \ FOR (i, 1, n)
 
-		pref[i] = pref[i-1] + tab[i];
+\ \ \ \ \ \ \ \ pref[i] = pref[i-1] + tab[i];
 
-	FOR(i, 1, n) {
+\ \ \ \ FOR(i, 1, n) {
 
-		int all = min(i, poj);
+\ \ \ \ \ \ \ \ int all = min(i, poj);
 
-		dp[i].clear(); opt[i].clear();
+\ \ \ \ \ \ \ \ dp[i].clear(); opt[i].clear();
 
-		FOR (j, 1, all) {
+\ \ \ \ \ \ \ \ FOR (j, 1, all) {
 
-			for (int kt = 0; kt < (int)dp[i-j].size(); ++kt) {
+\ \ \ \ \ \ \ \ \ \ \ \ for (int kt = 0; kt < (int)dp[i-j].size(); ++kt) {
 
-				PLL wyn = koszt(i - j + 1, i, opt[i-j][kt]);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PLL wyn = koszt(i - j + 1, i, opt[i-j][kt]);
 
-				wyn.e1 += dp[i-j][kt];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wyn.e1 += dp[i-j][kt];
 
-				dp[i].pb(wyn.e1);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dp[i].pb(wyn.e1);
 
-				opt[i].pb(wyn.e2);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ opt[i].pb(wyn.e2);
 
-			}
+\ \ \ \ \ \ \ \ \ \ \ \ }
 
-		}
+\ \ \ \ \ \ \ \ }
 
-		repairDP(i);
+\ \ \ \ \ \ \ \ repairDP(i);
 
-	}
+\ \ \ \ }
 
-	cout << dp[n][0];
+\ \ \ \ cout << dp[n][0];
 
 }
 

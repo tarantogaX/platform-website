@@ -6,7 +6,7 @@ content: "
 Czasem zdarza się, że niektóre wartości w naszym programie (np. wynik) są bardzo duże i nie mieszczą się w zakresach zmiennych udostępnianych przez języki programowania. Często jako wynik programu wystarczy wtedy podać jedynie jego resztę z dzielenia przez z góry określoną liczbę $M.$ Zazwyczaj w celu ułatwienia obliczeń wybiera się $M$ będące liczbą pierwszą. Dzisiaj dowiesz się, jak wykonywać podstawowe operacje w arytmetyce modularnej oraz szybko potęgować liczby.
 
 
-Poprzez zapis: $a \\equiv b (mod \\ M)$ (czytaj: $a$ przystaje do $b$ modulo $M$) rozumiemy, że liczby $a$ i $b$ mają tą samą resztę z dzielenia przez $M,$ czyli że $a-b$ jest podzielne przez $M.$ Na przykład: $2\\equiv 8 \\ (mod \\ 6),$ $17 \\equiv 187 \\ (mod \\ 10).$ Takie \"równanie\" nazywamy kongruencją.
+Poprzez zapis: $a \\equiv b \\ (mod \\ M)$ (czytaj: $a$ przystaje do $b$ modulo $M$) rozumiemy, że liczby $a$ i $b$ mają tą samą resztę z dzielenia przez $M,$ czyli że $a-b$ jest podzielne przez $M.$ Na przykład: $2\\equiv 8 \\ (mod \\ 6),$ $17 \\equiv 187 \\ (mod \\ 10).$ Takie \"równanie\" nazywamy kongruencją.
 
 ## Dodawanie, odejmowanie i mnożenie modulo
 
@@ -22,7 +22,7 @@ $(a \\cdot b) \\ (mod \\ M) \\equiv (a \\ (mod \\ M) \\cdot b \\ (mod \\ M)) \\ 
 $(a – b) \\ (mod \\ M) \\equiv (a \\ (mod \\ M) - b \\ (mod \\ M)) \\ (mod \\ M)$
 
 
-Na przykład: $17 \\ (mod \\ 10) + 28 \\ (mod \\ 10) \\equiv$ $(7 \\ (mod \\ 10) + 8 \\ (mod \\ 10)) (mod \\ 10) =$ $(7 + 8) \\ (\\pmod \\ 10) =$ $15 \\ (mod \\ 10) \\equiv$ $45 \\ (mod \\ 10) =$ $(17+28) \\ (mod \\ 10).$
+Na przykład: $17$ $(mod \\ 10)$ $+$ $28$ $(mod \\ 10)$ $\\equiv$ $(7 \\ (mod \\ 10)$ $+$ $8$ $(mod \\ 10))$ $(mod \\ 10)$ $=$ $(7 + 8)$ $(mod \\ 10)$ $=$ $15$ $(mod \\ 10)$ $\\equiv$ $45$ $(mod \\ 10)$ $=$ $(17+28)$ $(mod \\ 10).$
 
 
 Innymi słowy, jeśli chcemy poznać resztę z dzielenia przez $M$ sumy dwóch liczb, możemy najpierw zamiast każdej z nich wziąć jej resztę (mod $M$), dodać do siebie te reszty i wziąć resztę z dzielenia przez $M$ tej sumy. Otrzymamy wtedy taki sam wynik, jak gdybyśmy najpierw dodali do siebie obie liczby, a następnie policzyli resztę tej sumy modulo $M.$
@@ -78,7 +78,7 @@ Ile razy wykona się ta funkcja? Wykładnik $b$ nie będzie nieparzysty więcej 
 Niestety, dzielenia modulo nie możemy wykonywać tak \"niefrasobliwie\", jak reszty operacji, ponieważ bardzo często $a \\div b$ daje inną resztę z dzielenia przez $M,$ niż $a \\pmod{M} \\div b \\pmod{M}$
 
 
-Np., z jednej strony $(12 \\div 2) \\pmod{10} = 6 \\pmod{10},$ a z drugiej: $(12 \\pmod{10}) \\div (2 \\pmod{10}) = (2 \\pmod{10}) \\div (2 \\pmod{10}) = 1 \\pmod{10}.$ Coś tutaj się nie zgadza...
+Np. z jednej strony $(12 \\div 2)$ $pmod{10}$ $=$ $6$ $\\pmod{10},$ a z drugiej: $(12 \\pmod{10})$ $\\div$ $(2 \\pmod{10})$ $=$ $(2 \\pmod{10})$ $\\div$ $(2 \\pmod{10})$ $=$ $1 \\pmod{10}.$ Coś tutaj się nie zgadza...
 
 
 Może też się zdarzyć, że $a$ nie jest podzielne przez $b,$ a mimo tego dzielenie modulo da się wykonać, np. $3$ nie dzieli $7$ , ale $7 \\pmod{10} \\div 3 \\pmod{10} \\equiv 9 \\pmod{10},$ ponieważ $3 \\cdot 9 = 27 \\equiv 7 \\pmod{10}$}

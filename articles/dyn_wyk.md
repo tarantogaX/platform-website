@@ -59,31 +59,31 @@ Co się dzieje w przeciwnym przypadku? Wiemy, że w każdym ułożeniu któryś 
 
 void obliczDP(int i, int[] liczba) { //liczymy wynik dla maski bitowej i
 
-	//najpierw zliczamy sumę elementów
+\ \ \ \ //najpierw zliczamy sumę elementów
 
-	long long suma = 0;
+\ \ \ \ long long suma = 0;
 
-	for (int j = 0; j < n; j ++)
+\ \ \ \ for (int j = 0; j < n; j ++)
 
-		if (i & (1 << j))
+\ \ \ \ \ \ \ \ if (i & (1 << j))
 
-			suma += liczba[j];
+\ \ \ \ \ \ \ \ \ \ \ \ suma += liczba[j];
 
-	if (suma < 0)
+\ \ \ \ if (suma < 0)
 
-		DP[i] = 0;
+\ \ \ \ \ \ \ \ DP[i] = 0;
 
-	else {
+\ \ \ \ else {
 
-		//po ostatnim kroku na pewno suma będzie dodatnia
+\ \ \ \ \ \ \ \ //po ostatnim kroku na pewno suma będzie dodatnia
 
-		for (int j = 0; j < n; j ++)
+\ \ \ \ \ \ \ \ for (int j = 0; j < n; j ++)
 
-			if (i & (1 << j))
+\ \ \ \ \ \ \ \ \ \ \ \ if (i & (1 << j))
 
-				DP[i] += DP[i ^ (1 << j)];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DP[i] += DP[i ^ (1 << j)];
 
-	}
+\ \ \ \ }
 
 }
 
@@ -160,11 +160,11 @@ Niech $n$ będzie liczbą bitów. Dla każdego z nich dokonamy sumowania: jeśli
 
 for (int j = 0; j < n; j ++)
 
-	for (int i = 0; i < (1 << n); i ++)
+\ \ \ \ for (int i = 0; i < (1 << n); i ++)
 
-		if (i & (1 << j))
+\ \ \ \ \ \ \ \ if (i & (1 << j))
 
-			DP[i] += DP[i ^ (1 << j)];
+\ \ \ \ \ \ \ \ \ \ \ \ DP[i] += DP[i ^ (1 << j)];
 
 ```
 

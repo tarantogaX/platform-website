@@ -36,35 +36,35 @@ Jak znaleźć $path[0][][]$ już omówiliśmy. Co więcej, omówiliśmy też jak
 
 void countPaths(int n, int m, int A[], int B[], int M) {
 
-	for (int i = 1; i <= m; i ++) {
+\ \ \ \ for (int i = 1; i <= m; i ++) {
 
-		paths[0][A[i]][B[i]] ++;
+\ \ \ \ \ \ \ \ paths[0][A[i]][B[i]] ++;
 
-		if (A[i] != B[i])
+\ \ \ \ \ \ \ \ if (A[i] != B[i])
 
-			// każda krawędź prowadzi w obie strony
+\ \ \ \ \ \ \ \ \ \ \ \ // każda krawędź prowadzi w obie strony
 
-			paths[0][B[i]][A[i]]++;
+\ \ \ \ \ \ \ \ \ \ \ \ paths[0][B[i]][A[i]]++;
 
-	}
+\ \ \ \ }
 
-	for (int i = 1; i <= log2(M) + 1; i ++)
+\ \ \ \ for (int i = 1; i <= log2(M) + 1; i ++)
 
-		for (int a = 1; a <= n; a ++)
+\ \ \ \ \ \ \ \ for (int a = 1; a <= n; a ++)
 
-			for (int b = 1; b <= n; b ++) {
+\ \ \ \ \ \ \ \ \ \ \ \ for (int b = 1; b <= n; b ++) {
 
-				paths[i][a][b] = 0;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ paths[i][a][b] = 0;
 
-				for (int mid = 1; mid <= n; mid ++)
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for (int mid = 1; mid <= n; mid ++)
 
-					paths[i][a][b] += paths[i-1][a][mid]
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ paths[i][a][b] += paths[i-1][a][mid]
 
-						* paths[i-1][mid][b];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ * paths[i-1][mid][b];
 
-			}
+\ \ \ \ \ \ \ \ \ \ \ \ }
 
-	// dla dużych n i m trzeba pamiętać o long longach lub modulowaniu
+\ \ \ \ // dla dużych n i m trzeba pamiętać o long longach lub modulowaniu
 
 }
 
@@ -89,13 +89,13 @@ Okazuje się, że przed chwilą nauczyliśmy się potęgować macierze. Musimy s
 
 void pomnozMacierze() {
 
-	for (int i = 1; i <= n; i ++)
+\ \ \ \ for (int i = 1; i <= n; i ++)
 
-		for (int j = 1; j <= o; j ++)
+\ \ \ \ \ \ \ \ for (int j = 1; j <= o; j ++)
 
-			for (int k = 1; k <= m; k ++)
+\ \ \ \ \ \ \ \ \ \ \ \ for (int k = 1; k <= m; k ++)
 
-				W[i][j] += A[i][k] * B[k][j];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ W[i][j] += A[i][k] * B[k][j];
 
 }
 
@@ -122,13 +122,13 @@ Dlaczego wspominam o tym akurat teraz? Otóż, przedstawiony powyżej algorytm p
 
 void pomnozMacierzeSzybciej() {
 
-	for (int i = 1; i <= n; i ++)
+\ \ \ \ for (int i = 1; i <= n; i ++)
 
-		for (int k = 1; k <= m; k ++)
+\ \ \ \ \ \ \ \ for (int k = 1; k <= m; k ++)
 
-			for (int j = 1; j <= o; j ++)
+\ \ \ \ \ \ \ \ \ \ \ \ for (int j = 1; j <= o; j ++)
 
-				W[i][j] += A[i][k] * B[k][j];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ W[i][j] += A[i][k] * B[k][j];
 
 }
 
@@ -161,14 +161,15 @@ Jak to zrobić? Do nowego pierwszego elementu musi wpadać $a_n = c_1\\cdot a_{n
 Spróbujmy znaleźć taką macierz $M$ o wymiarach $k \\times k,$ żeby po przemnożeniu naszej ciągu ostatnich $k$ elementów przez tę macierz dostać następny ciąg. Zacznijmy od wypełnienia naszej macierzy samymi zerami. Dla $i$ od $2$ do $n$ chcemy, aby w wyniku  \"spadła \" liczba z poprzedniego miejsca w ciągu: $M[i][i-1]=1:$ liczba spadnie, gdy zostanie przemnożona przez $1.$ W pierwszym wierszu macierzy wpisujemy natomiast nasze współczynniki $c,$ a cała macierz wygląda tak:
 
 
-\\begin{bmatrix}
+$\\begin{bmatrix}
 c_{1}       & c_{2} & c_{3} & \\dots & c_{k - 1} & c_{k}\\\\
 1       & 0 & 0 & \\dots & 0 & 0 \\\\
 0       & 1 & 0 & \\dots & 0 & 0 \\\\
 0       & 0 & 1 & \\dots & 0 & 0 \\\\
 \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\
 0       & 0 & 0 & \\dots & 1 & 0 \\\\
-\\end{bmatrix}
+\\end{bmatrix}$
+<br /> <br />
 
 
 Kiedy $[a_n, a_{n-1}, a_{n-2}, ..., a_{n-k}]$ przez tę macierz, faktycznie otrzymamy $[a_{n+1}, a_{n}, a_{n-1}, ..., a_{n-k+1}].$ Co to nam daje? Skoro nauczyliśmy się przesuwać o $1,$ to możemy też przesuwać o dowolne $M$ -- nic nie stoi na przeszkodzie, by najpierw podnieść macierz przesunięcia do $M$-tej potęgi używając algorytmu, który już znamy, a dopiero potem przemnożyć przez naszą tablicę. Podniesienie macierzy $k \\times k$ do $M$-tej potęgi zajmuje nam czas $O(log \\ M \\cdot k^3).$ Taki jest też sumaryczny czas działania naszego algorytmu
