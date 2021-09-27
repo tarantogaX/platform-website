@@ -20,23 +20,23 @@ Słowa są równe, gdy literki na odpowiednich pozycjach są takie same. Innymi 
 
 ```cpp=
 
-bool rowne(string w1, string w2) {
+bool rowne (string w1, string w2) {
 
-	if (w1.size() != w2.size())
+\ \ \ \ if (w1.size() != w2.size())
 
-		return false;
+\ \ \ \ \ \ \ \ return false;
 
-	bool same=true;
+\ \ \ \ bool same = true;
 
-	for(int i = 0; i < w1.size(); i ++) {
+\ \ \ \ for (int i = 0; i < w1.size(); i ++) {
 
-		if(w1[i]!=w2[i])
+\ \ \ \ \ \ \ \ if (w1[i] != w2[i])
 
-			same=false;
+\ \ \ \ \ \ \ \ \ \ \ \ same = false;
 
-	}
+\ \ \ \ }
 
-	return same;
+\ \ \ \ return same;
 
 }
 
@@ -121,7 +121,7 @@ Pot[0] = 1;
 
 for(int i = 1; i <= n; i ++) {
 
-	Pot[i] = (Pot[i - 1] * p) % M;
+\ \ \ \ Pot[i] = (Pot[i - 1] * p) % M;
 
 }
 

@@ -35,10 +35,12 @@ const StyledDiv = styled.div`
         font-size: 16px;
         line-height: 30px;
     }
-
     li {
         font-size: 16px;
         line-height: 30px;
+    }
+    code {
+        background-color: #F0F0F0;
     }
 `;
 

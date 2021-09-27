@@ -41,7 +41,7 @@ cin >> znak; // Alternatywny sposób
 ```
 
 
-To bardzo ważne, żeby pamiętać o spacji przed ```\\%c```. W innym wypadku każdy znak biały (spacja, enter, itp.) będzie również interpretowany jako coś, co chcemy wczytać.
+To bardzo ważne, żeby pamiętać o spacji przed ```%c```. W innym wypadku każdy znak biały (spacja, enter, itp.) będzie również interpretowany jako coś, co chcemy wczytać.
 
 
 Natomiast przy wypisywaniu charów ta spacja nie jest już potrzebna:
@@ -99,6 +99,7 @@ W kolejnych komórkach stringu ```slowo```, zaczynając od 0, znajdą się kolej
 
 
 ## Zadania
+
 - [Ukryte liczby (IV OIJ, I etap)](https://szkopul.edu.pl/problemset/problem/B1hVIHVRAPsK9SZewqg_b014/site/?key=statement)
 
 - [Zliczacz liter (I OIJ, I etap)](https://szkopul.edu.pl/problemset/problem/y4Yh2h48DQKL4dOEQ8smdTSL/site/?key=statement)

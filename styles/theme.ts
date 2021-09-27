@@ -45,7 +45,7 @@ export const DefaultTheme: ITheme = {
         secondary: "#508ED6",
         background: "#FFFFFF",
         backgroundLight: "#F7F7F7",
-        backgroundStrong: "#EFEFEF",
+        backgroundStrong: "#F0F0F0",
         headerBackground: "#FFFFFF",
         footerBackground: "#000000",
         textMain: "#1D1E20",

@@ -77,59 +77,59 @@ int r = log(n) + 1, pot = 1;
 
 for (int i = 0; i < n; i ++)
 
-	KMR[i][0] = s[i] - ’a’+ 1;
+\ \ \ \ KMR[i][0] = s[i] - ’a’+ 1;
 
 for (int x = 1;x <= r; x ++) {
 
-	for(int i = 0;i < n; i ++) {
+\ \ \ \ for(int i = 0;i < n; i ++) {
 
-		if (i+pot >= n)
+\ \ \ \ \ \ \ \ if (i+pot >= n)
 
-			pomoc[i] = make_pair(
+\ \ \ \ \ \ \ \ \ \ \ \ pomoc[i] = make_pair(
 
-				KMR[i][x-1],
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KMR[i][x-1],
 
-				make_pair(-1, i));
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ make_pair(-1, i));
 
-		else
+\ \ \ \ \ \ \ \ else
 
-			pomoc[i] = make_pair(
+\ \ \ \ \ \ \ \ \ \ \ \ pomoc[i] = make_pair(
 
-				KMR[i][x-1],
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KMR[i][x-1],
 
-				make_pair(KMR[i+pot][x-1], i));
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ make_pair(KMR[i+pot][x-1], i));
 
-	}
+\ \ \ \ }
 
-	sort(pomoc,pomoc+n);
+\ \ \ \ sort(pomoc,pomoc+n);
 
-	pair <int, int> pom = make_pair(-1,-1);
+\ \ \ \ pair <int, int> pom = make_pair(-1,-1);
 
-	int ile = -1;
+\ \ \ \ int ile = -1;
 
-	for(int i = 0;i < n; i ++) {
+\ \ \ \ for(int i = 0;i < n; i ++) {
 
-		if(pom.first != pomoc[i].first
+\ \ \ \ \ \ \ \ if(pom.first != pomoc[i].first
 
-			|| pom.second != pomoc[i].second.first
+\ \ \ \ \ \ \ \ \ \ \ \ || pom.second != pomoc[i].second.first
 
-		) {
+\ \ \ \ \ \ \ \ ) {
 
-			pom = make_pair(
+\ \ \ \ \ \ \ \ \ \ \ \ pom = make_pair(
 
-				pomoc[i].first,
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pomoc[i].first,
 
-				pomoc[i].second.first);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pomoc[i].second.first);
 
-				++ile;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++ile;
 
-		}
+\ \ \ \ \ \ \ \ }
 
-		KMR[pomoc[i].second.second][x] = ile;
+\ \ \ \ \ \ \ \ KMR[pomoc[i].second.second][x] = ile;
 
-	}
+\ \ \ \ }
 
-	pot *= 2;
+\ \ \ \ pot *= 2;
 
 }
 
@@ -144,7 +144,7 @@ W celu porównania dwóch podsłów o długości $2^k$ znajdujących się kolejn
 ![Dwa podsłowa](https://codimd.s3.shivering-isles.com/demo/uploads/upload_ac7d62f870953e4109b74dccadb2d6ab.png)
 
 
-Niech $a$ będzie długością podsłowa, $x$ pozycją jego początku w $S$ i $y$ pozycją jego końca. Weźmy maksymalne takie $q,$ że $2^q \\leq a.$ Zauważmy, że:  $2^q + 2^q = 2^q+1 > a$ oraz $2^q > \\frac{a}{2}.$
+Niech $a$ będzie długością podsłowa, $x$ pozycją jego początku w $S$ i $y$ pozycją jego końca. Weźmy maksymalne takie $q,$ że $2^q \\leq a.$ Zauważmy, że:  $2^q + 2^q = 2^q+1 > a$ oraz $2^q > a / 2.$
 
 
 Oznacza to, że gdy weźmiemy podsłowa o długości $2^q$ zaczynające się na pozycji $x$ oraz $y - 2^q + 1,$ to całkowicie pokryją interesujące nas podsłowo i nie wyjdą poza jego ramy. Oznacza to, że dla dwóch podsłów możemy utworzyć pary postaci $(KMR[x][q],KMR[y-2^q+1][q])$ i porównywać je ze sobą.

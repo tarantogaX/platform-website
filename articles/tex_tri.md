@@ -40,19 +40,23 @@ Niech korzeń będzie wierzchołkiem numer zero. Tak jak w przypadku słów, num
 
 
 W $T[X][c]$ będzie się znajdować numer wierzchołka, do którego prowadzi krawędź wychodząca z wierzchołka $X$ z przypisaną literką $c.$ Jeżeli $T[x][c] = -1,$ to taki wierzchołek nie istnieje.
+
+
 ![Krawędzie w trie](https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcb52fa45cac0e6cdea06bc607b5f97e.png)
+
+
 Jeśli chcemy dodać nowe słowo $S,$ musimy nauczyć się wędrować po naszym drzewie. W tym celu będziemy przeglądać kolejne prefiksy $S$ i znajdować odpowiadające im wierzchołki. Niech $X$ oznacza wierzchołek, w którym aktualnie jesteśmy. Na początku $X = 0$ (czyli jesteśmy w korzeniu, odpowiadającemu pustemu słowu). Zauważmy, że jeśli wierzchołek $A$ odpowiada prefiksowi słowa $S$ o długości $i-1$ to prefiksowi o długości $i$ odpowiada $T[X][S[i-1]].$ Jeśli $T[X][S[i]] = -1$ to taki wierzchołek nie istnieje i trzeba go zaistnieć. Nadajmy mu numer równy $t:$ jest to bardzo korzystne rozwiązanie, ponieważ dzięki temu dodawane wierzchołki będą miały różne, a w dodatku małe numery. W tym momencie pod $T[X][S[i-1]]$ musimy podstawić $t,$ po czym zwiększyć $t$ o jeden, bo dodaliśmy nowy wierzchołek. Niezależnie od tego co się zdarzyło przed chwilą, możemy przyjąć $X = T[X][S[i-1]]$ (tym samym wchodząc do tego wierzchołka) i kontynuować wędrówkę dla $i+1$-wszego prefiksu $S.$ Kiedy przetworzymy już prefiks długości $X.length(),$ będziemy mogli przypisać do $X$ identyfikator słowa, które właśnie dodaliśmy. Dodanie słowa $X$ kosztowało nas $O(X.length())$ operacji.
 
 
 Podobna metoda przechodzenia działa w przypadku sprawdzania, czy słowo $X$ występuje w słowniku. Jeśli w pewnym momencie natrafimy na sytuację, w której nie ma drogi $(T[X][S[i]] = -1)$ to danego słowa nie ma w słowniku.
 
 
-Swobodne poruszanie się po drzewie w celu np. wypisania wszystkich słów umożliwiają wszelkie algorytmy przeszukiwania grafów, takie jak $DFS$ czy $BFS.$ Jeżeli jeszcze nie znasz żadnego z nich gorąco polecam w tej chwili szybko przeczytać i zrozumieć działanie algorytmu $DFS.$ Jest bardzo prosty, więc szybko go ogarniesz i bez problemu będziesz mógł kontynuować czytanie tego artykułu :)
+Swobodne poruszanie się po drzewie w celu np. wypisania wszystkich słów umożliwiają wszelkie algorytmy przeszukiwania grafów, takie jak DFS czy BFS. Jeżeli jeszcze nie znasz żadnego z nich gorąco polecam w tej chwili szybko przeczytać i zrozumieć działanie algorytmu DFS. Jest bardzo prosty, więc szybko go ogarniesz i bez problemu będziesz mógł kontynuować czytanie tego artykułu :)
 
 
 ### Alternatywna Implementacja
 
-Powyższa implementacja w większości przypadków jest wystarczająca, ale zajmuje $O(V \\cdot A)$ pamięci, dlatego może się nie sprawdzić kiedy rozmiar alfabetu jest duży albo ograniczenia pamięciowe małe. Możemy to rozwiązać np. zmieniając tablicę $T[V][A]$ na dostępną w STLu mapę: ```map <int, char> T[n];```. Złożoność dodawania słów i $DFS$’a będzie gorsza o $O(log \\ A),$ gdyż tyle będzie nas kosztować wyciąganie informacji o krawędziach. W zamian za to wykorzystamy jedynie $O(V)$ pamięci.
+Powyższa implementacja w większości przypadków jest wystarczająca, ale zajmuje $O(V \\cdot A)$ pamięci, dlatego może się nie sprawdzić kiedy rozmiar alfabetu jest duży albo ograniczenia pamięciowe małe. Możemy to rozwiązać np. zmieniając tablicę $T[V][A]$ na dostępną w STLu mapę: ```map <int, char> T[n];```. Złożoność dodawania słów i DFSa będzie gorsza o $O(log \\ A),$ gdyż tyle będzie nas kosztować wyciąganie informacji o krawędziach. W zamian za to wykorzystamy jedynie $O(V)$ pamięci.
 
 
 Drugi sposób to użycie vectora: ```vector <int> T[n];```. Wszystkie operacje będą się odbywać analogicznie jak w wersji tablicowej, ale zamiast odwoływać się bezpośrednio do krawędzi o znaku $c$ będziemy musieli przejrzeć cały vector, a gdy taka krawędź nie istnieje dodać ją na koniec vectora. W tym wypadku złożoność pamięciowa wyniesie $O(V),$ a operacje dodawania słów i przeszukiwania drzewa będą wolniejsze o $O(A).$
@@ -61,7 +65,9 @@ Drugi sposób to użycie vectora: ```vector <int> T[n];```. Wszystkie operacje b
 ## Zadania
 
 - <b>Problem 1:</b> Mamy dany język na drzewie trie i słowo $S.$ Sprawdź, czy $S$ jest prefiksem któregoś ze słów w języku.
+
 - <b>Problem 2:</b> Mając drzewo trie zaimplementowane na tablicy $T$ wypisz wszystkie słowa z języka posortowane leksykograficznie (czyli alfabetycznie).
+
 - <b>Problem 3:</b> Mając słowo $S$ stwierdź, ile jest słów $x$ w danym języku, takich że $S$ jest prefiksem $x.$
 
 
@@ -70,7 +76,7 @@ Drugi sposób to użycie vectora: ```vector <int> T[n];```. Wszystkie operacje b
 <b>Rozwiązanie 1:</b> Jeżeli istnieje wierzchołek $A,$ któremu odpowiada słowo $S,$ to w języku istnieje słowo, którego $S$ jest prefiksem. Dlaczego? Przecież $A$ musiał w jakiś sposób powstać!
 
 
-<b>Rozwiązanie 2:</b> Skorzystajmy z algorytmu $DFS.$ Ponownie zaczynamy od korzenia. Znajdując się w wierzchołku $X$ będziemy wchodzić do jego synów od tego, do którego prowadzi krawędź z najwcześniejszą literką, do tego, do którego prowadzi krawędź z najpóźniejszą. Żeby móc szybko wypisywać słowa, będziemy trzymać vector $vec,$ zawierający wszystkie znaki na ścieżce od korzenia do aktualnego wierzchołka. Wchodząc do nowego wierzchołka na końcu $vec$ należy dodać krawędź, którą do niego weszliśmy, a wychodząc: usunąć. W ten sposób będzie się na nim utrzymywać słowo odpowiadające wierzchołkowi, w którym aktualnie jesteśmy.
+<b>Rozwiązanie 2:</b> Skorzystajmy z algorytmu DFS. Ponownie zaczynamy od korzenia. Znajdując się w wierzchołku $X$ będziemy wchodzić do jego synów od tego, do którego prowadzi krawędź z najwcześniejszą literką, do tego, do którego prowadzi krawędź z najpóźniejszą. Żeby móc szybko wypisywać słowa, będziemy trzymać vector $vec,$ zawierający wszystkie znaki na ścieżce od korzenia do aktualnego wierzchołka. Wchodząc do nowego wierzchołka na końcu $vec$ należy dodać krawędź, którą do niego weszliśmy, a wychodząc: usunąć. W ten sposób będzie się na nim utrzymywać słowo odpowiadające wierzchołkowi, w którym aktualnie jesteśmy.
 
 
 ![DFS po trie i vec](https://codimd.s3.shivering-isles.com/demo/uploads/upload_3c89745c8ac0201354dac69ee68ed4ff.png)

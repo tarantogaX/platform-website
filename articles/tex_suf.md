@@ -28,25 +28,21 @@ Tablica $RANK$ ułatwia nawigację po $SA.$ W $RANK[x]$ będziemy trzymać infor
 Algorytm LPC służy do znajdowania najdłuższych wspólnych prefiksów (ang. LCP - Longest Common Prefix) kolejnych leksykograficznie sufiksów słowa $S.$ Innymi słowy, algorytm LCP służy do znajdowania LCP słów znajdujących się obok siebie w tablicy sufiksowej.
 
 
-Dla każdej komórki LCP[x]$ (oprócz pierwszej, gdzie dla ułatwienia możemy ustawić wartość -1) będziemy trzymać informację, że sufiksy zaczynające się na pozycjach $SA[x]$ oraz $SA[x-1]$ mają najdłuższy wspólny prefiks równy $LCP[x].$
+Dla każdej komórki $LCP[x]$ (oprócz pierwszej, gdzie dla ułatwienia możemy ustawić wartość -1) będziemy trzymać informację, że sufiksy zaczynające się na pozycjach $SA[x]$ oraz $SA[x-1]$ mają najdłuższy wspólny prefiks równy $LCP[x].$
 
 
 ![Wspólny prefiksy sąsiednich sufiksów](https://codimd.s3.shivering-isles.com/demo/uploads/upload_6b578c1af57eae362d0966f9e2dc765a.png)
 
 
-Moglibyśmy obliczyć te wartości dla odpowiednich sufiksów szukając literka po literce pierwszej pozycji, na której występują dwa różne znaki. Gołym okiem widać, że takie rozwiązanie może kosztować nawet $O(n^2)$ czasu. Moglibyśmy również próbować znaleźć pierwsze różniące się pozycje wyszukiwaniem binarnym na haszach. To rozwiązanie byłoby w pełni akceptowalne i działałoby w czasie $O(nlogn).$ Okazuje się jednak, że możemy to zrobić znacznie łatwiej, nieznacznie modyfikując pierwsze podejście.
+Moglibyśmy obliczyć te wartości dla odpowiednich sufiksów szukając literka po literce pierwszej pozycji, na której występują dwa różne znaki. Gołym okiem widać, że takie rozwiązanie może kosztować nawet $O(n^2)$ czasu. Moglibyśmy również próbować znaleźć pierwsze różniące się pozycje wyszukiwaniem binarnym na haszach. To rozwiązanie byłoby w pełni akceptowalne i działałoby w czasie $O(n \\ log \\ n).$ Okazuje się jednak, że możemy to zrobić znacznie łatwiej, nieznacznie modyfikując pierwsze podejście.
 
 
-<b>Twierdzenie:</b>
+<b>Twierdzenie:</b> Niech $u = LCP [x],$ $i = SA[x],$ a $j = SA[x-1].$ Zachodzi nierówność:
+
+$LCP [SA[i+1]] \\geqslant max(0, u-1).$
 
 
-Niech $u = LCP [x],$ $i = SA[x],$ a $j = SA[x-1].$ Zachodzi nierówność $LCP [SA[i+1]] \\geqslant max(0, u-1).$
-
-
-<b>Dowód:</b>
-
-
-Zauważmy, że $i + 1$-wszy sufiks w $S$ to $i$-ty sufiks z uciętą pierwszą literą. Analogicznie $j + 1$-wszy to $j$-ty z uciętą pierwszą literą. Wynika z tego, że sufiks $j+1$-wszy i $i+1$-wszy posiadają LCP przynajmniej $u - 1.$ Sufiks $j + 1$-wszy jest wcześniejszy leksykograficznie niż $i + 1$-wszy, ponieważ sufiks $j$-ty był wcześniejszy niż $i$-ty (występował wcześniej w SA). Spośród mniejszych leksykograficznie sufiksów S sufiks $i + 1$-wszy ma największe LCP z tym, występującym bezpośrednio przed nim w SA, ponieważ pozycje w SA są posortowane leksykograficznie. Oznacza to, że nie może mieć z nim mniejszego LCP niż $u - 1.$
+<b>Dowód:</b> Zauważmy, że $i + 1$-wszy sufiks w $S$ to $i$-ty sufiks z uciętą pierwszą literą. Analogicznie $j + 1$-wszy to $j$-ty z uciętą pierwszą literą. Wynika z tego, że sufiks $j+1$-wszy i $i+1$-wszy posiadają LCP przynajmniej $u - 1.$ Sufiks $j + 1$-wszy jest wcześniejszy leksykograficznie niż $i + 1$-wszy, ponieważ sufiks $j$-ty był wcześniejszy niż $i$-ty (występował wcześniej w SA). Spośród mniejszych leksykograficznie sufiksów S sufiks $i + 1$-wszy ma największe LCP z tym, występującym bezpośrednio przed nim w SA, ponieważ pozycje w SA są posortowane leksykograficznie. Oznacza to, że nie może mieć z nim mniejszego LCP niż $u - 1.$
 
 
 ![Wspólne prefiksy podsłów](https://codimd.s3.shivering-isles.com/demo/uploads/upload_16b391c3230bd3c703e4fc6c1ee957c1.png)
