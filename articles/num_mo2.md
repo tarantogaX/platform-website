@@ -37,15 +37,15 @@ Trudno oszacować złożoność tego algorytmu. Po pierwsze losujemy, a po drugi
 
 vector <int> primes; //tu powinny wczesniej
 
- \ \ \ \  \ \ \ \      //byc dzielniki pierwsze liczby p-1
+ \ \ \ \ \ \ \ \   //byc dzielniki pierwsze liczby p-1
 
 bool isGenerator (int x, int p) {
 
  \ \ \ \ for (int i = 0; i< primes.size(); i ++)
 
- \ \ \ \  \ \ \ \ if (potmod(x, primes[i], p) == 1)
+ \ \ \ \ \ \ \ \ if (potmod(x, primes[i], p) == 1)
 
- \ \ \ \  \ \ \ \  \ \ \ \ return 0;
+ \ \ \ \ \ \ \ \ \ \ \ \ return 0;
 
  \ \ \ \ return 1;
 
@@ -57,11 +57,11 @@ int findGenerator(int p) {
 
  \ \ \ \ while (true) {
 
- \ \ \ \  \ \ \ \ int x = random(2, p - 1);
+ \ \ \ \ \ \ \ \ int x = random(2, p - 1);
 
- \ \ \ \  \ \ \ \ if (isGenerator(x, p))
+ \ \ \ \ \ \ \ \ if (isGenerator(x, p))
 
- \ \ \ \  \ \ \ \  \ \ \ \ return x;
+ \ \ \ \ \ \ \ \ \ \ \ \ return x;
 
  \ \ \ \ }
 

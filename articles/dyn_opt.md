@@ -6,13 +6,13 @@ W tym artykule nauczysz się rozwiązywać niektóre problemy optymalizacyjne, c
 
 ## Zadanie przystawka
 
-Zacznijmy  od  jednego  z  najpopularniejszych  problemów  optymalizacyjnych.  Mamy  dany  ciąg $(a_i)$ o długości $n \\leq 10^6$ i chcemy znaleźć długość jego najdłuższego podciągu rosnącego. Dla proszczenia załóżmy, że $a_i⩽ 10^6$, gdyż w innym przypadku możemy bezproblemowo przeskalować wartości.
+Zacznijmy od jednego z najpopularniejszych problemów optymalizacyjnych. Mamy dany ciąg $(a_i)$ o długości $n \\leq 10^6$ i chcemy znaleźć długość jego najdłuższego podciągu rosnącego. Dla proszczenia załóżmy, że $a_i⩽ 10^6$, gdyż w innym przypadku możemy bezproblemowo przeskalować wartości.
 Poprzez <b>podciąg</b> ciągu $(a_i)$ rozumiemy taki ciąg liczb, który możemy otrzymać z ciągu $(a_i)$ poprzez usunięcie niektórych jego wyrazów.
 
 
 ### Rozwiązanie brutalne
 
-Spróbujmy  rozwiązać  problem  jakkolwiek.  Niech $DP [i]$ będzie  długością  najdłuższego  podciągu rosnącego, który kończy się na $i-$tym elemencie. Jasne jest, że będziemy próbować rozszerzyć jakiś  podciąg,  który  istniał  wcześniej.  Wobec  tego $DP [i] = 1 + max_{j<i, \\ a_j < a_i}DP[j]$ (czyli $DP[j]$ jest największe spośród tych $j,$ które są mniejsze od $i$ oraz których wyraz ciągu jest mniejszy od $a_i,$ czyli które mogą być potencjalnym poprzednim elementem podciągu rosnącego). Jeśli  sprawdzimy  ten  warunek  brutalnie  forem  otrzymamy  bardzo  proste  rozwiązanie  działające  w  czasie $O (n^2).$
+Spróbujmy rozwiązać problem jakkolwiek. Niech $DP [i]$ będzie długością najdłuższego podciągu rosnącego, który kończy się na $i-$tym elemencie. Jasne jest, że będziemy próbować rozszerzyć jakiś podciąg, który istniał wcześniej. Wobec tego $DP [i] = 1 + max_{j<i, \\ a_j < a_i}DP[j]$ (czyli $DP[j]$ jest największe spośród tych $j,$ które są mniejsze od $i$ oraz których wyraz ciągu jest mniejszy od $a_i,$ czyli które mogą być potencjalnym poprzednim elementem podciągu rosnącego). Jeśli sprawdzimy ten warunek brutalnie forem otrzymamy bardzo proste rozwiązanie działające w czasie $O (n^2).$
 
 
 ```cpp=
@@ -46,7 +46,7 @@ int lis(int[] a, int n) {
 
 ### Dynamiki i struktury danych
 
-Poprawianie złożoności dynamików często jest niewykonalne bez pomocy odpowiednich struktur danych. Gdyby nie wymaganie, że $a_j < a_i,$ to poradzilibyśmy sobie łatwo maximum prefiksowym. W tym wypadku  jest  tylko  nieznacznie  trudniej. Interesuje nas bowiem  największa  wartość $DP[j]$ dla wszystkich $j,$ które już przetworzyliśmy (bo $j < i$), a ponadto takich że $a_j < a_i$.
+Poprawianie złożoności dynamików często jest niewykonalne bez pomocy odpowiednich struktur danych. Gdyby nie wymaganie, że $a_j < a_i,$ to poradzilibyśmy sobie łatwo maximum prefiksowym. W tym wypadku jest tylko nieznacznie trudniej. Interesuje nas bowiem największa wartość $DP[j]$ dla wszystkich $j,$ które już przetworzyliśmy (bo $j < i$), a ponadto takich że $a_j < a_i$.
 
 
 Zauważmy, że skoro przetwarzamy podciągi w takiej kolejności, w jakiej się kończą, w momencie gdy chcemy znaleźć $DP[i]$ znamy tylko podciągi, kończące się wcześniej niż na pozycji $i$. Chcemy więc tak właściwie znaleźć po prostu maksimum wartości $DP[j]$ dla $a_j$ na przedziale od $1$ do $a_i-1$.
@@ -87,10 +87,10 @@ Po optymalizacji drzewem potęgowym nasz algorytm ma złożoność $O(n \\ log \
 
 ## Dynamiki przedziałowe - Outer space invaders
 
-Dynamiki przedziałowe to jeden z najdziwniejszych fenomenów, z którymi się dotychczas spotkałem.  Mimo,  że  rozwiązania  z  ich  użyciem  są  zwykle  proste,  to  sieją  pożogę  wśród  uczestników. Rozważmy zadanie Outer space invaders z konkursu [Central Europe Regional Contest 2014](https://cerc.tcs.uj.edu.pl/2014/data.html) – europejskich eliminacji do [Mistrzostw Świata w Programowaniu Zespołowym ACM-ICPC.](https://icpc.global/worldfinals/problems) Zrobiły je tam tylko trzy drużyny, chociaż nie było wcale trudne.
+Dynamiki przedziałowe to jeden z najdziwniejszych fenomenów, z którymi się dotychczas spotkałem. Mimo, że rozwiązania z ich użyciem są zwykle proste, to sieją pożogę wśród uczestników. Rozważmy zadanie Outer space invaders z konkursu [Central Europe Regional Contest 2014](https://cerc.tcs.uj.edu.pl/2014/data.html) – europejskich eliminacji do [Mistrzostw Świata w Programowaniu Zespołowym ACM-ICPC.](https://icpc.global/worldfinals/problems) Zrobiły je tam tylko trzy drużyny, chociaż nie było wcale trudne.
 
 
-Pomińmy  bajkę  o  kosmitach  i  przejdźmy  od  razu  do  formalnej  treści  problemu.  Dane   jest $n \\leq 300$ poziomych (czerwonych) odcinków $(a_i, h_i), (b_i, h_i)$. Chcemy narysować pionowe (niebieskie) odcinki tak, aby każdy z poziomych odcinków dotykał pewnego pionowego odcinka. Jaką minimalną sumaryczną długość niebieskich odcinków możemy uzyskać?
+Pomińmy bajkę o kosmitach i przejdźmy od razu do formalnej treści problemu. Dane  jest $n \\leq 300$ poziomych (czerwonych) odcinków $(a_i, h_i), (b_i, h_i)$. Chcemy narysować pionowe (niebieskie) odcinki tak, aby każdy z poziomych odcinków dotykał pewnego pionowego odcinka. Jaką minimalną sumaryczną długość niebieskich odcinków możemy uzyskać?
 
 
 ![Odcinki - przykład](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a828fdc7c8ae3125e6a3a1acf5d90940.png)
@@ -101,12 +101,12 @@ Pomińmy  bajkę  o  kosmitach  i  przejdźmy  od  razu  do  formalnej  treści 
 Zacznijmy od prostej obserwacji. Opłaca nam się rysować niebieskie odcinki tylko w takich $x,$ że istnieje czerwony odcinek, który kończy się w $x.$ Dlaczego? Rozważmy rozwiązanie \"optymalne\", w którym tak nie jest. Wówczas możemy każdy z pionowych odcinków dosunąć w prawo do pierwszego miejsca, w którym kończy się jakiś przedział, i uzyskamy rozwiązanie o tym samym koszcie, spełniające nasz warunek.
 
 
-Ten  sam  argument  tyczy  się  lewych  końców.  Możemy  więc  przeskalować (skrócić) nasze  przedziały tak, żeby sąsiednie początki i końce kolejnych przedziałów były odległe o co najwyżej $1,$  zachowując  zależności. Dzięki  temu  otrzymamy  problem  równoważny,  w  którym  zachodzi  zawsze $1 \\leq a_i \\leq b_i \\leq 600.$ W tym momencie możemy przejść do opisu dynamika przedziałowego.
+Ten sam argument tyczy się lewych końców. Możemy więc przeskalować (skrócić) nasze przedziały tak, żeby sąsiednie początki i końce kolejnych przedziałów były odległe o co najwyżej $1,$ zachowując zależności. Dzięki temu otrzymamy problem równoważny, w którym zachodzi zawsze $1 \\leq a_i \\leq b_i \\leq 600.$ W tym momencie możemy przejść do opisu dynamika przedziałowego.
 
 
 ### Stan
 
-Niech $DP[a][b]$ będzie kosztem (liczonym w długości niebieskich odcinków, które musimy dodać) odcinków czerwonych, które mieszczą się w całości w  przedziale $[a, b].$ Często jeśli wymyśliliśmy  poprawny  stan  dynamika,  rozwiązanie  znajdzie się samo. Tak jest w tym zadaniu: teraz policzenie dynamika okazuje się znacznie łatwiejsze niż dojście do tego, by właśnie taki stan zastosować.
+Niech $DP[a][b]$ będzie kosztem (liczonym w długości niebieskich odcinków, które musimy dodać) odcinków czerwonych, które mieszczą się w całości w przedziale $[a, b].$ Często jeśli wymyśliliśmy poprawny stan dynamika, rozwiązanie znajdzie się samo. Tak jest w tym zadaniu: teraz policzenie dynamika okazuje się znacznie łatwiejsze niż dojście do tego, by właśnie taki stan zastosować.
 
 
 ### Przejścia między stanami dynamika
@@ -114,7 +114,7 @@ Niech $DP[a][b]$ będzie kosztem (liczonym w długości niebieskich odcinków, k
 Jeśli w przedziale $[a, b]$ nie ma żadnego odcinka czerwonego to $DP[a][b] = 0.$ W przeciwnym wypadku istnieje odcinek czerwony z największą współrzędną $y$ (czyli najwyżej położony) - powiedzmy, że pokrywa on przedział $[k, l].$ Jeśli chcemy narysować niebieskie odcinki przez każdy z odcinków czerwonych to przez ten konkretny odcinek też z musi przechodzić jakiś niebieski odcinek. Rozważymy każde możliwe położenie tego niebieskiego odcinka. Leży on gdzies na przedziale $[k, l]$ - niech jego położenie będzie oznaczone przez $m.$ Ten odcinek ma koszt i wysokość $y$ – nie może być krótszy, bo chcemy zahaczyć rozważany czerwony odcinek, a nie ma sensu, żeby był dłuższy. Zauważmy, że przy okazji zahaczymy nim również wszystkie inne czerwone odcinki, przechodzące nad $m.$
 
 
-Wobec tego zostają nam do pokrycia odcinkami przedziały $[a, m - 1]$ oraz $[m + 1,b].$ Obydwa  te  przedziały  mają  krótsze długości, niż $[a, b]$.  Jeśli  więc  policzymy  tablicę $DP[][]$ w  kolejności przedziałów o rosnącej długości to obydwie te wartości będą już wcześniej wyliczone. Otrzymaliśmy rozwiązanie, działające w czasie $O(n^3)$.
+Wobec tego zostają nam do pokrycia odcinkami przedziały $[a, m - 1]$ oraz $[m + 1,b].$ Obydwa te przedziały mają krótsze długości, niż $[a, b]$. Jeśli więc policzymy tablicę $DP[][]$ w kolejności przedziałów o rosnącej długości to obydwie te wartości będą już wcześniej wyliczone. Otrzymaliśmy rozwiązanie, działające w czasie $O(n^3)$.
 
 
 ```cpp=
@@ -215,16 +215,16 @@ int outer_space_invaders(int A[], int B[], int Y[], int n) {
 Nazwa tego triku wzięła się od zadania z [finału 24 Olimpiady Informatycznej.](https://szkopul.edu.pl/p/default/problemset/oi/24) Koniecznie przeczytaj jego [treść.](https://szkopul.edu.pl/problemset/problem/w-dbshXVyRol4LIT9jeP-bNn/site/?key=statement) Zadanie to było z zamierzenia najtrudniejszym zadaniem z tamtego finału. Jeśli spojrzysz na ranking tego finału, zobaczysz pewnie mnóstwo razy wynik $92$ za nie. Dało się je bowiem ’zrobić’ przy pomocy triku z kompresją stanów.
 
 
-Przy pomocy programowania dynamicznego chcielibyśmy policzyć $DP[i]$ jako najlepszy rezultat obsłużenia  pierwszych $i$ klientów. Zauważmy jednak, że niekoniecznie  optymalnym  będzie  skorzystanie z najlepszego rozwiązania pod względem wyniku. Czasem może się nam opłacać zadziałać nieco gorzej, aby skończyć wcześniej i później mieć szansę na lepszy rezultat (działanie perspektywiczne). Wobec  tego  stan  oznaczymy  przez  parę $(DP[i], T[i])$ –  najlepszy  możliwy  rezultat  obsłużenia pierwszych $i$ kandydatów pod warunkiem, że kończymy to robić w czasie $T[i]$. Tym razem będzie nieco inaczej niż zwykle. Zamiast jednego stanu będziemy pamiętać cały wektor stanów, zdefniowanych powyżej.
+Przy pomocy programowania dynamicznego chcielibyśmy policzyć $DP[i]$ jako najlepszy rezultat obsłużenia pierwszych $i$ klientów. Zauważmy jednak, że niekoniecznie optymalnym będzie skorzystanie z najlepszego rozwiązania pod względem wyniku. Czasem może się nam opłacać zadziałać nieco gorzej, aby skończyć wcześniej i później mieć szansę na lepszy rezultat (działanie perspektywiczne). Wobec tego stan oznaczymy przez parę $(DP[i], T[i])$ – najlepszy możliwy rezultat obsłużenia pierwszych $i$ kandydatów pod warunkiem, że kończymy to robić w czasie $T[i]$. Tym razem będzie nieco inaczej niż zwykle. Zamiast jednego stanu będziemy pamiętać cały wektor stanów, zdefniowanych powyżej.
 
 
 Kluczowa (i niekoniecznie błyskotliwa) obserwacja: jeśli mamy dwa różne stany $S_i, \\ S_j$ oraz $DP[i] \\leq DP[j]$ oraz $T [i] <= T [j]$, to <b>stan $S_j$ jest dla nas bezużyteczny.</b> Nie dość, że mamy gorszy rezultat obsłużenia klientów, to jeszcze kończymy później. To oczywiście bez sensu. Możemy więc zapomnieć o stanie $S_j$. Napiszemy funkcję ```repairDP```, która wyrzuci nam wszystkie bezużyteczne stany z wektora. Dzięki niej nasz kod zacznie działać bardzo szybko.
 
 
-Dlaczego funkcja ```repairDP``` tak bardzo przyspiesza nasz kod? Jest kilka powodów. Po pierwsze, rozwiązanie bez jej użycia jest pesymistycznie wykładnicze. Po  kompresji  nie  może  istnieć  natomiast więcej  niż $O(n)$ różnych stanów. Podpowiedź jak to udowodnić: zapiekankę zawsze w rozwiązaniu optymalnym pieczemy albo od razu po zakończeniu poprzedniego  pieczenia, albo w momencie, gdy ma przyjść  jakiś klient. Jedna i druga sytuacja występuje $O (n)$ razy. Rozwiązanie nasze działa więc nie gorzej niż $O (n^3)$ (może przemnożone jeszcze przez jakiś $log$ z sortowania).
+Dlaczego funkcja ```repairDP``` tak bardzo przyspiesza nasz kod? Jest kilka powodów. Po pierwsze, rozwiązanie bez jej użycia jest pesymistycznie wykładnicze. Po kompresji nie może istnieć natomiast więcej niż $O(n)$ różnych stanów. Podpowiedź jak to udowodnić: zapiekankę zawsze w rozwiązaniu optymalnym pieczemy albo od razu po zakończeniu poprzedniego pieczenia, albo w momencie, gdy ma przyjść jakiś klient. Jedna i druga sytuacja występuje $O (n)$ razy. Rozwiązanie nasze działa więc nie gorzej niż $O (n^3)$ (może przemnożone jeszcze przez jakiś $log$ z sortowania).
 
 
-W praktyce jest jednak niesłychanie trudno ułożyć testy, w których newralgiczne jest pamiętanie dużej liczby stanów, dlatego właśnie rozwiązanie  to  działa  jeszcze  szybciej.  Przypuszczam,  że  nie  istnieje  test,  w  którym  trzeba  pamiętać więcej niż $O (log \\ N)$ stanów. Na zawodach był tylko jeden nieprzyjemny test i rozwiązanie kompresujące stany dostawało właśnie $92$ punkty, tak samo jak bardzo niepoprawne rozwiązanie, pamiętające tylko stan z najlepszym wynikiem. Oto kod, który podczas zawodów zdobył właśnie $92$ punkty:
+W praktyce jest jednak niesłychanie trudno ułożyć testy, w których newralgiczne jest pamiętanie dużej liczby stanów, dlatego właśnie rozwiązanie to działa jeszcze szybciej. Przypuszczam, że nie istnieje test, w którym trzeba pamiętać więcej niż $O (log \\ N)$ stanów. Na zawodach był tylko jeden nieprzyjemny test i rozwiązanie kompresujące stany dostawało właśnie $92$ punkty, tak samo jak bardzo niepoprawne rozwiązanie, pamiętające tylko stan z najlepszym wynikiem. Oto kod, który podczas zawodów zdobył właśnie $92$ punkty:
 
 
 ```cpp=
@@ -344,13 +344,13 @@ int main() {
 ```
 
 
-A jak zdobyć $100$ pkt? Wystarczy przechytrzyć autorów testów. Po pierwsze, możemy uciąć wektory stanów. Zauważmy, że stany układają się tak, że $DP$ tworzą ciąg rosnący, a $T$ – malejący. Im dalszy element, tym gorszy aktualny wynik jest przez niego reprezentowany. Możemy więc założyć, że nie zostaniemy zmuszeni do znacznego pogorszenia wyniku kosztem czasu pieczenia i pamiętać tylko $O ( log \\ N )$ ostatnich  stanów,  resztę  wyrzucić  tak  samo  jak  stany bezużyteczne.  Albo możemy założyć,  że w ogóle testy nie wymuszają zbytniego czekania i zostawić sobie tylko stałą liczbę $C$ najlepszych stanów pod względem wyniku. Już $C = 2$ pozwala uzyskać $100$ punktów.
+A jak zdobyć $100$ pkt? Wystarczy przechytrzyć autorów testów. Po pierwsze, możemy uciąć wektory stanów. Zauważmy, że stany układają się tak, że $DP$ tworzą ciąg rosnący, a $T$ – malejący. Im dalszy element, tym gorszy aktualny wynik jest przez niego reprezentowany. Możemy więc założyć, że nie zostaniemy zmuszeni do znacznego pogorszenia wyniku kosztem czasu pieczenia i pamiętać tylko $O ( log \\ N )$ ostatnich stanów, resztę wyrzucić tak samo jak stany bezużyteczne. Albo możemy założyć, że w ogóle testy nie wymuszają zbytniego czekania i zostawić sobie tylko stałą liczbę $C$ najlepszych stanów pod względem wyniku. Już $C = 2$ pozwala uzyskać $100$ punktów.
 
 
-Dlaczego aż tak prosto przechytrzyć testy w tym zadaniu? Niełatwe jest już skonstruowanie testu, gdzie  opłaca  się  przechodzić  ze  stanów  o  niekoniecznie  najlepszym wyniku, a co  dopiero $log \\ N$ najlepszych wyników. Musimy pamiętać, że autorzy testów to tylko ludzie, a kreatywność naszych heurystyk jest w stanie ich czasami pokonać.
+Dlaczego aż tak prosto przechytrzyć testy w tym zadaniu? Niełatwe jest już skonstruowanie testu, gdzie opłaca się przechodzić ze stanów o niekoniecznie najlepszym wyniku, a co dopiero $log \\ N$ najlepszych wyników. Musimy pamiętać, że autorzy testów to tylko ludzie, a kreatywność naszych heurystyk jest w stanie ich czasami pokonać.
 
 
-Dynamiki optymalizacyjne cechują się niestety wysoką podatnością na rozwiązania niepoprawne. Dlaczego tak jest? Powiedzmy, że mamy znaleźć jakąś minimalną wartość, którą w wypadku zadania zapiekanki jest czas oczekiwania klientów. Nic nie stoi na przeszkodzie, aby napisać kilka mniej lub bardziej zachłannych rozwiązań, a następnie zwrócić najmniejszy z otrzymanych wyników. Albo przeglądać tylko $100$ najbliższych punktów w każdym kierunku (to z kolei dobra heurystyka do zadań geometrycznych z minimalną odległością). Albo po prostu kompresować stany, tak jak w wypadku zadania zapiekanki. Nie są to rozwiązania zawsze zwracające  poprawną  odpowiedź,  ale  często  wystarczająco  dobre,  aby  otrzymać  dużo  punktów. Tak samo jest z heurami czasowymi – w praktyce zachowują się bardzo dobrze, co nie oznacza wcale, że dostatecznie zmotywowany autor testów nie będzie w stanie zmusić naszego rozwiązania do przekroczenia limitu czasu.
+Dynamiki optymalizacyjne cechują się niestety wysoką podatnością na rozwiązania niepoprawne. Dlaczego tak jest? Powiedzmy, że mamy znaleźć jakąś minimalną wartość, którą w wypadku zadania zapiekanki jest czas oczekiwania klientów. Nic nie stoi na przeszkodzie, aby napisać kilka mniej lub bardziej zachłannych rozwiązań, a następnie zwrócić najmniejszy z otrzymanych wyników. Albo przeglądać tylko $100$ najbliższych punktów w każdym kierunku (to z kolei dobra heurystyka do zadań geometrycznych z minimalną odległością). Albo po prostu kompresować stany, tak jak w wypadku zadania zapiekanki. Nie są to rozwiązania zawsze zwracające poprawną odpowiedź, ale często wystarczająco dobre, aby otrzymać dużo punktów. Tak samo jest z heurami czasowymi – w praktyce zachowują się bardzo dobrze, co nie oznacza wcale, że dostatecznie zmotywowany autor testów nie będzie w stanie zmusić naszego rozwiązania do przekroczenia limitu czasu.
 
 
 ## Zadania

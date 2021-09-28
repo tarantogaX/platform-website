@@ -8,7 +8,7 @@ Teoria gier zajmuje się – któż by pomyślał – odpowiadaniem na pytania d
 
 1. Podział ze względu na kolejność podejmowania decyzji
 
-- Gry  w  postaci  strategicznej  (normalnej)  –  Gracze  podejmują  decyzję  niezależnie  od innych graczy.
+- Gry w postaci strategicznej (normalnej) – Gracze podejmują decyzję niezależnie od innych graczy.
 
 - Gry w postaci ekstensywnej (rozwiniętej) – Gracze podejmują decyzję na zmianę.
 
@@ -32,7 +32,7 @@ Będziemy głównie zajmować się grami skończonymi, w których informacja jes
 
 ## Gra jako graf
 
-W każdej grze mamy do czynienia ze stanami. No, może nie w każdej, ale grami typu tenis zajmować się nie będziemy. Stanem w grze, podobnie jak w programowaniu dynamicznym, nazywamy informacje potrzebne, by tę grę opisać. Przykładowo, stanem w ”kółko i krzyżyk” jest po prostu stan  planszy,  a  do  opisania  gry  w  karty  wystarczy  nam  informacja  nt.  tych  kart.  Nie  musi  być prawdą, że im bardziej skomplikowana gra, tym bardziej złożone stany.
+W każdej grze mamy do czynienia ze stanami. No, może nie w każdej, ale grami typu tenis zajmować się nie będziemy. Stanem w grze, podobnie jak w programowaniu dynamicznym, nazywamy informacje potrzebne, by tę grę opisać. Przykładowo, stanem w ”kółko i krzyżyk” jest po prostu stan planszy, a do opisania gry w karty wystarczy nam informacja nt. tych kart. Nie musi być prawdą, że im bardziej skomplikowana gra, tym bardziej złożone stany.
 
 
 Między tymi stanami występują połączenia. Gdy z jednego stanu możemy w jednym ruchu przejść do innego stanu, dodajemy zwykle krawędź (skierowaną) między tymi stanami.
@@ -43,10 +43,10 @@ Między tymi stanami występują połączenia. Gdy z jednego stanu możemy w jed
 Rozważmy prostą grę. Mamy dwóch graczy i dane ukorzenione drzewo. Na początku w korzeniu stoi pionek. Gracze wykonują kolejno ruchy przesuwając pionek w dół drzewa do jednego z synów wierzchołka. Kto nie może wykonać ruchu - przegrywa.
 
 
-Aby  zbadać  tę  grę,  musimy  najpierw  zastanowić  się,  jakie  ma  własności.  Po  pierwsze,  gra  jest skończona i nigdy nie może paść remis - skoro drzewo jest skończone, a w każdym wierzchołku dokonujemy przechodzenia w dól, to z pewnością kiedyś nastąpi koniec i któryś z graczy przegra. Wiemy stąd, że gra się skończy – a ponadto nie skończy się remisem.
+Aby zbadać tę grę, musimy najpierw zastanowić się, jakie ma własności. Po pierwsze, gra jest skończona i nigdy nie może paść remis - skoro drzewo jest skończone, a w każdym wierzchołku dokonujemy przechodzenia w dól, to z pewnością kiedyś nastąpi koniec i któryś z graczy przegra. Wiemy stąd, że gra się skończy – a ponadto nie skończy się remisem.
 
 
-<b>Pozycją wygrywającą</b> nazwiemy pozycję, w której gracz jest w stanie zagwarantować sobie zwycięstwo nad drugim graczem. <b>Pozycja przegrywająca</b> to taka, w której niezależnie od ruchów, jakie  wykonamy,  nasz  przeciwnik  będzie  w  stanie  zmusić  nas  do  porażki.  Pozycje  wygrywające będziemy oznaczać jako $1,$ a przegrywające – jako $0.$
+<b>Pozycją wygrywającą</b> nazwiemy pozycję, w której gracz jest w stanie zagwarantować sobie zwycięstwo nad drugim graczem. <b>Pozycja przegrywająca</b> to taka, w której niezależnie od ruchów, jakie wykonamy, nasz przeciwnik będzie w stanie zmusić nas do porażki. Pozycje wygrywające będziemy oznaczać jako $1,$ a przegrywające – jako $0.$
 
 
 Zauważmy, że pionek w liściu drzewa jest zawsze pozycją przegrywającą, ponieważ nie możemy wykonać żadnego ruchu. Powiedzmy, że istnieje taki syn wierzchołka, że jego pozycja jest przegrywająca. Wobec tego, jeśli przesuniemy pionek do tego syna, nasz przeciwnik znajdzie się w sytuacji przegrywającej. Nic więcej nam nie trzeba – wiemy, że uda nam się go zmusić do przegrania. Z drugiej strony, jeśli taki syn nie istnieje, to mamy problem. Niezależnie od tego, jaki ruch wykonamy, znajdziemy się w pozycji wygrywającej. To oznacza, że nasz przeciwnik będzie w stanie wygrać. Ups.
@@ -60,11 +60,11 @@ void calc (int x) {
 
  \ \ \ \ for (int i = 0; i < sons[x].size(); i ++) {
 
- \ \ \ \  \ \ \ \ dfs(sons[x][i]);
+ \ \ \ \ \ \ \ \ dfs(sons[x][i]);
 
- \ \ \ \  \ \ \ \ if (win[sons[x][i]] == false)
+ \ \ \ \ \ \ \ \ if (win[sons[x][i]] == false)
 
- \ \ \ \  \ \ \ \  \ \ \ \ winning = 1;
+ \ \ \ \ \ \ \ \ \ \ \ \ winning = 1;
 
  \ \ \ \ }
 
@@ -75,7 +75,7 @@ void calc (int x) {
 ```
 
 
-Nietrudno zauważyć, że wykonaliśmy bardzo proste programowanie dynamiczne na drzewie, które  pozwoliło  nam  policzyć  wynik  w $O(n).$  Zauważmy,  że  umiemy  przy  okazji  wskazać  strategię wygrywającą, jeżeli istnieje. Wystarczy przesuwać się do syna oznaczonego zerem.
+Nietrudno zauważyć, że wykonaliśmy bardzo proste programowanie dynamiczne na drzewie, które pozwoliło nam policzyć wynik w $O(n).$ Zauważmy, że umiemy przy okazji wskazać strategię wygrywającą, jeżeli istnieje. Wystarczy przesuwać się do syna oznaczonego zerem.
 
 
 ## Niezmienniki
@@ -97,7 +97,7 @@ Pierwsza rzecz – gra zawsze się zakończy, ponieważ po każdym kroku liczba 
 - Zabranie dwóch czarnych kul i dołożenie jednej białej kuli
 
 
-Wniosek:  Parzystość  liczby  czarnych  kul  nigdy  się  nie  zmienia.  Końcowa  sytuacja  to  zero  lub  jedna czarna kula. Wiemy więc, że nie tylko czasem da się wygrać – ale jeśli da się wygrać, to nie da się w ogóle przegrać. Gra jest o tyle nieciekawa, że niezależnie od tego, jakie ruchy wykonują gracze, i  tak jeśli $n$ jest  parzyste  wygra  Jaś,  a  w  przeciwnym  wypadku  Małgosia.  Taką  grę  nazywamy zdeterminowaną.
+Wniosek: Parzystość liczby czarnych kul nigdy się nie zmienia. Końcowa sytuacja to zero lub jedna czarna kula. Wiemy więc, że nie tylko czasem da się wygrać – ale jeśli da się wygrać, to nie da się w ogóle przegrać. Gra jest o tyle nieciekawa, że niezależnie od tego, jakie ruchy wykonują gracze, i tak jeśli $n$ jest parzyste wygra Jaś, a w przeciwnym wypadku Małgosia. Taką grę nazywamy zdeterminowaną.
 
 
 ## Symetria
@@ -107,13 +107,13 @@ Czasem do wskazania, że któryś z graczy ma strategię wygrywającą, wystarcz
 
 ## Strategy stealing - kradzież strategii
 
-Tym razem rozważymy jedno z najtrudniejszych zadań z Mistrzostw Wielkopolski w Programowaniu Zespołowym 2016. Mamy tam pokonać program, który gra w pewną symetryczną grę (zbiór ruchów  nasz  i  programu  jest  taki  sam).  Z  zasad  gry  wynika  również,  że  nigdy  nie  może  zakończyć się remisem, jest skończona i że mamy do dyspozycji pominięcie ruchu, czyli oddanie planszy przeciwnikowi.
+Tym razem rozważymy jedno z najtrudniejszych zadań z Mistrzostw Wielkopolski w Programowaniu Zespołowym 2016. Mamy tam pokonać program, który gra w pewną symetryczną grę (zbiór ruchów nasz i programu jest taki sam). Z zasad gry wynika również, że nigdy nie może zakończyć się remisem, jest skończona i że mamy do dyspozycji pominięcie ruchu, czyli oddanie planszy przeciwnikowi.
 
 
 Rozwiązanie wzorcowe polega na zaimplementowaniu strategii komputera. Pomysł jest taki: Zagrajmy dokładnie tak samo, jakby komputer grał sam ze sobą. Zasymulujmy tę grę. Jeśli okazało się, że przegraliśmy, wykonajmy jedno pominięcie na początku i pozwólmy komputerowi przegrać tą samą strategią.
 
 
-Ta  technika  nazywana  jest strategy  stealing - kradnięcie strategii (ang.).  Jest  ona  przydatna w  wykonywaniu  dowodów,  że  pierwszy  gracz  ma  strategię  wygrywającą.  Jeśli  dodatkowy  ruch nie  może  nam  pogorszyć  sytuacji  (lub  możemy  go  pominąć  jak  w  powyższym  przypadku),  to wchodzimy  chwilowo  w  buty  drugiego  gracza  i  pozwalamy  mu  zacząć.  Gdyby  drugi  gracz  miał strategię wygrywającą, to równie dobrze mógł by zastosować ją gracz pierwszy.
+Ta technika nazywana jest strategy stealing - kradnięcie strategii (ang.). Jest ona przydatna w wykonywaniu dowodów, że pierwszy gracz ma strategię wygrywającą. Jeśli dodatkowy ruch nie może nam pogorszyć sytuacji (lub możemy go pominąć jak w powyższym przypadku), to wchodzimy chwilowo w buty drugiego gracza i pozwalamy mu zacząć. Gdyby drugi gracz miał strategię wygrywającą, to równie dobrze mógł by zastosować ją gracz pierwszy.
 
 
 Więcj o strategy stealing możesz przeczytać w [Delcie.](http://www.deltami.edu.pl/temat/matematyka/gry_zagadki_paradoksy/2017/04/27/Zlodziej_strategii/)
@@ -121,7 +121,7 @@ Więcj o strategy stealing możesz przeczytać w [Delcie.](http://www.deltami.ed
 
 ## Przeszukiwanie z nawrotami i znajdowanie wzorów
 
-Czasem gra jest zbyt skomplikowana lub trudno wpaść na jej szukane własności. Warto się wówczas posłużyć przeszukiwaniem z nawrotami. Więcej o tej technice przeczytasz w artykule o problemach NP-trudnych, na końcu teorii grafów. Takie przeszukiwanie nie zawsze zmieści się w limicie czasu, ale  może  nam  pomóc  w  inny  sposób.  Napisanie  rozwiązania  brutalnego  pozwala  nam  przeanalizować wyniki – a nuż można z nich wywnioskować coś ciekawego? Spójrz na zadanie Game of stones z zaproponowanych zadań.
+Czasem gra jest zbyt skomplikowana lub trudno wpaść na jej szukane własności. Warto się wówczas posłużyć przeszukiwaniem z nawrotami. Więcej o tej technice przeczytasz w artykule o problemach NP-trudnych, na końcu teorii grafów. Takie przeszukiwanie nie zawsze zmieści się w limicie czasu, ale może nam pomóc w inny sposób. Napisanie rozwiązania brutalnego pozwala nam przeanalizować wyniki – a nuż można z nich wywnioskować coś ciekawego? Spójrz na zadanie Game of stones z zaproponowanych zadań.
 
 
 ## Zadania

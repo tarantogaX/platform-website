@@ -309,7 +309,7 @@ Istnieje także nieuporządkowana odmiana seta i mapy - unordered_set i unordere
  
 
 W zasadzie nic więcej nie potrzebujemy wiedzieć o mapie. Jeśli jednak czujesz niedosyt zajrzyj [tutaj](http://www.cplusplus.com/reference/map/map/).
-  
+ 
 ## Typ auto
 
 Słowo kluczowe ```auto``` oznacza zastępczy typ zmiennej, który zostanie wydedukowany na podstawie wartości za pomocą której zmienna zostanie zainicjalizowana. Zmienna, której nadano zastępczy typ auto musi zostać zainicjalizowana w chwili jej tworzenia. W przeciwnym wypadku zostanie zwrócony błąd kompilacji. Typ ten jest szczególnie przydatny przy iteracji po kontenerach. Przykładowo zastosowanie znajduje się na końcu tego artykułu. Niezalecane jest nadużywanie auto.
@@ -343,8 +343,8 @@ cpp=
 #include<bits/stdc++.h>
 
 using namespace std;
-    
-    
+  
+  
 int n, a;
 
 int main() {

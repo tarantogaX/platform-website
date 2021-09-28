@@ -48,7 +48,7 @@ Przychodzi na myśl, aby dla każdego przedmiotu wyznaczyć jego szlachetność 
 
 
 Zapropononowane rozwiązanie włoży najpierw najcenniejszy przedmiot jako pierwszy, jednak nie znajdzie się już miejsce w plecaku dla niczego więcej. Wzięcie drugiego i trzeciego przedmiotu okazuje się być lepsze. Dyskretny problem plecakowy to przykład zadania, które nie daje się rozwiązać metodą zachłanną. Nie martw się - za kilka lekcji dowiesz się, jak możemy sobie z nim poradzić.
-    
+
 
 Przejdźmy teraz natomiast do trochę bardziej zaawansowanego zadania, z którym programowanie zachłanne świetnie sobie radzi.
 

@@ -15,7 +15,7 @@ abac<b>ababc</b>a i bc<b>abacc</b>abc (zaznaczone przedziały nie są takie same
 aac<b>bbaac</b>ab i cab<b>bbaac</b>cc (zaznaczone przedziały są takie same)
 
 
-Słowa są równe, gdy literki na odpowiednich pozycjach są takie same. Innymi słowy, jeśli zachodzi $W[i]=S[k], W[i+1]=S[k+1]...W[j]=S[l]$ to słowa są równe. W przeciwnym wypadku się różnią. Załóżmy, że $S$ i $W$ mają długość $n (1 \\leqslant  n \\leqslant  10^6).$ Porównywanie kolejnych literek zajmuje $O(k - l + 1),$ czyli w najgorszym wypadku $O(n)$ czasu. Co gdybyśmy chcieli porównać w ten sposób $q (1 \\leqslant  q \\leqslant  10^6)$ różnych par podsłów? Odbyłoby się to w czasie $O(qn),$ czyli w najgorszym wypadku $O(10^6 \\cdot 10^6) = O(10^{12}).$ Jeśli nie chcemy czekać kilku lat na wynik i nie mamysuperkomputera, musimy wymyślić lepszą metodę.
+Słowa są równe, gdy literki na odpowiednich pozycjach są takie same. Innymi słowy, jeśli zachodzi $W[i]=S[k], W[i+1]=S[k+1]...W[j]=S[l]$ to słowa są równe. W przeciwnym wypadku się różnią. Załóżmy, że $S$ i $W$ mają długość $n (1 \\leqslant n \\leqslant 10^6).$ Porównywanie kolejnych literek zajmuje $O(k - l + 1),$ czyli w najgorszym wypadku $O(n)$ czasu. Co gdybyśmy chcieli porównać w ten sposób $q (1 \\leqslant q \\leqslant 10^6)$ różnych par podsłów? Odbyłoby się to w czasie $O(qn),$ czyli w najgorszym wypadku $O(10^6 \\cdot 10^6) = O(10^{12}).$ Jeśli nie chcemy czekać kilku lat na wynik i nie mamysuperkomputera, musimy wymyślić lepszą metodę.
 
 
 ```cpp=
@@ -109,7 +109,7 @@ $(b - a) (mod \\ M) = (b (mod \\ M) - a (mod \\ M) + M) (mod \\ M)$
 $p^0 = 1$
 
 
-$p^i = p^{i-1} \\cdot  p,$ dla $i > 0$
+$p^i = p^{i-1} \\cdot p,$ dla $i > 0$
 
 
 Wszystkie potrzebne wartości funkcji $Pot$ możemy obliczyć w następujący sposób:
@@ -137,7 +137,7 @@ Zastanówmy się najpierw, jak porównać podsłowo $S$ z podsłowem W zaczynaj�
 $tab[j]-tab[i - 1]+M (mod \\ M)$
 
 
-$=(p^0 \\cdot  S_0+p^1\\cdot S_1+..+p^{j-1}\\cdot S_{j-1})$ $– (p^i\\cdot S_i +p^{i+1}\\cdot S_{i+1}+...+ p^{j-1}\\cdot S_{j-1}+ M ) (mod \\ M) =$ $=p^i \\cdot  S_i + … + p^{j-1} \\cdot  S_{j-1} (mod \\ M) =$ $=p^i ( p^0\\cdot S_i + p^1 \\cdot  S_{i+1} + … + p^{j – i} \\cdot  S_j) (mod \\ M)$
+$=(p^0 \\cdot S_0+p^1\\cdot S_1+..+p^{j-1}\\cdot S_{j-1})$ $– (p^i\\cdot S_i +p^{i+1}\\cdot S_{i+1}+...+ p^{j-1}\\cdot S_{j-1}+ M ) (mod \\ M) =$ $=p^i \\cdot S_i + … + p^{j-1} \\cdot S_{j-1} (mod \\ M) =$ $=p^i ( p^0\\cdot S_i + p^1 \\cdot S_{i+1} + … + p^{j – i} \\cdot S_j) (mod \\ M)$
 $=p^i \\cdot F(S[i..j]) (mod \\ M)$
 
 
@@ -154,7 +154,7 @@ $F(S[i..j]) = F(W[i..j])$
 wiemy, że wystarczy sprawdzić, czy:
 
 
-$(p^i \\cdot  F(S[i..j])) (mod \\ M) = (p^i \\cdot  F(W[i..j]))(mod \\ M)$, czyli:
+$(p^i \\cdot F(S[i..j])) (mod \\ M) = (p^i \\cdot F(W[i..j]))(mod \\ M)$, czyli:
 
 
 $(tab[j] – tab[i - 1] + M) (mod \\ M) = (tab1[j] – tab1[i - 1] + M) (mod \\ M)$
@@ -168,7 +168,7 @@ Jak poradzić sobie, gdy podsłowa zaczynają się na różnych pozycjach? Wiemy
 
 Zatem, dla podsłowa $S[i;j]$ i $W[k;l]$:
 
-$(tab[j] – tab[i - 1] + M) (mod \\ M) = (p^i \\cdot  F(S[i;j])) (mod \\ M)$
+$(tab[j] – tab[i - 1] + M) (mod \\ M) = (p^i \\cdot F(S[i;j])) (mod \\ M)$
 
 $(tab1[l] – tab1[k – 1] + M) (mod \\ M) = (p^k\\cdot F(W[k;l])) (mod \\ M)$
 

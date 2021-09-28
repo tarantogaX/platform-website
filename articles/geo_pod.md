@@ -82,6 +82,7 @@ $P_{ADB} = \\frac{1}{2} (x_B − x_A )( y_A − y_B )$
 
 
 $P_{OAB} = P_{OCDE} − P_{OCA} − P_{OEB} − P_{ADB} =$ $=x_B y_A −\\frac{1}{2} x_A y_A −\\frac{1}{2}x_B y_B −\\frac{1}{2} (x_B y_A − x_B y_B − x_A y_A + x_A y_B)$
+<br /> <br />
 
 
 Po zsumowaniu i zredukowaniu wszystkich składników otrzymamy wzór: $P_{OAB} =\\frac{1}{2} (x_B y_A − x_A y_B ).$

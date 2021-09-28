@@ -20,13 +20,13 @@ int NWD (int a,int b) {
 
  \ \ \ \ while (a > 0 && b > 0)
 
- \ \ \ \  \ \ \ \ if(a > b)
+ \ \ \ \ \ \ \ \ if(a > b)
 
- \ \ \ \  \ \ \ \  \ \ \ \ a -=b;
+ \ \ \ \ \ \ \ \ \ \ \ \ a -=b;
 
- \ \ \ \  \ \ \ \ else
+ \ \ \ \ \ \ \ \ else
 
- \ \ \ \  \ \ \ \  \ \ \ \ b -= a;
+ \ \ \ \ \ \ \ \ \ \ \ \ b -= a;
 
  \ \ \ \ return a + b;
 
@@ -48,13 +48,13 @@ int NWD (int a,int b) {
 
  \ \ \ \ while(a > 0 && b > 0)
 
- \ \ \ \  \ \ \ \ if(a > b)
+ \ \ \ \ \ \ \ \ if(a > b)
 
- \ \ \ \  \ \ \ \  \ \ \ \ a %= b;
+ \ \ \ \ \ \ \ \ \ \ \ \ a %= b;
 
- \ \ \ \  \ \ \ \ else
+ \ \ \ \ \ \ \ \ else
 
- \ \ \ \  \ \ \ \  \ \ \ \ b %= a;
+ \ \ \ \ \ \ \ \ \ \ \ \ b %= a;
 
  \ \ \ \ return a + b;
 
@@ -75,14 +75,14 @@ Z tego wynika, że za każdym obrotem pętli jedna z wartości $a,$ $b$ zmniejsz
 
 ## Najmniejsza Wspólna Wielokrotność
 
-Najmniejsza wspólna wielokrotność ($NWW$) liczb $a$ i $b,$ to najmniejsza taka liczba $D,$ której dzielnikami są $a$ i $b.$ $D$ musi zawierać w swoim rozkładzie na liczby pierwsze wszystkie czynniki pierwsze $a$ oraz $b.$ Dzieje się tak, ponieważ rozkład na czynniki pierwsze jest jednoznaczny. Jeśli $$n = p_1 ^ {\\alpha_1} \\cdot\\ p_2 ^ {\\alpha_2} \\cdot\\ ... \\cdot p_k ^ {\\alpha_k}$$ $$b = p_1 ^ {\\beta_1} \\cdot p_2 ^ {\\beta_2} \\cdot\\ ... \\cdot p_k ^ {\\beta_k}$$ gdzie niektóre z wartości $\\alpha_i$ i $\\beta_i$ mogą być równe zero to wtedy: $$D = p_1 ^ {max(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\  ... \\cdot\\ p_k ^ {max(\\alpha_k, \\beta_k)}$$ Zauważmy, że: $$NWD(a,\\ b) = p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k, \\beta_k)}$$ z kolei: $$ab = p_1 ^ {\\alpha_1\\ +\\ \\beta_1} \\cdot\\ p_2 ^ {\\alpha_2\\ +\\ \\beta_2} \\cdot\\ ... \\cdot\\ p_k ^ {\\alpha_k\\ +\\ \\beta_k}\\ =$$ $$=\\ p1 ^ {min(\\alpha_1,\\ \\beta_1)} \\cdot\\ p1^{max(\\alpha_1,\\  \\beta_1)} \\cdot\\ p_2 ^{min(\\alpha_2,\\ \\beta_2)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {max(\\alpha_k,\\ \\beta_k)} \\cdot\\ p_k ^ {min(\\alpha_k,\\ \\beta_k)}$$ Oznacza to, że:
+Najmniejsza wspólna wielokrotność ($NWW$) liczb $a$ i $b,$ to najmniejsza taka liczba $D,$ której dzielnikami są $a$ i $b.$ $D$ musi zawierać w swoim rozkładzie na liczby pierwsze wszystkie czynniki pierwsze $a$ oraz $b.$ Dzieje się tak, ponieważ rozkład na czynniki pierwsze jest jednoznaczny. Jeśli $$n = p_1 ^ {\\alpha_1} \\cdot\\ p_2 ^ {\\alpha_2} \\cdot\\ ... \\cdot p_k ^ {\\alpha_k}$$ $$b = p_1 ^ {\\beta_1} \\cdot p_2 ^ {\\beta_2} \\cdot\\ ... \\cdot p_k ^ {\\beta_k}$$ gdzie niektóre z wartości $\\alpha_i$ i $\\beta_i$ mogą być równe zero to wtedy: $$D = p_1 ^ {max(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {max(\\alpha_k, \\beta_k)}$$ Zauważmy, że: $$NWD(a,\\ b) = p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k, \\beta_k)}$$ z kolei: $$ab = p_1 ^ {\\alpha_1\\ +\\ \\beta_1} \\cdot\\ p_2 ^ {\\alpha_2\\ +\\ \\beta_2} \\cdot\\ ... \\cdot\\ p_k ^ {\\alpha_k\\ +\\ \\beta_k}\\ =$$ $$=\\ p1 ^ {min(\\alpha_1,\\ \\beta_1)} \\cdot\\ p1^{max(\\alpha_1,\\ \\beta_1)} \\cdot\\ p_2 ^{min(\\alpha_2,\\ \\beta_2)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {max(\\alpha_k,\\ \\beta_k)} \\cdot\\ p_k ^ {min(\\alpha_k,\\ \\beta_k)}$$ Oznacza to, że:
 
 
 $$\\frac{ab}{NWD(a,\\ b)}\\ =$$
 $$=\\ \\frac{p_1 ^ {\\alpha_1\\ +\\ \\beta_1} \\cdot\\ p_2 ^ {\\alpha_2 +\\ \\beta_2} \\cdot\\ ... \\cdot\\ p_k ^ {\\alpha_k\\ +\\ \\beta_k}}{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot p_k ^ {min(\\alpha_k, \\beta_k)}}\\ =$$
-$$=\\ \\frac{p1 ^ {min(\\alpha_1,\\ \\beta_1)} \\cdot\\ p1^{max(\\alpha_1,\\  \\beta_1)} \\cdot\\ p_2 ^{min(\\alpha_2,\\ \\beta_2)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k,\\ \\beta_k)} \\cdot\\ p_k ^ {max(\\alpha_k,\\ \\beta_k)}}{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot p_k ^ {min(\\alpha_k, \\beta_k)}}\\ =$$
-$$=\\ \\frac{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k, \\beta_k)} \\cdot\\ p_1 ^ {max(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\  ... \\cdot\\ p_k ^ {max(\\alpha_k, \\beta_k)}}{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k, \\beta_k)}}\\ =$$
-$$=\\ p_1 ^ {max(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\  ... \\cdot\\ p_k ^ {max(\\alpha_k, \\beta_k)}\\ =$$
+$$=\\ \\frac{p1 ^ {min(\\alpha_1,\\ \\beta_1)} \\cdot\\ p1^{max(\\alpha_1,\\ \\beta_1)} \\cdot\\ p_2 ^{min(\\alpha_2,\\ \\beta_2)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k,\\ \\beta_k)} \\cdot\\ p_k ^ {max(\\alpha_k,\\ \\beta_k)}}{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot p_k ^ {min(\\alpha_k, \\beta_k)}}\\ =$$
+$$=\\ \\frac{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k, \\beta_k)} \\cdot\\ p_1 ^ {max(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {max(\\alpha_k, \\beta_k)}}{p_1 ^ {min(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {min(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {min(\\alpha_k, \\beta_k)}}\\ =$$
+$$=\\ p_1 ^ {max(\\alpha_1, \\beta_1)} \\cdot\\ p_2 ^ {max(\\alpha_2, \\beta_2)} \\cdot\\ ... \\cdot\\ p_k ^ {max(\\alpha_k, \\beta_k)}\\ =$$
 $$=\\ NWW(a,\\ b)$$
 
 
@@ -115,19 +115,19 @@ void sito() {
 
  \ \ \ \ for (int i = 2; i <= n; i++) {
 
- \ \ \ \  \ \ \ \ if (Sito[i] == 0) {
+ \ \ \ \ \ \ \ \ if (Sito[i] == 0) {
 
- \ \ \ \  \ \ \ \  \ \ \ \ j = 2 * i;
+ \ \ \ \ \ \ \ \ \ \ \ \ j = 2 * i;
 
- \ \ \ \  \ \ \ \  \ \ \ \ while (j <= n) {
+ \ \ \ \ \ \ \ \ \ \ \ \ while (j <= n) {
 
- \ \ \ \  \ \ \ \  \ \ \ \  \ \ \ \ Sito[j] = 1;
+ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Sito[j] = 1;
 
- \ \ \ \  \ \ \ \  \ \ \ \  \ \ \ \ j += i;
+ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j += i;
 
- \ \ \ \  \ \ \ \  \ \ \ \ }
+ \ \ \ \ \ \ \ \ \ \ \ \ }
 
- \ \ \ \  \ \ \ \ }
+ \ \ \ \ \ \ \ \ }
 
  \ \ \ \ }
 
@@ -164,7 +164,7 @@ Jeżeli chcielibyśmy znaleźć wszystkie dzielniki, a nie tylko pierwsze, może
 
 ## Duży dzielnik pierwszy
 
-<b>Twierdzenie</b>: Żadna liczba $n$ nie ma więcej niż jednego dzielnika pierwszego $P$ takiego, że $P  > \\sqrt{n}.$
+<b>Twierdzenie</b>: Żadna liczba $n$ nie ma więcej niż jednego dzielnika pierwszego $P$ takiego, że $P > \\sqrt{n}.$
 <b>Dowód</b>: Załóżmy, że istnieją dwie liczby pierwsze $p$ i $q$ takie, że $p\\ \\mid\\ n$ i $q\\ \\mid\\ n$ oraz $p,$ $q > \\sqrt{n}.$ Wówczas
 z jednoznaczności rozkładu wiemy, że $n = pqk,$ gdzie $k$ jest liczbą naturalną. $$p > \\sqrt{n}$$ $$q > \\sqrt{n}$$ $$pq > n = pqk$$ Otrzymujemy sprzeczność.
 
@@ -180,9 +180,9 @@ bool pierwsze (int n) {
 
  \ \ \ \ for (int i = 2; i * i <= n; i ++)
 
- \ \ \ \  \ \ \ \ if (n % i == 0)
+ \ \ \ \ \ \ \ \ if (n % i == 0)
 
- \ \ \ \  \ \ \ \  \ \ \ \ return false;
+ \ \ \ \ \ \ \ \ \ \ \ \ return false;
 
  \ \ \ \ return true;
 
@@ -215,17 +215,17 @@ vector <int> faktoryzuj (int n) {
 
  \ \ \ \ for ( int i = 2; i*i <= N; i ++)
 
- \ \ \ \  \ \ \ \ while (n % i == 0) {
+ \ \ \ \ \ \ \ \ while (n % i == 0) {
 
- \ \ \ \  \ \ \ \  \ \ \ \ n /= i;
+ \ \ \ \ \ \ \ \ \ \ \ \ n /= i;
 
- \ \ \ \  \ \ \ \  \ \ \ \ faktoryzacja.push_back(i);
+ \ \ \ \ \ \ \ \ \ \ \ \ faktoryzacja.push_back(i);
 
- \ \ \ \  \ \ \ \ }
+ \ \ \ \ \ \ \ \ }
 
  \ \ \ \ if (n != 1)
 
- \ \ \ \  \ \ \ \ faktoryzacja.push_back(n);
+ \ \ \ \ \ \ \ \ faktoryzacja.push_back(n);
 
  \ \ \ \ return faktoryzacja;
 

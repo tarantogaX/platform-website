@@ -36,7 +36,7 @@ Pamiętamy, że dla liczb pierwszych zachodzi $\\frac{a}{b} = a\\cdot b^{n-2} (m
 
 ## Cykliczność reszt modulo. Rząd elementu
 
-Będziemy rozważać wartości $a^k (mod \\ n),$ dla pewnego $1\\leqslant a\\leqslant n-1$ i dowolnego naturalnego $k.$ $a^0=1,$ więc pierwszą resztą w naszym ciągu  jest $1.$ Ponieważ reszt modulo $n$ jest $n,$ w pewnym momencie zaczną się powtarzać. Ponadto, pierwszą powtarzającą się resztą musi być jedynka. Dlaczego tak jest? Gdyby to nie było $1,$ to weszlibyśmy w cykl reszt, w którym nie występuje liczba $1,$ a tylko $a^0$ byłoby równe $1.$ To jest fałsz, gdyż z twierdzenia Eulera wiemy, że $a^{\\phi(n)} \\equiv 1 (mod p),$ czyli $a^0$ nie jest jedyną potęgą, której wartość wyniesie $1.$
+Będziemy rozważać wartości $a^k (mod \\ n),$ dla pewnego $1\\leqslant a\\leqslant n-1$ i dowolnego naturalnego $k.$ $a^0=1,$ więc pierwszą resztą w naszym ciągu jest $1.$ Ponieważ reszt modulo $n$ jest $n,$ w pewnym momencie zaczną się powtarzać. Ponadto, pierwszą powtarzającą się resztą musi być jedynka. Dlaczego tak jest? Gdyby to nie było $1,$ to weszlibyśmy w cykl reszt, w którym nie występuje liczba $1,$ a tylko $a^0$ byłoby równe $1.$ To jest fałsz, gdyż z twierdzenia Eulera wiemy, że $a^{\\phi(n)} \\equiv 1 (mod p),$ czyli $a^0$ nie jest jedyną potęgą, której wartość wyniesie $1.$
 
 
 ![Cykliczność potęg](https://codimd.s3.shivering-isles.com/demo/uploads/upload_79ac746e0148a51d5a7cf685791d0815.png)
@@ -94,9 +94,9 @@ bool oneIteration (long long n) { //zwraca false jesli n nie jest pierwsze
 
  \ \ \ \ while (d % 2 == 0) {
 
- \ \ \ \  \ \ \ \ d /= 2;
+ \ \ \ \ \ \ \ \ d /= 2;
 
- \ \ \ \  \ \ \ \ r ++;
+ \ \ \ \ \ \ \ \ r ++;
 
  \ \ \ \ }
  \ \ \ \ 
@@ -104,21 +104,21 @@ bool oneIteration (long long n) { //zwraca false jesli n nie jest pierwsze
 
  \ \ \ \ if (x == 1 || x == n-1)
 
- \ \ \ \  \ \ \ \ return true; //tutaj to nam nic nie da
+ \ \ \ \ \ \ \ \ return true; //tutaj to nam nic nie da
 
  \ \ \ \ while (d != n-1) {
 
- \ \ \ \  \ \ \ \ x = (x*x) % n;
+ \ \ \ \ \ \ \ \ x = (x*x) % n;
 
- \ \ \ \  \ \ \ \ d *= 2;
+ \ \ \ \ \ \ \ \ d *= 2;
 
- \ \ \ \  \ \ \ \ if (x == 1)
+ \ \ \ \ \ \ \ \ if (x == 1)
 
- \ \ \ \  \ \ \ \  \ \ \ \ return false; //1 szybciej niz -1
+ \ \ \ \ \ \ \ \ \ \ \ \ return false; //1 szybciej niz -1
 
- \ \ \ \  \ \ \ \ if (x == n-1)
+ \ \ \ \ \ \ \ \ if (x == n-1)
 
- \ \ \ \  \ \ \ \  \ \ \ \ return true; //nie udalo sie znalezc :/
+ \ \ \ \ \ \ \ \ \ \ \ \ return true; //nie udalo sie znalezc :/
 
  \ \ \ \ }
 
@@ -131,17 +131,17 @@ bool millerRabin (long long n, int k) { //sprawdza, czy n jest pierwsze
 
  \ \ \ \ if (n == 2)
 
- \ \ \ \  \ \ \ \ return true;
+ \ \ \ \ \ \ \ \ return true;
 
  \ \ \ \ if (n < 2 || n % 2 == 0)
 
- \ \ \ \  \ \ \ \ return false;
+ \ \ \ \ \ \ \ \ return false;
 
  \ \ \ \ for (int step = 1; step <= k; step ++)
 
- \ \ \ \  \ \ \ \ if (oneIteration(n) == false)
+ \ \ \ \ \ \ \ \ if (oneIteration(n) == false)
 
- \ \ \ \  \ \ \ \  \ \ \ \ return false;
+ \ \ \ \ \ \ \ \ \ \ \ \ return false;
 
  \ \ \ \ return true;
 
@@ -179,11 +179,11 @@ PLL gcd(LL a, LL b) {
 
  \ \ \ \ if (b == 0)
 
- \ \ \ \  \ \ \ \ return a;
+ \ \ \ \ \ \ \ \ return a;
 
  \ \ \ \ return
 
- \ \ \ \  \ \ \ \ gcd(b, a%b);
+ \ \ \ \ \ \ \ \ gcd(b, a%b);
 
 }
 
@@ -218,7 +218,7 @@ PLL extgcd(LL a, LL b) {
 
  \ \ \ \ if (b == 0)
 
- \ \ \ \  \ \ \ \ return make_pair(1, 0);
+ \ \ \ \ \ \ \ \ return make_pair(1, 0);
 
  \ \ \ \ PLL res = extgcd(b, a % b);
 
