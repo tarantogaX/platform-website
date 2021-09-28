@@ -37,10 +37,14 @@ Pamiętamy, że dla liczb pierwszych zachodzi $\\frac{a}{b} = a\\cdot b^{n-2} (m
 ## Cykliczność reszt modulo. Rząd elementu
 
 Będziemy rozważać wartości $a^k (mod \\ n),$ dla pewnego $1\\leqslant a\\leqslant n-1$ i dowolnego naturalnego $k.$ $a^0=1,$ więc pierwszą resztą w naszym ciągu  jest $1.$ Ponieważ reszt modulo $n$ jest $n,$ w pewnym momencie zaczną się powtarzać. Ponadto, pierwszą powtarzającą się resztą musi być jedynka. Dlaczego tak jest? Gdyby to nie było $1,$ to weszlibyśmy w cykl reszt, w którym nie występuje liczba $1,$ a tylko $a^0$ byłoby równe $1.$ To jest fałsz, gdyż z twierdzenia Eulera wiemy, że $a^{\\phi(n)} \\equiv 1 (mod p),$ czyli $a^0$ nie jest jedyną potęgą, której wartość wyniesie $1.$
+
+
 ![Cykliczność potęg](https://codimd.s3.shivering-isles.com/demo/uploads/upload_79ac746e0148a51d5a7cf685791d0815.png)
 
 
 <b>Rzędem</b> $a$ (modulo $n$) dla względnie pierwszych $a$ i $n$ nazywamy najmniejszą taką liczbę naturalną $k,$ że $a^k \\equiv 1 (mod \\ n)$ i piszemy $Ord_n(a) = k.$ Jasne jest, że $Ord_n(a) \\leqslant \\phi(n),$ ponieważ zachodzi $a^{\\phi(n)} \\equiv 1 (mod \\ n).$ Okazuje się ponadto, że $Ord_n(a)$ musi dzielić $\\phi(n).$ Dlaczego tak jest? Wiemy, że wszystkie spośród liczb $a^Ord_n(a), a^{2\\cdot Ord_n(a)}, a^{3\\cdot Ord_n(a)}, a^{4\\cdot Ord_n(a)} ... $ są równe $1.$ Gdyby $Ord_n(a)$ nie było dzielnikiem $\\phi(n),$ to mielibyśmy dwie jedynki oddalone o mniej niż $Ord_n(a).$ To oznacza, że długość cyklu reszt musi być mniejsza niż $Ord_n(a),$ co powoduje sprzeczność z faktem, że $Ord_n(a)$ jest najkrótszą możliwą długością cyklu reszt.
+
+
 ![Rząd a cykle potęgowania](https://codimd.s3.shivering-isles.com/demo/uploads/upload_ceb6fb0e5a5f23527c9bc928ce8c26b8.png)
 
 
@@ -86,60 +90,60 @@ Dodatkowo, może się okazać, że po skończeniu procedury nie napotkaliśmy an
 
 bool oneIteration (long long n) { //zwraca false jesli n nie jest pierwsze
 
-	long long a = random(2, n - 2), r = 0, d = n;
+ \ \ \ \ long long a = random(2, n - 2), r = 0, d = n;
 
-	while (d % 2 == 0) {
+ \ \ \ \ while (d % 2 == 0) {
 
-		d /= 2;
+ \ \ \ \  \ \ \ \ d /= 2;
 
-		r ++;
+ \ \ \ \  \ \ \ \ r ++;
 
-	}
-	
-	long long x = potmod(a, d, n)%n; //pamietajmy ze -1 to n-1
+ \ \ \ \ }
+ \ \ \ \ 
+ \ \ \ \ long long x = potmod(a, d, n)%n; //pamietajmy ze -1 to n-1
 
-	if (x == 1 || x == n-1)
+ \ \ \ \ if (x == 1 || x == n-1)
 
-		return true; //tutaj to nam nic nie da
+ \ \ \ \  \ \ \ \ return true; //tutaj to nam nic nie da
 
-	while (d != n-1) {
+ \ \ \ \ while (d != n-1) {
 
-		x = (x*x) % n;
+ \ \ \ \  \ \ \ \ x = (x*x) % n;
 
-		d *= 2;
+ \ \ \ \  \ \ \ \ d *= 2;
 
-		if (x == 1)
+ \ \ \ \  \ \ \ \ if (x == 1)
 
-			return false; //1 szybciej niz -1
+ \ \ \ \  \ \ \ \  \ \ \ \ return false; //1 szybciej niz -1
 
-		if (x == n-1)
+ \ \ \ \  \ \ \ \ if (x == n-1)
 
-			return true; //nie udalo sie znalezc :/
+ \ \ \ \  \ \ \ \  \ \ \ \ return true; //nie udalo sie znalezc :/
 
-	}
+ \ \ \ \ }
 
-	return false;
+ \ \ \ \ return false;
 
 }
 
 
 bool millerRabin (long long n, int k) { //sprawdza, czy n jest pierwsze
 
-	if (n == 2)
+ \ \ \ \ if (n == 2)
 
-		return true;
+ \ \ \ \  \ \ \ \ return true;
 
-	if (n < 2 || n % 2 == 0)
+ \ \ \ \ if (n < 2 || n % 2 == 0)
 
-		return false;
+ \ \ \ \  \ \ \ \ return false;
 
-	for (int step = 1; step <= k; step ++)
+ \ \ \ \ for (int step = 1; step <= k; step ++)
 
-		if (oneIteration(n) == false)
+ \ \ \ \  \ \ \ \ if (oneIteration(n) == false)
 
-			return false;
+ \ \ \ \  \ \ \ \  \ \ \ \ return false;
 
-	return true;
+ \ \ \ \ return true;
 
 }
 
@@ -173,13 +177,13 @@ typedef pair <LL, LL> PLL; //dla latwiejszego zapisu
 
 PLL gcd(LL a, LL b) {
 
-	if (b == 0)
+ \ \ \ \ if (b == 0)
 
-		return a;
+ \ \ \ \  \ \ \ \ return a;
 
-	return
+ \ \ \ \ return
 
-		gcd(b, a%b);
+ \ \ \ \  \ \ \ \ gcd(b, a%b);
 
 }
 
@@ -212,13 +216,13 @@ typedef pair <LL, LL> PLL; //dla latwiejszego zapisu
 
 PLL extgcd(LL a, LL b) {
 
-	if (b == 0)
+ \ \ \ \ if (b == 0)
 
-		return make_pair(1, 0);
+ \ \ \ \  \ \ \ \ return make_pair(1, 0);
 
-	PLL res = extgcd(b, a % b);
+ \ \ \ \ PLL res = extgcd(b, a % b);
 
-	return make_pair(res.second, res.first - (a/b) * res.second);
+ \ \ \ \ return make_pair(res.second, res.first - (a/b) * res.second);
 
 }
 

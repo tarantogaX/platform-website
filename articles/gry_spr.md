@@ -11,10 +11,10 @@ Zasady NIM są całkiem proste. Mamy n stosów kamyczków o danych wielkościach
 Zastanówmy się, jak wygląda gra w NIM dla dwóch stosów. Nietrudno zauważyć, że stosy o jednakowym rozmiarze to sytuacja przegrywająca. Jest tak dlatego, że kiedy pierwszy gracz wykona ruch na jednym ze stosów, to drugi może powtórzyć ten ruch na drugim ze stosów. Z drugiej strony (z definicji pozycji przegrywającej) jeśli stosy na początku nie mają równej wielkości, to pierwszy gracz może zapewnić sobie zwycięstwo wyrównując stosy.
 
 
-<i>Kluczowa obserwacja</i> na temat NIM (poparta krzywym dowodem): dwa stosy o rozmiarach $x$ i $y$ możemy zinterpretować jako stos o rozmiarze $x \\oplus y,$ gdzie $\\oplus$ oznacza operację bitowego xora. Spróbuję dać pewną intuicję, czemu ta obserwacja jest poprawna. Xor dwóch liczb jest 0 wtedy i tylko wtedy, gdy obie są równe. To nam pasuje do naszych obserwacji nt. gry. A co z wartościami dodatnimi? Cóż, tu jest trochę trudniej. Dowód można przeprowadzić rysując stosy $x,$ $y$ oraz stos $x \\oplus y,$ a następnie symulując rozgrywkę na tym jednym stosie (przy czym możemy pozwolić sobie na pewne uproszczenia, np. że nie zabieramy stosików jeśli chcemy wykonać taki sam ruch na drugim stosie, i tak dalej). Można oczywiście użyć też twierdzenia Sprague\\'a – Grundy\\'ego, ale je dopiero poznamy.
+<b>Kluczowa obserwacja</b> na temat NIM (poparta krzywym dowodem): dwa stosy o rozmiarach $x$ i $y$ możemy zinterpretować jako stos o rozmiarze $x \\oplus y,$ gdzie $\\oplus$ oznacza operację bitowego xora. Spróbuję dać pewną intuicję, czemu ta obserwacja jest poprawna. Xor dwóch liczb jest 0 wtedy i tylko wtedy, gdy obie są równe. To nam pasuje do naszych obserwacji nt. gry. A co z wartościami dodatnimi? Cóż, tu jest trochę trudniej. Dowód można przeprowadzić rysując stosy $x,$ $y$ oraz stos $x \\oplus y,$ a następnie symulując rozgrywkę na tym jednym stosie (przy czym możemy pozwolić sobie na pewne uproszczenia, np. że nie zabieramy stosików jeśli chcemy wykonać taki sam ruch na drugim stosie, i tak dalej). Można oczywiście użyć też twierdzenia Sprague\\'a – Grundy\\'ego, ale je dopiero poznamy.
 
 
-<i>Wniosek:</i> Skoro dwa stosy możemy reprezentować jako stos o rozmiarze równym ich xorowi, to $n$ stosów $a_1, \\ a_2, \\ ..., \\ a_n$ możemy reprezentować jako stos o rozmiarze $a_1 \\oplus a_2 \\oplus ... \\oplus a_n.$ To pozwala nam natychmiastowo odpowiadać na wszelkiego rodzaju zapytania związane z grą NIM.
+<b>Wniosek:</b> Skoro dwa stosy możemy reprezentować jako stos o rozmiarze równym ich xorowi, to $n$ stosów $a_1, \\ a_2, \\ ..., \\ a_n$ możemy reprezentować jako stos o rozmiarze $a_1 \\oplus a_2 \\oplus ... \\oplus a_n.$ To pozwala nam natychmiastowo odpowiadać na wszelkiego rodzaju zapytania związane z grą NIM.
 
 ### Założenia twierdzenia Srague'a - Grundy'ego
 
@@ -34,29 +34,29 @@ int nim[MAXN], is[MAXN];
 
 void calc (int x) {
 
-	//najpierw musimy przeliczyc wartosci dla synow
+ \ \ \ \ //najpierw musimy przeliczyc wartosci dla synow
 
-	for (int i = 0; i < sons[x].size(); i ++)
+ \ \ \ \ for (int i = 0; i < sons[x].size(); i ++)
 
-		dfs(sons[x][i]);
+ \ \ \ \  \ \ \ \ dfs(sons[x][i]);
 
-	//teraz mozemy z nich skorzystac
+ \ \ \ \ //teraz mozemy z nich skorzystac
 
-	for (int i = 0; i < sons[x].size(); i ++) {
+ \ \ \ \ for (int i = 0; i < sons[x].size(); i ++) {
 
-		int u = sons[x][i];
+ \ \ \ \  \ \ \ \ int u = sons[x][i];
 
-		is[nim[u]] = x;
+ \ \ \ \  \ \ \ \ is[nim[u]] = x;
 
-	}
+ \ \ \ \ }
 
-	//nim[x] to najmniejsza liczba, ktora nie wystepuje w zbiorze
+ \ \ \ \ //nim[x] to najmniejsza liczba, ktora nie wystepuje w zbiorze
 
-	nim[x] = 0;
+ \ \ \ \ nim[x] = 0;
 
-	while (is[nim[x]] == x)
+ \ \ \ \ while (is[nim[x]] == x)
 
-		nim[x] ++;
+ \ \ \ \  \ \ \ \ nim[x] ++;
 
 }
 
@@ -84,7 +84,7 @@ My skupimy się na przypadku dla drzewa (o ogólnej wersji możesz przeczytać k
 Rozwiążemy tę wersję Hackenbusha sprowadzając ją do gry NIM i stosując twierdzenie Sprague\\'a - Grundy\\'ego. Zauważmy, że ten Hackenbush na drzewie będącym ścieżką jest po prostu grą NIM. Interesuje nas jednak coś więcej. Przy pomocy programowania dynamicznego policzymy nimbery dla wszystkich wierzchołków (i ich poddrzew). Chcemy policzyć nim[x]. Zauważmy, że mamy do czynienia z kilkoma różnymi niezależnymi grami, gdzie każda będzie rozgrywana na jakimś synu $x.$ Wystarczy więc tylko zxorować wartości nimberów z synów, zgodnie z twierdzeniem Sprague\\'a - Grundy\\'ego. To wszystko? Nie do końca. Musimy pamiętać, że $nim[x]$ oznacza wynik dla poddrzewa zaczepionego w $x.$ Nie rozważyliśmy jeszcze krawędzi, która wychodzi z $x$ do góry. To okazuje się być łatwe. Skoro nimber równy k możemy utożsamiać jako stosik nima wielkości k, to możemy go też utożsamiać ze ścieżką wielkości k. Teraz już ładnie widać, że dodając jedną krawędź do góry po prostu zwiększamy ścieżkę o 1, czyli tym samym nimber.
 
 
-<i>Wniosek:</i> Aby policzyć $nim[x]$ wystarczy zxorować wartości nimberów z synów, powiększone wcześniej o 1.
+<b>Wniosek:</b> Aby policzyć $nim[x]$ wystarczy zxorować wartości nimberów z synów, powiększone wcześniej o 1.
 
 ### Liczenie nimberów - implementacja
 
@@ -95,17 +95,17 @@ int nim[MAXN];
 
 void calc (int x) {
 
-	int result = 0;
+ \ \ \ \ int result = 0;
 
-	for (int i = 0; i < sons[x].size(); i ++) {
+ \ \ \ \ for (int i = 0; i < sons[x].size(); i ++) {
 
-		dfs(sons[x][i]); //standardowo, dfs po synach
+ \ \ \ \  \ \ \ \ dfs(sons[x][i]); //standardowo, dfs po synach
 
-		result ^= (1 + nim[sons[x][i]]); //wystarczy zxorowac
+ \ \ \ \  \ \ \ \ result ^= (1 + nim[sons[x][i]]); //wystarczy zxorowac
 
-	}
+ \ \ \ \ }
 
-	nim[x] = result;
+ \ \ \ \ nim[x] = result;
 
 }
 

@@ -11,10 +11,14 @@ Omawianą strukturą jest drzewo przedziałowe. Zacznijmy od omówienia jego og�
 
 
 1) Drzewa przedziałowe to pełne drzewa binarne. To oznacza, że każdy wierzchołek, który nie jest liściem, ma dokładnie dwóch synów (będziemy ich nazywać prawym i lewym). Numery wierzchołkom nadajemy od góry do dołu, od lewej do prawej, zaczynając od $1.$ Wygląda mniej więcej tak:
+
+
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_f158595da63b8719f1b3e54aa2dbb1ac.png)
 
 
 2) Wierzchołki odpowiadają przedziałom, które reprezentują. Zwróć uwagę, że wszystkie przedziały na danej głębokości drzewa mają tę samą długość.
+
+
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_50ca423090f1ce7ec9d8fdb3e712860f.png)
 
 
@@ -48,17 +52,17 @@ W tym przypadku w operacji query mamy podać największą wartość, która znaj
 Takie drzewo możemy skonstruować w następujący sposób:
 
 
-```clike=
+```cpp=
 
 for (int i = 1; i <= n; i++)
 
-  drzewo[i + r - 1] = ciag[i];
+\ \ \ \ drzewo[i + r - 1] = ciag[i];
 
 
 
 for (int i = r - 1; i >= 1; i--)
 
-  drzewo[i] = max(drzewo[2 * i + 1], drzewo[2 * i]);
+\ \ \ \ drzewo[i] = max(drzewo[2 * i + 1], drzewo[2 * i]);
 
 ```
 
@@ -70,36 +74,15 @@ Nasze drzewo wygląda tak:
 
 
 Załóżmy, że w naszym zadaniu $0$ to będzie zapytanie (wypisujemy największą wartość z przedziału od $a$ do $b$), a $1$ aktualizacja (w wierzchołku $a$ ustalamy wartość $b$), wyglądają następująco:
-
-
-$8$
-
-
-$1$ $1$ $7$
-
-
-$1$ $8$ $5$
-
-
-$0$ $1$ $5$
-
-
-$1$ $6$ $4$
-
-
-$1$ $7$ $5$
-
-
-$0$ $2$ $8$
-
-
-$1$ $1$ $3$
-
-
-$0$ $3$ $4$
-
-
-
+$$8$$
+$$1 \\ 1 \\ 7$$
+$$1 \\ 8 \\ 5$$
+$$0 \\ 1 \\ 5$$
+$$1 \\ 6 \\ 4$$
+$$1 \\ 7 \\ 5$$
+$$0 \\ 2 \\ 8$$
+$$1 \\ 1 \\ 3$$
+$$0 \\ 3 \\ 4$$
 Gdy zmienimy coś w jednym wierzchołku, może to wpłynąć na jego przodka, - z tego powodu będziemy musieli zaktualizować także całą drogę od wierzchołka do korzenia.
 
 
@@ -157,7 +140,7 @@ Po kolejnych aktualizacjach nasze drzewo wygląda następująco:
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_bc4aeecd7df44237992a0e258cafc351.png)
 
 
-Teraz musimy zapytać się o przedział od $2$ do $8.$ W sposób, który został przedstawiony w poprzednim zapytaniu, pytamy się o nowy przedział. Wierzchołki, których przedziały bazowe znajdują się w naszym przedziale zapytania to wierzchołki to te o numerach $3,$ $5$ i $9.$
+Teraz musimy zapytać się o przedział od $2$ do $8.$ W sposób, który został przedstawiony w poprzednim zapytaniu, pytamy się o nowy przedział. Wierzchołki, których przedziały bazowe znajdują się w naszym przedziale zapytania to wierzchołki to te o numerach $3, \\ 5$ i $9.$
 
 
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e1ef050e5331ed402f2faffe0bd162f9.png)
@@ -176,15 +159,9 @@ Tym razem pytamy się o przedział od $3$ do $4.$ Wierzchołek, który zawiera w
 
 
 Zatem nasze odpowiedzi będą następujące:
-
-$7$
-
-
-$5$
-
-
-$3$
-
+$$7$$
+$$5$$
+$$3$$
 
 ## Drzewo przedział - punkt
 
@@ -195,10 +172,10 @@ Ten rodzaj drzewa przedziałowego od poprzedniego różni się nieznacznie – t
 Dla ułatwienia zostaniemy przy ciągu z poprzedniej części artykułu, a nasze operacje będą wyglądać następująco:
 
 
-$insert(a, b, c)$ – liczby z przedziału $<a;\\ b>$ zmieniamy na $c$
+```insert(a, b, c)``` – liczby z przedziału $<a;\\ b>$ zmieniamy na $c$
 
 
-$query(a)$ – podajemy wartość ciągu na pozycji $a$-tej.
+```query(a)``` – podajemy wartość ciągu na pozycji $a$-tej.
 
 
 Dla każdego wierzchołka w naszym drzewie będziemy zapamiętywać dwie liczby: wartość, na którą zmieniamy wszystkie inne z przedziału, który reprezentuje ten wierzchołek, oraz moment, w którym wykonujemy daną operację.
@@ -215,37 +192,16 @@ Nasze drzewo wygląda następująco:
 
 Rozpatrzmy przykładowy zbiór zapytań, z którymi będziemy chcieli sobie poradzić.
 
-
-$9$
-
-
-$I$ $1$ $5$ $3$
-
-
-$I$ $3$ $6$ $5$
-
-
-$Q$ $4$
-
-
-$I$ $6$ $8$ $7$
-
-
-$I$ $1$ $7$ $2$
-
-
-$Q$ $5$
-
-
-$Q$ $8$
-
-
-$I$ $3$ $5$ $8$
-
-
-$Q$ $4$
-
-
+$$9$$
+$$I \\ 1 \\ 5 \\ 3$$
+$$I \\ 3 \\ 6 \\ 5$$
+$$Q \\ 4$$
+$$I \\ 6 \\ 8 \\ 7$$
+$$I \\ 1 \\ 7 \\ 2$$
+$$Q \\ 5$$
+$$Q \\ 8$$
+$$I \\ 3 \\ 5 \\ 8$$
+$$Q \\ 4$$
 
 Operacja insert w drzewie przedział – punkt jest podobna do operacji query w drzewie punkt – przedział. Schodzenie po drzewie wykonujemy dokładnie w ten sam sposób.
 
@@ -294,7 +250,7 @@ W tym rodzaju drzewa przedziałowego w obu operacjach insert i query będziemy d
 W zasadzie moglibyśmy rozwiązać zadanie w podobny sposób, jak w przypadku wcześniejszych drzew. Dla każdego z wierzchołków w drzewie będziemy trzymać dwie wartości – sumę na przedziale, który reprezentuje dany wierzchołek oraz sumę aktualizacji, jakie wykonaliśmy na jego przedziale. Jeśli przez $y$ oznaczmy liczbę wierzchołków należących do początkowego ciągu, które reprezentuje wierzchołek $x,$ to będziemy chcieli, aby zawsze zachodziło:
 
 
-```clike
+```cpp=
 
 suma[x] = suma[2 * x] + suma[2 * x + 1] + y * dodaj[x];
 
@@ -325,15 +281,15 @@ Zauważmy, że operacja $Insert(1, 2, 1)$ zostanie rozważona tylko w korzeniu $
 <b>Rozwiązanie</b>: Możemy jednak podejść do problemu od drugiej strony. Zamiast przepisywać te informacje od razu, <b>poczekamy</b> do momentu, kiedy będą nam potrzebne. Zwróćmy uwagę na to, że w funkcji rekurencyjnej najpierw rozpatrujemy korzeń, który na pewno jest aktualny. Dla wszystkich innych wierzchołków możemy przepchać informacje w dół drzewa przed zejściem w tym kierunku. Dla naszego przypadku przepychanie będzie działać następująco:
 
 
-```clike=
+```cpp=
 
 void add(int x, long long ile)
 
 {
 
-    dodaj[x] += ile;
+\ \ \ \ dodaj[x] += ile;
 
-    suma[x] += dlugosc(x) * ile;
+\ \ \ \ suma[x] += dlugosc(x) * ile;
 
 }
 
@@ -342,21 +298,21 @@ void push(int x)
 
 {
 
-    add(2 * x, dodaj[x]);
+\ \ \ \ add(2 * x, dodaj[x]);
 
-    add(2 * x + 1, dodaj[2 * x + 1]);
+\ \ \ \ add(2 * x + 1, dodaj[2 * x + 1]);
 
-    dodaj[x] = 0;
+\ \ \ \ dodaj[x] = 0;
 
 }
 
 ```
 
 
-Co tu się wydarzyło? Dodanie $ile$ w wierzchołku $x$ to nic innego, jak dodanie $ile$ w obydwu synach wierzchołka, a następnie <b>wyzerowanie</b> $dodaj[x].$ Pamiętaj o tym wyzerowaniu – jeśli dodaliśmy w synach, to w $x$ już nie dodajemy. Oto kompletna realizacja operacji naszego przykładowego drzewa przedziałowego:
+Co tu się wydarzyło? Dodanie ```ile``` w wierzchołku $x$ to nic innego, jak dodanie ```ile``` w obydwu synach wierzchołka, a następnie <b>wyzerowanie</b> $dodaj[x].$ Pamiętaj o tym wyzerowaniu – jeśli dodaliśmy w synach, to w $x$ już nie dodajemy. Oto kompletna realizacja operacji naszego przykładowego drzewa przedziałowego:
 
 
-```clike=
+```cpp=
 
 long long suma[2 * R + 5], dodaj[2 * R + 5];
 
@@ -365,9 +321,9 @@ void add(int x, int dl, long long ile)
 
 {
 
-    dodaj[x] += ile;
+\ \ \ \ dodaj[x] += ile;
 
-    suma[x] += ile * dl;
+\ \ \ \ suma[x] += ile * dl;
 
 }
 
@@ -376,11 +332,11 @@ void push(int x, int dl)
 
 {
 
-    add(2 * x, dl / 2, dodaj[2 * x]);
+\ \ \ \ add(2 * x, dl / 2, dodaj[2 * x]);
 
-    add(2 * x + 1, dl / 2, dodaj[2 * x + 1]);
+\ \ \ \ add(2 * x + 1, dl / 2, dodaj[2 * x + 1]);
 
-    dodaj[x] = 0;
+\ \ \ \ dodaj[x] = 0;
 
 }
 
@@ -388,25 +344,25 @@ void push(int x, int dl)
 void insert(int gdzie, int pocz, int kon, int x, int y, long long ile)
 {
 
-    if (x <= pocz && y >= kon)
+\ \ \ \ if (x <= pocz && y >= kon)
 
-    {
+\ \ \ \ {
 
-        add(gdzie, kon - pocz + 1, ile);
+\ \ \ \ \ \ \ \ add(gdzie, kon - pocz + 1, ile);
 
-        return;
+\ \ \ \ \ \ \ \ return;
 
-    }
+\ \ \ \ }
 
-    push(gdzie, kon - pocz + 1);
+\ \ \ \ push(gdzie, kon - pocz + 1);
 
-    int sr = (pocz + kon) / 2;
+\ \ \ \ int sr = (pocz + kon) / 2;
 
-    if (x <= sr) insert (2 * gdzie, pocz, sr, x, y, ile);
+\ \ \ \ if (x <= sr) insert (2 * gdzie, pocz, sr, x, y, ile);
 
-    if (y > sr) insert (2 * gdzie + 1, sr + 1, kon, x, y, ile);
+\ \ \ \ if (y > sr) insert (2 * gdzie + 1, sr + 1, kon, x, y, ile);
 
-    suma[gdzie] = suma[2 * gdzie] + suma[2 * gdzie + 1] + dodaj[gdzie] * (kon - pocz + 1);
+\ \ \ \ suma[gdzie] = suma[2 * gdzie] + suma[2 * gdzie + 1] + dodaj[gdzie] * (kon - pocz + 1);
 
 }
 
@@ -415,28 +371,28 @@ long long query(int gdzie, int pocz, int kon, int x, int y)
 
 {
 
-    if (x <= pocz && y >= kon) return suma[gdzie];
+\ \ \ \ if (x <= pocz && y >= kon) return suma[gdzie];
 
-    push (gdzie, kon - pocz + 1);
+\ \ \ \ push (gdzie, kon - pocz + 1);
 
-    int sr = (pocz + kon) / 2;
+\ \ \ \ int sr = (pocz + kon) / 2;
 
-    long long wyn = 0;
+\ \ \ \ long long wyn = 0;
 
-    if (x <= sr) wyn += query(2 * gdzie, pocz, sr, x, y);
+\ \ \ \ if (x <= sr) wyn += query(2 * gdzie, pocz, sr, x, y);
 
-    if (y > sr) wyn += query(2 * gdzie + 1, sr + 1, kon, x, y);
+\ \ \ \ if (y > sr) wyn += query(2 * gdzie + 1, sr + 1, kon, x, y);
 
-    suma[gdzie] = suma[2 * gdzie] + suma[2 * gdzie + 1] + dodaj[gdzie] * (kon - pocz + 1);
+\ \ \ \ suma[gdzie] = suma[2 * gdzie] + suma[2 * gdzie + 1] + dodaj[gdzie] * (kon - pocz + 1);
 
-    return wyn;
+\ \ \ \ return wyn;
 
 }
 
 ```
 
 
-Technika ta, nazywana $\\textit{lazy propagation}$ jest najczęściej stosowana właśnie w drzewach przedział – przedział.
+Technika ta, nazywana <b>lazy propagation</b> jest najczęściej stosowana właśnie w drzewach przedział – przedział.
 
 
 ## Zadania

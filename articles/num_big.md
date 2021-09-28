@@ -12,16 +12,16 @@ Przypomnijmy najpierw kilka szkolnych faktów o wielomianach.
 Dla danej nieujemnej liczby całkowitej $n$ <b>wielomian</b> stopnia $n$ zmiennej $x$ oznaczany jako $P(x)$ jest wyrażeniem postaci: $a_n \\cdot x^n + a_{n-1} \\cdot x^{n-1} + ... + \\cdot a_1\\cdot x + a_0.$ Liczby [$a_n,$ $a_{n-1},$ ..., $a_1,$ $a_0$] nazywamy współczynnikami wielomianu.
 
 
-<b>Podzielność wielomianów</b> Wielomian $W(x)$ jest podzielny przez $P(x) \\neq 0$ wtedy i tylko wtedy, gdy istnieje wielomian $Q(x)$ taki, że $W(x) = P(x) \\cdot Q(x).$ 
+<b>Podzielność wielomianów:</b> Wielomian $W(x)$ jest podzielny przez $P(x) \\neq 0$ wtedy i tylko wtedy, gdy istnieje wielomian $Q(x)$ taki, że $W(x) = P(x) \\cdot Q(x).$ 
 
 
 <b>Pierwiastkiem</b> wielomianu $W(x)$ nazywamy taką liczbę $y,$ że $W(y) = 0.$
 
 
-<b>Równość wielomianów</b> Dwa wielomiany są równe wtedy i tylko wtedy, gdy ich stopnie i wszystkie współczynniki są równe.
+<b>Równość wielomianów:</b> Dwa wielomiany są równe wtedy i tylko wtedy, gdy ich stopnie i wszystkie współczynniki są równe.
 
 
-<b>Twierdzenie Bezouta</b> Wielomian $W(x)$ ma liczbę $a$ jako pierwiastek wtedy i tylko wtedy, gdy $W(x)$ jest podzielny przez dwumian $V(x) = x - a.$
+<b>Twierdzenie Bezouta:</b> Wielomian $W(x)$ ma liczbę $a$ jako pierwiastek wtedy i tylko wtedy, gdy $W(x)$ jest podzielny przez dwumian $V(x) = x - a.$
 
 
 ### Reprezentacja wielomianów
@@ -63,7 +63,7 @@ Więcej o algorytmie Karatsuby można przeczytać [tutaj.](https://brilliant.org
 
 ## Dzielenie dużych liczb. NWD dużych liczb
 
-Dzielenie wielomianu przez wielomian można zrealizować w $O(n^2)$ podobnie jak mnożenie -- z definicji (jak nas w szkole uczyli). Sprawa z NWD przedstawia się nieco ciekawiej. Trochę jak zawsze -- do dyspozycji jest algorytm Euklidesa. Kiedy niekoniecznie interesuje nas najszybszy możliwy czas wykonania możemy sobie pozwolić na małe ustępstwo. Zamiast pisać modulowanie, korzystamy ze wzoru $NWD(a, b) = NWD(a-b, b).$ W ten sposób otrzymalibyśmy algorytm, który działa bardzo słabo. Możemy jednak być sprytni i nieco sobie pomóc. Weźmy największą potęgę podstawy $b$ (niech to będzie $b^k$), która dzieli obydwie liczby (wiemy, że to po prostu liczba zer na końcu). Możemy obydwie liczby wydzielić wystarczająco dużo przez $b^k$ (żeby $b$ nie dzieliło żadnej z nich), zapamiętać, że NWD trzeba pomnożyć przez $b^k$ (to po prostu dopisanie zer na końcu), wydzielić jedną z liczb przez $b,$ a następnie mniejszą wymnażać przez $b$ dopóki liczby są różnej długości. Dzięki temu po $O(log b)$ operacjach odejmowania zmniejszymy stopnie obydwóch liczb. Koniec końców obliczymy NWD dwóch dużych liczb w $O(n^2 log b)$ w dosyć łatwy sposób.
+Dzielenie wielomianu przez wielomian można zrealizować w $O(n^2)$ podobnie jak mnożenie -- z definicji (jak nas w szkole uczyli). Sprawa z NWD przedstawia się nieco ciekawiej. Trochę jak zawsze -- do dyspozycji jest algorytm Euklidesa. Kiedy niekoniecznie interesuje nas najszybszy możliwy czas wykonania możemy sobie pozwolić na małe ustępstwo. Zamiast pisać modulowanie, korzystamy ze wzoru $NWD(a, b) = NWD(a-b, b).$ W ten sposób otrzymalibyśmy algorytm, który działa bardzo słabo. Możemy jednak być sprytni i nieco sobie pomóc. Weźmy największą potęgę podstawy $b$ (niech to będzie $b^k$), która dzieli obydwie liczby (wiemy, że to po prostu liczba zer na końcu). Możemy obydwie liczby wydzielić wystarczająco dużo przez $b^k$ (żeby $b$ nie dzieliło żadnej z nich), zapamiętać, że NWD trzeba pomnożyć przez $b^k$ (to po prostu dopisanie zer na końcu), wydzielić jedną z liczb przez $b,$ a następnie mniejszą wymnażać przez $b$ dopóki liczby są różnej długości. Dzięki temu po $O(log \\ b)$ operacjach odejmowania zmniejszymy stopnie obydwóch liczb. Koniec końców obliczymy NWD dwóch dużych liczb w $O(n^2 log \\ b)$ w dosyć łatwy sposób.
 
 
 ## Zadania

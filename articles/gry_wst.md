@@ -56,19 +56,19 @@ Zauważmy, że pionek w liściu drzewa jest zawsze pozycją przegrywającą, pon
 
 void calc (int x) {
 
-	bool winning = 0;
+ \ \ \ \ bool winning = 0;
 
-	for (int i = 0; i < sons[x].size(); i ++) {
+ \ \ \ \ for (int i = 0; i < sons[x].size(); i ++) {
 
-		dfs(sons[x][i]);
+ \ \ \ \  \ \ \ \ dfs(sons[x][i]);
 
-		if (win[sons[x][i]] == false)
+ \ \ \ \  \ \ \ \ if (win[sons[x][i]] == false)
 
-			winning = 1;
+ \ \ \ \  \ \ \ \  \ \ \ \ winning = 1;
 
-	}
+ \ \ \ \ }
 
-	win[x] = winning;
+ \ \ \ \ win[x] = winning;
 
 }
 

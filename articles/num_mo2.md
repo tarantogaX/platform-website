@@ -4,7 +4,11 @@ content: "
 ## Co to jest generator?
 
 Generatorem modulo liczba pierwsza $p$ nazywamy taką liczbę $g > 0,$ że $g, g^2, g^3, g^4, ... , g^{p-1}$ przyjmuje wszystkie możliwe reszty modulo $p,$ każdą dokładnie raz. Przykładowo, $2$ nie jest generatorem modulo $7,$ ale $3$ już tak.
+
+
 ![3 jest generatorem modulo 7](https://codimd.s3.shivering-isles.com/demo/uploads/upload_48620c837e5604b2a60bcbce90d8fc72.png)
+
+
 Generator nazywa się też czasem pierwiastkiem pierwotnym.
 
 
@@ -33,17 +37,17 @@ Trudno oszacować złożoność tego algorytmu. Po pierwsze losujemy, a po drugi
 
 vector <int> primes; //tu powinny wczesniej
 
-		     //byc dzielniki pierwsze liczby p-1
+ \ \ \ \  \ \ \ \      //byc dzielniki pierwsze liczby p-1
 
 bool isGenerator (int x, int p) {
 
-	for (int i = 0; i< primes.size(); i ++)
+ \ \ \ \ for (int i = 0; i< primes.size(); i ++)
 
-		if (potmod(x, primes[i], p) == 1)
+ \ \ \ \  \ \ \ \ if (potmod(x, primes[i], p) == 1)
 
-			return 0;
+ \ \ \ \  \ \ \ \  \ \ \ \ return 0;
 
-	return 1;
+ \ \ \ \ return 1;
 
 }
 
@@ -51,15 +55,15 @@ bool isGenerator (int x, int p) {
 
 int findGenerator(int p) {
 
-	while (true) {
+ \ \ \ \ while (true) {
 
-		int x = random(2, p - 1);
+ \ \ \ \  \ \ \ \ int x = random(2, p - 1);
 
-		if (isGenerator(x, p))
+ \ \ \ \  \ \ \ \ if (isGenerator(x, p))
 
-			return x;
+ \ \ \ \  \ \ \ \  \ \ \ \ return x;
 
-	}
+ \ \ \ \ }
 
 }
 

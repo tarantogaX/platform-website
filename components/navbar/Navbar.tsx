@@ -44,7 +44,7 @@ const ShadowWrapper = styled.div`
 `;
 
 const ShadowWrapperLast = styled(ShadowWrapper)`
-    height: 800px;
+    height: 900px;
 `;
 
 

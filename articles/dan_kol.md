@@ -1,7 +1,7 @@
 ---
 title: 'Kolejka monotoniczna'
 content: "
-Wiele problemów wymaga użycia w którejś z części rozwiązania algorytmu gąsienicy. Jeśli nie pamiętasz jego dziłania, przypomnij, zajrzyj do lekcji na ten temat z sekcji o podstawach programowania.
+Wiele problemów wymaga użycia w którejś z części rozwiązania algorytmu gąsienicy. Jeśli nie pamiętasz jego dziłania, zajrzyj do lekcji na ten temat z sekcji o podstawach programowania.
 
 
 W tym artykule opowiemy o tym, co możemy zrobić, gdy chcemy liczyć minimum i maksimum na naszym „pełzającym” przedziale. Oczywiście moglibyśmy zaimplementować zwykłe drzewo przedziałowe. Jednakże istnieje struktura, z której można wyciągnąć te informacje w $O(1)$ oraz nie wymaga pisania dwudziestu dodatkowych linii kodu, co na olimpiadzie może być bardzo pomocne. Ponieważ że minimum i maksimum możemy znaleźć w ten sam sposób, w dalszej części artykułu będziemy mówili o szukaniu maksimum.
@@ -64,11 +64,11 @@ deque<pair<int, int> > kolejka;
 
 void push(int t[], int a){
 
-	while (!kolejka.empty() && kolejka.back().first <= t[a])
+\ \ \ \ while (!kolejka.empty() && kolejka.back().first <= t[a])
 
-		kolejka.pop_back();
+\ \ \ \ \ \ \ \ kolejka.pop_back();
 
-	kolejka.push_back(make_pair(t[a], a));
+\ \ \ \ kolejka.push_back(make_pair(t[a], a));
 
 }
 
@@ -77,29 +77,31 @@ void push(int t[], int a){
 
 void pop(int t[], int a){
 
-	if (kolejka.front().second == a)
+\ \ \ \ if (kolejka.front().second == a)
 
-		kolejka.pop_front();
+\ \ \ \ \ \ \ \ kolejka.pop_front();
 
 }
 
 
 void get_maximum() {
 
-	if (kolejka.size() == 0)
+\ \ \ \ if (kolejka.size() == 0)
 
-		return -1;
+\ \ \ \ \ \ \ \ return -1;
 
-	return kolejka.front().first;
+\ \ \ \ return kolejka.front().first;
 
 }
 
 ```
 
 
-## Przykładowe zadanie na kolejkę monotoniczną
+## Przykładowe zadanie
 
 <b>Problem:</b> Dany jest ciąg $n$ liczb. Znajdź najdłuższy taki przedział, że różnica między maksymalnym a minimalnym elementem jest nie większa niż $k.$
+
+
 <b>Rozwiązanie:</b> Możemy puścić zwykłą gąsienicę, która dla kolejnych lewych końców będzie „pełzać” prawym końcem tak długo, aż różnica między minimalnym a maksymalnym elementem będzie niewiększa niż $k.$ Znajdowanie minimum i maksimum na tym przedziale możemy wykonywać przy pomocy kolejki monotonicznej.
 
 

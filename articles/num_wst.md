@@ -18,17 +18,17 @@ Największy wspólny dzielnik ($NWD$) $a$ i $b$ to największa taka liczba $d,$ 
 
 int NWD (int a,int b) {
 
-	while (a > 0 && b > 0)
+ \ \ \ \ while (a > 0 && b > 0)
 
-		if(a > b)
+ \ \ \ \  \ \ \ \ if(a > b)
 
-			a -=b;
+ \ \ \ \  \ \ \ \  \ \ \ \ a -=b;
 
-		else
+ \ \ \ \  \ \ \ \ else
 
-			b -= a;
+ \ \ \ \  \ \ \ \  \ \ \ \ b -= a;
 
-	return a + b;
+ \ \ \ \ return a + b;
 
 }
 
@@ -46,17 +46,17 @@ Załóżmy, że w obecnym kroku algorytmu $a\\ \\leq\\ b.$ Wówczas będziemy od
 
 int NWD (int a,int b) {
 
-	while(a > 0 && b > 0)
+ \ \ \ \ while(a > 0 && b > 0)
 
-		if(a > b)
+ \ \ \ \  \ \ \ \ if(a > b)
 
-			a %= b;
+ \ \ \ \  \ \ \ \  \ \ \ \ a %= b;
 
-		else
+ \ \ \ \  \ \ \ \ else
 
-			b %= a;
+ \ \ \ \  \ \ \ \  \ \ \ \ b %= a;
 
-	return a + b;
+ \ \ \ \ return a + b;
 
 }
 
@@ -66,7 +66,11 @@ int NWD (int a,int b) {
 Wyżej przedstawiony algorytm nazywa się <b>Algorytmem Euklidesa</b> i działa w czasie $O(log\\ n).$
 
 
-<b>Dowód</b>: Zauważmy, że liczba wykonanych operacji zależy od tego, jak szybko zmniejszają się wartości $a$ i $b.$ Ponieważ $(a\\ mod\\ b)\\ <\\ b\\ \\cdot\\ \\lfloor\\dfrac{a}{b} \\rfloor$ oraz $a = b\\ \\cdot\\ \\lfloor\\dfrac{a}{b} \\rfloor\\ +\\ (a\\ mod\\ b)$ to: $$a\\ (mod\\ b)\\ <\\ \\frac{a}{2}$$ Z tego wynika, że za każdym obrotem pętli jedna z wartości $a,$ $b$ zmniejsza się przynajmniej dwukrotnie, co oznacza, że algorym działa w czasie $O(log\\ n).$
+<b>Dowód</b>: Zauważmy, że liczba wykonanych operacji zależy od tego, jak szybko zmniejszają się wartości $a$ i $b.$ Ponieważ $(a\\ mod\\ b)\\ <\\ b\\ \\cdot\\ \\lfloor\\dfrac{a}{b} \\rfloor$ oraz $a = b\\ \\cdot\\ \\lfloor\\dfrac{a}{b} \\rfloor\\ +\\ (a\\ mod\\ b)$ to:
+<br /><br />
+$$a\\ (mod\\ b)\\ <\\ \\frac{a}{2}$$
+Z tego wynika, że za każdym obrotem pętli jedna z wartości $a,$ $b$ zmniejsza się przynajmniej dwukrotnie, co oznacza, że algorym działa w czasie $O(log\\ n).$
+<br /><br />
 
 
 ## Najmniejsza Wspólna Wielokrotność
@@ -109,23 +113,23 @@ Jako, że przeglądamy komórki sita w kolejności rosnących indeksów, zanim d
 
 void sito() {
 
-	for (int i = 2; i <= n; i++) {
+ \ \ \ \ for (int i = 2; i <= n; i++) {
 
-		if (Sito[i] == 0) {
+ \ \ \ \  \ \ \ \ if (Sito[i] == 0) {
 
-			j = 2 * i;
+ \ \ \ \  \ \ \ \  \ \ \ \ j = 2 * i;
 
-			while (j <= n) {
+ \ \ \ \  \ \ \ \  \ \ \ \ while (j <= n) {
 
-				Sito[j] = 1;
+ \ \ \ \  \ \ \ \  \ \ \ \  \ \ \ \ Sito[j] = 1;
 
-				j += i;
+ \ \ \ \  \ \ \ \  \ \ \ \  \ \ \ \ j += i;
 
-			}
+ \ \ \ \  \ \ \ \  \ \ \ \ }
 
-		}
+ \ \ \ \  \ \ \ \ }
 
-	}
+ \ \ \ \ }
 
 }
 
@@ -141,13 +145,13 @@ Przy niedużych modyfikacjach sito może pomóc nam znaleźć wszystkie dzielnik
 
 while (j <= n) {
 
-	Sito[j] = 1;
+ \ \ \ \ Sito[j] = 1;
 
-	Dzielniki
+ \ \ \ \ Dzielniki
 
-	pierwsze[j].push_back(i);
+ \ \ \ \ pierwsze[j].push_back(i);
 
-	j += i;
+ \ \ \ \ j += i;
 
 }
 
@@ -155,6 +159,7 @@ while (j <= n) {
 
 
 Jeżeli chcielibyśmy znaleźć wszystkie dzielniki, a nie tylko pierwsze, możemy dodatkowo pozbyć się linijki ```if (Sito[i] == 0)``` Ów algorytm będzie działać, ponieważ dla każdego i zapiszemy, że $2i,$ $3i,$ $4i,$ $5i$ ... ma dzielnik $i.$ Niestety złożoność obliczeniowa zmieni się na niekorzyść. Zauważmy, że w $i$-tym obrocie głównej pętli wykonamy $O(\\frac{n}{i})$ operacji, dlatego cały algorytm kosztuje $O(n\\ +\\ \\frac{n}{2}\\ +\\ \\frac{n}{3}\\ +\\ \\frac{n}{4}\\ +\\ ...\\ +\\ 1)\\ \\sim\\ O(n\\ log\\ n),$ co dalej jest bardzo satysfakcjonujące.
+<br /><br />
 
 
 ## Duży dzielnik pierwszy
@@ -173,13 +178,13 @@ Gdy chcemy dowiedzieć się, czy liczba $n$ jest pierwsza, możemy sprawdzić wa
 
 bool pierwsze (int n) {
 
-	for (int i = 2; i * i <= n; i ++)
+ \ \ \ \ for (int i = 2; i * i <= n; i ++)
 
-		if (n % i == 0)
+ \ \ \ \  \ \ \ \ if (n % i == 0)
 
-			return false;
+ \ \ \ \  \ \ \ \  \ \ \ \ return false;
 
-	return true;
+ \ \ \ \ return true;
 
 }
 
@@ -204,25 +209,25 @@ Powyższy algorytm będziemy powtarzać tak długo, aż $n$ jest równe $1$ lub 
 
 vector <int> faktoryzuj (int n) {
 
-	vector <int> faktoryzacja;
+ \ \ \ \ vector <int> faktoryzacja;
 
-	int N = n;
+ \ \ \ \ int N = n;
 
-	for ( int i = 2; i*i <= N; i ++)
+ \ \ \ \ for ( int i = 2; i*i <= N; i ++)
 
-		while (n % i == 0) {
+ \ \ \ \  \ \ \ \ while (n % i == 0) {
 
-			n /= i;
+ \ \ \ \  \ \ \ \  \ \ \ \ n /= i;
 
-			faktoryzacja.push_back(i);
+ \ \ \ \  \ \ \ \  \ \ \ \ faktoryzacja.push_back(i);
 
-		}
+ \ \ \ \  \ \ \ \ }
 
-	if (n != 1)
+ \ \ \ \ if (n != 1)
 
-		faktoryzacja.push_back(n);
+ \ \ \ \  \ \ \ \ faktoryzacja.push_back(n);
 
-	return faktoryzacja;
+ \ \ \ \ return faktoryzacja;
 
 }
 
@@ -238,6 +243,7 @@ Na koniec nauczmy się znajdować wszystkie dzielniki liczby $n.$ Niech $d$ będ
 
 
 Z powyższego rozumowania wynika, że dla każdego $d\\ \\leq\\ \\sqrt{n}$ i będącego dzielnikiem $n$ istnieje dzielnik równy $\\frac{n}{d} \\geq \\sqrt{n}.$ To znaczy, że możemy dla każdego $i$ z przedziału $[1; \\sqrt{n}]$ sprawdzić czy $i\\ \\mid\\ n.$ Jeśli $i\\ \\mid\\ n$ to dzielnikami $n$ będą $i$ oraz $\\frac{n}{i}.$ W ten sposób znajdziemy je wszystkie w czasie $O(\\sqrt{n}).$
+<br /><br />
 
 
 ## Zadania

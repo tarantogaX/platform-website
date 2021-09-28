@@ -16,10 +16,10 @@ Mając dany ciąg $C$ o dlugości $n$ napisz strukturę, która umożliwia:
 
 ## Drzewo potęgowe
 
-Strukturą, której szukamy jest drzewo potęgowe. Będziemy implementować je na zwykłej tablicy. Nazwijmy ją $D.$ Niech $S [a; b]$ oznacza sumę na przedziale $[a; b]$ ciągu $C.$ Wówczas w $D[x]$ będziemy trzymali $S [x - p_x + 1; x],$ gdzie $p_x$ to największa potęga dwójki, która dzieli $x.$ Na przykład w pierwszej komórce będziemy trzymać $S [1],$ dwunastej $S[9;12],$ a ósmej - $S[1;8].$ Nie próbuj szukać żadnych zależności. Ten pomysł jest kompletnie znikąd. 
+Strukturą, której szukamy jest drzewo potęgowe. Będziemy implementować je na zwykłej tablicy. Nazwijmy ją $D.$ Niech $S [a; b]$ oznacza sumę na przedziale $[a; b]$ ciągu $C.$ Wówczas w $D[x]$ będziemy trzymali $S [x - p_x + 1; x],$ gdzie $p_x$ to największa potęga dwójki, która dzieli $x.$ Na przykład w pierwszej komórce będziemy trzymać $S [1],$ dwunastej $S[9;12],$ a ósmej - $S[1;8].$
 
 
-\\includegraphics[width=0.94\\textwidth]{rys1.png}
+![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_0ca707a3cc297414c93be5f01a1484aa.png)
 
 
 Załóżmy, że zbudowalismy już $D.$ Teraz nauczymy się je obsługiwać. 
@@ -31,13 +31,23 @@ Załóżmy, że zbudowalismy już $D.$ Teraz nauczymy się je obsługiwać.
 <b>Update(x, w)</b> jest funkcją dodającą $w$ do $x$-tego elementu ciągu $C.$ W tym celu musi zaktualizować wszystkie komórki $D,$ w których trzymamy sumy na przedziałach obejmujących $x$-tą pozycję. Oczywiście każda z nich ma numer większy lub równy $x.$ $D[x]$ trzeba zaktualizować. Liczbą będącą indeksem kolejnej komórki do uaktualnienia będzie najmniejsza liczba większa od $x$ i podzielną przez $p_x, czyli x+p_x.$ Zauważmy, że $x+p_x$ jest podzielne przez $2\\cdot p_x.$ Dzieje się tak, ponieważ $p_x$ jest potęgą dwójki dzielącą $x.$ Kolejną będzie $x+p_x +p_{x+p_x}$ i tak dalej. Zauważmy, że każda kolejna komórka będzie co najmniej 2 razy dalej od poprzedniej niż poprzednia od jeszcze wcześniejszej. Z tego powodu zmienionych komórek może być maksymalnie $O(log(n)).$ Komórek pomiędzy $x$ a $x+p_x,$ nie będzie trzeba aktualizować. Dlaczego? Niech $y$ będzie liczbą z przedziału $(x + 1; x + p_x).$ Ponieważ $p_y$ = $p_y \\pmod{p_x},$ $y \\bmod p_x \\geqslant p_y,$ więc $y - p_y + 1 \\geqslant x + 1.$
 
 
-\\colorbox{xdd}{\\makebox[\\textwidth][l]{\\parbox[t]{\\linewidth}{\\texttt{\\I void \\B Update\\B (\\I int \\B x\\B ,\\I int \\B w\\B )\\\\
-\\B \\{\\\\
-\\I ~~~~if\\B (\\B x\\B >\\B zak\\B )\\I return\\B ; \\C //kolejna pozycja do zmiany jest poza zakresem\\\\
-\\B ~~~~D\\B [\\B x\\B ]\\B =\\B D\\B [\\B x\\B ]\\B +\\B w\\B ;\\\\
-\\B ~~~~Update\\B (\\B x\\B +\\B (\\B x\\B \\&\\B (\\B -\\B x\\B )\\B )\\B ,\\B w\\B )\\B ;\\\\
-\\B \\}
-}}}}
+```cpp=
+
+void Update(int x,int w)
+
+{
+
+\ \ \ \ if(x > zak)
+
+\ \ \ \ \ \ \ \ return; //kolejna pozycja do zmiany jest poza zakresem
+
+\ \ \ \ D[x] = D[x] + w;
+
+\ \ \ \ Update(x + (x & (-x)), w);
+
+}
+
+```
 
 
 ### Sum(x)
@@ -46,13 +56,21 @@ Załóżmy, że zbudowalismy już $D.$ Teraz nauczymy się je obsługiwać.
 <b>Sum(x)</b> jest funkcją, która zwraca sumę na prefiksie $[1,x].$ Na początku doda do wyniku $D[x]  - S[x - p_x + 1; x].$ Musi jeszcze dodać $S[1; x - p_x].$ W tym celu weźmie wartości $D[x - p_x],$ $D[x - p_x - p_{x-p_x}]$ i tak dalej... Wykona $O(log(x))$ operacji, ponieważ $x - p_x$ jest podzielne przez $2\\cdot p_x.$
 
 
-\\colorbox{xdd}{\\makebox[\\textwidth][l]{\\parbox[t]{\\linewidth}{\\texttt{\\I int \\B Sum\\B (\\I int \\B x\\B )\\\\
-\\B \\{\\\\
-\\I ~~~~if\\B (\\B x\\B =\\B =\\N 0\\B )\\I return \\N 0\\B ; \\C //zsumowalismy cały przediał\\\\
-\\I ~~~~return \\B D\\B [\\B x\\B ]\\B +\\B Sum\\B (\\B x\\B -\\B (\\B x\\B \\&\\B (\\B -\\B x\\B )\\B )\\B )\\B ;\\\\
-\\B \\}
-}}}}
+```cpp=
 
+int Sum(int x)
+
+{
+
+\ \ \ \ if (x == 0)
+
+\ \ \ \ \ \ \ \ return 0; //zsumowalismy cały przediał
+
+\ \ \ \ return D[x] + Sum(x - (x & (-x)));
+
+}
+
+```
 
 ### Inne funkcje
 
@@ -63,9 +81,7 @@ Drzewo potęgowe może przetwarzać wartości z prefiksów,  więc można nim ob
 ### Budowanie $D$ i obliczanie $p_x$
 
 
-Początkowe budowanie $D$ można wykonać w $O (n log n)$ wywołując funkcje update dla każdej pozycji ciągu. Natomiast dzięki specyfice zapisu liczb przez C++ możemy obliczyć $p_x$ w $O (1)$:\\\\
-
-<b>p\\_x = x \\& -x</b>
+Początkowe budowanie $D$ można wykonać w $O (n log n)$ wywołując funkcje update dla każdej pozycji ciągu. Natomiast dzięki specyfice zapisu liczb przez C++ możemy obliczyć $p_x$ w $O(1)$: ```p_x = x & -x```
 
 
 ## Zadania
