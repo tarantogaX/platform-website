@@ -1,21 +1,21 @@
 ---
 title: 'Problemy NP-trudne'
 content: "
-Jednym z największych wyzwań informatyki teoretycznej jest odpowiedzenie na pytanie: <b>Czy $P$~$=$~$NP$?</b>. W tym artykule dowiesz się, co to znaczy, a także jak radzić sobie z problemami NP-trudnymi.
+Jednym z największych wyzwań informatyki teoretycznej jest odpowiedzenie na pytanie: Czy $P=NP?$ W tym artykule dowiesz się, co to znaczy, a także jak radzić sobie z problemami NP-trudnymi.
 
 
-### Sprawdzenie rozwiązania, a znalezienie go
+## Sprawdzenie rozwiązania, a znalezienie go
 
 Aby rozpocząć omawanie problemów NP-trudnych musimy rozróżnić znalezienie i sprawdzenie rozwiązania. Sprawdzenie polega na tym, że mając w ręku jakiegoś <b>kandydata</b> na rozwiązanie chcemy powiedzieć, czy faktycznie spełnia warunki zadania. Tak może być w przypadku problemu kliki.
 
 
-Wyobraźmy sobie, że mamy dany graf nieskierowany i chcemy znaleźć największy jego podgraf taki, że każda para wierzchołków jest połączona krawędzią (czyli klikę). W tym wypadku sprawdzenie rozwiązania jest tak samo trudne jak znalezienie go -- gdy chcemy się upewnić, że nie ma lepszego tak czy inaczej musimy poszukać większych klik. 
+Wyobraźmy sobie, że mamy dany graf nieskierowany i chcemy znaleźć największy jego podgraf taki, że każda para wierzchołków jest połączona krawędzią (czyli klikę). W tym wypadku sprawdzenie rozwiązania jest tak samo trudne jak znalezienie go - gdy chcemy się upewnić, że nie ma lepszego tak czy inaczej musimy poszukać większych klik. 
 
 
-Z drugiej strony, gdybyśmy mieli dane $k$ i chcieli znaleźć klikę z $k$ wierzchołków, to sprawdzenie jest znacznie prostsze -- wystarczy tylko upewnić się, że wyróżniliśmy $k$ wierzchołków, a każda para z nich jest połączona krawędzią. To pokazuje, że sprawdzenie rozwiązania może być prostsze niż znalezienie go, choć tak być nie musi.
+Z drugiej strony, gdybyśmy mieli dane $k$ i chcieli znaleźć klikę z $k$ wierzchołków, to sprawdzenie jest znacznie prostsze - wystarczy tylko upewnić się, że wyróżniliśmy $k$ wierzchołków, a każda para z nich jest połączona krawędzią. To pokazuje, że sprawdzenie rozwiązania może być prostsze niż znalezienie go, choć tak być nie musi.
 
 
-### Rodzaje problemów
+## Rodzaje problemów
 
 Problemy natury obliczeniowej możemy podzielić na kilka grup. W problemach <b>decyzyjnych</b> zwykle pytanie zaczyna się od <b>czy?</b>, a naszym zadaniem jest odpowiedzieć <b>TAK</b> lub <b>NIE</b>. Takim problemem jest na przykład sprawdzenie, czy w grafie istnieje klika rozmiaru $k$ (powyższe zadanie). Inną grupą są problemy optymalizacyjne, gdzie musimy znaleźć w pewnym sensie <b>najlepsze</b> rozwiązanie. Problem znalezienie największej kliki jest problemem optymalizacyjnym. Zauważmy, że te dwa problemy są w pewnym sensie podobne. Jeśli umiemy rozwiązać sprawdzanie, czy istnieje klika wielkości $k,$ to możemy przeiterować się po każdym możliwym $k$ i znaleźć największe takie $k,$ dla którego rozwiązanie istnieje, aby rozwiązać drugi problem (lub w przypadkach ekstremalnej desperacji użyć wyszukiwania binarnego po wyniku aby zbić $O(n)$ do $O(logN)$). Są jeszcze inne rodzaje problemów, ale w tym miejscu nie potrzebujemy ich definiować.
 
@@ -70,10 +70,10 @@ Jedną z metod radzenia sobie z problemami NP-trudnymi jest użycie programowani
 
 ### Backtracking, czyli przeszukiwanie z nawrotami
 
-Każdy z poniższych tematów to temat--rzeka. O problemach NP-trudnych powstało mnóstwo zaawansowanej teorii. Postaram się przybliżyć podstawy, a rozszerzeniem będą linkowane artykuły.
+Każdy z poniższych tematów to temat-rzeka. O problemach NP-trudnych powstało mnóstwo zaawansowanej teorii. Postaram się przybliżyć podstawy, a rozszerzeniem będą linkowane artykuły.
 
 
-Przeszukiwanie bez nawrotów <b>po prostu</b> rozpatrzyłoby wszystkie możliwości. Przykładowo -- aby znaleźć cykl Hamiltona w grafie możemy po prostu rozważyć wszystkie kolejności wierzchołków, ale to osiągnęłoby złożoność $O(n! \\cdot n).$ Zamiast tego możemy być odrobinę sprytniejsi.
+Przeszukiwanie bez nawrotów <b>po prostu</b> rozpatrzyłoby wszystkie możliwości. Przykładowo - aby znaleźć cykl Hamiltona w grafie możemy po prostu rozważyć wszystkie kolejności wierzchołków, ale to osiągnęłoby złożoność $O(n! \\cdot n).$ Zamiast tego możemy być odrobinę sprytniejsi.
 
 
 Zaczniemy tak samo, będziemy próbować generować cykl, począwszy od pewnego wierzchołka. Następnie, jeśli $x$ jest ostatnim znalezionym wierzchołkiem, to każdy kolejny potencjalny wierzchołek na cyklu musi być sąsiadem $x.$ Ponadto, ten nowy wierzchołek nie mógł się wcześniej znajdować na cyklu. To najczęściej znacznie ogranicza nam liczbę możliwości do sprawdzenia.
@@ -97,13 +97,13 @@ Prawdopodobnie nie umiemy rozwiązywąć problemów NP-trudnych w czasie wielomi
 
 ### Heurystyki i aproksymacje
 
-Skoro nie umiemy czegoś zrobić tak dobrze jak byśmy chcieli, to możemy pójść na pewne ustępstwa i poszukać algorytmów <b>heurystycznych</b>. Heurystyka to \"metoda znajdowania rozwiązań, dla której nie ma gwarancji znalezienia rozwiązania optymalnego, a często nawet prawidłowego. Rozwiązań tych używa się np. wtedy, gdy pełny algorytm jest z przyczyn technicznych zbyt kosztowny lub gdy jest nieznany\". Czasami możemy użyć też tzw. heurystyki czasowej, czyli założenia, które praktycznie przyspieszy nasz algorytm dla większości przypadków. Taką jest na przykład algorytm SPFA znajdowania najkrótszych ścieżek w grafie -- choć istnieją instancje problemu na których działa w złożoności $O(n\\cdot m),$ to w praktyce jest znacznie szybszy. Jego faktyczna złożoność wynosi $O(m)$ dla losowego grafu.
+Skoro nie umiemy czegoś zrobić tak dobrze jak byśmy chcieli, to możemy pójść na pewne ustępstwa i poszukać algorytmów <b>heurystycznych</b>. Heurystyka to \"metoda znajdowania rozwiązań, dla której nie ma gwarancji znalezienia rozwiązania optymalnego, a często nawet prawidłowego. Rozwiązań tych używa się np. wtedy, gdy pełny algorytm jest z przyczyn technicznych zbyt kosztowny lub gdy jest nieznany\". Czasami możemy użyć też tzw. heurystyki czasowej, czyli założenia, które praktycznie przyspieszy nasz algorytm dla większości przypadków. Taką jest na przykład algorytm SPFA znajdowania najkrótszych ścieżek w grafie - choć istnieją instancje problemu na których działa w złożoności $O(n\\cdot m),$ to w praktyce jest znacznie szybszy. Jego faktyczna złożoność wynosi $O(m)$ dla losowego grafu.
 
 
-Innym ustępstwem są aproksymacje. To kolejny duży dział informatyki teoretycznej. Chodzi o to, aby zamiast rozwiązania optymalnego znaleźć \\textit{niewiele} gorsze. Formalnie, powiemy że algorytm jest $C$--aproksymacyjny, jeśli znajduje rozwiązanie nie więcej niż $C$ razy gorsze niż optymalne. Naprawdę często zdarzają się tutaj ciekawe i zaskakujące wyniki. Przykładowo, dla pewnego problemu w sposób banalny pokazujemy algorytm $2$--aproksymacyjny, a istnienie jakiegokolwiek lepszego algorytmu natychmiast implikowałoby potężny przełom w informatyce (coś prawie tak wielkiego jak $P \\neq NP$). Więcej znajdziesz [w tym artykule](http://smurf.mimuw.edu.pl/node/1142).
+Innym ustępstwem są aproksymacje. To kolejny duży dział informatyki teoretycznej. Chodzi o to, aby zamiast rozwiązania optymalnego znaleźć \\textit{niewiele} gorsze. Formalnie, powiemy że algorytm jest $C$-aproksymacyjny, jeśli znajduje rozwiązanie nie więcej niż $C$ razy gorsze niż optymalne. Naprawdę często zdarzają się tutaj ciekawe i zaskakujące wyniki. Przykładowo, dla pewnego problemu w sposób banalny pokazujemy algorytm $2$-aproksymacyjny, a istnienie jakiegokolwiek lepszego algorytmu natychmiast implikowałoby potężny przełom w informatyce (coś prawie tak wielkiego jak $P \\neq NP$). Więcej znajdziesz [w tym artykule](http://smurf.mimuw.edu.pl/node/1142).
 
 
-A na koniec ciekawostka z olimpiady. Jednym z najtrudniejszych i najciekawszych zadań $22$ Olimpiady Informatycznej były <b>Tablice kierunkowe</b> autorstwa <b>Wojciecha Nadary</b>. Zadanie sprowadzało się do znalezienia największej kliki w dość specyficznym grafie. Kilku zawodników zdecydowało się spróbować zadziwiająco głupiego podejścia -- \\textit{Dopóki graf nie jest kliką, wyjmuj wierzchołek o najmniejszym stopniu}. Takie rozwiązania dostawały $100$ punktów. Kurtyna.
+A na koniec ciekawostka z olimpiady. Jednym z najtrudniejszych i najciekawszych zadań $22$ Olimpiady Informatycznej były <b>Tablice kierunkowe</b> autorstwa <b>Wojciecha Nadary</b>. Zadanie sprowadzało się do znalezienia największej kliki w dość specyficznym grafie. Kilku zawodników zdecydowało się spróbować zadziwiająco głupiego podejścia - \\textit{Dopóki graf nie jest kliką, wyjmuj wierzchołek o najmniejszym stopniu}. Takie rozwiązania dostawały $100$ punktów. Kurtyna.
 
 
 ## Zadania

@@ -18,26 +18,23 @@ Ta numeracja nazywana jest <b>preorder.</b> Gdybyśmy numerowali wierzchołki w 
 ![Kolejność postorder](https://codimd.s3.shivering-isles.com/demo/uploads/upload_1254531b49dc29baddd5eaf5ef66e799.png)
 
 
-#### Implementacja:
-
-
 ```cpp=
 
 int pre = 1, post = 1;
 
 void dfs (int x) {
 
-	preorder[x] = pre ++;
+\ \ \ \ preorder[x] = pre ++;
 
-	odw[x] = true;
+\ \ \ \ odw[x] = true;
 
-	for (int i = 0; i < v[x].size(); i ++)
+\ \ \ \ for (int i = 0; i < v[x].size(); i ++)
 
-		if(!odw[v[x][i]])
+\ \ \ \ \ \ \ \ if(!odw[v[x][i]])
 
-			dfs (v[x][i]);
+\ \ \ \ \ \ \ \ \ \ \ \ dfs (v[x][i]);
 
-	postorder[x] = post ++;
+\ \ \ \ postorder[x] = post ++;
 
 }
 

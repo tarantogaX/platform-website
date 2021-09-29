@@ -40,51 +40,54 @@ Do zaimplementowania algorytmu Prima użyjemy kolejki priorytetowej, na którą 
 
 void Prim() {
 
-	odw[1] = true; //zaznaczamy, że wierzchołek nr 1 należy do S
+\ \ \ \ odw[1] = true; //zaznaczamy, że wierzchołek nr 1 należy do S
 
-	///wrzucamy na kolejkę wszystkie krawędzie wychodzące z S
+\ \ \ \ ///wrzucamy na kolejkę wszystkie krawędzie wychodzące z S
 
-	for (int i = 0; i < v[1].size(); i ++)
+\ \ \ \ for (int i = 0; i < v[1].size(); i ++)
 
-		q.push(make_pair(-waga[1][i], numer_krawedzi[1][i]));
+\ \ \ \ \ \ \ \ q.push(make_pair(-waga[1][i], numer_krawedzi[1][i]));
 
-	while (!q.empty()) {
 
-		int nr = q.top().second, w = -q.top().first;
+\ \ \ \ while (!q.empty()) {
 
-		q.pop();
+\ \ \ \ \ \ \ \ int nr = q.top().second, w = -q.top().first;
 
-		if (odw[krawedz[nr].first] && odw[krawedz[nr].second])
+\ \ \ \ \ \ \ \ q.pop();
 
-			continue; // krawedz prowadzi między dwoma
+\ \ \ \ \ \ \ \ if (odw[krawedz[nr].first] && odw[krawedz[nr].second])
 
-				  // wierzchołkami należącymi do S
+\ \ \ \ \ \ \ \ \ \ \ \ continue; // krawedz prowadzi między dwoma
 
-		int a = krawedz[nr].first, b = krawedz[nr].second;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \   // wierzchołkami należącymi do S
 
-		// budujemy drzewo rozpinajace
 
-		drzewo_rozpinajace[a].push_back(b);
+\ \ \ \ \ \ \ \ int a = krawedz[nr].first, b = krawedz[nr].second;
 
-		waga_krawedzi[a].push_back(w);
+\ \ \ \ \ \ \ \ // budujemy drzewo rozpinajace
 
-		drzewo_rozpinajace[b].push_back(a);
+\ \ \ \ \ \ \ \ drzewo_rozpinajace[a].push_back(b);
 
-		waga_krawedzi[b].push_back(w);
+\ \ \ \ \ \ \ \ waga_krawedzi[a].push_back(w);
 
-		if (odw[a])
+\ \ \ \ \ \ \ \ drzewo_rozpinajace[b].push_back(a);
 
-			swap(a, b); ///a ma być wierzchołkem spoza S
+\ \ \ \ \ \ \ \ waga_krawedzi[b].push_back(w);
 
-		odw[a] = true;
+\ \ \ \ \ \ \ \ if (odw[a])
 
-		for(int i = 0; i < v[a].size(); i ++)
+\ \ \ \ \ \ \ \ \ \ \ \ swap(a, b); ///a ma być wierzchołkem spoza S
 
-			q.push(make_pair(-waga[a][i],
+\ \ \ \ \ \ \ \ odw[a] = true;
 
-				numer_krawedzi[a][i]) );
 
-	}
+\ \ \ \ \ \ \ \ for(int i = 0; i < v[a].size(); i ++)
+
+\ \ \ \ \ \ \ \ \ \ \ \ q.push(make_pair(-waga[a][i],
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numer_krawedzi[a][i]) );
+
+\ \ \ \ }
 
 }
 

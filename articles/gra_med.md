@@ -44,17 +44,17 @@ Przykładowa implementacja $DFS'a$:
 
 void dfs (int x) {
 
-	odw[x] = true;
+\ \ \ \ odw[x] = true;
 
-	// dowolne operacje
+\ \ \ \ // dowolne operacje
 
-	for (int i = 0; i < v[x].size(); i ++)
+\ \ \ \ for (int i = 0; i < v[x].size(); i ++)
 
-		if (!odw[v[x][i]] && !na_cyklu[v[x][i]])
+\ \ \ \ \ \ \ \ if (!odw[v[x][i]] && !na_cyklu[v[x][i]])
 
-			dfs(v[x][i]);	
+\ \ \ \ \ \ \ \ \ \ \ \ dfs(v[x][i]);\ \ \ \ 
 
-	// dowolne operacje
+\ \ \ \ // dowolne operacje
 
 }
 
@@ -90,7 +90,7 @@ Metody radzenia sobie z pierwszym przypadkiem są szczegółowo omówione w arty
 Zauważmy, że jeśli chcemy poprowadzić scieżkę przez drzewo ukorzenione w $x,$ zawsze będzie nam się opłacało wziąć jak najdłuższą ścieżkę biegnącą przez to drzewo. Owa długość jest równa jego głębokości.
 
 
-Niech $F[i]$ oznacza głebokość drzewa ukorzenionego w $i$-tym wierzchołku naszego cyklu. Sprowadziliśmy nasz problem do znalezienia maksymalnej wartości $F[i] + F[j] + max(j - i,n - (j - i))$ dla $i < j,$ ponieważ ścieżka między drzewem $i$-tym i $j$-tym może biec po cyklu na dwa sposoby. Rozbijemy problem na dwa przypadki. Znajdziemy maksymalną wartość $F[i] + F[j] + (j - i)$ przechodząc po wierzchołkach w kolejności rosnących indeksów, a następnie znajdziemy maksymalną wartość $F[i] + F[j] + n - (j - i)$ przechodząc w kolejności malejących indeksów. Ponieważ oba przypadki oblicza się w dokładnie taki sam sposób, omówię go raz na przykładzie pierwszego.
+Niech $F[i]$ oznacza głebokość drzewa ukorzenionego w $i$-tym wierzchołku naszego cyklu. Sprowadziliśmy nasz problem do znalezienia maksymalnej wartości $F[i]$ $+$ $F[j]$ + $max(j - i, n - (j - i))$ dla $i < j,$ ponieważ ścieżka między drzewem $i$-tym i $j$-tym może biec po cyklu na dwa sposoby. Rozbijemy problem na dwa przypadki. Znajdziemy maksymalną wartość $F[i] + F[j] + (j - i)$ przechodząc po wierzchołkach w kolejności rosnących indeksów, a następnie znajdziemy maksymalną wartość $F[i] + F[j] + n - (j - i)$ przechodząc w kolejności malejących indeksów. Ponieważ oba przypadki oblicza się w dokładnie taki sam sposób, omówię go raz na przykładzie pierwszego.
 
 
 ![Dwa rodzaje ścieżek w meduzie](https://codimd.s3.shivering-isles.com/demo/uploads/upload_17ff42beb71fbede4e99324e1ce7d73e.png)

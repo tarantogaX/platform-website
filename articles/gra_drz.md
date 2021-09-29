@@ -102,7 +102,7 @@ Niech $pMax[x]$ będzie długością najdłuższej ścieżki, która kończy si�
 $pMax[x] = max(pMax[u1], pMax[u2], ..., pMax[uk]) + 1$
 
 
-Niech $nMAx[x]$ będzie długością najdłuższej ścieżki, która kończy się w $x$ i biegnie do ojca $x.$ Jeżeli $x$ jest korzeniem, $nMax[x] = 0.$ W przeciwnym wypadku: $nMax[x] = max(nMax[ojciec[x]]+1, pMax[u1]+2, pMax[u2]+2, ..., pMax[uk] + 2).$
+Niech $nMAx[x]$ będzie długością najdłuższej ścieżki, która kończy się w $x$ i biegnie do ojca $x.$ Jeżeli $x$ jest korzeniem, $nMax[x] = 0.$ W przeciwnym wypadku: $$nMax[x] = max(nMax[ojciec[x]]+1, pMax[u1]+2, pMax[u2]+2, ..., pMax[uk] + 2).$$
 
 
 ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_932bf177710d9c4692b80e76cca217f0.png)

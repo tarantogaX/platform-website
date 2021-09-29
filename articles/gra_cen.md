@@ -42,32 +42,29 @@ Centroid to wierzchołek, który dzieli drzewo na poddrzewa o wielkości nie wi�
 ![Dwa centroidy](https://codimd.s3.shivering-isles.com/demo/uploads/upload_f5e086fa49e0f0c6e74f28a3dffd972c.png)
 
 
-#### Znajdowanie centroidu - implementacja
-
-
 ```cpp=
 
 int find_centroid (int x){
 
-	for (int i = 0;i < v[x].size(); i ++) {
+\ \ \ \ for (int i = 0;i < v[x].size(); i ++) {
 
-		//w ile[x] trzymamy wielkosc poddrzewa x
+\ \ \ \ \ \ \ \ //w ile[x] trzymamy wielkosc poddrzewa x
 
-		if (ile[v[x][i]] > n / 2) {
+\ \ \ \ \ \ \ \ if (ile[v[x][i]] > n / 2) {
 
-			//zmienienie korzenia zmienia wielkosci poddrzew
+\ \ \ \ \ \ \ \ \ \ \ \ //zmienienie korzenia zmienia wielkosci poddrzew
 
-			ile[x] -= ile[v[x][i]];
+\ \ \ \ \ \ \ \ \ \ \ \ ile[x] -= ile[v[x][i]];
 
-			ile[v[x][i]] = n;
+\ \ \ \ \ \ \ \ \ \ \ \ ile[v[x][i]] = n;
 
-			return find_centroid(v[x][i]);
+\ \ \ \ \ \ \ \ \ \ \ \ return find_centroid(v[x][i]);
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	}
+\ \ \ \ }
 
-	return x;
+\ \ \ \ return x;
 
 }
 
@@ -83,35 +80,35 @@ Jako wierzchołki $C$ wybieramy centroidy. Po każdej rekurencji rozmiar drzew b
 
 int centroid_decomposition (int x) {
 
-	// w tym miejscu należy przetworzyć przydatne
+\ \ \ \ // w tym miejscu należy przetworzyć przydatne
 
-	// informacje o drzewie takie jak wielkości poddrzew
-	
+\ \ \ \ // informacje o drzewie takie jak wielkości poddrzew
+\ \ \ \ 
 
-	int centroid = find_centroid(x);
+\ \ \ \ int centroid = find_centroid(x);
 
-	// rozwiąż problem dla ścieżek typu pierwszego, następnie
+\ \ \ \ // rozwiąż problem dla ścieżek typu pierwszego, następnie
 
-	// wyczyść wszystkie struktury, których będziesz potem używać
-	
+\ \ \ \ // wyczyść wszystkie struktury, których będziesz potem używać
+\ \ \ \ 
 
-	//informacja, że tego wierzchołka już nie ma w drzewie
+\ \ \ \ //informacja, że tego wierzchołka już nie ma w drzewie
 
-	wyrzucony[centroid] = true;
+\ \ \ \ wyrzucony[centroid] = true;
 
-	for (int i = 0; i < v[centroid].size(); i ++) {
+\ \ \ \ for (int i = 0; i < v[centroid].size(); i ++) {
 
-		if (!wyrzucony[v[centroid][i]])
+\ \ \ \ \ \ \ \ if (!wyrzucony[v[centroid][i]])
 
-			wyn += centroid_decomposition(v[centroid][i]);
+\ \ \ \ \ \ \ \ \ \ \ \ wyn += centroid_decomposition(v[centroid][i]);
 
-			// lub wyn = max(wyn,
+\ \ \ \ \ \ \ \ \ \ \ \ // lub wyn = max(wyn,
 
-			// centroid_decomposition(v[centroid][i]));
+\ \ \ \ \ \ \ \ \ \ \ \ // centroid_decomposition(v[centroid][i]));
 
-	}
+\ \ \ \ }
 
-	return wyn;
+\ \ \ \ return wyn;
 
 }
 

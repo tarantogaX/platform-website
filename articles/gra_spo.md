@@ -58,33 +58,34 @@ Niech $low[x]$ oznacza najmniejszą głębokość, na jaką jesteśmy w stanie d
 
 void calculate_low (int x) {
 
-	visited[x] = true;
+\ \ \ \ visited[x] = true;
 
-	low[x] = depth[x];
+\ \ \ \ low[x] = depth[x];
 
-	// na wektorze drzewo trzymamy liste sasiedztwa
+\ \ \ \ // na wektorze drzewo trzymamy liste sasiedztwa
 
-	// drzewa rozpinajacego DFS
+\ \ \ \ // drzewa rozpinajacego DFS
 
-	for (int i = 0; i < drzewo[x].size(); i ++)
+\ \ \ \ for (int i = 0; i < drzewo[x].size(); i ++)
 
-		if(!visited[drzewo[v[x][i]]]) {
+\ \ \ \ \ \ \ \ if(!visited[drzewo[v[x][i]]]) {
 
-			depth[drzewo[x][i]] = depth[x] + 1;
+\ \ \ \ \ \ \ \ \ \ \ \ depth[drzewo[x][i]] = depth[x] + 1;
 
-			calculate_low(drzewo[x][i]);
+\ \ \ \ \ \ \ \ \ \ \ \ calculate_low(drzewo[x][i]);
 
-			low[x] = min(low[x], low[drzewo[x][i]]);
+\ \ \ \ \ \ \ \ \ \ \ \ low[x] = min(low[x], low[drzewo[x][i]]);
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	// na wektorze kraw_wsteczne[x] trzymamy
 
-	// krawedzie wsteczne wychace z x
+\ \ \ \ // na wektorze kraw_wsteczne[x] trzymamy
 
-	for(int i = 0; i < kraw_wsteczne[x].size(); i ++)
+\ \ \ \ // krawedzie wsteczne wychace z x
 
-		low[x] = min(low[x], depth[kraw_wsteczne[x][i]]);
+\ \ \ \ for(int i = 0; i < kraw_wsteczne[x].size(); i ++)
+
+\ \ \ \ \ \ \ \ low[x] = min(low[x], depth[kraw_wsteczne[x][i]]);
 
 }
 
@@ -108,7 +109,7 @@ Punktem artykulacji jest również korzeń wtedy i tylko wtedy gdy ma więcej ni
 ![Korzeń jako punkt artykulacji](https://codimd.s3.shivering-isles.com/demo/uploads/upload_87144789919fd1a434c1341a8bbbf4d3.png)
 
 
-### Co to w ogóle ma wspólnego z dwuspójnymi składowymi?
+### Co to ma wspólnego z dwuspójnymi składowymi?
 
 
 Krawędź należy do jakiejś dwuspójnej wtedy i tylko wtedy, gdy nie jest mostem, ponieważ wówczas leży na cyklu prostym. Cały graf możemy podzielić na dwuspójne przy czym każda z nich stanowi spójną część drzewa DFS.
@@ -132,13 +133,13 @@ Powyższe fakty wystarczą nam do zaprojektowania algorytmu rozbijającego graf 
 Po drugie, niech reprezentantem danego zbioru będzie zawsze wierzchołek, który leży najpłycej. W tym celu podczas operacji $Union$ nie będziemy łączyć mniejszego zbioru do większego, tylko podłącząć głębszego reprezentanta do płytszego. Teoretycznie złożonosć powinna się znacznie pogorszyć, jednak w praktyce czas działania struktury nie zmieni się. Kompresja ścieżek jest <b>mocarna</b>.
 
 
-## Rozbijanie grafu na dwuspójne składowe
+### Rozbijanie grafu na dwuspójne składowe
 
 
 Wykonamy dfs'a i będziemy przetwarzać wierzchołki w kolejności postorder. Rozważmy trzy przypadki:
 
 
-1. $Low[x] < depth[ojciec[x]]$ -- istnieje krawędź wsteczna, która przechodzi nad $x$ oraz jego ojcem. Oznacza to, że są oni w jednej dwuspójnej. Łączymy ich wykonując wyżej opisany $Union.$
+1. $low[x] < depth[ojciec[x]]$ -- istnieje krawędź wsteczna, która przechodzi nad $x$ oraz jego ojcem. Oznacza to, że są oni w jednej dwuspójnej. Łączymy ich wykonując wyżej opisany $Union.$
 
 
 ![Krawędź wsteczna z wierzchołka](https://codimd.s3.shivering-isles.com/demo/uploads/upload_43bcaeb1cdf5c2fbc7db985f0854c9ec.png)
@@ -160,29 +161,29 @@ Wykonamy dfs'a i będziemy przetwarzać wierzchołki w kolejności postorder. Ro
 
 void dfs_dwuspojne (int x) {
 
-	visited[x] = true;
+\ \ \ \ visited[x] = true;
 
-	for (int i = 0; i < drzewo[x].size(); i ++) {
+\ \ \ \ for (int i = 0; i < drzewo[x].size(); i ++) {
 
-		int u = drzewo[x][i];
+\ \ \ \ \ \ \ \ int u = drzewo[x][i];
 
-		if (!visited[u]) {
+\ \ \ \ \ \ \ \ if (!visited[u]) {
 
-			dfs_dwuspojne(u);
+\ \ \ \ \ \ \ \ \ \ \ \ dfs_dwuspojne(u);
 
-			if(low[u] < depth[x])
+\ \ \ \ \ \ \ \ \ \ \ \ if(low[u] < depth[x])
 
-				rep[u] = x;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rep[u] = x;
 
-				// możemy w ten sposób zrobić union,
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ // możemy w ten sposób zrobić union,
 
-		// ponieważ x na tę chwile na pewno jest
+\ \ \ \ \ \ \ \ // ponieważ x na tę chwile na pewno jest
 
-		// najpłytszym wierzchołkiem w jego zbiorze
+\ \ \ \ \ \ \ \ // najpłytszym wierzchołkiem w jego zbiorze
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	}
+\ \ \ \ }
 
 }
 
@@ -196,13 +197,13 @@ Zastanówmy się teraz, w jaki sposób sprawdzać, czy dwa wierzchołki należą
 
 bool czy_w_jednej(int a, int b) {
 
-	if (Find(a) == Find(b))
+\ \ \ \ if (Find(a) == Find(b))
 
-		return true;
+\ \ \ \ \ \ \ \ return true;
 
-	a = Find(a);
+\ \ \ \ a = Find(a);
 
-	return b == ojciec[a] && low[a] == depth[b];
+\ \ \ \ return b == ojciec[a] && low[a] == depth[b];
 
 }
 

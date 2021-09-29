@@ -39,23 +39,23 @@ Z kolei dla $k>0$ ```ancestor[x][k] = ancestor[ancestor[x][k–1]][k–1]```, po
 
 void make_ancestor() {
 
-	ojciec[korzen] = korzen;
+\ \ \ \ ojciec[korzen] = korzen;
 
-	for (int x = 1; x <= n; x ++)
+\ \ \ \ for (int x = 1; x <= n; x ++)
 
-		ancestor[x][0] = ojciec[x];
+\ \ \ \ \ \ \ \ ancestor[x][0] = ojciec[x];
 
-	for(int k = 1; k <= 20; k ++) {
+\ \ \ \ for(int k = 1; k <= 20; k ++) {
 
-		///Dla n <= 10^ 6 log(10^ 6) = 20
+\ \ \ \ \ \ \ \ ///Dla n <= 10^ 6 log(10^ 6) = 20
 
-		for(int x = 1; x <= n; x ++)
+\ \ \ \ \ \ \ \ for(int x = 1; x <= n; x ++)
 
-			ancestor[x][k] 
+\ \ \ \ \ \ \ \ \ \ \ \ ancestor[x][k] 
 
-				= ancestor[ancestor[x][k - 1]][k - 1];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ = ancestor[ancestor[x][k - 1]][k - 1];
 
-	}
+\ \ \ \ }
 
 }
 
@@ -77,17 +77,17 @@ Załóżmy, że ```depth[B] >= depth[A]```. Na początku znajdujemy przodka $B,$
 
 if (depth[B] < depth[A])
 
-	swap (A, B);
+\ \ \ \ swap (A, B);
 
 for (int k = 20; k >= 0; k --)
 
-	if (depth[ancestor[B][k]] >= depth[A])
+\ \ \ \ if (depth[ancestor[B][k]] >= depth[A])
 
-		B = ancestor[B][k];
+\ \ \ \ \ \ \ \ B = ancestor[B][k];
 
 if(A == B)
 
-	return A;
+\ \ \ \ return A;
 
 ```
 
@@ -102,13 +102,13 @@ W przeciwnym wypadku możemy wykonywać analogiczne „skoki” o największe ta
 
 for (int k = 20; k >= 0; k --) {
 
-	if (ancestor[A][k] != ancestor[B][k]) {
+\ \ \ \ if (ancestor[A][k] != ancestor[B][k]) {
 
-		a = ancestor[a][k];
+\ \ \ \ \ \ \ \ a = ancestor[a][k];
 
-		b = ancestor[b][k];
+\ \ \ \ \ \ \ \ b = ancestor[b][k];
 
-	}
+\ \ \ \ }
 
 }
 

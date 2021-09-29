@@ -94,38 +94,38 @@ Tak samo, jak w algorytmie Dijkstry, potrzebujemy tablicy $D$ i na początku ust
 
 bool BF () {
 
-	for (int i = 1; i <= n; i ++)
+\ \ \ \ for (int i = 1; i <= n; i ++)
 
-		D[i] = INF;
+\ \ \ \ \ \ \ \ D[i] = INF;
 
-	D[x] = 0;
+\ \ \ \ D[x] = 0;
 
-	for (int I = 1; I < n; I ++) {
+\ \ \ \ for (int I = 1; I < n; I ++) {
 
-		for (int v = 1; v <= n; v ++)
+\ \ \ \ \ \ \ \ for (int v = 1; v <= n; v ++)
 
-			for (int i = 0; i < sasiedzi[v].size(); i ++)
+\ \ \ \ \ \ \ \ \ \ \ \ for (int i = 0; i < sasiedzi[v].size(); i ++)
 
-				if (D[v] + waga[v][i] < D[sasiedzi[v][i]])
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if (D[v] + waga[v][i] < D[sasiedzi[v][i]])
 
-					D[sasiedzi[v][i]]
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ D[sasiedzi[v][i]]
 
-						= D[v] + waga[v][i];
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ = D[v] + waga[v][i];
 
-	}
-	
+\ \ \ \ }
+\ \ \ \ 
 
-	//sprawdanie, czy istnieje ujemny cykl
+\ \ \ \ //sprawdanie, czy istnieje ujemny cykl
 
-	for (int v = 1; v <= n; v ++)
+\ \ \ \ for (int v = 1; v <= n; v ++)
 
-		for (int i = 0; i < sasiedzi[v].size(); i ++)
+\ \ \ \ \ \ \ \ for (int i = 0; i < sasiedzi[v].size(); i ++)
 
-			if (D[v] + waga[v][i] < D[sasiedzi[v][i]])
+\ \ \ \ \ \ \ \ \ \ \ \ if (D[v] + waga[v][i] < D[sasiedzi[v][i]])
 
-				return false;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return false;
 
-	return true;
+\ \ \ \ return true;
 
 }
 
@@ -148,11 +148,11 @@ Jako że powyższe operacje zostaną wykonane dla wszystkich trójek wierzchołk
 
 for(int u = 1; u <= n; u ++)
 
-	for(int x = 1; x <= n; x ++)
+\ \ \ \ for(int x = 1; x <= n; x ++)
 
-		for(int y = 1; y <= n; y ++)
+\ \ \ \ \ \ \ \ for(int y = 1; y <= n; y ++)
 
-			D[x][y] = min(D[x][y], D[x][u] + D[u][y]);
+\ \ \ \ \ \ \ \ \ \ \ \ D[x][y] = min(D[x][y], D[x][u] + D[u][y]);
 
 ```
 

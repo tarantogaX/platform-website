@@ -69,35 +69,34 @@ Pozostaje już tylko jeden szczegół implementacyjny. Zauważmy, że $match()$ 
 
 bool match(int x) {
 
-	odw[x] = nr;
+\ \ \ \ odw[x] = nr;
 
-	for (int i = 0; i < czarne[x].size(); i ++)
+\ \ \ \ for (int i = 0; i < czarne[x].size(); i ++)
 
-		// sprawdzanie, czy jest wolny sąsiad
+\ \ \ \ \ \ \ \ // sprawdzanie, czy jest wolny sąsiad
 
-		if (!para[czarne[x][i]]) {
+\ \ \ \ \ \ \ \ if (!para[czarne[x][i]]) {
 
-			para[czarne[x][i]] = x;
+\ \ \ \ \ \ \ \ \ \ \ \ para[czarne[x][i]] = x;
 
-			return true;
+\ \ \ \ \ \ \ \ \ \ \ \ return true;
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	for (int i = 0; i < czarne[x].size(); i ++)
 
-		// sprawdzanie, czy da sie polaczyc z zajętym sąsiadem
+\ \ \ \ for (int i = 0; i < czarne[x].size(); i ++)
 
-		if (odw[para[czarne[x][i]]] != nr
+\ \ \ \ \ \ \ \ // sprawdzanie, czy da sie polaczyc z zajętym sąsiadem
 
-		&& match(para[czarne[x][i]])) {
+\ \ \ \ \ \ \ \ if (odw[para[czarne[x][i]]] != nr && match(para[czarne[x][i]])) {
 
-			para[czarne[x][i]] = x;
+\ \ \ \ \ \ \ \ \ \ \ \ para[czarne[x][i]] = x;
 
-			return true;
+\ \ \ \ \ \ \ \ \ \ \ \ return true;
 
-		}
+\ \ \ \ \ \ \ \ }
 
-	return false;
+\ \ \ \ return false;
 
 }
 

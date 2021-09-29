@@ -117,87 +117,84 @@ bool odw[MAX_N]; //Jesli odw[x] = 1, x został już odwiedzony
 
 void dfs (int x) {
 
-	odw[x] = true; //oznaczamy x jako odwiedzony
-	
+\ \ \ \ odw[x] = true; //oznaczamy x jako odwiedzony
 
-	//tutaj wykonujemy jakieś obliczenia dla danego problemu
-	
+\ \ \ \ //tutaj wykonujemy jakieś obliczenia dla danego problemu
 
-	//przegladamy wszystkich sasiadow
+\ \ \ \ //przegladamy wszystkich sasiadow
 
-	for(int i = 0; i < v[x].size(); i ++)
+\ \ \ \ for(int i = 0; i < v[x].size(); i ++)
 
-		//jesli jeszcze nie odwiedzilismy danego sasiada,
+\ \ \ \ \ \ \ \ //jesli jeszcze nie odwiedzilismy danego sasiada,
 
-		//musimy to zrobic
+\ \ \ \ \ \ \ \ //musimy to zrobic
 
-		if(odw[v[x][i]] == false)
+\ \ \ \ \ \ \ \ if(odw[v[x][i]] == false)
 
-			dfs(v[x][i]);
+\ \ \ \ \ \ \ \ \ \ \ \ dfs(v[x][i]);
 
-			
-	//tutaj wykonujemy inne obliczenia dla danego problemu
+\ \ \ \ //tutaj wykonujemy inne obliczenia dla danego problemu
 
 }
 
 ```
 
 
-$DFS$ jest przykładem funkcji rekurencyjnej – wywołującej samą siebie. Zauważmy, że skoro dla każdego wierzchołka przeglądamy wszystkich jego sąsiadów, to podczas działania algorytmu przejrzymy całą spójną składową. W celu przejścia po grafie wystarczy puścić po jednym $DFS$'ie dla każdej z nich.
+DFS jest przykładem funkcji rekurencyjnej – wywołującej samą siebie. Zauważmy, że skoro dla każdego wierzchołka przeglądamy wszystkich jego sąsiadów, to podczas działania algorytmu przejrzymy całą spójną składową. W celu przejścia po grafie wystarczy puścić po jednym DFSie dla każdej z nich.
 
 
 ```cpp=
 
 for(int i = 1; i <= n; i ++)
 
-	if(odw[i] == false)
+\ \ \ \ if(odw[i] == false)
 
-		dfs(i);
+\ \ \ \ \ \ \ \ dfs(i);
 
 ```
 
 
-Złożoność czasowa $DFS$'a wynosi $O(n + m),$ ponieważ do każdego z $n$ wierzchołków wejdziemy dokładnie raz i przejrzymy w sumarycznym czasie $O(m)$ całą listę sąsiedztwa.
+Złożoność czasowa DFSa wynosi $O(n + m),$ ponieważ do każdego z $n$ wierzchołków wejdziemy dokładnie raz i przejrzymy w sumarycznym czasie $O(m)$ całą listę sąsiedztwa.
 
 
 ## Breadth First Search – Przeszukiwanie grafu wszerz
 
-$BFS$ działa podobnie jak $DFS,$ jednak przeszukuje wierzchołki w innej kolejności. Zamiast wywoływać się rekurencyjnie, najpierw odwiedzimy wszystkich sąsiadów, a następnie wszystkich nieodwiedzonych jeszcze sąsiadów sąsiadów itd. W tym celu będziemy utrzymywać $q$ – kolejkę nieodwiedzonych wierzchołków, o których istnieniu wiemy. Załóżmy, że jesteśmy obecnie w $x.$ Policzymy to, co musimy obliczyć, a następnie wrzucimy na koniec kolejki wszystkich nieodwiedzonych sąsiadów $x.$ Kiedy skończymy obliczenia dla $x,$ zaczniemy przetwarzać wierzchołek z początku $q.$
+BFS działa podobnie jak DFS, jednak przeszukuje wierzchołki w innej kolejności. Zamiast wywoływać się rekurencyjnie, najpierw odwiedzimy wszystkich sąsiadów, a następnie wszystkich nieodwiedzonych jeszcze sąsiadów sąsiadów itd. W tym celu będziemy utrzymywać $q$ – kolejkę nieodwiedzonych wierzchołków, o których istnieniu wiemy. Załóżmy, że jesteśmy obecnie w $x.$ Policzymy to, co musimy obliczyć, a następnie wrzucimy na koniec kolejki wszystkich nieodwiedzonych sąsiadów $x.$ Kiedy skończymy obliczenia dla $x,$ zaczniemy przetwarzać wierzchołek z początku $q.$
 
 
 ```cpp=
 
 void bfs(int pp) { // pp: wierzcholek, z którego zaczynamy bfs’a
 
-	odw[pp] = true;
+\ \ \ \ odw[pp] = true;
 
-	q.push(pp);
+\ \ \ \ q.push(pp);
 
-	while (!q.empty()) {
+\ \ \ \ while (!q.empty()) {
 
-		int x = q.front();
+\ \ \ \ \ \ \ \ int x = q.front();
 
-		q.pop();
+\ \ \ \ \ \ \ \ q.pop();
 
-		
-		// w tym miejscu wykonujemy jakieś obliczenia
+\ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ // w tym miejscu wykonujemy jakieś obliczenia
 
-		// dla danego problemu
-		
+\ \ \ \ \ \ \ \ // dla danego problemu
+\ \ \ \ \ \ \ \ 
 
-		//przegladamy wszystkich sasiadow
+\ \ \ \ \ \ \ \ //przegladamy wszystkich sasiadow
 
-		for (int i = 0; i < v[x].size(); i ++)
+\ \ \ \ \ \ \ \ for (int i = 0; i < v[x].size(); i ++)
 
-			if(odw[v[x][i]] == false) {
+\ \ \ \ \ \ \ \ \ \ \ \ if(odw[v[x][i]] == false) {
 
-				odw[v[x][i]] = true;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ odw[v[x][i]] = true;
 
-				q.push(v[x][i]);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.push(v[x][i]);
 
-			}
+\ \ \ \ \ \ \ \ \ \ \ \ }
 
-	}
+\ \ \ \ }
 
 }
 
@@ -207,7 +204,7 @@ void bfs(int pp) { // pp: wierzcholek, z którego zaczynamy bfs’a
 ![Graf przeszukany wszerz](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b75d48b41e9130382eb0cf06398a1ba7.png)
 
 
-Tak samo jak w przypadku $DFS$'a, $BFS$ przejrzy całą spójną składową. Złożoność czasowa to również $O(n + m).$
+Tak samo jak w przypadku DFSa, BFS przejrzy całą spójną składową. Złożoność czasowa to również $O(n + m).$
 
 
 ## Cykl Eulera
@@ -227,24 +224,24 @@ Cykl Eulera jest to cykl, który przechodzi przez wszystkie krawędzie grafu dok
 ![Wchodzenie i wychodzenie z wierzchołka](https://codimd.s3.shivering-isles.com/demo/uploads/upload_df22f813593f969b419d903e12092c99.png)
 
 
-Niech $x$ będzie wierzchołkiem, w którym wywołamy algorytm $DF$S. Zamiast wchodzić do nieodwiedzonych wierzchołków, przechodzimy nieodwiedzonymi krawędziami. Niech $d(a)$ będzie liczbą nieodwiedzonych krawędzi wychodzących z wierzchołka $a.$ Po przejściu z $x$ do jego sąsiada, $d(x)$ stanie się nieparzyste. Po wywołaniu $DFS$’a w jakimkolwiek innym wierzchołku $y$ $d(y)$ będzie nieparzyste – większe od zera. Oznacza to, że zawsze da się wejść, do któregoś z jego synów, co też zrobimy. Nie wywołamy $DFS$’a w sąsiedzie wierzchołka a tylko wtedy, gdy po wejściu do a, $d(a)$ będzie równe zero. Ponieważ $0$ jest parzyste, taka sytuacja zachodzi tylko dla $a = x.$ Jako, że $m$ jest skończone, kiedyś będzie musiało do tego dojść. Podczas wychodzenia z danego wierzchołka, dodamy krawędź, którą do niego weszliśmy na stos. Kiedy powrócimy do wierzchołka $y,$ dla którego $d(y) > 0,$ przejdziemy nieodwiedzoną krawędzią do jego sąsiada. Analogicznie co poprzednio, zatrzymamy wywoływanie $DFS$’a dopiero, kiedy wrócimy do $y.$ Z tego powodu po zakończeniu algorytmu na stosie znajdzie się cykl Eulera.
+Niech $x$ będzie wierzchołkiem, w którym wywołamy algorytm DFS. Zamiast wchodzić do nieodwiedzonych wierzchołków, przechodzimy nieodwiedzonymi krawędziami. Niech $d(a)$ będzie liczbą nieodwiedzonych krawędzi wychodzących z wierzchołka $a.$ Po przejściu z $x$ do jego sąsiada, $d(x)$ stanie się nieparzyste. Po wywołaniu DFSa w jakimkolwiek innym wierzchołku $y$ $d(y)$ będzie nieparzyste – większe od zera. Oznacza to, że zawsze da się wejść, do któregoś z jego synów, co też zrobimy. Nie wywołamy DFSa w sąsiedzie wierzchołka a tylko wtedy, gdy po wejściu do a, $d(a)$ będzie równe zero. Ponieważ $0$ jest parzyste, taka sytuacja zachodzi tylko dla $a = x.$ Jako, że $m$ jest skończone, kiedyś będzie musiało do tego dojść. Podczas wychodzenia z danego wierzchołka, dodamy krawędź, którą do niego weszliśmy na stos. Kiedy powrócimy do wierzchołka $y,$ dla którego $d(y) > 0,$ przejdziemy nieodwiedzoną krawędzią do jego sąsiada. Analogicznie co poprzednio, zatrzymamy wywoływanie DFSa dopiero, kiedy wrócimy do $y.$ Z tego powodu po zakończeniu algorytmu na stosie znajdzie się cykl Eulera.
 
 
 ```cpp=
 
 void dfs (int x) {
 
-	for (int i = 0; i < v[x].size(); i ++)
+\ \ \ \ for (int i = 0; i < v[x].size(); i ++)
 
-	if (!odw[nr_krawedzi[x][i]]) {
+\ \ \ \ if (!odw[nr_krawedzi[x][i]]) {
 
-		odw[nr_krawedzi[x][i]] = true;
+\ \ \ \ \ \ \ \ odw[nr_krawedzi[x][i]] = true;
 
-		dfs(v[x][i]);
+\ \ \ \ \ \ \ \ dfs(v[x][i]);
 
-		stos.push_back(nr_krawedzi[x][i]);
+\ \ \ \ \ \ \ \ stos.push_back(nr_krawedzi[x][i]);
 
-	}
+\ \ \ \ }
 
 }
 
