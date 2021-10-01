@@ -78,8 +78,7 @@ export const sections: Array<SectionProps> = [
             {title: "Dwuspójne składowe", id: "gra_spo"},
             {title: "Grafy planarne", id: "gra_pla"},
             {title: "Problemy NP-trudne", id: "gra_npt"},
-            {title: "Przepływy", id: "gra_prz"},
-            {title: "Max flow - min cut", id: "gra_flo"}
+            {title: "Przepływy", id: "gra_prz"}
         ]
     },
     {
